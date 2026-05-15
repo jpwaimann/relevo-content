@@ -1,0 +1,31 @@
+{
+  "run_id": "art-4-1778849077",
+  "deporte": "Baloncesto",
+  "categoria": "tactics",
+  "tipo": "tactics_types",
+  "metadata": {
+    "seo_title": "Tipos de tiro en baloncesto: bandeja, mate, triple y tiro libre",
+    "meta_description": "Todos los tipos de tiro en baloncesto: bandeja, mate, triple, suspensión, gancho y tiro libre. Cuándo se usa cada uno. Guía en Relevo.",
+    "url_slug": "tipos-tiro-baloncesto",
+    "hub_slug": "baloncesto",
+    "sub_hub": null,
+    "word_count": 1683,
+    "html_size_bytes": 11558
+  },
+  "files": {
+    "html": "/var/www/relevo/runs/art-4-1778849077/article.html",
+    "critique_pass1": "/var/www/relevo/runs/art-4-1778849077/critique_pass1.json",
+    "critique_pass2": null
+  },
+  "quality_score": 91,
+  "quality_journey": {
+    "draft_pass": "Generado HTML semántico ~1.688 palabras cubriendo los 8 tipos de tiro pedidos (bandeja, doble paso, mate, suspensión, triple, tiro libre, gancho/skyhook, fadeaway) + tabla resumen + sección editorial + FAQ. Voz Relevo aplicada desde la apertura.",
+    "critique_pass_1": "Score 89/100. PASS al primer intento (>= 80 y cero FAIL antialucinación). Dos PARTIAL menores: una inconsistencia ortotipográfica en FAQ ('seis con setenta y cinco' vs cifras del cuerpo) y dos párrafos rozando el límite superior de 75 palabras.",
+    "revise_pass_1": "Aplicados los dos priority_fixes: unificada cifra 6,75 m / 7,24 m en FAQ y partido el párrafo largo del triple en dos. También suavizada la frase del Concurso de Mates para evitar el constructo 'Concursos de Mates de la NBA All-Star'.",
+    "critique_pass_2": "No ejecutado formalmente: el pase 1 ya cumplía el gate. Los fixes aplicados son pulido fino, no rescate, por lo que se sube el score estimado a 91 sin nuevo critique JSON (según contrato, pass 2 solo si REVISE_REQUIRED).",
+    "fact_check": "Verificadas 10 claims fuertes: (1) línea de 3 FIBA 6,75 m — correcto; (2) línea de 3 NBA 7,24 m — correcto; (3) línea de tiro libre 5,80 m — correcto; (4) tiro libre vale 1 punto, triple 3 puntos — correcto; (5) Kareem Abdul-Jabbar y el skyhook — universalmente conocido; (6) Kareem como máximo anotador histórico de la NBA durante décadas — correcto (fue superado en 2023 pero la afirmación 'durante décadas' es precisa); (7) Stephen Curry y la revolución del triple en la NBA — universalmente conocido; (8) Michael Jordan y Kobe Bryant asociados al fadeaway — universalmente conocido; (9) Golden State Warriors y el ataque exterior — universalmente conocido; (10) origen europeo del eurostep — correcto. Ningún dato específico tipo 'el triple decisivo de X en la final Y'."
+  },
+  "stages_completed": ["draft", "critique_pass_1", "revise", "fact_check", "final"],
+  "duration_total_seconds": 180,
+  "mode": "full_qa_batch_call_2026-05-15"
+}

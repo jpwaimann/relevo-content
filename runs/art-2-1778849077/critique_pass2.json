@@ -1,0 +1,34 @@
+{
+  "run_id": "art-2-1778849077",
+  "pass": 2,
+  "score": 93,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 19, "note": "Voz periodística consolidada. Pasajes 'el que solo sabe pegarle raso es predecible' o 'sin floritura, sin parábola, sin tiempo para que el portero reaccione' marcan ritmo y autoridad sin cátedra."},
+    "html_semantic": {"weight": 20, "obtained": 20, "note": "Estructura semántica impecable, tabla justificada, cero b/i."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 14, "note": "Párrafos en rango, una idea por párrafo, ritmo alterno corto/medio."},
+    "antihallucination": {"weight": 15, "obtained": 15, "note": "Tras fact-check: Zidane en Glasgow está citado como referencia canónica del propio style_guide. Haaland y Lewandowski como contemporáneos sin datos. Panenka como técnica, sin atribución de partido. Cero datos falsables."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "H2/H3 corresponden a intenciones reales. Tabla resumen apunta a Featured Snippet."},
+    "cierre_personalidad": {"weight": 10, "obtained": 9, "note": "Cierre con perspectiva editorial sólida sobre el repertorio del delantero moderno."},
+    "ortotipografia": {"weight": 10, "obtained": 9, "note": "Tras fix: '75%' en cifra como porcentaje técnico. 'once metros' se mantiene en letra (uso periodístico español consolidado para esa referencia). Comillas, mayúsculas y nombres correctos."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz", "result": "APPROVED", "note": "Periodista deportivo español consolidado."},
+    {"point": 2, "name": "Ritmo", "result": "APPROVED", "note": "40-70 palabras, una idea por párrafo."},
+    {"point": 3, "name": "Léxico", "result": "APPROVED", "note": "Léxico peninsular técnico."},
+    {"point": 4, "name": "Equivalencias", "result": "APPROVED", "note": "Penalti, córner, falta directa, barrera, área pequeña en forma española."},
+    {"point": 5, "name": "Extranjerismos", "result": "APPROVED", "note": "Sin extranjerismos sueltos."},
+    {"point": 6, "name": "Clichés", "result": "APPROVED", "note": "Cero clichés de la lista negra."},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "Justificados con descripción técnica concreta."},
+    {"point": 8, "name": "SEO", "result": "APPROVED", "note": "H2/H3 funcionales, FAQ útil."},
+    {"point": 9, "name": "Negritas", "result": "APPROVED", "note": "Solo strong, densidad correcta."},
+    {"point": 10, "name": "Cursivas", "result": "APPROVED", "note": "Solo em al cierre relacionado."},
+    {"point": 11, "name": "Ortotipografía", "result": "APPROVED", "note": "75% en cifra, once metros en letra (forma habitual)."},
+    {"point": 12, "name": "Aclaraciones", "result": "APPROVED", "note": "Comas y guiones largos, sin paréntesis indebidos."},
+    {"point": 13, "name": "Nombres", "result": "APPROVED", "note": "Primera mención completa, después apellido."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Solo referentes contrastados y casos canónicos."},
+    {"point": 15, "name": "Cierre", "result": "APPROVED", "note": "Perspectiva editorial real."}
+  ],
+  "priority_fixes": [],
+  "gate_decision": "PASS",
+  "reason": "Score 93, todos los puntos APPROVED, antialucinación limpia. Listo para final."
+}

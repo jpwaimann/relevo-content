@@ -1,0 +1,37 @@
+{
+  "run_id": "art-10-1778849077",
+  "pass": 1,
+  "score": 87,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 17, "note": "Voz periodística clara, sin grandilocuencia ni tono enciclopédico. Apertura entra en materia con la evolución histórica. Cierre del último H2 con personalidad. Tono cercano sin coloquialismo."},
+    "html_semantic": {"weight": 20, "obtained": 19, "note": "HTML semántico correcto: H1/H2/H3, <p>, <ul>, <strong>, <em>, <table> donde aporta. Cero <b>, cero <i>. Negritas distribuidas, ~6 destacados por párrafo."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 13, "note": "Mayoría de párrafos en 40-70 palabras. Uno o dos rozan 75 pero se justifican por tecnicidad. Frases alternan longitud, una idea por párrafo."},
+    "antihallucination": {"weight": 15, "obtained": 14, "note": "Datos verificables y bien documentados de las Unified Rules: fechas (2000 NJSACB), pesos, duraciones, sistema 10-point must. No se citan combates específicos ni fechas concretas de eventos. Nota técnica: la regulación de rodillazos a oponente caído en Japón se aclaró como excepción no-UFC. No se mencionan peleadores por nombre."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "Cada H2 corresponde a una intención de búsqueda real (rounds, decisiones, prohibidos, equipamiento, referee, pesos). FAQ relevante. No hay relleno SEO crudo."},
+    "cierre_personalidad": {"weight": 10, "obtained": 7, "note": "El cierre del cuerpo es un FAQ + link relacionado, no un cierre narrativo con personalidad. Sería ideal un párrafo conclusivo antes del FAQ con reflexión sobre el deporte. PARTIAL."},
+    "ortotipografia": {"weight": 10, "obtained": 8, "note": "Cifras técnicas en número, extranjerismos no adaptados en <em> (weigh-in, technical knockout, back of the head, stalling, spiking). Mayúsculas correctas en organismos (UFC, NJSACB). Pequeño punto: 'cuatro onzas' aparece una vez en letra y '4 onzas' otra; consistencia mejorable."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz", "result": "APPROVED", "note": "Periodista deportivo español, no Wikipedia."},
+    {"point": 2, "name": "Ritmo", "result": "APPROVED", "note": "Párrafos en rango. Sin frases acumulativas."},
+    {"point": 3, "name": "Léxico", "result": "APPROVED", "note": "Asalto, púgil/peleador, rincón, octógono usados correctamente."},
+    {"point": 4, "name": "Equivalencias", "result": "APPROVED", "note": "No hay anglicismos forzados; los técnicos van en <em>."},
+    {"point": 5, "name": "Extranjerismos", "result": "APPROVED", "note": "weigh-in, technical knockout, back of the head, stalling, spiking todos en <em>. KO/TKO consolidados sin cursiva."},
+    {"point": 6, "name": "Clichés", "result": "APPROVED", "note": "Sin clichés deportivos del listado negro."},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "Ninguno injustificado."},
+    {"point": 8, "name": "SEO", "result": "APPROVED", "note": "Cada H2 = intención real."},
+    {"point": 9, "name": "Negritas", "result": "APPROVED", "note": "Solo <strong>, distribución correcta."},
+    {"point": 10, "name": "Cursivas", "result": "APPROVED", "note": "Solo <em>."},
+    {"point": 11, "name": "Ortotipografía", "result": "PARTIAL", "note": "Pequeña inconsistencia 'cuatro onzas' vs '4 onzas'."},
+    {"point": 12, "name": "Aclaraciones", "result": "APPROVED", "note": "Guion largo y comas correctos."},
+    {"point": 13, "name": "Nombres", "result": "APPROVED", "note": "Organismos correctamente capitalizados."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Cero peleadores nombrados, cero eventos específicos. Solo datos reglamentarios verificables."},
+    {"point": 15, "name": "Cierre", "result": "PARTIAL", "note": "Falta cierre con personalidad antes del FAQ. El artículo termina en FAQ y link relacionado."}
+  ],
+  "priority_fixes": [
+    "Añadir un breve cierre narrativo con personalidad antes del bloque de FAQ, con perspectiva sobre la evolución del reglamento desde el caos inicial a la unificación actual.",
+    "Unificar la mención '4 onzas' / 'cuatro onzas': dejar '4 onzas' como cifra técnica en ambas instancias."
+  ],
+  "gate_decision": "REVISE_REQUIRED",
+  "reason": "Score 87 supera el umbral, pero el cierre carece de personalidad (requisito del style guide punto 15) y hay una inconsistencia ortotipográfica menor. Aplico revisión rápida y pass 2."
+}

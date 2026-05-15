@@ -1,0 +1,33 @@
+{
+  "run_id": "rules-smoke-1778792284",
+  "pass": 2,
+  "score": 95,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 18},
+    "html_semantic": {"weight": 20, "obtained": 20},
+    "ritmo_parrafos": {"weight": 15, "obtained": 14},
+    "antihallucination": {"weight": 15, "obtained": 14, "note": "Caso específico no verificable removido. Referencia a 'regla Wenger' confirmable. Riesgo bajo."},
+    "seo_no_crudo": {"weight": 10, "obtained": 10},
+    "cierre_personalidad": {"weight": 10, "obtained": 9},
+    "ortotipografia": {"weight": 10, "obtained": 10}
+  },
+  "checklist_15_points": [
+    {"point": 1, "result": "APPROVED"},
+    {"point": 2, "result": "APPROVED", "note": "Párrafos ahora 40-60 palabras consistente"},
+    {"point": 3, "result": "APPROVED"},
+    {"point": 4, "result": "APPROVED"},
+    {"point": 5, "result": "APPROVED"},
+    {"point": 6, "result": "APPROVED"},
+    {"point": 7, "result": "APPROVED"},
+    {"point": 8, "result": "APPROVED"},
+    {"point": 9, "result": "APPROVED", "note": "<strong> consistente, ~6-7 destacadas/párrafo"},
+    {"point": 10, "result": "APPROVED"},
+    {"point": 11, "result": "APPROVED"},
+    {"point": 12, "result": "APPROVED"},
+    {"point": 13, "result": "APPROVED"},
+    {"point": 14, "result": "APPROVED", "note": "Casos verificables únicamente. Anti-hallucination FIX aplicado."},
+    {"point": 15, "result": "APPROVED"}
+  ],
+  "gate_decision": "PASS",
+  "reason": "Score 95 >= 80 threshold. Anti-hallucination resuelto. Longitud 1592 palabras dentro de target 1500-2000."
+}

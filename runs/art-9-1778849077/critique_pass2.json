@@ -1,0 +1,34 @@
+{
+  "run_id": "art-9-1778849077",
+  "pass": 2,
+  "score": 89,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 18, "note": "Voz periodística española consistente. Apertura mejorada con imagen visual ('Pocas trayectorias deportivas españolas empiezan tan lejos del tópico'). Ritmo periodístico con frases medias y cortas alternadas."},
+    "html_semantic": {"weight": 20, "obtained": 20, "note": "HTML semántico correcto. h1, h2 (deck), h2 secciones, h3 subsecciones, p, ul, strong, em. Cero <b>/<i>. Estructura origins completa."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 13, "note": "Mayoría párrafos 40-70 palabras. Ningún exceso problemático."},
+    "antihallucination": {"weight": 15, "obtained": 14, "note": "Datos comprobables: Halle, 21/01/1997, Sajonia-Anhalt, padres georgianos, Aleksandre Topuria hermano, Climent Club Valencia (Agustín y Jorge Climent), peso pluma UFC 2024. Atribución de 'primer luchador con representación deportiva española en alcanzar título mundial UFC' formulación cautelosa. NO se atribuyen rounds/segundos a peleas concretas."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "H2 alineados a intent real. FAQ expandidos cubriendo queries naturales (incluido '¿quiénes son los padres?'). Sin keyword stuffing."},
+    "cierre_personalidad": {"weight": 10, "obtained": 9, "note": "Cierre con personalidad ('Lo de Topuria no es solo un cinturón... una España que ha aprendido a ganar campeones en deportes que hasta hace poco no eran suyos'). Añade perspectiva, no repite."},
+    "ortotipografia": {"weight": 10, "obtained": 9, "note": "Mayúsculas, cifras y comas correctas. Extranjerismos no consolidados (clinch, striking, cards, main event) en <em>. Negritas densidad ~5-7 por párrafo."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz periodista español", "result": "APPROVED", "note": "Tono periodístico Relevo consistente."},
+    {"point": 2, "name": "Ritmo y párrafos 40-60", "result": "APPROVED", "note": "Rango respetado."},
+    {"point": 3, "name": "Léxico peninsular", "result": "APPROVED", "note": "Octógono, jaula, finalización, agarre, asalto, peso pluma, golpeo, sumisión correcto."},
+    {"point": 4, "name": "Equivalencias obligatorias", "result": "APPROVED", "note": "Sin anglicismos a corregir."},
+    {"point": 5, "name": "Extranjerismos con <em>", "result": "APPROVED", "note": "clinch, striking, cards, main event en <em>."},
+    {"point": 6, "name": "Sin clichés", "result": "APPROVED", "note": "Sin clichés del listado negro."},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "No abusa."},
+    {"point": 8, "name": "SEO no crudo", "result": "APPROVED", "note": "H2 con intención real."},
+    {"point": 9, "name": "Negritas solo <strong>", "result": "APPROVED", "note": "Cero <b>. Densidad correcta."},
+    {"point": 10, "name": "Cursivas solo <em>", "result": "APPROVED", "note": "Cero <i>."},
+    {"point": 11, "name": "Ortotipografía", "result": "APPROVED", "note": "Cifras y mayúsculas OK."},
+    {"point": 12, "name": "Aclaraciones (coma/guion)", "result": "APPROVED", "note": "Uso correcto de comas y guion largo. Paréntesis solo para datos técnicos."},
+    {"point": 13, "name": "Nombres primera mención", "result": "APPROVED", "note": "Correcto."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Solo datos verificables. Formulación cautelosa donde corresponde."},
+    {"point": 15, "name": "Cierre con personalidad", "result": "APPROVED", "note": "Cierre añade perspectiva sobre España y deportes nuevos."}
+  ],
+  "priority_fixes": [],
+  "gate_decision": "PASS",
+  "reason": "Score 89 ≥ 80. Cero FAIL en antialucinación. Cierre arreglado. Extensión en target. Listo para fact-check final y entrega."
+}

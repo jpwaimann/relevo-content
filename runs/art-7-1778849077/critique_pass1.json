@@ -1,0 +1,37 @@
+{
+  "run_id": "art-7-1778849077",
+  "pass": 1,
+  "score": 84,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 17, "note": "Tono periodístico español, sin Wikipedia ni streamer. Frases declarativas y precisas. Pierde algun punto en la apertura, ligeramente neutra."},
+    "html_semantic": {"weight": 20, "obtained": 20, "note": "Solo <strong>, <em>, <h1-h3>, <p>, <ul>, <li>. Cero <b>, <i>."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 12, "note": "La mayoría 40-60 palabras. Un par de párrafos rozan 80 (especialmente el de fin de semana estándar y la primera entrada técnica)."},
+    "antihallucination": {"weight": 15, "obtained": 15, "note": "Sin nombres propios de pilotos, equipos ni GPs concretos. Variables temporada-a-temporada explicitadas. Cifras de puntuación y procedimientos son verificables y estables."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "Cada H2 responde a intención de búsqueda real (puntuación, banderas, DRS, parc fermé, safety car, sanciones, límites). No hay FAQs de relleno; las 4 elegidas son distintas a las del cuerpo."},
+    "cierre_personalidad": {"weight": 10, "obtained": 5, "note": "El cierre es el bloque de artículo relacionado. Falta una frase con personalidad antes; el artículo termina técnicamente sin perspectiva final."},
+    "ortotipografia": {"weight": 10, "obtained": 9, "note": "Mayúsculas correctas (FIA, Mundial de Pilotos, Mundial de Constructores). Cifras técnicas en número. Extranjerismos no consolidados (set-up, jump start, regla de las cuatro ruedas fuera) en <em>. DRS/ERS/VSC/safety car/parc fermé tratados como técnicos consolidados sin cursiva, consistente con prensa F1 española."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz", "result": "APPROVED", "note": "Periodista deportivo español; explica mecanismo además del qué."},
+    {"point": 2, "name": "Ritmo", "result": "PARTIAL", "note": "Dos párrafos se acercan a 80 palabras. Aceptable pero a revisar si se puede partir."},
+    {"point": 3, "name": "Léxico", "result": "APPROVED", "note": "Pit lane, parrilla, monoplaza, escudería, muros, mangas eliminatorias, pianos. Léxico español de F1."},
+    {"point": 4, "name": "Equivalencias", "result": "APPROVED", "note": "Se evita coach/staff/deadline. Se usa entrenador implícito (director de carrera), comisarios, escudería."},
+    {"point": 5, "name": "Extranjerismos", "result": "APPROVED", "note": "<em> en jump start, regla de las cuatro ruedas fuera, coche cerrado. DRS, ERS, safety car, VSC, parc fermé, pit lane, sprint, set-up consolidados sin cursiva — consistente con uso real de prensa F1 española."},
+    {"point": 6, "name": "Clichés", "result": "APPROVED", "note": "Cero 'el rey de los deportes', 'al milímetro' como pilar, 'aceitada maquinaria'."},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "Solo 'enorme impacto en la estrategia' justificado por la descripción del safety car."},
+    {"point": 8, "name": "SEO", "result": "APPROVED", "note": "Cada H2 tiene intención de búsqueda; FAQ no duplica literalmente cuerpo."},
+    {"point": 9, "name": "Negritas", "result": "APPROVED", "note": "Solo <strong>. Densidad razonable, ~5-7 por párrafo en bloques densos."},
+    {"point": 10, "name": "Cursivas", "result": "APPROVED", "note": "Solo <em>."},
+    {"point": 11, "name": "Ortotipografía", "result": "APPROVED", "note": "Cifras en número (25, 18, 15, 305, 3,3, 7, 18, 15, 12). Mayúsculas correctas."},
+    {"point": 12, "name": "Aclaraciones", "result": "APPROVED", "note": "Se usan paréntesis solo para enumeraciones técnicas concretas en bullets, no para aclaraciones de redacción."},
+    {"point": 13, "name": "Nombres", "result": "APPROVED", "note": "FIA expandida implícita por contexto. Sin pilotos ni equipos citados."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Sin atribuciones específicas de carreras o pilotos. Marcadores 'puede modificarse de una temporada a otra' donde corresponde."},
+    {"point": 15, "name": "Cierre", "result": "FAIL", "note": "El artículo cierra con el link a artículo relacionado. Falta una frase de cierre con perspectiva propia que añada idea o ritmo."}
+  ],
+  "priority_fixes": [
+    {"id": "fix_1", "category": "cierre_personalidad", "issue": "Cierre técnico sin perspectiva", "action": "Añadir un párrafo de cierre con personalidad justo antes del bloque 'Artículo relacionado'. Una frase que sintetice el carácter cambiante del reglamento F1 y por qué seguir la temporada exige releer letra pequeña."},
+    {"id": "fix_2", "category": "ritmo_parrafos", "issue": "Párrafo de fin de semana estándar supera 75 palabras", "action": "Partir el segundo párrafo de 'Las reglas básicas' en dos, separando formato de sprint y especificaciones técnicas del monoplaza."}
+  ],
+  "gate_decision": "REVISE_REQUIRED",
+  "reason": "Score 84 supera el umbral de 80, pero el punto 15 (cierre con personalidad) es FAIL. Conviene aplicar los fixes para entregar con cierre limpio y ritmo equilibrado."
+}

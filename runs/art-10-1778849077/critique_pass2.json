@@ -1,0 +1,34 @@
+{
+  "run_id": "art-10-1778849077",
+  "pass": 2,
+  "score": 92,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 18, "note": "Voz periodística sólida, sin grandilocuencia. Apertura entra en materia con la evolución histórica del reglamento. Cierre narrativo añadido con perspectiva real."},
+    "html_semantic": {"weight": 20, "obtained": 20, "note": "HTML semántico impecable: H1, H2, H3, <p>, <ul>, <table>, <strong>, <em>. Cero <b>, cero <i>. Tabla pertinente en categorías de peso."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 14, "note": "Párrafos tras trim en 30-65 palabras. Una idea por párrafo. Frases con ritmo variado."},
+    "antihallucination": {"weight": 15, "obtained": 15, "note": "Datos reglamentarios todos verificables: 1993 primer UFC, 2000 aprobación NJSACB, 9,1 m diámetro octógono, 4 oz guantes, tabla de pesos UFC con divisiones oficiales. Cero peleadores citados nominalmente, cero referencias a eventos específicos."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "Cada H2 = intención de búsqueda real. FAQ sólido con preguntas de alta búsqueda."},
+    "cierre_personalidad": {"weight": 10, "obtained": 9, "note": "Cierre narrativo añadido con perspectiva: 'la conversación ya no es si el deporte debe existir, sino dónde queda la línea...'. Aporta interpretación, no resume."},
+    "ortotipografia": {"weight": 10, "obtained": 7, "note": "Cifras técnicas en número, extranjerismos en <em>. Pequeño matiz: 'cinco minutos' va en letra (no técnico) y '15 minutos' en número (técnico), correcto. Consistencia '4 onzas' resuelta."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz", "result": "APPROVED", "note": "Periodista deportivo español."},
+    {"point": 2, "name": "Ritmo", "result": "APPROVED", "note": "Tras trim, todos los párrafos dentro de rango."},
+    {"point": 3, "name": "Léxico", "result": "APPROVED", "note": "Asalto, peleador, rincón, octógono, sumisión, derribo."},
+    {"point": 4, "name": "Equivalencias", "result": "APPROVED", "note": "Sin anglicismos forzados."},
+    {"point": 5, "name": "Extranjerismos", "result": "APPROVED", "note": "weigh-in, technical knockout, back of the head, stalling, spiking en <em>. KO/TKO/UFC consolidados sin cursiva."},
+    {"point": 6, "name": "Clichés", "result": "APPROVED", "note": "Sin clichés."},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "Ninguno injustificado."},
+    {"point": 8, "name": "SEO", "result": "APPROVED", "note": "Cada H2 con intención."},
+    {"point": 9, "name": "Negritas", "result": "APPROVED", "note": "Solo <strong>, ~6 destacados/párrafo."},
+    {"point": 10, "name": "Cursivas", "result": "APPROVED", "note": "Solo <em>."},
+    {"point": 11, "name": "Ortotipografía", "result": "APPROVED", "note": "Consistente."},
+    {"point": 12, "name": "Aclaraciones", "result": "APPROVED", "note": "Comas y guion largo."},
+    {"point": 13, "name": "Nombres", "result": "APPROVED", "note": "Organismos correctamente capitalizados (NJSACB, UFC, IFAB)."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Solo datos reglamentarios verificables."},
+    {"point": 15, "name": "Cierre", "result": "APPROVED", "note": "Cierre narrativo con perspectiva añadido tras pass 1."}
+  ],
+  "priority_fixes": [],
+  "gate_decision": "PASS",
+  "reason": "Score 92, todos los puntos APPROVED, anti-hallucination APPROVED. Listo para fact-check y publicación."
+}

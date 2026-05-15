@@ -1,0 +1,42 @@
+{
+  "run_id": "art-6-1778849077",
+  "deporte": "Tenis",
+  "categoria": "origins",
+  "tipo": "origins",
+  "metadata": {
+    "seo_title": "Orígenes de Carlos Alcaraz: el murciano que conquistó el tenis",
+    "meta_description": "Conoce los orígenes de Carlos Alcaraz. Dónde nació, su familia en Murcia y cómo empezó en el tenis. Historia del número uno más joven de la historia.",
+    "url_slug": "origenes-carlos-alcaraz",
+    "hub_slug": "tenis",
+    "sub_hub": "atp",
+    "word_count": 2604,
+    "html_size_bytes": 17404
+  },
+  "files": {
+    "html": "/var/www/relevo/runs/art-6-1778849077/article.html",
+    "critique_pass1": "/var/www/relevo/runs/art-6-1778849077/critique_pass1.json",
+    "critique_pass2": null
+  },
+  "quality_score": 88,
+  "quality_journey": {
+    "draft_pass": "Borrador inicial origins bio Carlos Alcaraz, 2.054 palabras tras primer trazo.",
+    "critique_pass_1": "Score 88. PASS. Observaciones menores: hermano por nombre, densidad de strong en FAQ, conveniencia de cierre narrativo.",
+    "revise_pass_1": "Se aplicaron priority_fixes pese al PASS: eliminada mención nominal del hermano (formulación genérica), añadido párrafo de cierre narrativo antes del bloque FAQ. Sin segundo pase de crítica formal porque el gate ya estaba superado.",
+    "critique_pass_2": "No aplica (gate PASS en pase 1).",
+    "fact_check": "Verificadas 10 claims clave: nacimiento 5/5/2003 en El Palmar (Murcia); vinculación familiar al Real Sociedad Club de Campo de Murcia; padre tenista vinculado al club; entrenador Juan Carlos Ferrero, exnúmero uno y campeón de Roland Garros 2003; academia Equelite JC Ferrero Sport Academy en Villena (Alicante); US Open 2022 como primer Grand Slam; número uno ATP con 19 años; títulos en Wimbledon, Roland Garros e Indian Wells/Madrid Masters 1000; finalista en cuadro individual masculino de los Juegos Olímpicos de París 2024; rivalidad consolidada con Jannik Sinner. Fórmulas seguras para datos cambiantes (recuento total de Grand Slam) y para detalles familiares menos verificables (hermanos sin nombres específicos)."
+  },
+  "stages_completed": [
+    "read_contract",
+    "read_style_guide",
+    "read_origins_template",
+    "read_sports_config",
+    "read_quality_reference",
+    "draft",
+    "critique_pass_1",
+    "revise_pass_1",
+    "fact_check",
+    "finalize"
+  ],
+  "duration_total_seconds": 240,
+  "mode": "full_qa_batch_call_2026-05-15"
+}

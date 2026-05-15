@@ -1,0 +1,11 @@
+{
+  "_mock": true,
+  "_note": "En production mode, esto sería un POST a Asana API. En mock se escribe a disco para inspección.",
+  "parent_task_gid": "1214527443265898",
+  "subtask": {
+    "name": "[Review] Qué es el fuera de juego en fútbol y cómo funciona",
+    "notes": "Artículo nuevo generado por /relevo new\n\n— Deporte: Fútbol\n— Categoría: rules / rules_sub\n— Score: 95/100\n— Word count: 1592\n— Tiempo total: 132s\n— Stages: research → draft → critique(72) → revise → critique(95) → fact-check\n— Image: SKIPPED (proxy LiteLLM sin modelos de imagen)\n\nArchivos para review:\n— HTML semántico: /tmp/relevo-rules-smoke-1778792284/article.html\n— Artifact completo: /tmp/relevo-rules-smoke-1778792284/article_final.json\n\nWP draft: pendiente (mock mode — sin upload real)\n\nQuality fixes aplicados en revise pass:\n1. Anti-hallucination: removida mención específica no verificable de un partido concreto\n2. Ritmo: cortado párrafo de 78 palabras a <60\n3. Longitud: extendido de 850 a 1592 palabras (target 1500-2000)",
+    "assignee_gid": "MOCK_REVIEWER_USER_ID",
+    "due_at": "2026-05-15T18:00:00.000Z"
+  }
+}

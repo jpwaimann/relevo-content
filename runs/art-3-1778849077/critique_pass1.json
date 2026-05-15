@@ -1,0 +1,39 @@
+{
+  "run_id": "art-3-1778849077",
+  "pass": 1,
+  "score": 84,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 17, "note": "Voz periodística peninsular consistente. Entradilla con dato histórico concreto, sin definiciones enciclopédicas. Algun pasaje cercano al manual en la sección de tiempos."},
+    "html_semantic": {"weight": 20, "obtained": 20, "note": "Solo <strong> y <em>. H2/H3/ul correctos. Sin <b> ni <i>."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 12, "note": "Mayoría 40-60 palabras. P17 supera el umbral (79 palabras) y debe partirse. P1 está al límite (68)."},
+    "antihallucination": {"weight": 15, "obtained": 15, "note": "Sin partidos/fechas/finales concretas inventadas. Datos verificables: cancha FIBA/NBA, tres puntos, duración, faltas, 24/14/8/5/3 segundos. Naismith 1891 Springfield es canónico."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "Cada H2 responde a intención real (template rules). Keyword no forzada. FAQ con preguntas reales."},
+    "cierre_personalidad": {"weight": 10, "obtained": 7, "note": "El cierre es una nota de artículo relacionado, no un cierre con personalidad propia. Falta una frase reflexiva tras las FAQ que cierre el cuerpo del texto."},
+    "ortotipografia": {"weight": 10, "obtained": 4, "note": "Bien cifras técnicas en número, pero 'frame' (anglicismo) aparece sin cursiva en el smoke pero no aquí; 'positionless' va correctamente en <em>; 'flagrant' también. Revisar mayúsculas en LaLiga/ACB/Euroliga (correctas). Comilllas no se usan, OK."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz periodística española", "result": "APPROVED", "note": "Suena a Relevo, no Wikipedia."},
+    {"point": 2, "name": "Ritmo de párrafos 40-60", "result": "PARTIAL", "note": "P17 con 79 palabras, partir."},
+    {"point": 3, "name": "Léxico peninsular", "result": "APPROVED", "note": "Triplista no usado pero quinteto, base, escolta, alero, ala-pívot, pívot, prórroga sí."},
+    {"point": 4, "name": "Equivalencias obligatorias", "result": "APPROVED", "note": "Prórroga, entrenador, tiempos muertos correctos."},
+    {"point": 5, "name": "Extranjerismos en <em>", "result": "APPROVED", "note": "positionless y flagrant en <em>; bonus se ha consolidado y va sin cursiva."},
+    {"point": 6, "name": "Clichés", "result": "APPROVED", "note": "Sin clichés deportivos."},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "No hay histórico/brutal/legendario."},
+    {"point": 8, "name": "SEO H2 con intención real", "result": "APPROVED", "note": "Cada H2 alineado con búsquedas reales."},
+    {"point": 9, "name": "Negritas con <strong>", "result": "APPROVED", "note": "Solo <strong>."},
+    {"point": 10, "name": "Cursivas con <em>", "result": "APPROVED", "note": "Solo <em>."},
+    {"point": 11, "name": "Ortotipografía mayúsculas/cifras", "result": "APPROVED", "note": "FIBA, NBA, ACB, Euroliga en mayúscula institucional. Cifras técnicas en número."},
+    {"point": 12, "name": "Aclaraciones sin paréntesis", "result": "PARTIAL", "note": "Hay paréntesis con datos técnicos (6,70 en esquinas), que es uso permitido. Y '(la comete el atacante)/(la comete quien defiende)' es redacción, debería ir con guion largo o coma."},
+    {"point": 13, "name": "Nombres y clubes", "result": "APPROVED", "note": "James Naismith con nombre+apellido. Springfield (Massachusetts) correcto."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Sin nombres propios concretos de partidos/jugadores no verificables."},
+    {"point": 15, "name": "Cierre con personalidad", "result": "FAIL", "note": "No hay cierre narrativo tras las FAQ, solo el artículo relacionado. Añadir frase de cierre."}
+  ],
+  "priority_fixes": [
+    "Partir el P17 (79 palabras) sobre la regla de 3 segundos en dos párrafos.",
+    "Añadir un cierre con personalidad tras las FAQ, antes del artículo relacionado.",
+    "Reescribir el paréntesis redaccional '(la comete el atacante)/(la comete quien defiende)' usando comas o guion largo.",
+    "Ajustar el bullet sobre 'goaltending' para reflejar con mayor precisión que ambos reglamentos lo sancionan, y matizar que la diferencia está en el tratamiento del cilindro/aro."
+  ],
+  "gate_decision": "REVISE_REQUIRED",
+  "reason": "Score 84 supera el umbral 80 y no hay FAIL en antialucinación, pero falla el cierre (punto 15) y hay un párrafo fuera de rango (punto 2). Conviene revisar antes de devolver."
+}

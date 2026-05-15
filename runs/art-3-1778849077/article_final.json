@@ -1,0 +1,31 @@
+{
+  "run_id": "art-3-1778849077",
+  "deporte": "Baloncesto",
+  "categoria": "rules",
+  "tipo": "rules_main",
+  "metadata": {
+    "seo_title": "Reglas del baloncesto: normativa FIBA y NBA",
+    "meta_description": "Las reglas del baloncesto explicadas. Puntuación, faltas, tiempos muertos, tiros libres y diferencias entre FIBA y NBA. Guía completa en Relevo.",
+    "url_slug": "reglas-baloncesto",
+    "hub_slug": "baloncesto",
+    "sub_hub": null,
+    "word_count": 1995,
+    "html_size_bytes": 13948
+  },
+  "files": {
+    "html": "/var/www/relevo/runs/art-3-1778849077/article.html",
+    "critique_pass1": "/var/www/relevo/runs/art-3-1778849077/critique_pass1.json",
+    "critique_pass2": "/var/www/relevo/runs/art-3-1778849077/critique_pass2.json"
+  },
+  "quality_score": 92,
+  "quality_journey": {
+    "draft_pass": "Draft inicial 1962 palabras siguiendo template rules con desdoblamiento FIBA/NBA en cada bloque.",
+    "critique_pass_1": "Score 84. REVISE_REQUIRED por cierre ausente, P17 con 79 palabras y un paréntesis redaccional.",
+    "revise_pass_1": "Partido el P17 en dos párrafos; reescrito paréntesis con guion largo; ajustado bullet de interferencia/cilindro; añadido cierre con personalidad volviendo a Naismith. Trimming para mantenerse por debajo de 2000 palabras.",
+    "critique_pass_2": "Score 92. PASS. Todos los párrafos en rango, sin FAIL.",
+    "fact_check": "Verificados 12 claims: Naismith 1891 Springfield YMCA y 13 reglas (canónico); cancha FIBA 28x15 m y NBA 94x50 ft = 28,65x15,24 m; aro a 3,05 m; triple FIBA 6,75 m, NBA 7,24 m frontal y 6,70 m esquinas; tiros libres a 4,60 m; cuartos FIBA 10 min y NBA 12 min; quinta falta elimina en FIBA y sexta en NBA; reloj 24 s con reset a 14 s; 8 segundos backcourt; 3 segundos defensivos solo en NBA. Sin atribuciones específicas no verificables."
+  },
+  "stages_completed": ["draft", "critique_pass_1", "revise", "critique_pass_2", "fact_check", "final"],
+  "duration_total_seconds": 240,
+  "mode": "full_qa_batch_call_2026-05-15"
+}

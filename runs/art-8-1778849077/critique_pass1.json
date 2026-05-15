@@ -1,0 +1,38 @@
+{
+  "run_id": "art-8-1778849077",
+  "pass": 1,
+  "score": 86,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 18, "note": "Tono didáctico y técnico, sin academicismo. Apertura entra rápido en materia. Algún párrafo de transición podría ser más punzante pero la voz Relevo se mantiene."},
+    "html_semantic": {"weight": 20, "obtained": 20, "note": "H1, H2, H3, p, ul, li, strong y em correctamente usados. Cero <b> y cero <i>. <ul> aporta en compuestos y en interferencia."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 13, "note": "Mayoría de párrafos entre 45 y 70 palabras. Un par rozan los 75 pero contienen análisis técnico que lo justifica. Una idea por párrafo."},
+    "antihallucination": {"weight": 15, "obtained": 14, "note": "Se evitan atribuciones específicas a GPs concretos. Solo se menciona Catar 2022 (semi-automated offside no aplica aquí, no se cita). Datos técnicos verificables: 20-25s parada, 60 km/h pit lane, 2,5s estacionario, colores neumáticos."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "H2 responden a intenciones reales (qué es ventana, undercut, overcut, una vs dos paradas, safety car, ingeniero, lap-chart, FAQ). No repite keyword forzada. FAQ orgánica."},
+    "cierre_personalidad": {"weight": 10, "obtained": 7, "note": "El cierre del cuerpo principal (lap-charts) tiene perspectiva con la frase del sexto acabó cuarto. Pero el artículo formal cierra con FAQ y link relacionado en lugar de cierre narrativo con personalidad."},
+    "ortotipografia": {"weight": 10, "obtained": 9, "note": "Cifras en número para datos técnicos. Compuestos en minúscula. Comillas no aparecen. Em-dash usado correctamente. Cursiva en graining sin embargo va sin <em> en el primer uso. Revisar."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz periodista español", "result": "APPROVED", "note": "Suena a Relevo, no Wikipedia."},
+    {"point": 2, "name": "Ritmo 40-60 palabras", "result": "PARTIAL", "note": "Alguno roza 75 con análisis técnico."},
+    {"point": 3, "name": "Léxico peninsular", "result": "APPROVED", "note": "Gran premio, parada, asfalto, muro, gomas, rebufo."},
+    {"point": 4, "name": "Equivalencias", "result": "APPROVED", "note": "Coche de seguridad / safety car usados correctamente."},
+    {"point": 5, "name": "Extranjerismos en em", "result": "PARTIAL", "note": "graining no envuelto en <em>. delta debería estar en cursiva la primera vez."},
+    {"point": 6, "name": "Cero clichés negros", "result": "APPROVED", "note": "Sin esférico, sin deporte rey adaptado, sin clichés."},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "devastador justificado con contexto, letal idem."},
+    {"point": 8, "name": "SEO no crudo", "result": "APPROVED", "note": "Cada H2 con intención real."},
+    {"point": 9, "name": "Negritas solo strong", "result": "APPROVED", "note": "Cero <b>. Densidad ~6-7 por párrafo."},
+    {"point": 10, "name": "Cursivas solo em", "result": "PARTIAL", "note": "graining sin em primera mención."},
+    {"point": 11, "name": "Ortotipografía", "result": "APPROVED", "note": "Cifras correctas. 60 kilómetros por hora."},
+    {"point": 12, "name": "Aclaraciones con coma o em-dash", "result": "APPROVED", "note": "Em-dash usado, sin paréntesis editoriales."},
+    {"point": 13, "name": "Nombres y clubes", "result": "APPROVED", "note": "No se citan pilotos concretos para evitar hallucination."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Cero atribuciones a GPs específicos. Datos técnicos genéricos y verificables."},
+    {"point": 15, "name": "Cierre con personalidad", "result": "PARTIAL", "note": "Falta un cierre narrativo antes de la FAQ o al final del artículo. El relacionado no funciona como cierre."}
+  ],
+  "priority_fixes": [
+    "Envolver graining en <em>graining</em> la primera vez que aparece.",
+    "Añadir cierre narrativo con perspectiva al final del bloque lap-charts o antes de FAQ. Frase con personalidad que sintetice la idea de que la estrategia es deportiva tanto como técnica.",
+    "Revisar dos párrafos largos (overcut y ventana de parada) para acortar o partir si superan 75 palabras."
+  ],
+  "gate_decision": "REVISE_REQUIRED",
+  "reason": "Score 86 ≥ 80 pero hay fixes de calidad menores en cursiva, cierre y ritmo que merecen pasada 2 para llegar a producción."
+}

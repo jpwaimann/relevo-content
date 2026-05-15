@@ -1,0 +1,39 @@
+{
+  "run_id": "art-6-1778849077",
+  "pass": 1,
+  "score": 88,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 18, "note": "Voz periodística española consolidada. Tono cercano, sin grandilocuencia, evita Wikipedia y streamer. Buen equilibrio entre contexto e interpretación."},
+    "html_semantic": {"weight": 20, "obtained": 19, "note": "HTML semántico correcto: h1/h2/h3, p, ul/li, strong, em. Cero b/i. Estructura origins respetada (deck H2, datos familiares, infancia, trayectoria con H3s, palmarés, vida personal, curiosidades, FAQ)."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 13, "note": "Mayoría de párrafos en franja 40-70 palabras. Uno o dos rozan las 75 (sección palmarés, infancia) pero se mantienen dentro de tolerancia. Una idea por párrafo en general."},
+    "antihallucination": {"weight": 15, "obtained": 14, "note": "Datos biográficos comprobables y conocidos (fecha y lugar de nacimiento, vinculación familiar al Real Sociedad Club de Campo, Ferrero/Equelite/Villena, US Open 2022, número uno con 19 años, finalista París 2024). Se evita citar números exactos cambiantes (Grand Slam totales) usando fórmula segura. Hermano Álvaro mencionado de forma genérica sin atribuciones específicas."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "Cada H2 responde a intención de búsqueda real (dónde nació, infancia, Ferrero/academia, trayectoria, palmarés, vida personal, curiosidades, FAQ). Keyword no se repite forzada. FAQ alineadas con sport-specific (incluye superficie favorita)."},
+    "cierre_personalidad": {"weight": 10, "obtained": 8, "note": "El cierre formal de FAQ y artículo relacionado funciona, pero el cuerpo del último H2 (superficie favorita) cumple función SEO más que cierre narrativo. Aceptable en formato origins con FAQ obligatoria."},
+    "ortotipografia": {"weight": 10, "obtained": 7, "note": "Cifras técnicas en número (5 de mayo de 2003, 2022). Mayúsculas en competiciones oficiales (US Open, Wimbledon, Roland Garros, ATP, Copa Davis). Nombre+apellido en primera mención. Pequeña inconsistencia: 'diecinueve años' (letra, correcto por no ser técnica) pero conviven con cifras técnicas. Comillas no usadas (no se requirieron). Cursiva en Big Three correcta."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "voz", "result": "APPROVED", "note": "Tono periodista deportivo español."},
+    {"point": 2, "name": "ritmo", "result": "APPROVED", "note": "40-70 palabras predominante."},
+    {"point": 3, "name": "lexico", "result": "APPROVED", "note": "Drive (derecha), dejada, slice, cantera, cuadro principal, fondo de pista."},
+    {"point": 4, "name": "equivalencias", "result": "APPROVED", "note": "Cantera, entrenador, número uno (no ranking en sentido inglés crudo)."},
+    {"point": 5, "name": "extranjerismos", "result": "APPROVED", "note": "Big Three y semi-automated... no aplica aquí. Equelite usado como nombre propio (sin cursiva). Top ten sin cursiva (aceptado en prensa deportiva). Staff usado una vez sin cursiva — revisar."},
+    {"point": 6, "name": "cliches", "result": "APPROVED", "note": "Sin esférico, sin guerreros, sin pena máxima."},
+    {"point": 7, "name": "adjetivos", "result": "APPROVED", "note": "Histórico/legendario/increíble no usados. 'Vertiginoso' justificado por contexto (número uno a los 19)."},
+    {"point": 8, "name": "seo", "result": "APPROVED", "note": "H2 alineados a intención de búsqueda."},
+    {"point": 9, "name": "negritas", "result": "APPROVED", "note": "Solo <strong>. Densidad razonable 4-7 por párrafo."},
+    {"point": 10, "name": "cursivas", "result": "APPROVED", "note": "Solo <em>. Aplicada a Big Three."},
+    {"point": 11, "name": "ortotipografia", "result": "PARTIAL", "note": "Revisar uso de 'staff' (extranjerismo aceptado en prensa, sin cursiva)."},
+    {"point": 12, "name": "aclaraciones", "result": "APPROVED", "note": "Comas y guion largo —, sin paréntesis para aclaraciones de redacción."},
+    {"point": 13, "name": "nombres", "result": "APPROVED", "note": "Primera mención completa (Carlos Alcaraz Garfia, Juan Carlos Ferrero, Jannik Sinner). Real Sociedad Club de Campo de Murcia, Equelite JC Ferrero Sport Academy."},
+    {"point": 14, "name": "antihallucination", "result": "APPROVED", "note": "Datos universales y verificables. Se evita inventar cifras exactas de Grand Slams totales (formulación segura). Hermano Álvaro citado de forma factual mínima."},
+    {"point": 15, "name": "cierre", "result": "PARTIAL", "note": "Cierre es FAQ + artículo relacionado, formato origins. Sin párrafo de cierre narrativo previo a las FAQs."}
+  ],
+  "priority_fixes": [
+    "Eliminar mención específica del hermano 'Álvaro' por no ser dato universalmente conocido — formular de manera más genérica.",
+    "Aclarar que la cifra de Grand Slam y el ranking son cambiantes (ya está hecho en FAQ, reforzar consistencia).",
+    "Revisar densidad de strong en el párrafo de FAQ '¿Cuál es la superficie favorita?' (subrayados naturales).",
+    "Considerar cierre narrativo breve antes del bloque de FAQ para mejorar punto 15."
+  ],
+  "gate_decision": "PASS",
+  "reason": "Score 88 ≥ 80 y ningún FAIL en antihallucination. Las observaciones son menores y se aplicarán en el pase final por buena praxis."
+}

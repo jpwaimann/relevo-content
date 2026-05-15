@@ -1,0 +1,36 @@
+{
+  "run_id": "art-1-1778849077",
+  "deporte": "Fútbol",
+  "categoria": "tactics",
+  "tipo": "tactics_positions",
+  "metadata": {
+    "seo_title": "Posiciones en fútbol: funciones de cada jugador",
+    "meta_description": "Todas las posiciones del fútbol explicadas: portero, defensa, mediocampista y delantero. Funciones de cada puesto. Guía en Relevo.",
+    "url_slug": "posiciones-futbol-funciones",
+    "hub_slug": "futbol",
+    "sub_hub": null,
+    "word_count": 1791,
+    "html_size_bytes": 12708
+  },
+  "files": {
+    "html": "/var/www/relevo/runs/art-1-1778849077/article.html",
+    "critique_pass1": "/var/www/relevo/runs/art-1-1778849077/critique_pass1.json",
+    "critique_pass2": null
+  },
+  "quality_score": 86,
+  "quality_journey": {
+    "draft_pass": "1791 palabras, dentro de target 1500-2000. HTML semántico limpio, tabla resumen + 9 H3 por posición + H2 editorial + FAQ.",
+    "critique_pass_1": "Score 86. Gate PASS. Cero FAIL en antihallucination. Observaciones menores: 2 párrafos algo largos, 'killer' sin <em>, cierre final algo plano.",
+    "revise_pass_1": "No requerido por gate (score >= 80 y sin FAIL). Se aplicaron solo dos pulidos cosméticos durante fact-check: sustitución de 'killer puro' por 'rematador puro' y adición de frase final con personalidad antes del related article.",
+    "critique_pass_2": "No aplicable. Gate pasó en pass 1.",
+    "fact_check": "Verificadas 10 atribuciones principales: (1) regla del portero como único con manos en el área, (2) sistemas con pareja/trío de centrales, (3) centrales con perfil de mediocentro retrasado en Barça Guardiola, (4) selección española campeona del mundo con central de salida limpia, (5) lateral invertido en Guardiola y Arteta, (6) Rodri y Busquets como referencias del pivote moderno, (7) falso nueve popularizado por Barça de Guardiola con Messi, (8) sistemas 4-3-3, 4-2-3-1, 4-4-2, 3-5-2, (9) presencia de mediocentros en conversación de premios individuales recientes (suavizado de atribución específica a podio Balón de Oro para evitar fecha exacta no necesaria), (10) gol sigue siendo el termómetro del nueve. Todas verificables y consolidadas en prensa española."
+  },
+  "stages_completed": [
+    "draft",
+    "critique_pass_1",
+    "fact_check",
+    "final"
+  ],
+  "duration_total_seconds": 180,
+  "mode": "full_qa_batch_call_2026-05-15"
+}

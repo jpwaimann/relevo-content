@@ -1,0 +1,38 @@
+{
+  "run_id": "art-10-1778849077",
+  "deporte": "MMA",
+  "categoria": "rules",
+  "tipo": "rules_main",
+  "metadata": {
+    "seo_title": "Reglas de MMA: rounds, decisiones y movimientos prohibidos en UFC",
+    "meta_description": "Las reglas de MMA explicadas: duración de rounds, sistema de puntuación, decisiones, movimientos prohibidos y unificación UFC. Guía Relevo.",
+    "url_slug": "reglas-mma-ufc",
+    "hub_slug": "mma",
+    "sub_hub": "ufc",
+    "word_count": 1998,
+    "html_size_bytes": 15163
+  },
+  "files": {
+    "html": "/var/www/relevo/runs/art-10-1778849077/article.html",
+    "critique_pass1": "/var/www/relevo/runs/art-10-1778849077/critique_pass1.json",
+    "critique_pass2": "/var/www/relevo/runs/art-10-1778849077/critique_pass2.json"
+  },
+  "quality_score": 92,
+  "quality_journey": {
+    "draft_pass": "Borrador inicial 2.221 palabras, todos los temas requeridos cubiertos (Unified Rules, rounds, divisiones de peso UFC, 10-point must, formas de victoria, movimientos prohibidos, equipamiento, referee).",
+    "critique_pass_1": "Score 87. Gate REVISE_REQUIRED. Issues: cierre sin personalidad (terminaba en FAQ + link), inconsistencia '4 onzas' vs 'cuatro onzas'. Word count fuera de rango (sobre 2.000).",
+    "revise_pass_1": "Añadido párrafo de cierre narrativo con perspectiva sobre la evolución del reglamento. Unificada notación '4 onzas'. Trim agresivo para bajar a 1.998 palabras dentro del rango 1.500-2.000.",
+    "critique_pass_2": "Score 92. Gate PASS. Los 15 puntos del checklist en APPROVED. Anti-hallucination APPROVED: cero peleadores nombrados, cero eventos específicos citados; solo datos reglamentarios verificables.",
+    "fact_check": "Verificados: (1) UFC 1 en 1993 — correcto; (2) Unified Rules aprobadas por NJSACB en 2000 — correcto; (3) Octógono 9,1 m diámetro / 1,8 m altura malla — spec UFC correcta; (4) Guantes 4 oz, protector bucal, coquilla obligatorios — Unified Rules; (5) 10-point must heredado del boxeo — correcto; (6) Tabla de pesos UFC con 12 divisiones (8 masc, 4 fem) — correcto al 2024-2025; (7) Cinco minutos de recuperación tras golpe bajo — Unified Rules. No se han incluido afirmaciones tipo 'en UFC X sucedió Y', según anti-hallucination guidance."
+  },
+  "stages_completed": [
+    "draft",
+    "critique_pass_1",
+    "revise",
+    "critique_pass_2",
+    "fact_check",
+    "final_output"
+  ],
+  "duration_total_seconds": 280,
+  "mode": "full_qa_batch_call_2026-05-15"
+}

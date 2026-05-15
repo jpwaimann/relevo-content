@@ -1,0 +1,37 @@
+{
+  "run_id": "art-4-1778849077",
+  "pass": 1,
+  "score": 89,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 18, "note": "Voz periodística española peninsular consistente. Apertura entra rápido en materia ('El baloncesto se resume, al final, en una sola acción'). Ningún tono enciclopédico ni de streamer. Pierde 2 puntos por algún momento ligeramente didáctico en bandeja y suspensión."},
+    "html_semantic": {"weight": 20, "obtained": 20, "note": "HTML semántico correcto: h1/h2/h3, p, ul, strong, em, table donde aporta (resumen). Cero <b> ni <i>. Extranjerismos (eurostep, skyhook, fadeaway, floater) envueltos en <em>."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 13, "note": "Párrafos entre 45 y 75 palabras, una idea por párrafo. Alguno (triple, mate) roza el límite superior pero está justificado por densidad técnica. Buena alternancia de frases cortas y medias."},
+    "antihallucination": {"weight": 15, "obtained": 15, "note": "Solo se citan figuras universalmente reconocidas: Kareem Abdul-Jabbar (skyhook, máximo anotador histórico durante décadas), Michael Jordan y Kobe Bryant (fadeaway), Stephen Curry (triple), Golden State Warriors. Cero datos específicos no verificables tipo 'el triple decisivo de X en la final Y'. Medidas reglamentarias (6,75 m FIBA, 7,24 m NBA, 5,80 m tiro libre) son hechos consolidados."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "Cada H2/H3 responde a una intención de búsqueda real: cada tipo de tiro tiene su sección, hay tabla resumen, sección editorial ('cuál es el más importante') y FAQ con preguntas que el aficionado se hace de verdad. Cero relleno SEO crudo."},
+    "cierre_personalidad": {"weight": 10, "obtained": 8, "note": "El cierre del cuerpo principal ('un equipo que solo vive del triple es un equipo frágil... el baloncesto sigue siendo, en el fondo, un deporte que recompensa la variedad') añade perspectiva editorial sin reformular el cuerpo. Pierde 2 puntos porque el artículo termina con la FAQ + nota de artículo relacionado, no con una frase cierre con carga."},
+    "ortotipografia": {"weight": 10, "obtained": 8, "note": "Mayúsculas en nombres oficiales (NBA, FIBA, All-Star, Golden State Warriors) correctas. Cifras técnicas en número (6,75 m, 7,24 m, 5,80 m, 90%). Extranjerismos en cursiva. Pierde 2 puntos por una mezcla en FAQ donde 'seis con setenta y cinco' aparece en letra cuando podría ir en cifra para coherencia con el cuerpo."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz periodista español", "result": "APPROVED", "note": "Tono Relevo consistente."},
+    {"point": 2, "name": "Ritmo párrafos 40-60 palabras", "result": "PARTIAL", "note": "La mayoría entran; alguno técnico ronda 70."},
+    {"point": 3, "name": "Léxico peninsular baloncesto", "result": "APPROVED", "note": "Triplista, mate, suspensión, gancho, bandeja, tablero, pívot, base, taponador, cesto."},
+    {"point": 4, "name": "Equivalencias obligatorias", "result": "APPROVED", "note": "No aplica mucha lista futbolística; términos baloncesto en español peninsular."},
+    {"point": 5, "name": "Extranjerismos en <em>", "result": "APPROVED", "note": "eurostep, skyhook, fadeaway, floater en <em>. NBA, All-Star, MVP consolidados, sin cursiva."},
+    {"point": 6, "name": "Cero clichés", "result": "APPROVED", "note": "Sin 'esférico', 'pena máxima', etc. Adaptado a baloncesto sin clichés del género."},
+    {"point": 7, "name": "Adjetivos justificados", "result": "APPROVED", "note": "'Espectacular' usado para el mate, justificado en la descripción inmediata."},
+    {"point": 8, "name": "H2 con intención de búsqueda", "result": "APPROVED", "note": "Resumen, cada tipo, cuál es el más importante, FAQ. Cero H2 de relleno."},
+    {"point": 9, "name": "Negritas solo <strong>", "result": "APPROVED", "note": "Cero <b>. Densidad de negritas adecuada (~5-7 por párrafo)."},
+    {"point": 10, "name": "Cursivas solo <em>", "result": "APPROVED", "note": "Cero <i>."},
+    {"point": 11, "name": "Ortotipografía", "result": "PARTIAL", "note": "Una inconsistencia en FAQ: 'seis con setenta y cinco' en letra vs. cuerpo en cifra."},
+    {"point": 12, "name": "Aclaraciones con comas o guion largo", "result": "APPROVED", "note": "Guion largo usado en 'El silencio relativo, el tiempo para pensar...'. Sin paréntesis para aclaraciones de redacción."},
+    {"point": 13, "name": "Nombres y clubes en forma española", "result": "APPROVED", "note": "Kareem Abdul-Jabbar, Stephen Curry, Michael Jordan, Kobe Bryant con nombre+apellido en primera mención. Golden State Warriors en forma original consolidada."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Todas las figuras citadas existen y son universalmente conocidas por los tiros que se les atribuyen. Cero partidos/scores/fechas específicos inventados."},
+    {"point": 15, "name": "Cierre con personalidad", "result": "PARTIAL", "note": "El cuerpo cierra bien ('recompensa la variedad'), pero el artículo formalmente termina con FAQ + artículo relacionado, lo que diluye la carga del cierre."}
+  ],
+  "priority_fixes": [
+    "Unificar la cifra '7,24 m' (NBA) vs 'seis con setenta y cinco' (FAQ): usar '6,75 m' en la FAQ para coherencia con el cuerpo.",
+    "Cortar/redistribuir un par de párrafos ligeramente largos en las secciones de triple y mate para acercarlos a la franja 40-60 palabras."
+  ],
+  "gate_decision": "PASS",
+  "reason": "Score 89/100 (>= 80). Cero FAIL en antialucinación. Los dos PARTIAL son menores y se pueden dejar o aplicar como pulido fino; no comprometen calidad de publicación. Aplicaré los priority_fixes igualmente para entregar versión final pulida."
+}

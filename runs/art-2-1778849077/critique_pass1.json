@@ -1,0 +1,36 @@
+{
+  "run_id": "art-2-1778849077",
+  "pass": 1,
+  "score": 88,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 18, "note": "Voz periodística española consistente: 'escuadra', 'palos bajos', 'rematador', 'finalizador frío'. Sin tono enciclopédico ni de streamer. Aperturas de sección con escena/idea, no con definición."},
+    "html_semantic": {"weight": 20, "obtained": 19, "note": "H1, H2, H3, p, ul/table, strong y em correctos. Cero b o i. Tabla de resumen utilizada como referencia rápida, no relleno."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 13, "note": "Párrafos en rango 40-70 palabras, una idea por párrafo. Algún párrafo del 'cabezazo' y 'tiro con rosca' roza 70 pero todos justificados por densidad técnica."},
+    "antihallucination": {"weight": 15, "obtained": 14, "note": "Referencia a Zidane en Glasgow (final Champions 2002 vs Leverkusen, hecho canónico universalmente reconocido y citado en el style_guide). Haaland y Lewandowski mencionados solo como referentes contemporáneos sin datos específicos. Sin fechas/minutos/scores inventados. Técnica Panenka mencionada sin atribución específica a partido. Sin riesgo factual relevante."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "Cada H2/H3 responde a una intención de búsqueda real. Keyword 'tipos de tiro' aparece en H1, H2 resumen y FAQ, sin sobrecarga. FAQ útil, no genérica."},
+    "cierre_personalidad": {"weight": 10, "obtained": 8, "note": "Cierre en sección '¿Cuál es el tiro más decisivo?' tiene perspectiva editorial: 'el que solo sabe pegarle raso es predecible; el que solo busca la chilena, inútil. La diferencia está en el menú completo'. Aporta lectura, no resume."},
+    "ortotipografia": {"weight": 10, "obtained": 7, "note": "Cifras: 'once metros', 'setenta y cinco por ciento', 'diez metros' en letra correctamente (0-10 no técnico, salvo 'once metros' que es referencia técnica habitualmente escrita en letra en prensa española). 'media docena' bien. Minúsculas correctas. Extranjerismos en em (Panenka no necesita em por ser nombre propio consolidado). 'Glasgow' como referencia genérica a la final, no fecha específica."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz", "result": "APPROVED", "note": "Periodista deportivo español, sin Wikipedia ni streamer."},
+    {"point": 2, "name": "Ritmo", "result": "APPROVED", "note": "Párrafos 40-70 palabras, una idea por párrafo."},
+    {"point": 3, "name": "Léxico", "result": "APPROVED", "note": "'Escuadra', 'palo largo', 'rematador', 'palos bajos', 'finalizador', 'cantera' implícita en delantero de área."},
+    {"point": 4, "name": "Equivalencias", "result": "APPROVED", "note": "Penalti, falta directa, córner, barrera, área pequeña — todos en forma española."},
+    {"point": 5, "name": "Extranjerismos", "result": "APPROVED", "note": "Sin extranjerismos no adaptados que requieran em."},
+    {"point": 6, "name": "Clichés", "result": "APPROVED", "note": "Cero 'esférico', 'deporte rey', 'pena máxima', 'ángulo imposible'. 'Escuadra' usada bien (es término técnico, no cliché en este contexto)."},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "'Espectacular' justificado en chilena con descripción técnica que lo respalda."},
+    {"point": 8, "name": "SEO", "result": "APPROVED", "note": "H2 funcionales: definición tras introducción, resumen tabla, H3 por tipo, valoración editorial, FAQ."},
+    {"point": 9, "name": "Negritas", "result": "APPROVED", "note": "Solo strong, ~5-7 negritas por párrafo, conceptos técnicos destacados."},
+    {"point": 10, "name": "Cursivas", "result": "APPROVED", "note": "Solo em al cierre del bloque relacionado. Sin i."},
+    {"point": 11, "name": "Ortotipografía", "result": "PARTIAL", "note": "Cifras técnicas en letra ('once metros', 'setenta y cinco por ciento'). Style guide pide número para porcentajes y minutos. Revisar: 'setenta y cinco por ciento' → '75%' y 'once metros' puede dejarse en letra (uso prensa)."},
+    {"point": 12, "name": "Aclaraciones", "result": "APPROVED", "note": "Guiones largos y comas usados, sin paréntesis indebidos. 'un Erling Haaland, un Robert Lewandowski' bien intercalado."},
+    {"point": 13, "name": "Nombres", "result": "APPROVED", "note": "Zinedine Zidane, Erling Haaland, Robert Lewandowski con nombre+apellido en primera mención."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Zidane en Glasgow citado tal como aparece en el propio style guide como ejemplo canónico. Sin datos específicos no comprobables."},
+    {"point": 15, "name": "Cierre", "result": "APPROVED", "note": "Cierre con perspectiva: la diferencia está en el menú completo. Aporta lectura."}
+  ],
+  "priority_fixes": [
+    "Cambiar 'setenta y cinco por ciento' a '75%' (cifra técnica/porcentaje según style_guide)."
+  ],
+  "gate_decision": "REVISE_REQUIRED",
+  "reason": "Score 88 supera el umbral 80 y antialucinación APPROVED, pero hay una corrección menor de ortotipografía (porcentaje en cifra) que conviene aplicar antes del final para cumplir 100% el style guide. Tras fix, pass 2 esperado >=92."
+}

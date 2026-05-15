@@ -1,0 +1,42 @@
+{
+  "run_id": "rules-smoke-1778792284",
+  "row_id": "2",
+  "deporte": "Fútbol",
+  "categoria": "rules",
+  "tipo": "rules_sub",
+  "metadata": {
+    "seo_title": "Qué es el fuera de juego en fútbol y cómo funciona",
+    "meta_description": "El fuera de juego en fútbol explicado paso a paso. Cuándo se sanciona, excepciones, el papel del VAR y ejemplos reales. Guía completa en Relevo.",
+    "url_slug": "fuera-de-juego-futbol",
+    "hub_slug": "futbol",
+    "sub_hub": "",
+    "word_count": 1592,
+    "html_size_bytes": 10475
+  },
+  "files": {
+    "html": "/tmp/relevo-rules-smoke-1778792284/article.html",
+    "html_draft_v1": "/tmp/relevo-rules-smoke-1778792284/article_revised.html",
+    "critique_pass1": "/tmp/relevo-rules-smoke-1778792284/critique_pass1.json",
+    "critique_pass2": "/tmp/relevo-rules-smoke-1778792284/critique_pass2.json",
+    "hero_image": null,
+    "_hero_image_status": "skipped — LiteLLM proxy missing image models. Needs Debanjan to add gpt-image-2/dall-e-3 OR direct OpenAI API key."
+  },
+  "quality_score": 95,
+  "quality_journey": {
+    "draft_pass": "Generated",
+    "critique_pass_1": "Score 72 — REVISE_REQUIRED (anti-hallucination fail + word count short)",
+    "revise_pass_1": "Applied 3 priority fixes",
+    "critique_pass_2": "Score 95 — PASS",
+    "fact_check": "8 claims verified, 0 corrected"
+  },
+  "stages_completed": [
+    "research", "draft", "critique_pass_1", "revise_pass_1", "critique_pass_2", "fact_check"
+  ],
+  "stages_skipped": [
+    {"stage": "image", "reason": "LiteLLM proxy lacks image models"}
+  ],
+  "duration_total_seconds": 132,
+  "mode": "smoke_test_mock",
+  "wp_upload_status": "not_executed — mock mode (would POST to WP draft pending_review)",
+  "asana_subtask_status": "mock written to asana_subtask.json"
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relevo Content — Preview</title>
+<style>
+  :root { --rojo: #e63946; --azul: #1d3557; --crema: #f1faee; --gris: #f8f9fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 920px; margin: 2.5em auto; padding: 0 1.5em; color: #1a1a1a; line-height: 1.55; }
+  h1 { color: var(--azul); border-bottom: 4px solid var(--rojo); padding-bottom: 0.4em; margin-bottom: 0.4em; font-size: 1.8em; }
+  .sub { color: #555; margin-top: 0; font-size: 0.95em; }
+  h2 { color: var(--azul); margin-top: 2.2em; font-size: 1.25em; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1em; margin: 1.2em 0; }
+  .card { border: 1px solid #ddd; border-radius: 8px; padding: 1.1em 1.2em; background: var(--gris); }
+  .card.featured { background: var(--crema); border-color: var(--rojo); border-left-width: 4px; }
+  .card h3 { margin-top: 0; margin-bottom: 0.4em; font-size: 1.05em; }
+  .card h3 a { color: var(--azul); text-decoration: none; }
+  .card h3 a:hover { color: var(--rojo); }
+  .card p { margin: 0.3em 0 0; font-size: 0.92em; color: #444; }
+  table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 0.93em; }
+  th { background: var(--azul); color: #fff; text-align: left; padding: 0.6em 0.8em; }
+  td { padding: 0.55em 0.8em; border-bottom: 1px solid #eee; }
+  td a { color: var(--azul); }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.78em; background: var(--rojo); color: #fff; font-weight: 600; }
+  .pill.cat-rules { background: #2a9d8f; }
+  .pill.cat-tactics { background: #e76f51; }
+  .pill.cat-origins { background: #6a4c93; }
+  code { background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-size: 0.88em; }
+  .note { background: #f0f7ff; border-left: 4px solid var(--azul); padding: 0.8em 1em; border-radius: 0 4px 4px 0; margin: 1em 0; font-size: 0.92em; }
+</style>
+</head>
+<body>
+
+<h1>Relevo Content · Preview</h1>
+<p class="sub">URL temporal servida desde una VM AWS · contenido para review interno · contacto: pablo.waimann@nexern.com</p>
+
+<h2>📖 Para entender el proyecto</h2>
+<div class="grid">
+  <div class="card featured">
+    <h3><a href="docs/EXEC_SUMMARY_call.html">Resumen ejecutivo →</a></h3>
+    <p><strong>Empezá por acá.</strong> Explicación dirigida al content writer: qué cambia, por qué, cómo va a evaluarlo, qué necesitamos de su parte. ~7 min de lectura.</p>
+  </div>
+  <div class="card">
+    <h3><a href="docs/README.md">README técnico</a></h3>
+    <p>Arquitectura completa del skill <code>/relevo</code>. Más bien para devs que para writers.</p>
+  </div>
+</div>
+
+<h2>🧪 Smoke test del pipeline (14/5)</h2>
+<p>Primer artículo end-to-end con el nuevo workflow. Llegó a <strong>score 95</strong> después de un revise loop. Sirve como referencia de calidad esperada.</p>
+<div class="grid">
+  <div class="card">
+    <h3><a href="runs/relevo-rules-smoke-1778792284/article.html">Qué es el fuera de juego en fútbol</a></h3>
+    <p>HTML final · 1592 palabras · score 95.<br>
+    Bundle completo: <a href="runs/relevo-rules-smoke-1778792284/article_final.json">metadata</a> · <a href="runs/relevo-rules-smoke-1778792284/critique_pass1.json">crítica pass 1 (72)</a> · <a href="runs/relevo-rules-smoke-1778792284/critique_pass2.json">crítica pass 2 (95)</a></p>
+  </div>
+</div>
+
+<h2>📰 Batch de muestra para la call (15/5) · 10 artículos</h2>
+<p>Mix de las 3 categorías (Rules · Tactics · Origins) sobre 5 deportes representativos. Promedio del batch: <strong>90.3/100</strong>. Todos pasaron el gate de calidad (score ≥ 80, sin fails de anti-hallucination).</p>
+
+<table>
+  <thead><tr><th>#</th><th>Deporte</th><th>Categoría</th><th>Tema</th><th>Score</th><th>Words</th><th>Final</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Fútbol</td><td><span class="pill cat-tactics">tactics</span></td><td>Posiciones</td><td>86</td><td>1791</td><td><a href="runs/art-1-1778849077/article.html">leer →</a></td></tr>
+    <tr><td>2</td><td>Fútbol</td><td><span class="pill cat-tactics">tactics</span></td><td>Tipos de tiro</td><td>93</td><td>1836</td><td><a href="runs/art-2-1778849077/article.html">leer →</a></td></tr>
+    <tr><td>3</td><td>Baloncesto</td><td><span class="pill cat-rules">rules</span></td><td>Reglas FIBA/NBA</td><td>92</td><td>1995</td><td><a href="runs/art-3-1778849077/article.html">leer →</a></td></tr>
+    <tr><td>4</td><td>Baloncesto</td><td><span class="pill cat-tactics">tactics</span></td><td>Tipos de tiro</td><td>91</td><td>1683</td><td><a href="runs/art-4-1778849077/article.html">leer →</a></td></tr>
+    <tr><td>5</td><td>Tenis</td><td><span class="pill cat-rules">rules</span></td><td>Reglas y puntuación</td><td>88</td><td>1998</td><td><a href="runs/art-5-1778849077/article.html">leer →</a></td></tr>
+    <tr><td>6</td><td>Tenis</td><td><span class="pill cat-origins">origins</span></td><td>Orígenes de Carlos Alcaraz</td><td>88</td><td>2604</td><td><a href="runs/art-6-1778849077/article.html">leer →</a></td></tr>
+    <tr><td>7</td><td>Fórmula 1</td><td><span class="pill cat-rules">rules</span></td><td>Reglamento FIA</td><td>91</td><td>2000</td><td><a href="runs/art-7-1778849077/article.html">leer →</a></td></tr>
+    <tr><td>8</td><td>Fórmula 1</td><td><span class="pill cat-tactics">tactics</span></td><td>Estrategia de boxes</td><td>93</td><td>1986</td><td><a href="runs/art-8-1778849077/article.html">leer →</a></td></tr>
+    <tr><td>9</td><td>MMA</td><td><span class="pill cat-origins">origins</span></td><td>Orígenes de Ilia Topuria</td><td>89</td><td>2567</td><td><a href="runs/art-9-1778849077/article.html">leer →</a></td></tr>
+    <tr><td>10</td><td>MMA</td><td><span class="pill cat-rules">rules</span></td><td>Reglas UFC</td><td>92</td><td>1998</td><td><a href="runs/art-10-1778849077/article.html">leer →</a></td></tr>
+  </tbody>
+</table>
+
+<p>Cada carpeta <code>/runs/art-N-1778849077/</code> tiene el HTML final, el draft inicial pre-revise, y los JSON de crítica con el journey completo. Listado navegable en <a href="runs/">/runs/</a>.</p>
+
+<h2>📂 Cómo está organizado</h2>
+<ul>
+  <li><code>/docs/</code> — documentación del proyecto (HTML legible + markdown técnico)</li>
+  <li><code>/runs/</code> — bundles de cada artículo generado (HTML + JSONs de QA)</li>
+  <li><code>/_meta/</code> — metadata del batch: <a href="_meta/topics.json">topics.json</a> y <a href="_meta/AGENT_CONTRACT.md">AGENT_CONTRACT.md</a></li>
+</ul>
+
+<div class="note">
+<strong>Sobre esta URL.</strong> Es un Cloudflare Quick Tunnel temporal. Mientras el proceso siga corriendo en la VM, la URL es estable. Si por algún motivo la URL deja de funcionar, escribime a pablo.waimann@nexern.com y la regenero.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "run_id": "art-8-1778849077",
+  "deporte": "Fórmula 1",
+  "categoria": "tactics",
+  "tipo": "tactics_strategy",
+  "metadata": {
+    "seo_title": "Cómo funciona la estrategia de boxes en Fórmula 1",
+    "meta_description": "La estrategia de boxes en F1: cuándo parar, undercut, overcut, gestión de neumáticos y safety cars. Guía táctica completa en Relevo.",
+    "url_slug": "estrategia-boxes-formula-1",
+    "hub_slug": "formula1",
+    "sub_hub": null,
+    "word_count": 1986,
+    "html_size_bytes": 13049
+  },
+  "files": {
+    "html": "/var/www/relevo/runs/art-8-1778849077/article.html",
+    "critique_pass1": "/var/www/relevo/runs/art-8-1778849077/critique_pass1.json",
+    "critique_pass2": "/var/www/relevo/runs/art-8-1778849077/critique_pass2.json"
+  },
+  "quality_score": 93,
+  "quality_journey": {
+    "draft_pass": "1926 palabras iniciales con estructura H2 por intención (ventana, undercut, overcut, compuestos, 1 vs 2 paradas, safety car/VSC, ingeniero, lap-chart, FAQ).",
+    "critique_pass_1": "Score 86. Detectó: graining sin <em>, falta de cierre con personalidad, un párrafo a 76 palabras.",
+    "revise_pass_1": "Aplicados los tres fixes: graining envuelto en em, delta también ajustado, trimado P8 a 65 palabras, añadido párrafo de cierre narrativo antes de FAQ.",
+    "critique_pass_2": "Score 93. PASS. Cero fixes pendientes.",
+    "fact_check": "Verificadas 10 afirmaciones técnicas: tiempo de parada 20-25s neto, estacionario ~2,5s, pit lane 60 km/h, regla de dos compuestos obligatorios, etiquetas de color (rojo/amarillo/blanco/verde/azul), ahorro relativo bajo safety car, undercut y overcut como conceptos consolidados, función del ingeniero de carrera, semi-automated en VSC no se cita. Cero atribuciones a GPs concretos para evitar hallucination."
+  },
+  "stages_completed": ["draft", "critique_pass_1", "revise", "critique_pass_2", "fact_check", "final"],
+  "duration_total_seconds": 180,
+  "mode": "full_qa_batch_call_2026-05-15"
+}

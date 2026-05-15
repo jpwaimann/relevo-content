@@ -1,0 +1,39 @@
+{
+  "run_id": "art-1-1778849077",
+  "pass": 1,
+  "score": 86,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 17, "note": "Tono periodístico español, claro y con criterio. Algún párrafo del cierre roza el ensayo tipo manual; corregible pero no grave."},
+    "html_semantic": {"weight": 20, "obtained": 19, "note": "Solo <strong>, <em>, <h1>, <h2>, <h3>, <p>, <ul>, <table>. Cero <b> ni <i>. La tabla aporta y respeta el patrón Relevo de balonmano."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 12, "note": "Mayoría de párrafos entre 50-75 palabras. Hay dos que superan 75 sin justificación táctica fuerte (mediapunta y delantero centro). Conviene partirlos."},
+    "antihallucination": {"weight": 15, "obtained": 14, "note": "Nombres propios verificables: Guardiola, Arteta, Rodri, Busquets, Messi. Atribuciones genéricas y consolidadas. La 'nominación al podio del Balón de Oro' es genérica y sostenible. Pasa."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "H2 responden a intenciones reales. FAQ alineada con búsquedas naturales. Sin repetición forzada del keyword."},
+    "cierre_personalidad": {"weight": 10, "obtained": 8, "note": "El cierre del bloque editorial 'No hay posición universalmente decisiva; hay jugadores decisivos en el sistema correcto' funciona. Falta una salida final más rotunda tras la FAQ; el related article cierra plano."},
+    "ortotipografia": {"weight": 10, "obtained": 7, "note": "Bien con cifras y mayúsculas. Falta acento en 'killer' o sustituirlo (es anglicismo no consolidado, debería ir en <em>). 'box-to-box' ya está en cursiva, correcto. 'falso nueve' aparece sin cursiva pero está consolidado en prensa española, OK."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz periodista español", "result": "APPROVED", "note": "Suena a Relevo, no a Wikipedia."},
+    {"point": 2, "name": "Ritmo párrafos 40-60", "result": "PARTIAL", "note": "Dos párrafos largos en mediapunta y delantero centro superan 75 palabras sin justificación táctica suficiente."},
+    {"point": 3, "name": "Léxico peninsular", "result": "APPROVED", "note": "Pivote, interior, extremo, mediapunta, recorrido, banda, pasillo: terminología correcta."},
+    {"point": 4, "name": "Equivalencias", "result": "APPROVED", "note": "Centro, banda, pase, entrenador: forma española."},
+    {"point": 5, "name": "Extranjerismos en <em>", "result": "PARTIAL", "note": "'box-to-box' OK en <em>. 'killer' va sin envoltura — debe ir en <em> o sustituirse."},
+    {"point": 6, "name": "Clichés", "result": "APPROVED", "note": "Sin esférico, sin deporte rey, sin once guerreros."},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "Sin histórico/brutal/legendario gratuitos."},
+    {"point": 8, "name": "SEO H2 intenciones reales", "result": "APPROVED", "note": "Resumen + posiciones por H3 + editorial + FAQ. Coincide con el patrón Relevo."},
+    {"point": 9, "name": "Negritas solo <strong>", "result": "APPROVED", "note": "Cero <b>. Densidad razonable, aunque algún párrafo podría ganar una negrita más en conceptos clave."},
+    {"point": 10, "name": "Cursivas solo <em>", "result": "APPROVED", "note": "Cero <i>."},
+    {"point": 11, "name": "Ortotipografía", "result": "APPROVED", "note": "Cifras 0-10 en letra cuando no técnicas: 'once jugadores', 'dos décadas'. Mayúsculas correctas."},
+    {"point": 12, "name": "Aclaraciones con guion largo", "result": "APPROVED", "note": "Uso correcto del guion largo y comas; sin paréntesis para aclaraciones de redacción."},
+    {"point": 13, "name": "Nombres y clubes en forma española", "result": "APPROVED", "note": "Pep Guardiola, Mikel Arteta, Sergio Busquets, Leo Messi. Barça correcto."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Todas las atribuciones son verificables y notorias. Sin fechas específicas inventadas."},
+    {"point": 15, "name": "Cierre con personalidad", "result": "PARTIAL", "note": "El cierre del bloque editorial es bueno pero el artículo termina con la FAQ y un related article plano. Falta una frase final breve que cierre con ritmo Relevo."}
+  ],
+  "priority_fixes": [
+    "Partir los dos párrafos largos (mediapunta y delantero centro) en dos cada uno para respetar el rango 40-60.",
+    "Envolver 'killer' en <em> o sustituirlo por 'goleador puro' / 'rematador puro'.",
+    "Añadir una frase final con personalidad antes del related article, tipo cierre Relevo (perspectiva, no resumen).",
+    "Revisar densidad de negritas en el párrafo del lateral y del pivote (añadir 1-2 conceptos clave destacados)."
+  ],
+  "gate_decision": "PASS",
+  "reason": "Score 86 >= 80 y cero FAIL en antihallucination. Las observaciones son refinamientos de calidad y se aplican igualmente en una revisión ligera, no porque el gate lo exija. Pasamos directo a fact-check tras aplicar los priority_fixes como pulido."
+}

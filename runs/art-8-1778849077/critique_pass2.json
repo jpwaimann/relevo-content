@@ -1,0 +1,34 @@
+{
+  "run_id": "art-8-1778849077",
+  "pass": 2,
+  "score": 93,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 19, "note": "Voz Relevo consolidada. El cierre añadido aporta perspectiva y personalidad."},
+    "html_semantic": {"weight": 20, "obtained": 20, "note": "HTML limpio. graining ahora en em. Cero b cero i."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 14, "note": "P8 trimado a 65 palabras. Resto entre 45 y 75, todos justificados por análisis técnico."},
+    "antihallucination": {"weight": 15, "obtained": 15, "note": "Sin GPs concretos atribuidos. Datos técnicos verificables y genéricos. Mención a casos icónicos generalizada sin nombre de GP."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "Cada H2 con intención real. FAQ orgánica."},
+    "cierre_personalidad": {"weight": 10, "obtained": 9, "note": "Cierre narrativo nuevo añade perspectiva: la conversación de tres segundos entre muro y coche vale tanto como un adelantamiento. Sintetiza la tesis."},
+    "ortotipografia": {"weight": 10, "obtained": 9, "note": "Cifras técnicas en número. Cursivas correctas. Compuestos en minúscula. Em-dash usado bien."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz periodista español", "result": "APPROVED", "note": "OK"},
+    {"point": 2, "name": "Ritmo 40-60 palabras", "result": "APPROVED", "note": "P8 trimado. Resto dentro del margen táctico permitido."},
+    {"point": 3, "name": "Léxico peninsular", "result": "APPROVED", "note": "OK"},
+    {"point": 4, "name": "Equivalencias", "result": "APPROVED", "note": "OK"},
+    {"point": 5, "name": "Extranjerismos en em", "result": "APPROVED", "note": "graining en em. undercut/overcut/safety car/VSC consolidados sin cursiva (uso periodístico aceptado)."},
+    {"point": 6, "name": "Cero clichés negros", "result": "APPROVED", "note": "OK"},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "Justificados."},
+    {"point": 8, "name": "SEO no crudo", "result": "APPROVED", "note": "OK"},
+    {"point": 9, "name": "Negritas solo strong", "result": "APPROVED", "note": "OK"},
+    {"point": 10, "name": "Cursivas solo em", "result": "APPROVED", "note": "OK"},
+    {"point": 11, "name": "Ortotipografía", "result": "APPROVED", "note": "OK"},
+    {"point": 12, "name": "Aclaraciones con coma o em-dash", "result": "APPROVED", "note": "OK"},
+    {"point": 13, "name": "Nombres y clubes", "result": "APPROVED", "note": "Evitados deliberadamente para antihallucination."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Cero atribuciones específicas falsables."},
+    {"point": 15, "name": "Cierre con personalidad", "result": "APPROVED", "note": "Cierre añadido con tesis sintetizada."}
+  ],
+  "priority_fixes": [],
+  "gate_decision": "PASS",
+  "reason": "Score 93. Cero FAIL. Listo para producción."
+}

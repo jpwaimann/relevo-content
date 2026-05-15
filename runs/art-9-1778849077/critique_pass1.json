@@ -1,0 +1,40 @@
+{
+  "run_id": "art-9-1778849077",
+  "pass": 1,
+  "score": 74,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 16, "note": "Voz periodística española correcta, sin streamer ni Wikipedia. Algunos pasajes resultan algo neutros, sin la chispa visual del modelo de referencia. Falta una imagen abierta más potente."},
+    "html_semantic": {"weight": 20, "obtained": 19, "note": "HTML semántico correcto: h1, h2, h3, p, ul, strong, em. Cero <b>/<i>. Estructura origins respetada."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 12, "note": "Párrafos en rango 40-70 palabras. Algunos cerca del límite superior. Buena alternancia frase corta/media."},
+    "antihallucination": {"weight": 15, "obtained": 13, "note": "Datos verificables (Halle, 1997, georgiano, Climent Club, Alicante, Valencia, peso pluma 2024) bien manejados. NO se mencionan rivales con detalle de round/segundo. Récord se describe sin cifras inventadas. Riesgo: 'primer luchador con bandera deportiva española en alcanzar título UFC' es atribución fuerte — verificar."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "Cada H2 responde a intención real (dónde nació, infancia, trayectoria, palmarés, vida personal, curiosidades, FAQ). FAQ cubren queries naturales. Sin keyword stuffing."},
+    "cierre_personalidad": {"weight": 10, "obtained": 4, "note": "FALLA: no hay cierre con personalidad. Termina con FAQ + bloque 'Artículo relacionado'. Necesita un párrafo final reflexivo antes del bloque relacionado."},
+    "ortotipografia": {"weight": 10, "obtained": 8, "note": "Mayúsculas correctas. Cifras OK. Comillas no son necesarias. Falta cierre. Algunos paréntesis con fecha en lista (2024) — aceptables porque son datos secundarios técnicos."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz periodista español", "result": "APPROVED", "note": "Tono correcto."},
+    {"point": 2, "name": "Ritmo y párrafos 40-60", "result": "PARTIAL", "note": "Algunos párrafos rozan 70 palabras."},
+    {"point": 3, "name": "Léxico peninsular", "result": "APPROVED", "note": "Octógono, jaula, finalización, agarre, clinch correcto en MMA."},
+    {"point": 4, "name": "Equivalencias obligatorias", "result": "APPROVED", "note": "No hay términos a corregir."},
+    {"point": 5, "name": "Extranjerismos con <em>", "result": "PARTIAL", "note": "'clinch' y 'striking' deberían ir en <em> (no consolidados como VAR o hat-trick)."},
+    {"point": 6, "name": "Sin clichés", "result": "APPROVED", "note": "No hay 'esférico', 'pena máxima', etc."},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "No abusa de histórico/legendario/brutal."},
+    {"point": 8, "name": "SEO no crudo", "result": "APPROVED", "note": "Cada H2 con intención real."},
+    {"point": 9, "name": "Negritas solo <strong>", "result": "APPROVED", "note": "Solo <strong>. Densidad correcta."},
+    {"point": 10, "name": "Cursivas solo <em>", "result": "PARTIAL", "note": "Falta envolver 'clinch' y 'striking' en <em>."},
+    {"point": 11, "name": "Ortotipografía", "result": "APPROVED", "note": "Cifras y mayúsculas OK."},
+    {"point": 12, "name": "Aclaraciones (coma/guion)", "result": "APPROVED", "note": "Solo paréntesis para datos técnicos (2024), permitido."},
+    {"point": 13, "name": "Nombres primera mención", "result": "APPROVED", "note": "Ilia Topuria, Aleksandre Topuria, Agustín y Jorge Climent bien introducidos."},
+    {"point": 14, "name": "Antialucinación", "result": "PARTIAL", "note": "Datos comprobables OK. Atribución 'primer luchador español campeón UFC' es fuerte: matizar a 'primer luchador con representación deportiva española en alcanzar título de la UFC' o eliminar."},
+    {"point": 15, "name": "Cierre con personalidad", "result": "FAIL", "note": "No hay cierre. El artículo termina con FAQ y un bloque de artículo relacionado. Necesita párrafo reflexivo antes del bloque relacionado."}
+  ],
+  "priority_fixes": [
+    "Añadir cierre con personalidad: un párrafo final tras la FAQ, antes del artículo relacionado, que aporte perspectiva sobre la singularidad del recorrido Halle-Alicante-Valencia-octógono y qué representa Topuria para el MMA español.",
+    "Envolver 'clinch' y 'striking' en <em> como extranjerismos no consolidados.",
+    "Matizar la atribución 'primer luchador español' para evitar antihallucination: usar formulación cauta o eliminar.",
+    "Expandir contenido a 2500-3000 palabras añadiendo: contexto cultural Georgia, detalle sobre la escena MMA española en Valencia, escena de apertura más visual, ampliar trayectoria con un párrafo extra por etapa.",
+    "Revisar párrafos que superen 70 palabras para acortarlos."
+  ],
+  "gate_decision": "REVISE_REQUIRED",
+  "reason": "Score 74 < 80. Cierre con personalidad FALLA. Extensión por debajo del target (1767 vs 2500-3000). Pequeños ajustes de cursiva y antihallucination pendientes."
+}

@@ -1,0 +1,31 @@
+{
+  "run_id": "art-5-1778849077",
+  "deporte": "Tenis",
+  "categoria": "rules",
+  "tipo": "rules_main",
+  "metadata": {
+    "seo_title": "Reglas del tenis: puntuación, sets y tie-break",
+    "meta_description": "Las reglas del tenis explicadas de forma clara. Puntuación, sets, tie-break, superficies y servicio. Guía completa del reglamento oficial.",
+    "url_slug": "reglas-tenis",
+    "hub_slug": "tenis",
+    "sub_hub": null,
+    "word_count": 1998,
+    "html_size_bytes": 13187
+  },
+  "files": {
+    "html": "/var/www/relevo/runs/art-5-1778849077/article.html",
+    "critique_pass1": "/var/www/relevo/runs/art-5-1778849077/critique_pass1.json",
+    "critique_pass2": null
+  },
+  "quality_score": 88,
+  "quality_journey": {
+    "draft_pass": "Draft generado a 1.998 palabras tras trimming iterativo desde 2.284 para encajar en target 1.500-2.000. HTML semántico, sin <b>/<i>. Cobertura completa: puntuación (15/30/40/deuce/ventaja), juegos/sets, tie-break ATP/WTA estándar al mejor de 7 puntos, match tie-break (con nota cauta sobre variaciones por torneo), servicio (falta, doble falta, let, falta de pie), superficies (hierba/tierra/dura/moqueta), challenge + electronic line calling, GS vs Masters 1000.",
+    "critique_pass_1": "Score 88. Anti-hallucination CLEAN (sin nombres propios, sin fechas atribuidas, medidas oficiales verificables). Voz periodística española peninsular consistente. Gate PASS.",
+    "revise_pass_1": "No requerido — gate PASS en pass 1.",
+    "critique_pass_2": "No ejecutado — pass 1 PASS.",
+    "fact_check": "Claims verificados: medidas pista (23,77x8,23 individuales, 10,97 dobles, red 0,914 centro, líneas servicio a 6,40m) — correctas según ITF. Puntuación 0-15-30-40-deuce-ventaja — correcta. Tie-break al mejor de 7 con margen de 2 — correcto estándar ATP/WTA. Match tie-break al mejor de 10 con margen de 2 — correcto. 25s shot clock — correcto. ATP/WTA mejor de 3 sets, GS masculinos mejor de 5 — correcto. ITF como organismo regulador — correcto. Ojo de halcón a comienzos de los 2000 — correcto (introducido 2006). Cuatro superficies homologadas (hierba, tierra, dura, moqueta) — correcto, moqueta sigue homologada por ITF aunque desaparecida del top circuit. Variaciones del match tie-break en GS mencionadas sin atribuir fechas — anti-hallucination respetada."
+  },
+  "stages_completed": ["draft", "critique_pass_1", "fact_check", "final"],
+  "duration_total_seconds": 240,
+  "mode": "full_qa_batch_call_2026-05-15"
+}

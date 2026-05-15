@@ -1,0 +1,34 @@
+{
+  "run_id": "art-5-1778849077",
+  "pass": 1,
+  "score": 88,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 18, "note": "Voz periodística española consistente. Apertura con imagen ('parece sencillo desde el sofá') correcta. Frases como 'reino de Roland Garros', 'desgaste físico es enorme' funcionan. Algún tramo ligeramente expositivo pero contenido."},
+    "html_semantic": {"weight": 20, "obtained": 20, "note": "Solo <strong> y <em>. Cero <b>/<i>. H2/H3 jerarquizados, listas <ul> donde aporta, sin <table> superflua. HTML limpio."},
+    "ritmo_parrafos": {"weight": 15, "obtained": 13, "note": "Mayoría de párrafos 40-70 palabras. Un par superan 75 (intro, párrafo sobre Cuánto dura) pero justificados por densidad informativa. Una idea por párrafo se respeta."},
+    "antihallucination": {"weight": 15, "obtained": 15, "note": "Cero datos no verificables. Sin nombres propios de jugadores. Medidas oficiales correctas (23,77m; 8,23m; 10,97m; 0,914m). Las superficies y los formatos son canónicos. Mención explícita de que las reglas de match tie-break en GS pueden variar por torneo (cubre cambios históricos no atribuibles)."},
+    "seo_no_crudo": {"weight": 10, "obtained": 9, "note": "Cada H2 = intención de búsqueda real (medidas, duración, puntuación, faltas, superficie, GS vs Masters, tecnología). No hay 'Introducción'. Keyword principal no se fuerza."},
+    "cierre_personalidad": {"weight": 10, "obtained": 7, "note": "El bloque ELC cierra con una idea reflexiva ('el factor humano se reserva para lo que sigue requiriendo criterio'). La FAQ y artículo relacionado cierran el documento — patrón habitual del template. Podría reforzarse un párrafo de cierre antes de la FAQ pero el template no lo exige."},
+    "ortotipografia": {"weight": 10, "obtained": 9, "note": "Cifras técnicas en número, números pequeños no técnicos en letra ('cinco horas', 'dos semanas'). Comas/guiones para aclaraciones, sin paréntesis de redacción. Extranjerismos no adaptados en <em>: match tie-break, shot clock, hindrance, electronic line calling, ranking, challenge. Minor: 'siglo XIX' correcto."}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz periodista español", "result": "APPROVED", "note": "Tono Relevo, sin Wikipedia ni streamer."},
+    {"point": 2, "name": "Ritmo 40-60 palabras", "result": "PARTIAL", "note": "Algún párrafo en intro y duración roza 70-75 palabras pero por densidad técnica."},
+    {"point": 3, "name": "Léxico peninsular", "result": "APPROVED", "note": "Drive, juego, set, cuadro, bola de saque, fondo de pista, restador."},
+    {"point": 4, "name": "Equivalencias obligatorias", "result": "APPROVED", "note": "No aplican forzosamente al tenis pero 'entrenador' no aparece como 'coach'; términos consolidados en prensa."},
+    {"point": 5, "name": "Extranjerismos en <em>", "result": "APPROVED", "note": "match tie-break, shot clock, hindrance, electronic line calling, challenge, ranking, let envueltos en <em>."},
+    {"point": 6, "name": "Cero clichés", "result": "APPROVED", "note": "Sin 'el esférico', 'el deporte rey', 'guerreros', 'pena máxima'."},
+    {"point": 7, "name": "Adjetivos justificados", "result": "APPROVED", "note": "'Brutal' eliminado, sustituido por 'enorme'. 'Histórico' usado con justificación (Wimbledon)."},
+    {"point": 8, "name": "H2 = intención búsqueda", "result": "APPROVED", "note": "Cada H2 mapea a query real del topic."},
+    {"point": 9, "name": "Negritas <strong>", "result": "APPROVED", "note": "Densidad ~5-7 por párrafo. Cero <b>."},
+    {"point": 10, "name": "Cursivas <em>", "result": "APPROVED", "note": "Cero <i>."},
+    {"point": 11, "name": "Ortotipografía", "result": "APPROVED", "note": "Cifras técnicas en número, comillas dobles donde aplicaría, mayúsculas en torneos oficiales."},
+    {"point": 12, "name": "Aclaraciones coma/guion", "result": "APPROVED", "note": "Uso de guion largo —iguales—; sin paréntesis de redacción."},
+    {"point": 13, "name": "Nombres y clubes", "result": "APPROVED", "note": "Open de Australia (no Australian Open), US Open consolidado, Roland Garros, Wimbledon. ITF y ATP/WTA primera mención con nombre extendido."},
+    {"point": 14, "name": "Antialucinación", "result": "APPROVED", "note": "Cero nombres propios de jugadores. Medidas verificables. Mención cauta de variaciones por torneo en el match tie-break."},
+    {"point": 15, "name": "Cierre con personalidad", "result": "PARTIAL", "note": "El bloque ELC cierra con perspectiva. La FAQ remata por estructura del template."}
+  ],
+  "priority_fixes": [],
+  "gate_decision": "PASS",
+  "reason": "Score 88 ≥ 80 y cero FAIL en anti-hallucination. Artículo cumple el contrato. Las dos métricas PARTIAL (ritmo en 2-3 párrafos densos y cierre estructural por template) son aceptables y no justifican una revisión completa."
+}

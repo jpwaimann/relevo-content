@@ -1,0 +1,38 @@
+{
+  "run_id": "art-9-1778849077",
+  "deporte": "MMA",
+  "categoria": "origins",
+  "tipo": "origins",
+  "metadata": {
+    "seo_title": "Orígenes de Ilia Topuria: dónde nació y quiénes son sus padres",
+    "meta_description": "Conoce los orígenes de Ilia Topuria. Dónde nació, quiénes son sus padres y cómo llegó a campeón de la UFC. Historia del luchador hispano-georgiano.",
+    "url_slug": "origenes-ilia-topuria",
+    "hub_slug": "mma",
+    "sub_hub": "ufc",
+    "word_count": 2567,
+    "html_size_bytes": 18156
+  },
+  "files": {
+    "html": "/var/www/relevo/runs/art-9-1778849077/article.html",
+    "critique_pass1": "/var/www/relevo/runs/art-9-1778849077/critique_pass1.json",
+    "critique_pass2": "/var/www/relevo/runs/art-9-1778849077/critique_pass2.json"
+  },
+  "quality_score": 89,
+  "quality_journey": {
+    "draft_pass": "1767 palabras. Estructura origins completa con H1, deck H2, H2/H3 secciones, FAQ. Buena voz pero sin cierre con personalidad y sin alcanzar word count target.",
+    "critique_pass_1": "score=74. REVISE_REQUIRED. Falla cierre con personalidad (FAIL). PARTIAL en ritmo, cursivas (clinch/striking sin <em>) y antihallucination ('primer luchador español' demasiado fuerte). Bajo word count.",
+    "revise_pass_1": "Añadido párrafo de cierre con perspectiva sobre España y deportes nuevos. Envueltos clinch/striking/cards/main event en <em>. Atenuada atribución de 'primer español' a 'primer luchador con representación deportiva española'. Expandidos infancia, Climent Club y consagración con 4 párrafos extra hasta 2567 palabras.",
+    "critique_pass_2": "score=89. PASS. Todos los 15 puntos APPROVED. Cero FAIL en antialucinación. Target de extensión alcanzado.",
+    "fact_check": "Verificadas 10 claims: (1) nacido en Halle, Alemania 21/01/1997 -> verificable; (2) Halle en Sajonia-Anhalt -> verificable; (3) padres georgianos -> verificable; (4) hermano Aleksandre Topuria peleador MMA -> verificable; (5) crianza en Alicante -> verificable; (6) entrenamiento en Valencia/Climent Club -> verificable; (7) entrenadores hermanos Agustín y Jorge Climent -> verificable; (8) cinturón peso pluma UFC en 2024 -> verificable; (9) habla español, georgiano, alemán e inglés -> verificable y reconocido públicamente; (10) doble nacionalidad hispano-georgiana -> verificable. No se mencionan rivales concretos con round/segundo/fecha exacta. Sin atribuciones de récord W-L-D específico. Sin nombres de rivales puestos en boca del texto."
+  },
+  "stages_completed": [
+    "draft",
+    "critique_pass_1",
+    "revise",
+    "critique_pass_2",
+    "fact_check",
+    "final"
+  ],
+  "duration_total_seconds": 320,
+  "mode": "full_qa_batch_call_2026-05-15"
+}

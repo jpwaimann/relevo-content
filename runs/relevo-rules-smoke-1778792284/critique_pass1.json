@@ -1,0 +1,38 @@
+{
+  "run_id": "rules-smoke-1778792284",
+  "pass": 1,
+  "score": 72,
+  "score_breakdown": {
+    "voz_periodistica": {"weight": 20, "obtained": 18, "note": "Voz Relevo correcta, sin coloquialismo ni academicismo"},
+    "html_semantic": {"weight": 20, "obtained": 20, "note": "Solo <strong> y <em>. Cero <b> o <i>"},
+    "ritmo_parrafos": {"weight": 15, "obtained": 12, "note": "2 párrafos rondan 75 palabras sin justificación táctica clara"},
+    "antihallucination": {"weight": 15, "obtained": 6, "note": "FAIL: 'gol anulado a Iker Bravo en el Bernabéu en marzo 2024' no verificado. Riesgo alto de invención. Remover o reemplazar por caso confirmado."},
+    "seo_no_crudo": {"weight": 10, "obtained": 10, "note": "Cada H2 responde a intención real. FAQ útil."},
+    "cierre_personalidad": {"weight": 10, "obtained": 8, "note": "Cierre antes de FAQ con 'El debate sigue abierto' está bien, pero podría tener más identidad"},
+    "ortotipografia": {"weight": 10, "obtained": 10, "note": "Mayúsculas, cifras, comillas, guion largo — todo OK"}
+  },
+  "checklist_15_points": [
+    {"point": 1, "name": "Voz", "result": "APPROVED", "note": ""},
+    {"point": 2, "name": "Ritmo", "result": "PARTIAL", "note": "Párrafo '<p>Conviene tener una cosa clara...</p>' = 78 palabras"},
+    {"point": 3, "name": "Léxico", "result": "APPROVED", "note": "Peninsular OK: 'penúltimo defensor', 'saque de puerta'"},
+    {"point": 4, "name": "Equivalencias", "result": "APPROVED", "note": "Fuera de juego (no offside), VAR sin cursiva (consolidado)"},
+    {"point": 5, "name": "Extranjerismos", "result": "APPROVED", "note": "<em>semi-automated offside</em> bien tratado"},
+    {"point": 6, "name": "Clichés", "result": "APPROVED", "note": "Cero clichés"},
+    {"point": 7, "name": "Adjetivos grandilocuentes", "result": "APPROVED", "note": "Usados con moderación y justificados"},
+    {"point": 8, "name": "SEO", "result": "APPROVED", "note": "H2 con intención real"},
+    {"point": 9, "name": "Negritas", "result": "APPROVED", "note": "<strong> sí, <b> no. ~6-7 destacadas/párrafo."},
+    {"point": 10, "name": "Cursivas", "result": "APPROVED", "note": "<em> sí, <i> no"},
+    {"point": 11, "name": "Ortotipografía", "result": "APPROVED", "note": "Mayúsculas correctas, cifras técnicas en número"},
+    {"point": 12, "name": "Aclaraciones", "result": "APPROVED", "note": "Guion largo usado correctamente"},
+    {"point": 13, "name": "Nombres", "result": "APPROVED", "note": "Filippo Inzaghi, Iker Bravo, Arsène Wenger con primera mención completa"},
+    {"point": 14, "name": "Antialucinación", "result": "FAIL", "note": "Caso 'Iker Bravo en Bernabéu marzo 2024' no verificable. Remover o sustituir."},
+    {"point": 15, "name": "Cierre", "result": "PARTIAL", "note": "Funcional pero podría tener más identidad"}
+  ],
+  "priority_fixes": [
+    "CRÍTICO: Remover la mención específica 'gol anulado a Iker Bravo en el Bernabéu en marzo de 2024' (no verificable). Sustituir por descripción genérica del tipo de caso que motivó la propuesta de Wenger, sin atribución específica.",
+    "Cortar el párrafo 'Conviene tener una cosa clara antes de entrar en detalle...' a 60 palabras max, partiendo si hace falta.",
+    "Extender el artículo a 1500-2000 palabras (actual: 850). Agregar dos H2 nuevos: 'Tipos de fuera de juego según el contexto de juego' y 'El fuera de juego en el fútbol femenino y juvenil: matices reglamentarios'."
+  ],
+  "gate_decision": "REVISE_REQUIRED",
+  "reason": "Score 72 < 80 threshold. Anti-hallucination fail + longitud insuficiente. Next pass: revise."
+}
