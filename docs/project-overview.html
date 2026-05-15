@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project overview · Relevo Content Workflow</title>
+<style>
+  :root { --rojo: #e63946; --azul: #1d3557; --azul-claro: #457b9d; --crema: #f1faee; --gris-1: #f8f9fa; --gris-2: #e9ecef; --gris-3: #adb5bd; --texto: #1a1a1a; --texto-suave: #495057; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--texto); background: #fff; margin: 0; line-height: 1.65; font-size: 17px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 3em 1.5em 5em; }
+  header.hero { border-bottom: 4px solid var(--rojo); padding-bottom: 1.5em; margin-bottom: 2.4em; }
+  .eyebrow { display: inline-block; text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; font-weight: 700; color: var(--rojo); margin-bottom: 0.6em; }
+  h1 { font-size: 2.1em; line-height: 1.2; margin: 0 0 0.4em; color: var(--azul); font-weight: 800; letter-spacing: -0.01em; }
+  .lede { font-size: 1.12em; color: var(--texto-suave); margin: 0; }
+  h2 { font-size: 1.5em; color: var(--azul); margin: 2.4em 0 0.7em; font-weight: 700; letter-spacing: -0.01em; }
+  h3 { font-size: 1.1em; color: var(--azul); margin: 1.7em 0 0.4em; font-weight: 700; }
+  p { margin: 0 0 1em; }
+  strong { font-weight: 600; }
+  a { color: var(--azul-claro); }
+  a:hover { color: var(--rojo); }
+  code { background: var(--gris-2); padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, "SF Mono", Monaco, monospace; font-size: 0.88em; }
+  ul, ol { padding-left: 1.4em; margin: 0 0 1.2em; }
+  li { margin-bottom: 0.4em; }
+  .callout { background: var(--crema); border-left: 4px solid var(--rojo); padding: 1.1em 1.3em; margin: 1.4em 0; border-radius: 0 4px 4px 0; }
+  .callout.note { background: #f0f7ff; border-left-color: var(--azul-claro); }
+  .callout p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 1em 0 1.5em; font-size: 0.95em; }
+  th, td { text-align: left; padding: 0.7em 0.9em; border-bottom: 1px solid var(--gris-2); vertical-align: top; }
+  th { background: var(--azul); color: #fff; font-weight: 600; border-bottom: none; }
+  tr:last-child td { border-bottom: none; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em; margin: 1.4em 0; }
+  @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+  .grid-2 > div { background: var(--gris-1); padding: 1.1em 1.2em; border-radius: 6px; border-top: 3px solid var(--azul); }
+  .grid-2 > div.bad { border-top-color: var(--gris-3); }
+  .grid-2 > div.good { border-top-color: var(--rojo); }
+  .grid-2 h4 { margin: 0 0 0.6em; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.08em; color: var(--texto-suave); }
+  .pipeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.6em; margin: 1.4em 0; }
+  .pipeline .step { background: var(--gris-1); border: 1px solid var(--gris-2); border-left: 4px solid var(--rojo); padding: 0.9em 1em; border-radius: 0 4px 4px 0; font-size: 0.93em; }
+  .pipeline .step strong { display: block; color: var(--azul); margin-bottom: 0.2em; font-size: 0.95em; }
+  .pipeline .step span { color: var(--texto-suave); font-size: 0.88em; }
+  footer { margin-top: 3.5em; padding-top: 1.5em; border-top: 1px solid var(--gris-2); color: var(--texto-suave); font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Project brief · Updated 2026-05-15</div>
+  <h1>Relevo Content Workflow — Project overview</h1>
+  <p class="lede">A detailed brief on what we built, why we built it, how it works in practice, and what is still pending before production launch. Aimed at anyone joining the project or evaluating its design.</p>
+</header>
+
+<h2>What this project is</h2>
+
+<p><strong>Relevo Content</strong> is an automated SEO content generation system for <a href="https://relevo.com">relevo.com</a>. It produces editorial-quality Spanish-language articles across 24 sports and three content categories — Rules &amp; Basics, Tactics Explainers, and Origins (athlete biographies). The pipeline that produces each article includes automated critique, revision, and fact-checking before any draft reaches a human reviewer.</p>
+
+<p>The system is implemented as a custom skill running inside Claude Code, replacing an earlier n8n-based workflow that was retired on May 14, 2026.</p>
+
+<div class="callout">
+  <p><strong>Key point for editorial.</strong> Editorial voice and structural decisions are not made by the system. They are encoded in two artifacts the content team owns: a versioned style guide and a set of category templates. The pipeline executes those documents. Any change in voice, length, or section structure flows through editing those files, not through code.</p>
+</div>
+
+<h2>Why we rewrote the workflow</h2>
+
+<p>The n8n implementation served us through May 13 for a constrained topic set. Three structural limitations motivated the rewrite:</p>
+
+<ol>
+  <li><strong>Prompt rigidity.</strong> Editorial voice and templates were encoded inside individual workflow nodes. Any style change required a coordinated PR and redeploy across multiple nodes, with the prompt text living inside opaque JSON exports.</li>
+  <li><strong>No quality gate.</strong> Drafts went straight from generation to a human reviewer with nothing in between. Errors that an automated critic would catch — fabricated specific attributions, length misses, formatting inconsistencies — reached editors and consumed review time.</li>
+  <li><strong>Limited coverage.</strong> Only 15 sports and two categories were modeled. Adding a sport meant editing several workflow branches by hand and reconciling Excel inventory rows manually.</li>
+</ol>
+
+<p>The Claude Code skill addresses all three concerns:</p>
+
+<div class="grid-2">
+  <div class="bad">
+    <h4>Before — n8n v17</h4>
+    <ul>
+      <li>One hard-coded prompt per node. Voice changes required PR + redeploy.</li>
+      <li>15 sports covered.</li>
+      <li>2 categories: Rules and Tactics.</li>
+      <li>Linear generation with no auto-critique. If a draft was wrong, the editor saw it first.</li>
+      <li>Output: Google Doc drafts.</li>
+      <li>Variable quality, no systematic measurement.</li>
+    </ul>
+  </div>
+  <div class="good">
+    <h4>After — Claude Code skill</h4>
+    <ul>
+      <li>Prompts in versioned markdown. Voice changes are edits to a text file.</li>
+      <li>24 sports covered.</li>
+      <li>3 categories: Rules, Tactics, and the new Origins (athlete biographies).</li>
+      <li>Multi-pass pipeline with a quality gate. Drafts below threshold do not reach reviewers.</li>
+      <li>Output: WordPress <code>pending_review</code> + Asana subtask for the assigned reviewer.</li>
+      <li>0–100 score per article with per-dimension breakdown and full traceability.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>How the pipeline works</h2>
+
+<p>When an editor requests a new article, the skill runs seven stages in sequence without human intervention between them:</p>
+
+<div class="pipeline">
+  <div class="step"><strong>1 · Research</strong><span>Reads the official rulebook PDF for the sport from SharePoint, plus authoritative supplementary sources.</span></div>
+  <div class="step"><strong>2 · Draft</strong><span>Generates the article using the category template (Rules / Tactics / Origins) and the Relevo style guide.</span></div>
+  <div class="step"><strong>3 · Critique pass 1</strong><span>An internal critic evaluates the draft against the 15-point checklist and returns a 0–100 score plus prioritized fixes.</span></div>
+  <div class="step"><strong>4 · Revise</strong><span>If score is below 80 or the anti-hallucination check fails, applies the priority fixes. Skipped if the draft already passes the gate.</span></div>
+  <div class="step"><strong>5 · Critique pass 2</strong><span>Re-evaluates the revised version. The loop repeats until the gate passes or retries are exhausted.</span></div>
+  <div class="step"><strong>6 · Fact-check</strong><span>Verifies claims. Unverifiable specific attributions are softened or removed.</span></div>
+  <div class="step"><strong>7 · Publish</strong><span>Uploads the article to WordPress as <code>pending_review</code>. Creates a subtask in Asana for the assigned reviewer.</span></div>
+</div>
+
+<p>The final product that reaches a reviewer arrives with a score, a journey log, and every intermediate artifact. It is not a black box. To understand why an article came out the way it did, a reviewer can open the JSON files from each critique pass and read exactly what was evaluated, what failed, and what was corrected.</p>
+
+<h2>A concrete example</h2>
+
+<p>On May 14, the first end-to-end run produced <strong>"Qué es el fuera de juego en fútbol y cómo funciona"</strong>. The pipeline behaved as designed:</p>
+
+<table>
+  <thead><tr><th>Stage</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>Initial draft</td><td>850 words. Critic returned score 72.</td></tr>
+    <tr><td>Critique pass 1</td><td>Detected one unverifiable specific attribution ("a disallowed goal to Iker Bravo at the Bernabéu in March 2024") and one 78-word paragraph that broke rhythm. Also flagged total length as below target.</td></tr>
+    <tr><td>Revise pass 1</td><td>Applied three priority fixes: removed the unverifiable attribution, split the long paragraph, and extended to 1,592 words by adding two H2 sections aligned with actual search intent.</td></tr>
+    <tr><td>Critique pass 2</td><td><strong>Score 95.</strong> Length within target. Anti-hallucination resolved.</td></tr>
+    <tr><td>Fact-check</td><td>8 claims verified, 0 corrected.</td></tr>
+    <tr><td>Total elapsed time</td><td><strong>132 seconds</strong>, end to end.</td></tr>
+  </tbody>
+</table>
+
+<p>The system caught the fabricated incident on its own, before it reached a human. This is precisely the failure mode the multi-pass design exists to prevent — a reviewer's time is best spent on judgment calls about voice and depth, not on catching invented facts.</p>
+
+<p>The artifacts: <a href="../runs/relevo-rules-smoke-1778792284/article.html">final article</a>, <a href="../runs/relevo-rules-smoke-1778792284/critique_pass1.json">critique pass 1 (score 72)</a>, <a href="../runs/relevo-rules-smoke-1778792284/critique_pass2.json">critique pass 2 (score 95)</a>.</p>
+
+<h2>The May 15 batch</h2>
+
+<p>Following the smoke test, the team produced a balanced batch of 10 articles spanning the three categories and five representative sports: Football, Basketball, Tennis, Formula 1, and MMA. The full batch — final HTML, pre-revise drafts, both critique JSONs, and metadata bundles — is available under <a href="../runs/">/runs/</a> on the project site.</p>
+
+<p>Mean score across the batch was <strong>90.3 / 100</strong>. All ten articles passed the quality gate (score ≥ 80, no anti-hallucination failures). The full batch was generated in approximately 17 minutes of wall clock time using parallel generation agents.</p>
+
+<h2>Cost model</h2>
+
+<table>
+  <thead><tr><th>Item</th><th>Monthly estimate</th></tr></thead>
+  <tbody>
+    <tr><td>Text generation (LLM)</td><td>$0 marginal — covered by the editor's existing Claude Code subscription</td></tr>
+    <tr><td>Image generation (gpt-image-2 via LiteLLM)</td><td>$60 – $240 — depends on throughput, assumes 50 articles/day with 1–2 images each</td></tr>
+    <tr><td>APIs (WordPress, Asana, Microsoft Graph)</td><td>$0 within standard quotas</td></tr>
+    <tr><td>Infrastructure</td><td>$0 — no server is operated</td></tr>
+  </tbody>
+</table>
+
+<p>Compared with the n8n operation we are replacing, we eliminate ongoing maintenance of workflows, debugging of broken nodes, and the rigidity of having prompts encapsulated inside opaque node configurations. Prompts are now markdown that any team member can read and propose changes to via pull request.</p>
+
+<h2>What still needs to happen</h2>
+
+<ol>
+  <li><strong>Editorial validation of the May 15 batch.</strong> The main content writer reviews the 10 articles and proposes adjustments to the style guide and to specific category templates.</li>
+  <li><strong>Style guide v1.1 and template refinements.</strong> Feedback is merged into the versioned source files; the next batch reflects them.</li>
+  <li><strong>Production integrations.</strong> SharePoint Excel as live inventory (via Microsoft Graph), WordPress publishing via MCP, Asana reviewer subtasks via MCP, image generation via LiteLLM (pending image models being enabled by the BI team).</li>
+  <li><strong>Three sports without official rulebooks</strong> in SharePoint (Wrestling, Olympic Games, Paralympic Games). Without those PDFs, Rules-category coverage for them cannot start.</li>
+  <li><strong>Reviewer workflow definition.</strong> Round-robin assignment in Asana, SLA, criteria for returning a draft versus approving it. The editorial team owns this.</li>
+</ol>
+
+<h2>Ownership</h2>
+<ul>
+  <li><strong>Pablo Waimann</strong> — technical owner. Maintains the skill, templates, and inventory.</li>
+  <li><strong>Main content writer</strong> — owner of the style guide. Validates voice and approves structural changes.</li>
+  <li><strong>Reviewers</strong> (round-robin) — approve or return articles before publication.</li>
+  <li><strong>BI team (Debanjan)</strong> — Azure, SharePoint, and credential management support.</li>
+</ul>
+
+<div class="callout note">
+  <p>If you found a section of this document unclear, or want a deeper explanation of a specific stage, send a note to <a href="mailto:pablo.waimann@nexern.com">pablo.waimann@nexern.com</a>. This file lives in the repo at <code>docs/project-overview.html</code> and improves with feedback.</p>
+</div>
+
+<footer>
+  Relevo Content Workflow · Maintained by Pablo Waimann · <a href="../">Back to the index</a> · <a href="https://github.com/jpwaimann/relevo-content">Repository on GitHub</a>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
   "_generated_at": "2026-05-15T12:45:00Z",
-  "_note": "10 topics seleccionados por Claude de sports_config.json e inventory.csv local (NO de v17 — sin acceso a SharePoint Excel desde el shell AWS). Mix: 2 fútbol + 2 basket + 2 tenis + 2 F1 + 2 MMA. Cubre las 3 categorías (rules, tactics, origins).",
+  "_note": "10 topics selected by Claude from sports_config.json and the local inventory.csv (NOT from v17 — no access to the SharePoint Excel from the AWS shell). Mix: 2 football + 2 basketball + 2 tennis + 2 F1 + 2 MMA. Covers all 3 categories (rules, tactics, origins). Article fields (seo_title, meta_description, etc.) remain in Spanish because Relevo's output is in Spanish.",
   "topics": [
     {"slot": 1, "deporte": "Fútbol", "categoria": "tactics", "tipo": "tactics_positions", "seo_title": "Posiciones en fútbol: funciones de cada jugador", "meta_description": "Todas las posiciones del fútbol explicadas: portero, defensa, mediocampista y delantero. Funciones de cada puesto. Guía en Relevo.", "url_slug": "posiciones-futbol-funciones", "hub_slug": "futbol", "source": "inventory_row_3"},
     {"slot": 2, "deporte": "Fútbol", "categoria": "tactics", "tipo": "tactics_types", "seo_title": "Los tipos de tiro en el fútbol: volea, chilena y más", "meta_description": "Tipos de tiro en fútbol: raso, volea, chilena, vaselina, falta directa. Cuándo se usa cada uno y ejemplos icónicos. Guía en Relevo.", "url_slug": "tipos-tiro-futbol", "hub_slug": "futbol", "source": "inventory_row_4"},

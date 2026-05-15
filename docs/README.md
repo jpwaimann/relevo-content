@@ -1,129 +1,132 @@
-# Relevo Content Workflow
+# Relevo Content Workflow — Skill technical reference
 
-Skill de Claude Code para generación automatizada de contenido SEO en Relevo.com. Cubre 24 deportes en 3 categorías (Rules, Tactics, Origins).
+Claude Code skill for automated SEO content generation on relevo.com. Covers 24 sports across 3 categories (Rules & Basics, Tactics Explainers, Origins).
 
-## Quick start (para content editors)
+> This document describes the **skill** (the prompt logic, templates, and pipeline). For the project-level overview written for non-engineers, see [project-overview.html](project-overview.html).
 
-Una vez que IT corrió el bootstrap en tu user del host AWS compartido, simplemente abrí Claude Code en cualquier directorio y usá:
+## Quick start — content editors
+
+Once IT has run the bootstrap script for your user on the shared AWS host, open Claude Code in any directory and use:
 
 ```
-/relevo new            # Generar 1 artículo de un topic existente
-/relevo content-plan   # Generar N topics nuevos al inventory
-/relevo status         # Ver estado de la cola
+/relevo new            # Generate one article from an existing topic in the inventory
+/relevo content-plan   # Add N new topics to the inventory (status: pending_review)
+/relevo status         # See the queue and recent metrics
 ```
 
-El skill te va a preguntar todo lo que necesita (deporte, categoría, tema, etc.).
+The skill prompts for whatever it needs (sport, category, topic) interactively.
 
-## Quick start (para devs)
+## Quick start — engineers
 
 ```bash
-# Clonar repo en el host compartido
+# Clone the repo on the shared host
 cd /opt
 sudo git clone <repo-url> relevo-content
 cd relevo-content
 
-# Setup per-user (cada editor corre esto una vez)
+# Per-user setup (each editor runs this once)
 bash scripts/bootstrap-relevo.sh
 
-# Verificar
-claude  # Abrir CC
+# Verify
+claude        # opens the Claude Code CLI
 > /relevo status
 ```
 
-## Arquitectura — resumen ejecutivo
+## Architecture — executive summary
 
-- **Sin server propio**: el skill corre dentro de la sesión CC del editor. Cero infra a operar.
-- **3 sub-comandos**: `/relevo new`, `/relevo content-plan`, `/relevo status`
-- **Pipeline multi-pass** para `/relevo new`: research → draft → critique → revise → fact-check → image → publish
-- **Style guide + templates** versionados en `prompts/` (markdown)
-- **State** en SharePoint Excel (mock CSV en `data/inventory.csv` para testing)
-- **Imágenes** via toolkit Python `gpt-image-2` + C2PA stripping
-- **Notifs** humanas en Asana subtasks (Teams diferido)
-- **Logs** en JSONL local + mirror al sheet `_logs`
+- **No server of our own.** The skill runs inside the editor's Claude Code session. Zero infrastructure to operate.
+- **Three sub-commands**: `/relevo new`, `/relevo content-plan`, `/relevo status`.
+- **Multi-pass pipeline** for `/relevo new`: research → draft → critique → revise → fact-check → image → publish.
+- **Style guide + templates** versioned as markdown under `prompts/`.
+- **State** lives in a SharePoint Excel workbook (with a CSV mock under `data/inventory.csv` for testing).
+- **Images** generated via a Python toolkit using `gpt-image-2` and stripping C2PA metadata.
+- **Human notifications** as Asana subtasks (Microsoft Teams integration is deferred).
+- **Logs** appended to JSONL locally and mirrored to a `_logs` sheet.
 
-Detalle completo en `docs/adr/001-architecture.md`.
+Full architectural rationale lives in `docs/adr/001-architecture.md`.
 
-## Estructura del repo
+## Repository layout
 
 ```
 relevo-content/
-├── README.md                          # este archivo
+├── README.md                          # this file
 ├── docs/
-│   └── adr/001-architecture.md        # decisión arquitectónica completa
-├── prompts/                           # markdown versionado — PRs del content team
-│   ├── style_guide.md                 # manual de estilo Relevo (voz, léxico, HTML)
-│   ├── rules_template.md              # template categoría Rules & Basics
-│   ├── tactics_template.md            # template categoría Tactics Explainers
-│   └── origins_template.md            # template categoría Origins (bios)
-├── templates/                         # placeholder para v2 (templates JSON)
+│   └── adr/001-architecture.md        # full architectural decision record
+├── prompts/                           # versioned markdown — content team PRs
+│   ├── style_guide.md                 # Relevo style guide (voice, lexicon, HTML)
+│   ├── rules_template.md              # Rules & Basics category template
+│   ├── tactics_template.md            # Tactics Explainers category template
+│   └── origins_template.md            # Origins (biography) category template
+├── templates/                         # placeholder for v2 (JSON templates)
 ├── data/
 │   ├── inventory.csv                  # mock inventory (MVP)
-│   └── sports_config.json             # 24 deportes + slugs + sub_hubs + reglamento availability
+│   └── sports_config.json             # 24 sports + slugs + sub-hubs + rulebook availability
 ├── image_gen/
-│   ├── generate-images.py             # script Nexern estándar (gpt-image-2 via LiteLLM o OpenAI)
+│   ├── generate-images.py             # Nexern standard image script (gpt-image-2 via LiteLLM or OpenAI)
 │   ├── strip-ai-metadata.py           # C2PA stripping
-│   ├── jobs.template.json             # estructura tipo de jobs.json
-│   └── .env.example                   # template de credenciales
+│   ├── jobs.template.json             # canonical shape of jobs.json
+│   └── .env.example                   # credentials template
 ├── .claude/
 │   ├── commands/
-│   │   └── relevo.md                  # slash command /relevo (router)
+│   │   └── relevo.md                  # /relevo slash command (router)
 │   └── skills/
 │       └── relevo/
-│           ├── SKILL.md               # entry point del skill
+│           ├── SKILL.md               # skill entry point
 │           └── lib/
-│               ├── cmd_new.md         # comando: /relevo new
-│               ├── cmd_content_plan.md# comando: /relevo content-plan
-│               ├── cmd_status.md      # comando: /relevo status
-│               ├── pipeline.md        # etapas del pipeline multi-pass
-│               ├── inventory.md       # abstracción InventoryProvider
+│               ├── cmd_new.md         # command: /relevo new
+│               ├── cmd_content_plan.md# command: /relevo content-plan
+│               ├── cmd_status.md      # command: /relevo status
+│               ├── pipeline.md        # multi-pass pipeline stages
+│               ├── inventory.md       # InventoryProvider abstraction
 │               ├── retry.md           # retry strategy + stuck detection
-│               ├── logging.md         # logging JSONL + mirror
-│               └── image.md           # invocación del image gen toolkit
+│               ├── logging.md         # JSONL logging + sheet mirror
+│               └── image.md           # image-gen toolkit invocation
 ├── scripts/
-│   └── bootstrap-relevo.sh            # setup per-user de symlinks (~30 seg)
-└── logs/                              # logs locales (gitignored)
+│   └── bootstrap-relevo.sh            # per-user setup of symlinks (~30 seconds)
+└── logs/                              # local logs (gitignored)
 ```
 
 ## Modes
 
-### Mock mode (default — para testing y MVP sin infra prod)
+### Mock mode (default — for testing and MVP without production infra)
 
-- Inventory: `data/inventory.csv` (lectura/escritura local)
-- WordPress upload: escribe HTML a `/tmp/relevo-{run_id}/article.html`
-- Asana notif: escribe JSON a `/tmp/relevo-{run_id}/asana_subtask.json`
-- Image gen: real (usa LiteLLM si `.env` configurada)
+- Inventory: `data/inventory.csv` (read/write locally).
+- WordPress upload: writes the HTML to `/tmp/relevo-{run_id}/article.html`.
+- Asana notification: writes a JSON file to `/tmp/relevo-{run_id}/asana_subtask.json`.
+- Image generation: real (uses LiteLLM if `.env` is configured).
 
-### Production mode (post-setup completo)
+### Production mode (after full setup)
 
-- Inventory: Graph API contra SharePoint Excel workbook
-- WordPress: vía MCP, status `pending`
-- Asana: vía MCP, subtasks round-robin a reviewers
-- Image gen: real con LiteLLM
+- Inventory: Graph API against the SharePoint Excel workbook.
+- WordPress: via MCP, status `pending_review`.
+- Asana: via MCP, subtasks assigned round-robin to reviewers.
+- Image generation: real, via LiteLLM.
 
-Switch entre modes: env var `INVENTORY_SOURCE=mock|sharepoint` y secrets en Passbolt.
+Mode is controlled by the `INVENTORY_SOURCE=mock|sharepoint` environment variable and credentials stored in Passbolt.
 
-## Costos
+## Cost
 
-Para 50 artículos/día con 2 editores:
-- **Texto**: $0 marginal (cubierto por subscripción CC del editor)
-- **Imágenes**: ~$0.04-0.16 × 50/día × 1-2 imgs = **$60-240/mes**
-- **API otros (WP/Asana/Graph)**: $0
-- **Infra**: $0 (sin server propio)
+For 50 articles/day with 2 editors:
 
-## Pendientes pre-producción
+- **Text**: $0 marginal (covered by the editor's Claude Code subscription).
+- **Images**: ~$0.04–$0.16 per image × 50/day × 1–2 images = **$60–$240/month**.
+- **Other APIs (WordPress, Asana, Graph)**: $0.
+- **Infrastructure**: $0 (no server of our own).
 
-Ver `docs/adr/001-architecture.md` sección 7.
+## Pre-production checklist
 
-## Contribuir cambios al prompt o templates
+See `docs/adr/001-architecture.md` section 7.
 
-Los prompts viven en `prompts/*.md` y son versionados. Para cambiar la voz o un template:
+## Contributing to the prompt or templates
 
-1. Editar el archivo en una rama
-2. PR con justificación + ejemplo de output esperado
-3. Code review + test con `/relevo new` antes de mergear
+Prompts live in `prompts/*.md` and are versioned. To change the voice or a template:
 
-## Quién mantiene esto
+1. Edit the file in a branch.
+2. Open a PR with rationale and an example of the expected output.
+3. Code review + a smoke test with `/relevo new` before merging.
+
+## Ownership
 
 Project owner: **Pablo Waimann** (`pablo.waimann@nexern.com`)
-Tech: Claude Code skill, sin server propio
-IT contact: Debanjan (BI Team) para Azure/SharePoint/Passbolt
+Technology: Claude Code skill, no server of our own
+IT contact: Debanjan (BI team) for Azure, SharePoint, Passbolt.

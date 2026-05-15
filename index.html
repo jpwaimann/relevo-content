@@ -1,93 +1,485 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Relevo Content — Preview</title>
+<title>Relevo Content Workflow</title>
 <style>
-  :root { --rojo: #e63946; --azul: #1d3557; --crema: #f1faee; --gris: #f8f9fa; }
+  :root {
+    --rojo: #e63946;
+    --azul: #1d3557;
+    --azul-claro: #457b9d;
+    --crema: #f1faee;
+    --gris-1: #f8f9fa;
+    --gris-2: #e9ecef;
+    --gris-3: #adb5bd;
+    --verde: #2a9d8f;
+    --texto: #1a1a1a;
+    --texto-suave: #495057;
+  }
   * { box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 920px; margin: 2.5em auto; padding: 0 1.5em; color: #1a1a1a; line-height: 1.55; }
-  h1 { color: var(--azul); border-bottom: 4px solid var(--rojo); padding-bottom: 0.4em; margin-bottom: 0.4em; font-size: 1.8em; }
-  .sub { color: #555; margin-top: 0; font-size: 0.95em; }
-  h2 { color: var(--azul); margin-top: 2.2em; font-size: 1.25em; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1em; margin: 1.2em 0; }
-  .card { border: 1px solid #ddd; border-radius: 8px; padding: 1.1em 1.2em; background: var(--gris); }
-  .card.featured { background: var(--crema); border-color: var(--rojo); border-left-width: 4px; }
-  .card h3 { margin-top: 0; margin-bottom: 0.4em; font-size: 1.05em; }
-  .card h3 a { color: var(--azul); text-decoration: none; }
-  .card h3 a:hover { color: var(--rojo); }
-  .card p { margin: 0.3em 0 0; font-size: 0.92em; color: #444; }
-  table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 0.93em; }
-  th { background: var(--azul); color: #fff; text-align: left; padding: 0.6em 0.8em; }
-  td { padding: 0.55em 0.8em; border-bottom: 1px solid #eee; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--texto);
+    background: #fff;
+    margin: 0;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 2.5em 1.5em 5em; }
+  header.hero {
+    border-bottom: 4px solid var(--rojo);
+    padding-bottom: 1.4em;
+    margin-bottom: 2em;
+  }
+  .eyebrow {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--rojo);
+    margin-bottom: 0.6em;
+  }
+  h1 {
+    font-size: 2em;
+    line-height: 1.2;
+    margin: 0 0 0.3em;
+    color: var(--azul);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .lede { font-size: 1.08em; color: var(--texto-suave); margin: 0; }
+  .status-line {
+    margin-top: 1em;
+    padding: 0.7em 1em;
+    background: var(--crema);
+    border-left: 3px solid var(--verde);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.93em;
+  }
+  .status-line strong { color: var(--azul); }
+
+  h2 {
+    font-size: 1.45em;
+    color: var(--azul);
+    margin: 2.6em 0 0.6em;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border-bottom: 1px solid var(--gris-2);
+    padding-bottom: 0.3em;
+  }
+  h3 { font-size: 1.08em; color: var(--azul); margin: 1.6em 0 0.4em; font-weight: 700; }
+  p { margin: 0 0 1em; }
+  strong { font-weight: 600; }
+  a { color: var(--azul-claro); }
+  a:hover { color: var(--rojo); }
+  code { background: var(--gris-2); padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, "SF Mono", Monaco, monospace; font-size: 0.88em; }
+  ul, ol { padding-left: 1.4em; margin: 0 0 1.2em; }
+  li { margin-bottom: 0.35em; }
+
+  .callout {
+    background: var(--crema);
+    border-left: 4px solid var(--rojo);
+    padding: 1em 1.3em;
+    margin: 1.4em 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout.note { background: #f0f7ff; border-left-color: var(--azul-claro); }
+  .callout p:last-child { margin-bottom: 0; }
+
+  table { width: 100%; border-collapse: collapse; margin: 1em 0 1.4em; font-size: 0.94em; }
+  th, td { text-align: left; padding: 0.65em 0.8em; border-bottom: 1px solid var(--gris-2); vertical-align: top; }
+  th { background: var(--azul); color: #fff; font-weight: 600; border-bottom: none; }
+  tr:last-child td { border-bottom: none; }
   td a { color: var(--azul); }
-  .pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.78em; background: var(--rojo); color: #fff; font-weight: 600; }
-  .pill.cat-rules { background: #2a9d8f; }
-  .pill.cat-tactics { background: #e76f51; }
-  .pill.cat-origins { background: #6a4c93; }
-  code { background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-size: 0.88em; }
-  .note { background: #f0f7ff; border-left: 4px solid var(--azul); padding: 0.8em 1em; border-radius: 0 4px 4px 0; margin: 1em 0; font-size: 0.92em; }
+
+  /* Roadmap */
+  .gantt-wrap {
+    background: var(--gris-1);
+    border: 1px solid var(--gris-2);
+    border-radius: 8px;
+    padding: 1.4em;
+    margin: 1.2em 0 1.4em;
+    overflow-x: auto;
+  }
+  .gantt-wrap .mermaid { background: #fff; padding: 0.8em; border-radius: 4px; }
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.7em;
+    margin: 1.2em 0 1.6em;
+  }
+  .phase {
+    border: 1px solid var(--gris-2);
+    border-radius: 6px;
+    padding: 0.9em 1em;
+    background: var(--gris-1);
+    font-size: 0.91em;
+  }
+  .phase .h { font-weight: 700; color: var(--azul); margin-bottom: 0.25em; font-size: 0.95em; }
+  .phase .meta { color: var(--texto-suave); font-size: 0.82em; margin-bottom: 0.4em; }
+  .phase ul { margin: 0.3em 0 0; padding-left: 1.1em; }
+  .phase ul li { margin-bottom: 0.18em; }
+  .phase.done { border-left: 4px solid var(--verde); }
+  .phase.current { border-left: 4px solid var(--rojo); background: var(--crema); }
+  .phase.pending { border-left: 4px solid var(--gris-3); }
+  .phase .badge {
+    display: inline-block;
+    font-size: 0.7em;
+    padding: 1px 7px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    margin-left: 0.4em;
+    vertical-align: middle;
+  }
+  .phase.done .badge { background: var(--verde); color: #fff; }
+  .phase.current .badge { background: var(--rojo); color: #fff; }
+  .phase.pending .badge { background: var(--gris-3); color: #fff; }
+
+  /* Structure */
+  pre.tree {
+    background: #0d1b2a;
+    color: #e0e1dd;
+    padding: 1.1em 1.3em;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: ui-monospace, "SF Mono", Monaco, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    margin: 0.8em 0 1.4em;
+  }
+  pre.tree .c { color: #8d99ae; }
+
+  /* QA */
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.74em;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+  .pill.rules { background: #2a9d8f; }
+  .pill.tactics { background: #e76f51; }
+  .pill.origins { background: #6a4c93; }
+  .qa-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.7em;
+    margin: 1em 0 1.4em;
+  }
+  .stat {
+    background: var(--gris-1);
+    border-top: 3px solid var(--azul);
+    padding: 0.8em 1em;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .stat .num { font-size: 1.6em; font-weight: 800; color: var(--azul); line-height: 1; }
+  .stat .label { font-size: 0.78em; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.25em; }
+
+  footer {
+    margin-top: 3em;
+    padding-top: 1.5em;
+    border-top: 1px solid var(--gris-2);
+    color: var(--texto-suave);
+    font-size: 0.88em;
+  }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<h1>Relevo Content · Preview</h1>
-<p class="sub">URL temporal servida desde una VM AWS · contenido para review interno · contacto: pablo.waimann@nexern.com</p>
-
-<h2>📖 Para entender el proyecto</h2>
-<div class="grid">
-  <div class="card featured">
-    <h3><a href="docs/EXEC_SUMMARY_call.html">Resumen ejecutivo →</a></h3>
-    <p><strong>Empezá por acá.</strong> Explicación dirigida al content writer: qué cambia, por qué, cómo va a evaluarlo, qué necesitamos de su parte. ~7 min de lectura.</p>
+<header class="hero">
+  <div class="eyebrow">Internal — Relevo Content · Updated 2026-05-15</div>
+  <h1>Relevo Content Workflow</h1>
+  <p class="lede">Automated SEO content generation for relevo.com. 24 sports, 3 content categories, multi-pass quality gate. Built as a Claude Code skill replacing the legacy n8n workflow.</p>
+  <div class="status-line">
+    <strong>Current phase:</strong> Editorial validation (Phase 4 of 7). Style guide v1 deployed, 10-article QA batch generated, awaiting writer review to lock v1.1.
   </div>
-  <div class="card">
-    <h3><a href="docs/README.md">README técnico</a></h3>
-    <p>Arquitectura completa del skill <code>/relevo</code>. Más bien para devs que para writers.</p>
+</header>
+
+<h2>Roadmap</h2>
+
+<p>The project runs from May 1 through expected scale-out in late June. Phases 1–3 are complete; Phase 4 starts the editorial validation cycle. The Gantt below uses weekly granularity.</p>
+
+<div class="gantt-wrap">
+<pre class="mermaid">
+gantt
+    title Relevo Content Workflow — Roadmap (weekly)
+    dateFormat YYYY-MM-DD
+    axisFormat %b %d
+
+    section Phase 1 · n8n prototype
+    Personal n8n workflows + prompts   :done, p1a, 2026-05-01, 7d
+    Corporate migration + v17 stable   :done, p1b, 2026-05-08, 6d
+
+    section Phase 2 · CC-native pivot
+    Architecture decision              :done, p2a, 2026-05-14, 1d
+    Skill scaffold + style guide v1    :done, p2b, 2026-05-14, 2d
+    Templates (Rules/Tactics/Origins)  :done, p2c, 2026-05-14, 1d
+    Smoke test (score 95)              :milestone, m1, 2026-05-14, 0d
+
+    section Phase 3 · Testing & batch
+    10-article QA batch                :done, p3a, 2026-05-15, 1d
+    Public hosting (GitHub Pages)      :done, p3b, 2026-05-15, 1d
+
+    section Phase 4 · Editorial validation
+    Writer review of batch             :active, p4a, 2026-05-18, 5d
+    Style guide v1.1                   :p4b, 2026-05-20, 5d
+
+    section Phase 5 · Production integrations
+    SharePoint inventory API           :p5a, 2026-05-25, 5d
+    WordPress + Asana MCP              :p5b, 2026-05-25, 5d
+    LiteLLM image models               :p5c, 2026-05-27, 4d
+
+    section Phase 6 · First prod batch
+    Reviewer workflow live             :p6a, 2026-06-01, 5d
+    First production batch             :milestone, m2, 2026-06-05, 0d
+
+    section Phase 7 · Scale
+    Onboard 2nd editor                 :p7a, 2026-06-08, 7d
+    Scale to 50 articles per day       :p7b, 2026-06-15, 14d
+</pre>
+</div>
+
+<div class="phase-grid">
+  <div class="phase done">
+    <div class="h">Phase 1 <span class="badge">done</span></div>
+    <div class="meta">May 1 – May 13 · n8n prototype</div>
+    <ul>
+      <li>Personal n8n.cloud workflows for Rules &amp; Tactics</li>
+      <li>15-sport mapping, Google Sheet inventory</li>
+      <li>Migration to corporate <code>n8n.bidwhig.com</code></li>
+      <li>v17 reached with SharePoint Excel integration; two known issues with the Excel node parked</li>
+    </ul>
+  </div>
+
+  <div class="phase done">
+    <div class="h">Phase 2 <span class="badge">done</span></div>
+    <div class="meta">May 14 · CC-native pivot</div>
+    <ul>
+      <li>Architecture decision to deprecate n8n in favor of a Claude Code skill</li>
+      <li>Skill <code>/relevo</code> scaffolded with three sub-commands</li>
+      <li>Style guide v1 (15-point editorial checklist)</li>
+      <li>Templates for Rules, Tactics, and the new Origins category</li>
+      <li>Sport coverage expanded from 15 to 24</li>
+      <li>First end-to-end smoke test reached score 95 after one revise pass</li>
+    </ul>
+  </div>
+
+  <div class="phase done">
+    <div class="h">Phase 3 <span class="badge">done</span></div>
+    <div class="meta">May 15 · Testing &amp; batch</div>
+    <ul>
+      <li>10-article QA batch produced via parallel agents, mean score 90.3</li>
+      <li>All artifacts (final HTML, draft, both critique JSONs, metadata bundle) persisted</li>
+      <li>Hosting migrated to GitHub Pages for stable public access</li>
+    </ul>
+  </div>
+
+  <div class="phase current">
+    <div class="h">Phase 4 <span class="badge">current</span></div>
+    <div class="meta">May 18 – May 22 · Editorial validation</div>
+    <ul>
+      <li>Content writer reviews the May 15 batch</li>
+      <li>Feedback collected against style guide</li>
+      <li>Style guide v1.1 and template refinements merged</li>
+    </ul>
+  </div>
+
+  <div class="phase pending">
+    <div class="h">Phase 5 <span class="badge">next</span></div>
+    <div class="meta">May 25 – May 29 · Production integrations</div>
+    <ul>
+      <li>SharePoint Excel inventory wired via Microsoft Graph API</li>
+      <li>WordPress publishing via MCP (status <code>pending_review</code>)</li>
+      <li>Asana reviewer subtasks via MCP, round-robin assignment</li>
+      <li>LiteLLM image models enabled (blocked on BI team)</li>
+    </ul>
+  </div>
+
+  <div class="phase pending">
+    <div class="h">Phase 6 <span class="badge">later</span></div>
+    <div class="meta">Week of June 1 · First production batch</div>
+    <ul>
+      <li>Full reviewer workflow live</li>
+      <li>10–15 articles flow to WordPress as <code>pending_review</code></li>
+      <li>Asana notifications to assigned reviewers</li>
+    </ul>
+  </div>
+
+  <div class="phase pending">
+    <div class="h">Phase 7 <span class="badge">later</span></div>
+    <div class="meta">June 8 onward · Scale</div>
+    <ul>
+      <li>Second editor onboarded</li>
+      <li>Throughput ramps to 50 articles per day</li>
+      <li>Monitoring dashboards and weekly QA sampling</li>
+    </ul>
   </div>
 </div>
 
-<h2>🧪 Smoke test del pipeline (14/5)</h2>
-<p>Primer artículo end-to-end con el nuevo workflow. Llegó a <strong>score 95</strong> después de un revise loop. Sirve como referencia de calidad esperada.</p>
-<div class="grid">
-  <div class="card">
-    <h3><a href="runs/relevo-rules-smoke-1778792284/article.html">Qué es el fuera de juego en fútbol</a></h3>
-    <p>HTML final · 1592 palabras · score 95.<br>
-    Bundle completo: <a href="runs/relevo-rules-smoke-1778792284/article_final.json">metadata</a> · <a href="runs/relevo-rules-smoke-1778792284/critique_pass1.json">crítica pass 1 (72)</a> · <a href="runs/relevo-rules-smoke-1778792284/critique_pass2.json">crítica pass 2 (95)</a></p>
-  </div>
-</div>
+<h2>Repository structure</h2>
 
-<h2>📰 Batch de muestra para la call (15/5) · 10 artículos</h2>
-<p>Mix de las 3 categorías (Rules · Tactics · Origins) sobre 5 deportes representativos. Promedio del batch: <strong>90.3/100</strong>. Todos pasaron el gate de calidad (score ≥ 80, sin fails de anti-hallucination).</p>
+<p>Everything published to this site is mirrored from the production VM into the <a href="https://github.com/jpwaimann/relevo-content">jpwaimann/relevo-content</a> repository on GitHub. The layout below reflects what you will find both here and in the repo.</p>
+
+<pre class="tree">.
+├── index.html                              <span class="c"># this landing page</span>
+├── README.md                               <span class="c"># repo README, mirrors this page's content</span>
+├── docs/
+│   ├── project-overview.html               <span class="c"># project brief — read first</span>
+│   └── README.md                           <span class="c"># technical architecture of the /relevo skill</span>
+├── _meta/
+│   ├── topics.json                         <span class="c"># topic list for the May 15 batch</span>
+│   └── AGENT_CONTRACT.md                   <span class="c"># the contract every generation subagent follows</span>
+└── runs/                                   <span class="c"># one directory per generated article</span>
+    ├── relevo-rules-smoke-1778792284/      <span class="c"># first smoke test</span>
+    └── art-N-1778849077/                   <span class="c"># May 15 batch articles (N = 1..10)</span>
+        ├── article.html                    <span class="c"># final version (the publishable output)</span>
+        ├── article_draft.html              <span class="c"># pre-revise draft (kept for traceability)</span>
+        ├── article_final.json              <span class="c"># metadata + quality journey</span>
+        ├── critique_pass1.json             <span class="c"># first auto-critique pass</span>
+        └── critique_pass2.json             <span class="c"># post-revise auto-critique (when applicable)</span>
+</pre>
+
+<p>Each generation run produces a self-contained directory. Reviewers can open <code>article.html</code> for the final, then drill into <code>critique_pass1.json</code> to see what the automated critic flagged in the first draft, and into <code>critique_pass2.json</code> to confirm the issues were resolved.</p>
+
+<h2>Project overview</h2>
+
+<p><strong>Relevo Content</strong> is an automated SEO content generation system for <a href="https://relevo.com">relevo.com</a>. It produces editorial-quality Spanish-language articles across 24 sports and three content categories (Rules &amp; Basics, Tactics Explainers, Origins) using a multi-pass pipeline that includes automated critique and fact-checking before any human review.</p>
+
+<p>The system is implemented as a custom skill running inside Claude Code, replacing an earlier n8n-based workflow that was retired on May 14.</p>
+
+<h3>Why we rewrote it</h3>
+
+<p>The n8n implementation worked for a limited topic set but had three structural limitations that made it expensive to evolve:</p>
+
+<ol>
+  <li><strong>Prompt rigidity.</strong> Editorial voice was encoded inside individual workflow nodes. Any change to the style guide or section structure required a coordinated PR and redeploy across multiple nodes.</li>
+  <li><strong>No quality gate.</strong> The pipeline produced a draft and routed it directly to a human reviewer with no automated critique in between. Errors that an automated checker would have caught — factual inventions, length misses, format inconsistencies — reached editors.</li>
+  <li><strong>Limited coverage.</strong> Only 15 sports and two content categories were modeled. Expansion required editing multiple workflow branches by hand.</li>
+</ol>
+
+<p>The Claude Code skill addresses all three. Prompts and templates are versioned markdown files that anyone on the content team can read and propose changes to via pull request. Every draft passes through automated critique against a 15-point editorial checklist and a fact-check stage before reaching a human reviewer. Coverage expands to 24 sports and introduces Origins (athlete biographies) as a third content category.</p>
+
+<h3>Pipeline architecture</h3>
+
+<p>Each article is produced by a deterministic seven-stage pipeline:</p>
+
+<ol>
+  <li><strong>Research</strong> — the skill reads the official rulebook PDF for the sport (stored in SharePoint) and supplementary authoritative sources.</li>
+  <li><strong>Draft</strong> — first version generated against the category template (Rules / Tactics / Origins) and the Relevo style guide.</li>
+  <li><strong>Critique pass 1</strong> — an internal critic evaluates the draft against the 15-point checklist and produces a 0–100 score plus a list of priority fixes.</li>
+  <li><strong>Revise</strong> — if score is below 80 or anti-hallucination check fails, fixes are applied. If the draft passes the gate, this stage is skipped.</li>
+  <li><strong>Critique pass 2</strong> — the revised version is re-scored. The loop repeats until the gate passes or retries are exhausted.</li>
+  <li><strong>Fact-check</strong> — claims are verified; unverifiable specific attributions are softened or removed.</li>
+  <li><strong>Publish</strong> — the article is uploaded to WordPress as <code>pending_review</code> and a notification subtask is created in Asana for the assigned reviewer.</li>
+</ol>
+
+<p>The full intermediate state of every article — the pre-revise draft, both critique JSONs, the final HTML, the metadata bundle — is preserved on disk, giving editors complete traceability into how each piece was produced.</p>
+
+<h3>Cost structure</h3>
 
 <table>
-  <thead><tr><th>#</th><th>Deporte</th><th>Categoría</th><th>Tema</th><th>Score</th><th>Words</th><th>Final</th></tr></thead>
+  <thead><tr><th>Item</th><th>Monthly estimate</th><th>Notes</th></tr></thead>
   <tbody>
-    <tr><td>1</td><td>Fútbol</td><td><span class="pill cat-tactics">tactics</span></td><td>Posiciones</td><td>86</td><td>1791</td><td><a href="runs/art-1-1778849077/article.html">leer →</a></td></tr>
-    <tr><td>2</td><td>Fútbol</td><td><span class="pill cat-tactics">tactics</span></td><td>Tipos de tiro</td><td>93</td><td>1836</td><td><a href="runs/art-2-1778849077/article.html">leer →</a></td></tr>
-    <tr><td>3</td><td>Baloncesto</td><td><span class="pill cat-rules">rules</span></td><td>Reglas FIBA/NBA</td><td>92</td><td>1995</td><td><a href="runs/art-3-1778849077/article.html">leer →</a></td></tr>
-    <tr><td>4</td><td>Baloncesto</td><td><span class="pill cat-tactics">tactics</span></td><td>Tipos de tiro</td><td>91</td><td>1683</td><td><a href="runs/art-4-1778849077/article.html">leer →</a></td></tr>
-    <tr><td>5</td><td>Tenis</td><td><span class="pill cat-rules">rules</span></td><td>Reglas y puntuación</td><td>88</td><td>1998</td><td><a href="runs/art-5-1778849077/article.html">leer →</a></td></tr>
-    <tr><td>6</td><td>Tenis</td><td><span class="pill cat-origins">origins</span></td><td>Orígenes de Carlos Alcaraz</td><td>88</td><td>2604</td><td><a href="runs/art-6-1778849077/article.html">leer →</a></td></tr>
-    <tr><td>7</td><td>Fórmula 1</td><td><span class="pill cat-rules">rules</span></td><td>Reglamento FIA</td><td>91</td><td>2000</td><td><a href="runs/art-7-1778849077/article.html">leer →</a></td></tr>
-    <tr><td>8</td><td>Fórmula 1</td><td><span class="pill cat-tactics">tactics</span></td><td>Estrategia de boxes</td><td>93</td><td>1986</td><td><a href="runs/art-8-1778849077/article.html">leer →</a></td></tr>
-    <tr><td>9</td><td>MMA</td><td><span class="pill cat-origins">origins</span></td><td>Orígenes de Ilia Topuria</td><td>89</td><td>2567</td><td><a href="runs/art-9-1778849077/article.html">leer →</a></td></tr>
-    <tr><td>10</td><td>MMA</td><td><span class="pill cat-rules">rules</span></td><td>Reglas UFC</td><td>92</td><td>1998</td><td><a href="runs/art-10-1778849077/article.html">leer →</a></td></tr>
+    <tr><td>Text generation</td><td>$0 marginal</td><td>Covered by the editor's Claude Code subscription</td></tr>
+    <tr><td>Image generation (gpt-image-2 via LiteLLM)</td><td>$60 – $240</td><td>50 articles/day × 1–2 images each</td></tr>
+    <tr><td>WordPress / Asana / Microsoft Graph APIs</td><td>$0</td><td>Within standard quotas</td></tr>
+    <tr><td>Infrastructure</td><td>$0</td><td>No servers to operate</td></tr>
   </tbody>
 </table>
 
-<p>Cada carpeta <code>/runs/art-N-1778849077/</code> tiene el HTML final, el draft inicial pre-revise, y los JSON de crítica con el journey completo. Listado navegable en <a href="runs/">/runs/</a>.</p>
+<p>By eliminating the n8n hosting and operational burden, the new design has zero fixed infrastructure cost. The only variable expense is image generation, which scales with throughput.</p>
 
-<h2>📂 Cómo está organizado</h2>
+<h3>Outstanding work</h3>
+
+<p>Three areas remain before production launch:</p>
+
 <ul>
-  <li><code>/docs/</code> — documentación del proyecto (HTML legible + markdown técnico)</li>
-  <li><code>/runs/</code> — bundles de cada artículo generado (HTML + JSONs de QA)</li>
-  <li><code>/_meta/</code> — metadata del batch: <a href="_meta/topics.json">topics.json</a> y <a href="_meta/AGENT_CONTRACT.md">AGENT_CONTRACT.md</a></li>
+  <li><strong>Editorial validation.</strong> The main content writer reviews the May 15 batch and the team applies feedback to the style guide and templates.</li>
+  <li><strong>Production integrations.</strong> SharePoint Excel as live inventory (via Microsoft Graph), WordPress upload via MCP, Asana reviewer notifications via MCP, image generation via LiteLLM (pending image models being enabled in the corporate proxy).</li>
+  <li><strong>Three sports without official rulebooks</strong> in SharePoint (Wrestling, Olympic Games, Paralympic Games). Without those PDFs, Rules-category coverage for them is blocked.</li>
 </ul>
 
-<div class="note">
-<strong>Sobre esta URL.</strong> Es un Cloudflare Quick Tunnel temporal. Mientras el proceso siga corriendo en la VM, la URL es estable. Si por algún motivo la URL deja de funcionar, escribime a pablo.waimann@nexern.com y la regenero.
+<p>For the long version of this section — written for someone joining the project — see <a href="docs/project-overview.html">the full project overview</a>.</p>
+
+<h2>QA &amp; Testing</h2>
+
+<p>We have two artifacts that demonstrate the pipeline working end-to-end: a single-article smoke test on May 14 and a 10-article quality batch on May 15. Both are reproducible by anyone with access to the skill and the style guide.</p>
+
+<h3>Smoke test · May 14</h3>
+
+<p>The first end-to-end run produced <strong>"Qué es el fuera de juego en fútbol y cómo funciona"</strong>. The pipeline caught and corrected a critical issue automatically:</p>
+
+<table>
+  <thead><tr><th>Stage</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>Draft</td><td>850 words. Critic returned score 72.</td></tr>
+    <tr><td>Critique pass 1</td><td>Flagged an unverifiable specific attribution ("disallowed goal to Iker Bravo at the Bernabéu in March 2024") and one rhythm-breaking 78-word paragraph. Length below target.</td></tr>
+    <tr><td>Revise pass 1</td><td>Three priority fixes applied: removed the unverifiable attribution, split the long paragraph, extended to 1,592 words with two additional H2 sections matching real search intent.</td></tr>
+    <tr><td>Critique pass 2</td><td><strong>Score 95.</strong> Gate passed. Anti-hallucination resolved.</td></tr>
+    <tr><td>Fact-check</td><td>8 claims verified, 0 corrected.</td></tr>
+    <tr><td>Total elapsed time</td><td><strong>132 seconds</strong></td></tr>
+  </tbody>
+</table>
+
+<p>The automated critic caught the fabricated incident before it reached a human reviewer. This is exactly the failure mode the multi-pass design exists to prevent.</p>
+
+<p><strong>Artifacts</strong>: <a href="runs/relevo-rules-smoke-1778792284/article.html">final article</a> · <a href="runs/relevo-rules-smoke-1778792284/article_final.json">metadata</a> · <a href="runs/relevo-rules-smoke-1778792284/critique_pass1.json">critique pass 1 (72)</a> · <a href="runs/relevo-rules-smoke-1778792284/critique_pass2.json">critique pass 2 (95)</a></p>
+
+<h3>May 15 batch · 10 articles for editorial review</h3>
+
+<p>A balanced sample across the three content categories and five representative sports. All ten articles ran through the full pipeline in parallel and were generated in approximately 17 minutes of wall clock time.</p>
+
+<div class="qa-summary">
+  <div class="stat"><div class="num">10</div><div class="label">articles</div></div>
+  <div class="stat"><div class="num">90.3</div><div class="label">mean score</div></div>
+  <div class="stat"><div class="num">19.5k</div><div class="label">total words</div></div>
+  <div class="stat"><div class="num">0</div><div class="label">gate failures</div></div>
 </div>
 
+<table>
+  <thead><tr><th>#</th><th>Sport</th><th>Category</th><th>Topic</th><th>Score</th><th>Words</th><th>Final</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Football</td><td><span class="pill tactics">tactics</span></td><td>Player positions</td><td>86</td><td>1,791</td><td><a href="runs/art-1-1778849077/article.html">open →</a></td></tr>
+    <tr><td>2</td><td>Football</td><td><span class="pill tactics">tactics</span></td><td>Types of shots</td><td>93</td><td>1,836</td><td><a href="runs/art-2-1778849077/article.html">open →</a></td></tr>
+    <tr><td>3</td><td>Basketball</td><td><span class="pill rules">rules</span></td><td>FIBA &amp; NBA rules</td><td>92</td><td>1,995</td><td><a href="runs/art-3-1778849077/article.html">open →</a></td></tr>
+    <tr><td>4</td><td>Basketball</td><td><span class="pill tactics">tactics</span></td><td>Types of shots</td><td>91</td><td>1,683</td><td><a href="runs/art-4-1778849077/article.html">open →</a></td></tr>
+    <tr><td>5</td><td>Tennis</td><td><span class="pill rules">rules</span></td><td>Scoring &amp; tie-break</td><td>88</td><td>1,998</td><td><a href="runs/art-5-1778849077/article.html">open →</a></td></tr>
+    <tr><td>6</td><td>Tennis</td><td><span class="pill origins">origins</span></td><td>Origins of Carlos Alcaraz</td><td>88</td><td>2,604</td><td><a href="runs/art-6-1778849077/article.html">open →</a></td></tr>
+    <tr><td>7</td><td>Formula 1</td><td><span class="pill rules">rules</span></td><td>FIA regulations</td><td>91</td><td>2,000</td><td><a href="runs/art-7-1778849077/article.html">open →</a></td></tr>
+    <tr><td>8</td><td>Formula 1</td><td><span class="pill tactics">tactics</span></td><td>Pit-stop strategy</td><td>93</td><td>1,986</td><td><a href="runs/art-8-1778849077/article.html">open →</a></td></tr>
+    <tr><td>9</td><td>MMA</td><td><span class="pill origins">origins</span></td><td>Origins of Ilia Topuria</td><td>89</td><td>2,567</td><td><a href="runs/art-9-1778849077/article.html">open →</a></td></tr>
+    <tr><td>10</td><td>MMA</td><td><span class="pill rules">rules</span></td><td>UFC rules</td><td>92</td><td>1,998</td><td><a href="runs/art-10-1778849077/article.html">open →</a></td></tr>
+  </tbody>
+</table>
+
+<p>Every entry in the table above links to the final published HTML. The full bundle of artifacts (draft, both critique JSONs, metadata) is available in each <code>runs/art-N-1778849077/</code> directory. The complete listing of generation directories is at <a href="runs/">/runs/</a>.</p>
+
+<h3>What reviewers are asked to evaluate</h3>
+
+<ol>
+  <li><strong>Voice and tone.</strong> Do these read like Relevo articles? Are there expressions or rhythms in the style guide that should change?</li>
+  <li><strong>Category templates.</strong> Do Rules, Tactics, and Origins each have the structure that the team expects? Are there missing sections or sections that should be removed?</li>
+  <li><strong>Anti-hallucination behavior.</strong> The pipeline aggressively removes unverifiable specific attributions. Is that calibrated correctly, or too conservative for the kind of writing Relevo wants?</li>
+  <li><strong>Asana review workflow.</strong> Round-robin assignment, SLA, criteria for return-vs-approve — open for definition by the editorial team.</li>
+</ol>
+
+<footer>
+  Project owner: Pablo Waimann · <a href="mailto:pablo.waimann@nexern.com">pablo.waimann@nexern.com</a><br>
+  Repository: <a href="https://github.com/jpwaimann/relevo-content">github.com/jpwaimann/relevo-content</a>
+</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'default', gantt: { fontSize: 12 } });</script>
 </body>
 </html>
