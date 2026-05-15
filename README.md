@@ -184,7 +184,7 @@ Each entry links to the final published HTML. The full bundle of artifacts is av
 
 ## Ownership
 
-- **Pablo Waimann** — technical owner · [pablo.waimann@nexern.com](mailto:pablo.waimann@nexern.com)
+- **Pablo Waimann** — technical owner · [pablo.waimann@igaming.com](mailto:pablo.waimann@igaming.com)
 - **Main content writer** — owner of the style guide; validates voice and approves structural changes
 - **Reviewers** (round-robin) — approve or return articles before publication
 - **BI team (Debanjan)** — Azure, SharePoint, and credentials

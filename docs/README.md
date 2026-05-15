@@ -127,6 +127,6 @@ Prompts live in `prompts/*.md` and are versioned. To change the voice or a templ
 
 ## Ownership
 
-Project owner: **Pablo Waimann** (`pablo.waimann@nexern.com`)
+Project owner: **Pablo Waimann** (`pablo.waimann@igaming.com`)
 Technology: Claude Code skill, no server of our own
 IT contact: Debanjan (BI team) for Azure, SharePoint, Passbolt.
