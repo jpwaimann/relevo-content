@@ -200,13 +200,13 @@
   <h1>Relevo Content Workflow</h1>
   <p class="lede">Automated SEO content generation for relevo.com. 24 sports, 3 content categories, multi-pass quality gate. Built as a Claude Code skill replacing the legacy n8n workflow.</p>
   <div class="status-line">
-    <strong>Current phase:</strong> Editorial validation (Phase 4 of 7). Style guide v1 deployed, 10-article QA batch generated, awaiting writer review to lock v1.1.
+    <strong>Current phase:</strong> Phase 4 of 5 — Validation &amp; integrations. Writer review of the May 15 batch is in flight; SharePoint inventory API, WordPress + Asana MCPs, and LiteLLM image models all need to land by <strong>Friday May 22</strong> for the end-to-end workflow review. <strong>Hard launch date: June 1</strong>, ahead of the FIFA World Cup 2026 kickoff on <strong>June 11</strong>.
   </div>
 </header>
 
 <h2>Roadmap</h2>
 
-<p>The project runs from May 1 through expected scale-out in late June. Phases 1–3 are complete; Phase 4 starts the editorial validation cycle. The Gantt below uses weekly granularity.</p>
+<p>The project runs from May 1 through the FIFA World Cup 2026 kickoff on June 11. Phases 1–3 are complete; Phase 4 is the current focus and must close on <strong>Friday May 22</strong>; Phase 5 takes the workflow into production with a <strong>hard public launch on June 1</strong>. The Gantt below uses weekly granularity.</p>
 
 <div class="gantt-wrap">
 <pre class="mermaid">
@@ -229,22 +229,19 @@ gantt
     10-article QA batch                :done, p3a, 2026-05-15, 1d
     Public hosting (GitHub Pages)      :done, p3b, 2026-05-15, 1d
 
-    section Phase 4 · Editorial validation
+    section Phase 4 · Validation & integrations
     Writer review of batch             :active, p4a, 2026-05-18, 5d
-    Style guide v1.1                   :p4b, 2026-05-20, 5d
+    Style guide v1.1                   :active, p4b, 2026-05-18, 5d
+    SharePoint inventory API           :p4c, 2026-05-18, 5d
+    WordPress + Asana MCPs             :p4d, 2026-05-18, 5d
+    LiteLLM image models               :p4e, 2026-05-18, 5d
+    Workflow live review (Fri 22)      :milestone, m2, 2026-05-22, 0d
 
-    section Phase 5 · Production integrations
-    SharePoint inventory API           :p5a, 2026-05-25, 5d
-    WordPress + Asana MCP              :p5b, 2026-05-25, 5d
-    LiteLLM image models               :p5c, 2026-05-27, 4d
-
-    section Phase 6 · First prod batch
-    Reviewer workflow live             :p6a, 2026-06-01, 5d
-    First production batch             :milestone, m2, 2026-06-05, 0d
-
-    section Phase 7 · Scale
-    Onboard 2nd editor                 :p7a, 2026-06-08, 7d
-    Scale to 50 articles per day       :p7b, 2026-06-15, 14d
+    section Phase 5 · Production launch
+    First production batch             :p5a, 2026-05-25, 5d
+    Public launch                      :milestone, m3, 2026-06-01, 0d
+    Ramp toward 50 articles per day    :p5b, 2026-06-01, 10d
+    FIFA World Cup 2026 kickoff        :milestone, m4, 2026-06-11, 0d
 </pre>
 </div>
 
@@ -285,42 +282,25 @@ gantt
 
   <div class="phase current">
     <div class="h">Phase 4 <span class="badge">current</span></div>
-    <div class="meta">May 18 – May 22 · Editorial validation</div>
+    <div class="meta">May 18 – May 22 · Validation &amp; integrations</div>
     <ul>
-      <li>Content writer reviews the May 15 batch</li>
-      <li>Feedback collected against style guide</li>
-      <li>Style guide v1.1 and template refinements merged</li>
+      <li>Content writer reviews the May 15 batch; style guide v1.1 merged</li>
+      <li>SharePoint Excel inventory wired via Microsoft Graph API</li>
+      <li>WordPress publishing via MCP (status <code>pending_review</code>)</li>
+      <li>Asana reviewer subtasks via MCP, round-robin assignment</li>
+      <li>LiteLLM image models enabled (blocked on BI team)</li>
+      <li><strong>Friday May 22:</strong> end-to-end workflow review with everything wired together</li>
     </ul>
   </div>
 
   <div class="phase pending">
     <div class="h">Phase 5 <span class="badge">next</span></div>
-    <div class="meta">May 25 – May 29 · Production integrations</div>
+    <div class="meta">May 25 – June 11 · Production launch</div>
     <ul>
-      <li>SharePoint Excel inventory wired via Microsoft Graph API</li>
-      <li>WordPress publishing via MCP (status <code>pending_review</code>)</li>
-      <li>Asana reviewer subtasks via MCP, round-robin assignment</li>
-      <li>LiteLLM image models enabled (blocked on BI team)</li>
-    </ul>
-  </div>
-
-  <div class="phase pending">
-    <div class="h">Phase 6 <span class="badge">later</span></div>
-    <div class="meta">Week of June 1 · First production batch</div>
-    <ul>
-      <li>Full reviewer workflow live</li>
-      <li>10–15 articles flow to WordPress as <code>pending_review</code></li>
-      <li>Asana notifications to assigned reviewers</li>
-    </ul>
-  </div>
-
-  <div class="phase pending">
-    <div class="h">Phase 7 <span class="badge">later</span></div>
-    <div class="meta">June 8 onward · Scale</div>
-    <ul>
-      <li>Second editor onboarded</li>
-      <li>Throughput ramps to 50 articles per day</li>
-      <li>Monitoring dashboards and weekly QA sampling</li>
+      <li>First production batch (week of May 25 – 29) flows to WordPress as <code>pending_review</code> with Asana reviewer notifications</li>
+      <li><strong>Public launch June 1</strong> — hard deadline. Live for users.</li>
+      <li>Ramp toward 50 articles per day across the first two weeks of June</li>
+      <li><strong>FIFA World Cup 2026 kickoff June 11</strong> — the site must be operational and ramping content by this date</li>
     </ul>
   </div>
 </div>

@@ -2,7 +2,7 @@
 
 Automated SEO content generation for [relevo.com](https://relevo.com). 24 sports, 3 content categories (Rules & Basics, Tactics Explainers, Origins), multi-pass quality gate. Built as a Claude Code skill replacing the legacy n8n workflow retired on 2026-05-14.
 
-**Current phase:** Editorial validation (Phase 4 of 7). Style guide v1 deployed, 10-article QA batch generated, awaiting writer review to lock v1.1.
+**Current phase:** Phase 4 of 5 — Validation & integrations. Writer review of the May 15 batch is in flight; SharePoint inventory API, WordPress + Asana MCPs, and LiteLLM image models all need to land by **Friday May 22** for the end-to-end workflow review. **Hard launch date: June 1**, ahead of the FIFA World Cup 2026 kickoff on **June 11**.
 
 **Live site:** [jpwaimann.github.io/relevo-content](https://jpwaimann.github.io/relevo-content/) (GitHub Pages from `main`).
 
@@ -10,7 +10,7 @@ Automated SEO content generation for [relevo.com](https://relevo.com). 24 sports
 
 ## Roadmap
 
-The project runs from May 1 through expected scale-out in late June. Phases 1–3 are complete; Phase 4 is the current focus. The Gantt below uses weekly granularity.
+The project runs from May 1 through the FIFA World Cup 2026 kickoff on June 11. Phases 1–3 are complete; Phase 4 is the current focus and must close on **Friday May 22**; Phase 5 takes the workflow into production with a **hard public launch on June 1**. The Gantt below uses weekly granularity.
 
 ```mermaid
 gantt
@@ -32,22 +32,19 @@ gantt
     10-article QA batch                :done, p3a, 2026-05-15, 1d
     Public hosting (GitHub Pages)      :done, p3b, 2026-05-15, 1d
 
-    section Phase 4 · Editorial validation
+    section Phase 4 · Validation & integrations
     Writer review of batch             :active, p4a, 2026-05-18, 5d
-    Style guide v1.1                   :p4b, 2026-05-20, 5d
+    Style guide v1.1                   :active, p4b, 2026-05-18, 5d
+    SharePoint inventory API           :p4c, 2026-05-18, 5d
+    WordPress + Asana MCPs             :p4d, 2026-05-18, 5d
+    LiteLLM image models               :p4e, 2026-05-18, 5d
+    Workflow live review (Fri 22)      :milestone, m2, 2026-05-22, 0d
 
-    section Phase 5 · Production integrations
-    SharePoint inventory API           :p5a, 2026-05-25, 5d
-    WordPress + Asana MCP              :p5b, 2026-05-25, 5d
-    LiteLLM image models               :p5c, 2026-05-27, 4d
-
-    section Phase 6 · First prod batch
-    Reviewer workflow live             :p6a, 2026-06-01, 5d
-    First production batch             :milestone, m2, 2026-06-05, 0d
-
-    section Phase 7 · Scale
-    Onboard 2nd editor                 :p7a, 2026-06-08, 7d
-    Scale to 50 articles per day       :p7b, 2026-06-15, 14d
+    section Phase 5 · Production launch
+    First production batch             :p5a, 2026-05-25, 5d
+    Public launch                      :milestone, m3, 2026-06-01, 0d
+    Ramp toward 50 articles per day    :p5b, 2026-06-01, 10d
+    FIFA World Cup 2026 kickoff        :milestone, m4, 2026-06-11, 0d
 ```
 
 ### Phase summary
@@ -57,10 +54,8 @@ gantt
 | 1 — n8n prototype | May 1 – May 13 | ✅ done | Personal n8n workflows; corporate migration to `n8n.bidwhig.com`; v17 stable |
 | 2 — CC-native pivot | May 14 | ✅ done | Skill `/relevo` scaffolded; style guide v1; templates for 3 categories; sports 15 → 24; smoke test score 95 |
 | 3 — Testing & batch | May 15 | ✅ done | 10-article QA batch (mean 90.3/100); GitHub Pages site |
-| 4 — Editorial validation | May 18 – 22 | 🔴 current | Writer reviews batch; style guide v1.1; template refinements |
-| 5 — Production integrations | May 25 – 29 | ⏳ next | SharePoint API; WordPress MCP; Asana MCP; LiteLLM image models |
-| 6 — First prod batch | Week of June 1 | ⏳ later | Full reviewer workflow live; first production articles |
-| 7 — Scale | June 8 onward | ⏳ later | Second editor onboarded; throughput ramps to 50/day |
+| 4 — Validation & integrations | May 18 – 22 | 🔴 current | Writer review of the batch; style guide v1.1; SharePoint inventory API; WordPress + Asana MCPs; LiteLLM image models. End-to-end workflow review on **Friday May 22** |
+| 5 — Production launch | May 25 – June 11 | ⏳ next | First production batch the week of May 25; **public launch June 1 (hard deadline)**; ramp toward 50 articles/day; **FIFA World Cup 2026 kickoff June 11** |
 
 ---
 
