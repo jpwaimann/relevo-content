@@ -161,9 +161,9 @@
 <h3>Phase 4 · By Friday May 22 — Validation &amp; integrations</h3>
 <ul>
   <li><strong>Editorial validation</strong> of the May 15 batch by the main content writer; <strong>style guide v1.1</strong> and category-template refinements merged.</li>
-  <li><strong>SharePoint Excel as live inventory</strong> via the Microsoft Graph API.</li>
-  <li><strong>WordPress publishing</strong> via MCP (articles arrive as <code>pending_review</code>).</li>
-  <li><strong>Asana reviewer subtasks</strong> via MCP, with round-robin assignment.</li>
+  <li><strong>SharePoint Excel as live inventory</strong> via the Microsoft Graph API. Status: <em>v2 master inventory file (articles + logs sheets) created on May 15; Graph API integration pending.</em></li>
+  <li><strong>WordPress publishing</strong> via MCP (articles arrive as <code>pending_review</code>). Status: <em>pending credentials handoff.</em></li>
+  <li><strong>Asana reviewer subtasks</strong> with round-robin assignment. Status: <em>✓ functional. The <code>scripts/asana_notify.py</code> helper in the skill repository reads each finished article&rsquo;s metadata and creates a subtask under the &ldquo;Solicitar artículo Relevo.com&rdquo; inbox with the quality journey, public preview link, and the next reviewer assigned. Tested end-to-end on the May 15 batch on May 15.</em></li>
   <li><strong>LiteLLM image models</strong> enabled (blocked on the BI team).</li>
   <li><strong>Workflow live review on Friday May 22</strong> with all pieces wired end-to-end.</li>
 </ul>

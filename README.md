@@ -54,7 +54,7 @@ gantt
 | 1 — n8n prototype | May 1 – May 13 | ✅ done | Personal n8n workflows; corporate migration to `n8n.bidwhig.com`; v17 stable |
 | 2 — CC-native pivot | May 14 | ✅ done | Skill `/relevo` scaffolded; style guide v1; templates for 3 categories; sports 15 → 24; smoke test score 95 |
 | 3 — Testing & batch | May 15 | ✅ done | 10-article QA batch (mean 90.3/100); GitHub Pages site |
-| 4 — Validation & integrations | May 18 – 22 | 🔴 current | Writer review of the batch; style guide v1.1; SharePoint inventory API; WordPress + Asana MCPs; LiteLLM image models. End-to-end workflow review on **Friday May 22** |
+| 4 — Validation & integrations | May 18 – 22 | 🔴 current | Writer review of the batch; style guide v1.1; SharePoint inventory API (v2 master Excel file created May 15); WordPress + **Asana MCPs (Asana side ✓ functional via `asana_notify.py`)**; LiteLLM image models. End-to-end workflow review on **Friday May 22** |
 | 5 — Production launch | May 25 – June 11 | ⏳ next | First production batch the week of May 25; **public launch June 1 (hard deadline)**; ramp toward 50 articles/day; **FIFA World Cup 2026 kickoff June 11** |
 
 ---
