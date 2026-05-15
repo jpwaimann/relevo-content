@@ -53,4 +53,4 @@ El código del skill (prompts, templates, scripts, sports_config) vive por separ
 
 ## 📬 Contacto
 
-Pablo Waimann · `pablo.waimann@nexern.com`
+Pablo Waimann · `pablo.waimann@igaming.com`
