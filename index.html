@@ -288,7 +288,8 @@ gantt
       <li>SharePoint Excel inventory wired via Microsoft Graph API <span class="badge">v2 master file created May 15</span></li>
       <li>WordPress publishing via MCP (status <code>pending_review</code>) — pending credentials handoff</li>
       <li>Asana reviewer subtasks <strong>✓ functional</strong> via <code>scripts/asana_notify.py</code> helper (tested end-to-end on the May 15 batch; round-robin reviewer pool, starts with one reviewer and grows)</li>
-      <li>LiteLLM image models enabled (blocked on BI team)</li>
+      <li>LiteLLM image generation <strong>✓ functional</strong> — <code>gpt-image-2</code> via the LiteLLM iGaming proxy, integrated into <code>scripts/imagen/</code>; smoke test passed end-to-end with automatic C2PA / JUMBF metadata stripping</li>
+      <li>Content inventory seeded with 148 topics across all 24 sports (2 Rules + 2 Tactics + 2 Origins each, Fútbol extras), all rows in <code>pending_review</code> awaiting editorial approval</li>
       <li><strong>Friday May 22:</strong> end-to-end workflow review with everything wired together</li>
     </ul>
   </div>
@@ -429,7 +430,7 @@ gantt
 
 <ul>
   <li><strong>Editorial validation.</strong> The main content writer reviews the May 15 batch and the team applies feedback to the style guide and templates.</li>
-  <li><strong>Production integrations.</strong> SharePoint Excel as live inventory (via Microsoft Graph), WordPress upload via MCP, Asana reviewer notifications via MCP, image generation via LiteLLM (pending image models being enabled in the corporate proxy).</li>
+  <li><strong>Production integrations.</strong> SharePoint Excel as live inventory (via Microsoft Graph), WordPress upload via MCP, Asana reviewer notifications via MCP, image generation via LiteLLM (gpt-image-2 functional as of 2026-05-18).</li>
   <li><strong>Three sports without official rulebooks</strong> in SharePoint (Wrestling, Olympic Games, Paralympic Games). Without those PDFs, Rules-category coverage for them is blocked.</li>
 </ul>
 
