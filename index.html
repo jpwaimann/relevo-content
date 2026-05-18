@@ -303,7 +303,52 @@ gantt
       <li><strong>FIFA World Cup 2026 kickoff June 11</strong> — the site must be operational and ramping content by this date</li>
     </ul>
   </div>
+
+  <div class="phase pending">
+    <div class="h">Phase 6 <span class="badge">backlog</span></div>
+    <div class="meta">Post-launch · v2 enhancements (TBD)</div>
+    <ul>
+      <li>Search volume integration (Ahrefs / SEMrush) to inform topic ideation</li>
+      <li>Automatic priority logic (P0 / P1 / P2) based on volume, sports calendar, coverage gaps</li>
+      <li>Sports data API feed (SportRadar / API-Football) for Origins ideation freshness</li>
+      <li>No committed dates — scheduled after the FIFA World Cup window stabilizes</li>
+    </ul>
+  </div>
 </div>
+
+<h2>v2 enhancements (post-launch backlog)</h2>
+
+<p>These items are out of scope for the June 1 MVP launch but are tracked here so the editorial and engineering teams can see where the workflow is heading. None of them have committed dates — they will be scheduled after the FIFA World Cup window has stabilized and we have real production data about what reviewers and the SEO team actually need.</p>
+
+<h3>Search volume integration (Ahrefs / SEMrush)</h3>
+
+<ul>
+  <li><strong>Today:</strong> topics are generated blind from the rulebook plus WebSearch coverage. No keyword volume signal informs topic selection.</li>
+  <li><strong>v2:</strong> pull Ahrefs or SEMrush data per topic candidate so the LLM can rank or filter ideation against real search demand.</li>
+  <li><strong>Blocker for MVP:</strong> no API access is budgeted yet; bringing it in would also slow ideation while we tune the prompt to weigh volume sensibly against editorial judgment.</li>
+</ul>
+
+<h3>Automatic priority logic (P0 / P1 / P2)</h3>
+
+<ul>
+  <li><strong>Today:</strong> every topic written to the inventory is hard-coded to <code>priority = P1</code>. No per-topic prioritization decisions are being made.</li>
+  <li><strong>v2:</strong> priority is assigned automatically using a combination of:
+    <ul>
+      <li>Search volume (via Ahrefs / SEMrush — depends on the integration above)</li>
+      <li>Sports calendar (football pieces lifted to P0 during May–June 2026 because of the FIFA World Cup; tennis to P0 during Grand Slam weeks; F1 to P0 over race weekends)</li>
+      <li>Coverage gap analysis (sports with fewer existing articles get a P0 lift to balance the catalog)</li>
+    </ul>
+  </li>
+  <li><strong>Blocker for MVP:</strong> the human-in-the-loop process for priority review is not designed yet. We are deferring until launch is behind us and we have observed what reviewers actually want to see in the queue.</li>
+</ul>
+
+<h3>Sports data API feed for Origins ideation</h3>
+
+<ul>
+  <li><strong>Today:</strong> Origins topics use WebSearch to surface relevant current players. This carries risk: stale information, missed breakout athletes, inaccurate ages or teams.</li>
+  <li><strong>v2:</strong> integrate a sports data API (e.g. SportRadar, API-Football) so Origins ideation has fresh per-sport context — top scorers, recent transfers, injury comebacks, breakout rookies. Eventually this could auto-suggest player candidates rather than relying on the editor's mental model.</li>
+  <li><strong>Blocker for MVP:</strong> cost and integration time. WebSearch combined with editorial curation is good enough for the first production batches.</li>
+</ul>
 
 <h2>Repository structure</h2>
 
