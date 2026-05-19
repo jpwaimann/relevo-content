@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test journal · Relevo Content Workflow</title>
+<style>
+  :root { --rojo: #e63946; --azul: #1d3557; --azul-claro: #457b9d; --crema: #f1faee; --gris-1: #f8f9fa; --gris-2: #e9ecef; --gris-3: #adb5bd; --verde: #2a9d8f; --texto: #1a1a1a; --texto-suave: #495057; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--texto); background: #fff; margin: 0; line-height: 1.65; font-size: 17px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 3em 1.5em 5em; }
+  header.hero { border-bottom: 4px solid var(--rojo); padding-bottom: 1.5em; margin-bottom: 2.4em; }
+  .eyebrow { display: inline-block; text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; font-weight: 700; color: var(--rojo); margin-bottom: 0.6em; }
+  h1 { font-size: 2.1em; line-height: 1.2; margin: 0 0 0.4em; color: var(--azul); font-weight: 800; letter-spacing: -0.01em; }
+  .lede { font-size: 1.1em; color: var(--texto-suave); margin: 0; }
+  h2 { font-size: 1.45em; color: var(--azul); margin: 2.6em 0 0.4em; font-weight: 700; letter-spacing: -0.01em; border-bottom: 1px solid var(--gris-2); padding-bottom: 0.3em; }
+  h2 .date { color: var(--texto-suave); font-weight: 500; font-size: 0.7em; letter-spacing: 0.04em; text-transform: uppercase; margin-left: 0.6em; }
+  h3 { font-size: 1.05em; color: var(--azul); margin: 1.6em 0 0.4em; font-weight: 700; }
+  p { margin: 0 0 1em; }
+  strong { font-weight: 600; }
+  a { color: var(--azul-claro); }
+  a:hover { color: var(--rojo); }
+  code { background: var(--gris-2); padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, "SF Mono", Monaco, monospace; font-size: 0.85em; }
+  pre { background: var(--gris-1); padding: 1em 1.2em; border-radius: 6px; border-left: 3px solid var(--gris-3); overflow-x: auto; font-size: 0.85em; line-height: 1.5; }
+  pre code { background: transparent; padding: 0; font-size: inherit; }
+  ul, ol { padding-left: 1.4em; margin: 0 0 1.2em; }
+  li { margin-bottom: 0.4em; }
+  table { width: 100%; border-collapse: collapse; margin: 1em 0 1.5em; font-size: 0.92em; }
+  th, td { text-align: left; padding: 0.6em 0.9em; border-bottom: 1px solid var(--gris-2); vertical-align: top; }
+  th { background: var(--azul); color: #fff; font-weight: 600; border-bottom: none; }
+  tr:last-child td { border-bottom: none; }
+  .meta-grid { display: grid; grid-template-columns: max-content 1fr; gap: 0.5em 1.2em; background: var(--gris-1); padding: 1em 1.2em; border-radius: 6px; margin: 1em 0 1.4em; font-size: 0.92em; }
+  .meta-grid dt { font-weight: 600; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.8em; padding-top: 0.15em; }
+  .meta-grid dd { margin: 0; }
+  .callout { background: var(--crema); border-left: 4px solid var(--verde); padding: 0.9em 1.2em; margin: 1.2em 0; border-radius: 0 4px 4px 0; font-size: 0.95em; }
+  .callout.warn { background: #fff7ed; border-left-color: var(--rojo); }
+  .callout.note { background: #f0f7ff; border-left-color: var(--azul-claro); }
+  .callout p:last-child { margin-bottom: 0; }
+  .tag { display: inline-block; padding: 2px 9px; border-radius: 3px; font-size: 0.75em; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .tag.pass { background: #d8f3dc; color: #1b4332; }
+  .tag.partial { background: #fff3bf; color: #845b00; }
+  .tag.fail { background: #ffd6d6; color: #7a0000; }
+  footer { margin-top: 3.5em; padding-top: 1.5em; border-top: 1px solid var(--gris-2); color: var(--texto-suave); font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Test journal · Updated 2026-05-19</div>
+  <h1>Relevo Content Workflow — Test journal</h1>
+  <p class="lede">Chronological log of integration and end-to-end tests run against the Relevo content pipeline. Each entry captures what was tested, how it behaved, what was confirmed, and what was logged for follow-up. Newest entries at the top.</p>
+</header>
+
+<div class="callout note">
+  <p><strong>How to read this journal.</strong> Each entry covers one focused test session. The <em>What was tested</em> block frames the scope. The <em>Steps</em> table shows every concrete action taken with its result. The <em>Follow-ups</em> block lists open questions or non-blocking issues that need attention before production launch.</p>
+</div>
+
+<h2>First WordPress publish E2E <span class="date">2026-05-19</span></h2>
+
+<dl class="meta-grid">
+  <dt>Result</dt><dd><span class="tag pass">Pass</span></dd>
+  <dt>Scope</dt><dd>Validation of the publication leg of the pipeline against the real <code>relevo-com.sub.plus</code> site, via the iGaming WordPress MCP (<code>ig-mcp-proxy</code>).</dd>
+  <dt>Article reused</dt><dd>"Qué es el fuera de juego en fútbol y cómo funciona" (smoke test from May 14, quality 95)</dd>
+  <dt>Output</dt><dd>Post <strong>16091</strong> created as <code>draft</code>; attachment <strong>16090</strong> uploaded as featured image; verified visually by the content lead in the WP admin editor.</dd>
+  <dt>Reviewers</dt><dd>Pablo Waimann, Giannina Castillo</dd>
+</dl>
+
+<h3>What was tested</h3>
+
+<p>The May 14 smoke article was reused (no new generation) and pushed through the WordPress MCP path. The intent was to confirm the plumbing end-to-end — that <code>media_upload</code>, <code>posts_create</code> with a featured image, taxonomy attachment, and read-back via <code>posts_get</code> all work against the live site without surprises from the theme, plugins, or permission matrix.</p>
+
+<h3>Steps</h3>
+
+<table>
+  <thead><tr><th>Step</th><th>Tool</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>MCP identity attached to site</td>
+      <td><code>ig_proxy_set_identity</code></td>
+      <td>Returned <code>{"email":"pablo.waimann@igaming.com"}</code>. The HMAC token from the WP admin <code>/wp-admin/admin.php?page=ig-mcp-server</code> page was registered in the proxy's local store; no per-site token needed for subsequent connections (multi-site SSO via shared HMAC).</td>
+    </tr>
+    <tr>
+      <td>Site connection registered</td>
+      <td><code>ig_proxy_add_connection</code></td>
+      <td>Site responded with <code>{"home_url":"https://relevo-com.sub.plus","wp_version":"6.9.4","timezone":"+00:00"}</code>. Connection <code>relevo-com-sub-plus</code> set as active. ~200 site-specific tools were discovered automatically (posts CRUD, media, terms, schema, shortcodes, optimizer, themes).</td>
+    </tr>
+    <tr>
+      <td>Site diagnostics + permissions</td>
+      <td><code>mcp_diagnostics</code></td>
+      <td>Confirmed user role: <code>administrator</code>. Permissions matrix shows <code>create/edit</code> on posts, media, terms, schema; <strong>no <code>delete</code> on any resource</strong> (limit baked into the MCP). Theme: <code>relevo:1.0.0</code>. Active iGaming plugins: <code>ig-shortcodes</code> 6.3.10.2, <code>ig-optimizer</code> 6.3.10.2, <code>ig-central</code> 1.0.0. <code>ig-schema</code> is <strong>absent</strong> — schema.org markup will need to flow through meta or theme until that plugin is installed.</td>
+    </tr>
+    <tr>
+      <td>Category lookup</td>
+      <td><code>wp-terms_search</code></td>
+      <td>Found existing category <code>futbol</code> (term_id 3329, 281 posts already published). No need to create — reused. Theme also exposes <code>futbol-femenino</code> and <code>futbol-sala</code> as siblings/children.</td>
+    </tr>
+    <tr>
+      <td>Featured image upload</td>
+      <td><code>media_upload</code></td>
+      <td>Attachment 16090 created. URL: <code>https://relevo-com.sub.plus/wp-content/uploads/2026/05/test-relevo-futbol-pitch.jpg</code>. The Relevo theme auto-generated six derived crops: <code>thumbnail</code> (150×150), <code>card-feed</code> (300×280), <code>card-small</code> (285×178), <code>author-avatar</code> (64×64), <code>team-logo</code> (80×80), <code>player-photo</code> (120×120). The alt text was set in the same call.</td>
+    </tr>
+    <tr>
+      <td>Post create as draft</td>
+      <td><code>posts_create</code></td>
+      <td>Post 16091, type <code>post</code>, status <code>draft</code>, slug <code>test-fuera-de-juego-futbol</code>, category <code>futbol</code>, featured image attached via <code>_thumbnail_id=16090</code>. Body HTML (10.5 KB, 1,592 words) persisted. Excerpt (meta description equivalent) also stored.</td>
+    </tr>
+    <tr>
+      <td>Read-back verification</td>
+      <td><code>posts_get</code></td>
+      <td>All fields persisted as expected: title, slug, excerpt, content, taxonomies, <code>_thumbnail_id</code>, post_status. Round-trip confirmed.</td>
+    </tr>
+    <tr>
+      <td>Visual review</td>
+      <td>WP admin editor</td>
+      <td>Pablo and Giannina opened the draft at <code>/wp-admin/post.php?post=16091&action=edit</code>. The draft renders correctly with the Relevo theme. Featured image, category, slug, excerpt all visible in the editor as expected.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>What this unblocks</h3>
+
+<p>The publication leg of the pipeline (stage 7 in the <a href="project-overview.html">project overview</a>) is now wired. Combined with the May 18 milestones — Asana reviewer subtasks functional, image generation via <code>gpt-image-2</code> integrated, 148-topic inventory seeded — every stage of the pipeline has a working real-world implementation. Phase 4 is on track to close on Friday May 22 with the end-to-end workflow review.</p>
+
+<h3>Follow-ups</h3>
+
+<ul>
+  <li><strong>post_author override.</strong> Passing <code>post_author: 77</code> (Pablo's user ID) to <code>posts_create</code> resulted in the saved post having <code>post_author: 1</code> (admin default). Either the WP adapter ignores the argument on create, or a capability check is missing. Not blocking for the test, but the first real publish should attribute correctly. Two workarounds available: call <code>posts_update</code> immediately after create, or set authorship manually in the admin.</li>
+  <li><strong>Image upload path needs hardening.</strong> The featured image had to be downscaled from 1024×1024 PNG (1.3 MB) to a 300×300 JPEG (13 KB) to fit through the interactive Claude Code session. This is a limitation of pasting base64 inline through the assistant's response, not of the MCP. The <code>source.local_path</code> option in <code>media_upload</code> is rejected by the current proxy build (<code>@backend/mcp-proxy</code> 0.2.1), and posting to a public host is correctly blocked as unauthorized exfiltration. The fix is a Python helper that issues the <code>media_upload</code> call directly from the host that already has the image file, returning only the <code>attachment_id</code> back to the pipeline. Tracked as the next item after this milestone.</li>
+  <li><strong>SEO meta fields.</strong> The MCP exposes <code>posts_meta_set</code> and a dedicated <code>ig-optimizer</code> adapter, but no meta description was set during this test. The post_excerpt holds the descriptor for now. Before real publish, confirm with the SEO team whether the theme reads meta description from <code>post_excerpt</code>, a Yoast-style meta key, or the ig-optimizer plugin, and wire that into <code>/relevo</code>.</li>
+  <li><strong>Schema.org.</strong> The <code>ig-schema</code> plugin is not installed on <code>relevo-com.sub.plus</code>. If structured data matters for SEO (Article, FAQ, BreadcrumbList), either install the plugin or generate JSON-LD in the post body / theme template.</li>
+  <li><strong>Anthropic safety classifier transient outage.</strong> During this session the <code>claude-opus-4-7[1m]</code> safety classifier was unavailable for approximately six minutes (14:24 – 14:30 UTC), blocking every MCP and Bash call with <code>"temporarily unavailable, so auto mode cannot determine the safety of &lt;tool&gt;"</code>. This is upstream infrastructure, not the MCP. If it recurs, the only recovery is retrying after the classifier returns. Logged here for future operators who see the same symptom.</li>
+</ul>
+
+<h3>Artifacts</h3>
+
+<ul>
+  <li>Draft article: <code>https://relevo-com.sub.plus/wp-admin/post.php?post=16091&action=edit</code></li>
+  <li>Featured image: <a href="https://relevo-com.sub.plus/wp-content/uploads/2026/05/test-relevo-futbol-pitch.jpg">test-relevo-futbol-pitch.jpg</a></li>
+  <li>Source article (May 14 smoke run): <a href="../runs/relevo-rules-smoke-1778792284/article.html">runs/relevo-rules-smoke-1778792284/article.html</a></li>
+</ul>
+
+<h2>Entry template for future tests</h2>
+
+<p>When adding a new entry, copy the block below to the top of the journal (just under the intro callout). Date format <code>YYYY-MM-DD</code>. Result tag is one of <span class="tag pass">Pass</span>, <span class="tag partial">Partial</span>, <span class="tag fail">Fail</span>.</p>
+
+<pre><code>&lt;h2&gt;[Short test name] &lt;span class="date"&gt;YYYY-MM-DD&lt;/span&gt;&lt;/h2&gt;
+
+&lt;dl class="meta-grid"&gt;
+  &lt;dt&gt;Result&lt;/dt&gt;&lt;dd&gt;&lt;span class="tag pass"&gt;Pass&lt;/span&gt;&lt;/dd&gt;
+  &lt;dt&gt;Scope&lt;/dt&gt;&lt;dd&gt;[One sentence — what part of the pipeline was tested.]&lt;/dd&gt;
+  &lt;dt&gt;Output&lt;/dt&gt;&lt;dd&gt;[IDs, URLs, files — the concrete artifacts produced.]&lt;/dd&gt;
+  &lt;dt&gt;Reviewers&lt;/dt&gt;&lt;dd&gt;[Names of who validated.]&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3&gt;What was tested&lt;/h3&gt;
+&lt;p&gt;[Paragraph framing the test.]&lt;/p&gt;
+
+&lt;h3&gt;Steps&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Step&lt;/th&gt;&lt;th&gt;Tool&lt;/th&gt;&lt;th&gt;Result&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;[step]&lt;/td&gt;&lt;td&gt;&lt;code&gt;[tool]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;[result]&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;Follow-ups&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Open question or non-blocking issue.]&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+<footer>
+  Project owner: Pablo Waimann · <a href="mailto:pablo.waimann@igaming.com">pablo.waimann@igaming.com</a><br>
+  Repository: <a href="https://github.com/jpwaimann/relevo-content">github.com/jpwaimann/relevo-content</a>
+</footer>
+
+</div>
+</body>
+</html>
