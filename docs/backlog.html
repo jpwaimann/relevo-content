@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backlog · Relevo Content Workflow</title>
+<style>
+  :root { --rojo: #e63946; --azul: #1d3557; --azul-claro: #457b9d; --crema: #f1faee; --gris-1: #f8f9fa; --gris-2: #e9ecef; --gris-3: #adb5bd; --verde: #2a9d8f; --naranja: #f4a261; --texto: #1a1a1a; --texto-suave: #495057; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--texto); background: #fff; margin: 0; line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 3em 1.5em 5em; }
+  header.hero { border-bottom: 4px solid var(--rojo); padding-bottom: 1.5em; margin-bottom: 2.2em; }
+  .eyebrow { display: inline-block; text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; font-weight: 700; color: var(--rojo); margin-bottom: 0.6em; }
+  h1 { font-size: 2.05em; line-height: 1.2; margin: 0 0 0.35em; color: var(--azul); font-weight: 800; letter-spacing: -0.01em; }
+  .lede { font-size: 1.08em; color: var(--texto-suave); margin: 0; }
+  h2 { font-size: 1.45em; color: var(--azul); margin: 2.6em 0 0.6em; font-weight: 700; letter-spacing: -0.01em; border-bottom: 1px solid var(--gris-2); padding-bottom: 0.3em; display: flex; align-items: center; gap: 0.6em; }
+  h2 .prio-pill { font-size: 0.55em; padding: 4px 10px; border-radius: 4px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  h2 .prio-pill.p0 { background: var(--rojo); color: #fff; }
+  h2 .prio-pill.p1 { background: var(--naranja); color: #1a1a1a; }
+  h2 .prio-pill.p2 { background: var(--azul-claro); color: #fff; }
+  h2 .prio-pill.p3 { background: var(--gris-3); color: #1a1a1a; }
+  h2 .prio-pill.done { background: var(--verde); color: #fff; }
+  h3 { font-size: 1.05em; color: var(--azul); margin: 1.7em 0 0.4em; font-weight: 700; }
+  h3 .item-code { display: inline-block; background: var(--gris-1); border: 1px solid var(--gris-2); padding: 1px 8px; border-radius: 4px; margin-right: 0.5em; font-family: ui-monospace, "SF Mono", Monaco, monospace; font-size: 0.78em; font-weight: 600; color: var(--texto-suave); letter-spacing: 0.02em; vertical-align: 1px; }
+  p { margin: 0 0 0.85em; }
+  strong { font-weight: 600; }
+  a { color: var(--azul-claro); }
+  a:hover { color: var(--rojo); }
+  code { background: var(--gris-2); padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, "SF Mono", Monaco, monospace; font-size: 0.86em; }
+  ul, ol { padding-left: 1.4em; margin: 0 0 1em; }
+  li { margin-bottom: 0.3em; }
+  table { width: 100%; border-collapse: collapse; margin: 0.6em 0 1.4em; font-size: 0.92em; }
+  th, td { text-align: left; padding: 0.55em 0.9em; border-bottom: 1px solid var(--gris-2); vertical-align: top; }
+  th { background: var(--azul); color: #fff; font-weight: 600; border-bottom: none; }
+  tr:last-child td { border-bottom: none; }
+  .callout { background: var(--crema); border-left: 4px solid var(--azul-claro); padding: 0.9em 1.2em; margin: 1.4em 0; border-radius: 0 4px 4px 0; font-size: 0.96em; }
+  .callout p:last-child { margin-bottom: 0; }
+  .item-meta { font-size: 0.88em; color: var(--texto-suave); margin: 0.2em 0 0.6em; }
+  .item-meta .label { font-weight: 600; color: var(--azul); margin-right: 0.4em; }
+  .item-meta .sep { color: var(--gris-3); margin: 0 0.6em; }
+  .resolved-list li { color: var(--texto-suave); }
+  .resolved-list li::marker { color: var(--verde); }
+  footer { margin-top: 3.5em; padding-top: 1.5em; border-top: 1px solid var(--gris-2); color: var(--texto-suave); font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Backlog · Updated 2026-05-19</div>
+  <h1>Relevo Content Workflow — Backlog</h1>
+  <p class="lede">Consolidated open items pulled from session memories, README follow-ups, and integration tests through May 19, 2026. Each entry has a priority (P0 / P1 / P2 / P3), a category, an owner, and a brief rationale.</p>
+</header>
+
+<div class="callout">
+  <p><strong>How to use this page.</strong> Items are grouped by priority bucket, newest changes at the top of each bucket. Resolved items move to the <a href="#resolved">Recently resolved</a> section at the bottom. As new items emerge they get filed in their natural bucket and indexed in the table below.</p>
+</div>
+
+<h3>Priority legend</h3>
+
+<table>
+  <thead><tr><th>Priority</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><strong>P0</strong></td><td>Blocks the <strong>June 1</strong> public launch. Must close by then.</td></tr>
+    <tr><td><strong>P1</strong></td><td>Quality / robustness gate for the first real publishes. Should close before June 1 but launch can survive a slip.</td></tr>
+    <tr><td><strong>P2</strong></td><td>Post-launch — scheduled after the FIFA window stabilises. Documented for visibility, no commit date.</td></tr>
+    <tr><td><strong>P3</strong></td><td>Tech debt and nice-to-have cleanup. No commitment.</td></tr>
+  </tbody>
+</table>
+
+<h3>Categories</h3>
+
+<table>
+  <thead><tr><th>Category</th><th>Scope</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Editorial</strong></td><td>Review flow, style guide, content quality decisions</td></tr>
+    <tr><td><strong>Pipeline</strong></td><td>The <code>/relevo</code> skill and its sub-commands</td></tr>
+    <tr><td><strong>Integrations</strong></td><td>SharePoint, WordPress, Asana, LiteLLM, Azure</td></tr>
+    <tr><td><strong>SEO / Schema</strong></td><td>Meta tags, structured data, theme alignment</td></tr>
+    <tr><td><strong>Infrastructure</strong></td><td>Hosts, DNS, certificates, secrets, observability</td></tr>
+    <tr><td><strong>Documentation</strong></td><td>Public docs, journals, internal references</td></tr>
+  </tbody>
+</table>
+
+<h2>Blocks the June 1 launch <span class="prio-pill p0">P0</span></h2>
+
+<h3><span class="item-code">EDIT-01</span> Review flow for the 148 seeded topics</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Editorial
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo + Joel
+</p>
+<p>Nothing downstream runs until topics graduate from <code>pending_review</code> to <code>pending</code>. The Inventory has had 148 rows in <code>pending_review</code> since the May 18 bulk seed. <code>/relevo new</code> has no material to pick from until at least the first batch is approved.</p>
+<p><strong>Tools already in place:</strong> <code>scripts/relevo_approve.py approve --sport &lt;X&gt; --category &lt;Y&gt;</code> (or <code>--ids 11,12,13</code>).</p>
+<p><strong>Decision pending:</strong> how Joel performs the review at scale. Three options framed on May 18 EOD: (a) one giant Asana task with all 147 rows; (b) sport-by-sport with a 30-topic first batch; (c) approval in lots via <code>relevo_approve.py</code> after a visual review in the Excel.</p>
+
+<h3><span class="item-code">EDIT-02</span> Style guide v1.1</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Editorial
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Joel
+</p>
+<p>The main content writer's feedback on the May 15 batch (10 articles, mean score 90.3) was supposed to land in a v1.1 of <code>prompts/style_guide.md</code> before the Friday May 22 workflow review. Phase 4 milestone depends on it.</p>
+
+<h3><span class="item-code">INTEG-01</span> First real publish E2E</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Integrations / Pipeline
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo
+</p>
+<p>The May 19 test reused the May 14 smoke article and pushed it as a draft (post 16091) — that validated the plumbing. The first <strong>production</strong> publish needs an approved topic from EDIT-01, the correct <code>post_author</code>, the SEO meta wired in, and the Asana subtask flowing to the actual reviewer.</p>
+<p><strong>Pre-reqs:</strong> EDIT-01, SEO-01, INFRA-01.</p>
+
+<h3><span class="item-code">EDIT-03</span> Workflow live review milestone — May 22</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Editorial / Pipeline
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo
+</p>
+<p>The Friday May 22 review is the hard close of Phase 4. Demonstrate <code>/relevo content-plan</code> and <code>/relevo new</code> end-to-end with a real topic, real WP draft, real Asana subtask. The earlier EDIT-01 / INTEG-01 items have to feed into this.</p>
+
+<h2>Quality and robustness gates <span class="prio-pill p1">P1</span></h2>
+
+<h3><span class="item-code">INFRA-01</span> <code>post_author</code> is overridden by the WP adapter</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Integrations / Infrastructure
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo (investigation), Pipeline (fix)
+</p>
+<p>On May 19, <code>posts_create</code> was called with <code>post_author: 77</code> (Pablo's WP user ID) and the saved post had <code>post_author: 1</code> (admin default). Either the adapter ignores <code>post_author</code> on create, or there is a capability check we are missing.</p>
+<p><strong>Workarounds available:</strong> (a) call <code>posts_update</code> immediately after create with the correct <code>post_author</code>; (b) set authorship manually in the admin. Either fine for the immediate publish; the real fix is to understand whether the adapter accepts the field.</p>
+
+<h3><span class="item-code">SEO-01</span> Meta description plumbing</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>SEO / Schema
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo + SEO team
+</p>
+<p>The May 19 test stored the meta description in <code>post_excerpt</code>, which the Relevo theme may read as a fallback. We have not confirmed which key the theme actually reads:</p>
+<ul>
+  <li><code>post_excerpt</code> (current placement)</li>
+  <li><code>_yoast_wpseo_metadesc</code> (Yoast — not detected in <code>plugins_list</code>)</li>
+  <li><code>ig-optimizer</code> plugin (present, v6.3.10.2)</li>
+</ul>
+<p><strong>Action:</strong> confirm with SEO team, then update <code>cmd_new.md</code> step 7.b to set the right meta key.</p>
+
+<h3><span class="item-code">SEO-02</span> Schema.org structured data</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>SEO / Schema
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo + BI team
+</p>
+<p>The <code>ig-schema</code> plugin is absent on <code>relevo-com.sub.plus</code>. If structured data matters (Article, FAQ, BreadcrumbList for the Rules pages), one of these:</p>
+<ul>
+  <li>Install <code>ig-schema</code> plugin (request to Debanjan / BI team)</li>
+  <li>Generate JSON-LD inline in the article HTML during the pipeline</li>
+  <li>Skip schema for MVP, revisit post-launch</li>
+</ul>
+
+<h3><span class="item-code">INTEG-02</span> Round-robin reviewer pool and SLA</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Editorial
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo + Joel
+</p>
+<p>Asana subtasks currently all go to Joel because he is the only reviewer in the pool. Once a second reviewer joins, the <code>asana_notify.py</code> helper has a round-robin slot but the SLA criteria (return vs approve, response time) are not defined.</p>
+
+<h3><span class="item-code">PIPE-01</span> Origins category — fresh topic generation</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Pipeline
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo (decision)
+</p>
+<p>Rules and Tactics topics derive cleanly from the rulebook PDF. <strong>Origins</strong> (athlete biographies) needs current relevance — who is trending, who is breaking out, who recently transferred. The model does not know this without help.</p>
+<p><strong>Options:</strong> (a) mandatory WebSearch in the Origins flow; (b) editorial curation (the editor pre-fills the candidate list and the skill only generates hooks); (c) sports data API; (d) hybrid.</p>
+<p><strong>Status:</strong> Deferred during the May 18 bulk seed; the 48 Origins topics there were generated blind. Quality of those should be re-checked.</p>
+
+<h3><span class="item-code">INTEG-03</span> Azure app — application permissions (path B)</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Integrations / Infrastructure
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Debanjan (BI team)
+</p>
+<p>Path A (device-code MSAL) works and is what <code>scripts/sharepoint_msal.py</code> uses today. Path B (application permissions + admin consent on the Azure AD app <code>n8n</code>) would let server-side automation run without Pablo's user session — needed for cron daily reports or any unattended workflow.</p>
+<p><strong>Status:</strong> Debanjan said on May 18 the grant was applied, but client_credentials still returns <code>roles: []</code> and <code>/sites</code> + <code>/shares/.../driveItem</code> still 401. Pending: screenshot of the API permissions page to verify whether he added Delegated instead of Application, or did not click "Grant admin consent".</p>
+
+<h3><span class="item-code">INFRA-02</span> Rotate the Azure client secret</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Infrastructure
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo + Debanjan
+</p>
+<p>The client secret for the Azure AD app <code>n8n</code> was pasted into chat on May 15 to verify the credentials. The secret ends in <code>…CVqxKcYr</code>. Once path B (INTEG-03) lands, rotate the secret in Azure Portal → Certificates &amp; secrets and update Passbolt.</p>
+
+<h3><span class="item-code">INTEG-04</span> Sites.Selected scope confirmation with CTO</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Infrastructure
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo + CTO
+</p>
+<p>The <code>Sites.Selected</code> permission for the Azure app was requested against the whole <code>seoberlin</code> site, which includes 55 sibling folders for other ES Market projects. Pablo chose this on May 19 to move faster, but the CTO might prefer narrower scope. Plan B is to create a dedicated <code>/sites/relevo/</code> site, move the Content folder, and grant against that. Estimated cost of Plan B: ~45 minutes + script URL updates.</p>
+
+<h3><span class="item-code">INFRA-03</span> Image format quirk — Pillow re-encode</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Pipeline / Infrastructure
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pipeline
+</p>
+<p><code>scripts/imagen/strip-ai-metadata.py</code> re-encodes images via Pillow to strip C2PA / JUMBF / OpenAI metadata. The output sometimes ends up as PNG bytes inside a <code>.jpg</code> file (extension lies). WordPress and most tools accept it without complaint, but it is technically incorrect.</p>
+<p><strong>Fix:</strong> make the strip script preserve the original format (detect from input bytes and write PNG to <code>.png</code>, JPEG to <code>.jpg</code>). Low priority — no functional impact today.</p>
+
+<h3><span class="item-code">INFRA-04</span> Theme brand visual style for image generation</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Pipeline / Editorial
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo (define)
+</p>
+<p><code>lib/image.md</code> has a conservative placeholder for <code>vars.style</code> (cinematic editorial sports photography, rim light, etc.). It works but is generic. When Pablo defines the real brand visual (rim light? colour grade? composition rules?), update that field — zero code change required.</p>
+
+<h2>Post-launch <span class="prio-pill p2">P2</span></h2>
+
+<p><em>No commit date — scheduled after the FIFA window stabilises.</em></p>
+
+<h3><span class="item-code">V2-01</span> Search volume integration (Ahrefs / SEMrush)</h3>
+<p class="item-meta"><span class="label">Category:</span>Pipeline</p>
+<p>Today topics are generated blind from the rulebook + WebSearch. Adding keyword volume per candidate would let the LLM rank or filter ideation against real search demand. <strong>Blocker:</strong> no API access is budgeted; integration would also slow ideation while we tune the prompt.</p>
+
+<h3><span class="item-code">V2-02</span> Automatic priority logic (P0 / P1 / P2)</h3>
+<p class="item-meta"><span class="label">Category:</span>Pipeline</p>
+<p>Every topic in the inventory is currently <code>priority = P1</code> hard-coded. v2 assigns priority automatically based on (a) search volume from V2-01, (b) sports calendar (football lifted to P0 during May–June 2026 for the FIFA WC, tennis P0 during Grand Slam weeks), (c) coverage gap analysis. <strong>Blocker:</strong> the human-in-the-loop priority review process is not designed yet.</p>
+
+<h3><span class="item-code">V2-03</span> Sports data API feed for Origins ideation</h3>
+<p class="item-meta"><span class="label">Category:</span>Pipeline</p>
+<p>Origins topics currently use WebSearch to surface relevant athletes, which risks stale data. A real sports API (SportRadar, API-Football) would give fresh per-sport context — top scorers, transfers, breakout rookies — and eventually auto-suggest candidates. <strong>Blocker:</strong> cost + integration time. WebSearch + editorial curation is enough for the first production batches.</p>
+
+<h3><span class="item-code">V2-04</span> Cron daily reports</h3>
+<p class="item-meta"><span class="label">Category:</span>Pipeline / Editorial</p>
+<p>Pablo parked this on May 15. The idea was a daily summary of queue state, generation throughput, scores, and outliers sent to a Slack / email digest.</p>
+
+<h3><span class="item-code">V2-05</span> Asana MCP — wire into Claude Code settings.json</h3>
+<p class="item-meta"><span class="label">Category:</span>Integrations</p>
+<p>The <code>asana_notify.py</code> helper covers the production need today, but a native Asana MCP would let the assistant query and create tasks inline. The setup requires a Claude Code restart (blast radius), so it is deferred until there is a concrete benefit.</p>
+
+<h2>Tech debt and cleanup <span class="prio-pill p3">P3</span></h2>
+
+<h3><span class="item-code">INFRA-05</span> Cleanup old Cloudflare tunnel and nginx on the AWS VM</h3>
+<p class="item-meta"><span class="label">Category:</span>Infrastructure</p>
+<p>The May 15 preview tunnel was deprecated when GitHub Pages took over. The tunnel still runs on the VM (<code>/tmp/relevo-nginx.conf</code>) until we confirm nothing depends on it.</p>
+
+<h3><span class="item-code">INFRA-06</span> Cleanup smoke image hosted on the tunnel</h3>
+<p class="item-meta"><span class="label">Category:</span>Infrastructure</p>
+<p><code>https://challenge-gnome-kiss-beginning.trycloudflare.com/smoke-image-2026-05-18/</code> was set up to share the image-gen smoke output. Becomes obsolete once the tunnel is decommissioned.</p>
+
+<h3><span class="item-code">DOC-01</span> Confirm Tiziana is fully removed from team references</h3>
+<p class="item-meta"><span class="label">Category:</span>Documentation</p>
+<p>Tiziana left the project on May 18. Cross-check that she is not referenced in weekly reports, participants lists, or phase docs.</p>
+
+<h3><span class="item-code">INFRA-07</span> DNS resiliency — <code>relevo-com.sub.plus</code> host entry</h3>
+<p class="item-meta"><span class="label">Category:</span>Infrastructure</p>
+<p>A line in <code>/etc/hosts</code> maps <code>relevo-com.sub.plus → 192.168.20.187</code>. The provider's managed IP is unlikely to change, but if it does (or if the VM is rebuilt), regenerate via <code>dig relevo-com.sub.plus +short</code> from a host on the corporate VPN and edit <code>/etc/hosts</code>. No action needed unless it breaks.</p>
+
+<h2 id="resolved">Recently resolved <span class="prio-pill done">Done</span></h2>
+
+<p>For completeness — these were open at some point during May and have since closed.</p>
+
+<ul class="resolved-list">
+  <li><strong>WP MCP setup</strong> (May 19) — <code>ig-mcp-proxy</code> wired to <code>relevo-com.sub.plus</code>, identity + connection persisted in <code>~/.ig-mcp/config.json</code>.</li>
+  <li><strong>Image upload helper</strong> (May 19) — <code>scripts/wp_upload.py</code> validates against full-size 1024×1024 originals, no recompression needed. Eliminates the base64-inline ceiling.</li>
+  <li><strong>Image generation E2E</strong> (May 18) — <code>gpt-image-2</code> via LiteLLM iGaming, C2PA / JUMBF / OpenAI markers stripped, integrated into <code>scripts/imagen/</code>.</li>
+  <li><strong>148-topic bulk seed</strong> (May 18) — all 24 sports × 6 categories seeded into the Excel inventory, status <code>pending_review</code>.</li>
+  <li><strong>Helpers consolidated</strong> (May 18) — <code>sharepoint_msal.py</code> refactor (<code>update_table_row</code>, retry), <code>relevo_approve.py</code> LIVE, <code>get_reglamento.py</code> LIVE.</li>
+  <li><strong>24/24 rulebooks in SharePoint</strong> (May 18) — Cycling UCI, Paralympics IPC, FIM GP added; <code>_pdf_name</code> validated against Graph for all 24 sports.</li>
+  <li><strong>Schema reconciliation</strong> (May 18) — <code>cmd_content_plan.md</code> rewritten against the 22-column live Excel schema (option A executed).</li>
+  <li><strong>GitHub Pages live</strong> (May 15) — public roadmap at <code>jpwaimann.github.io/relevo-content/</code>.</li>
+  <li><strong>Asana reviewer subtasks</strong> (May 15) — <code>asana_notify.py</code> functional with round-robin pool.</li>
+</ul>
+
+<footer>
+  Project owner: Pablo Waimann · <a href="mailto:pablo.waimann@igaming.com">pablo.waimann@igaming.com</a><br>
+  Repository: <a href="https://github.com/jpwaimann/relevo-content">github.com/jpwaimann/relevo-content</a> · <a href="../index.html">Back to roadmap</a>
+</footer>
+
+</div>
+</body>
+</html>

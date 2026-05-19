@@ -6,6 +6,8 @@ Automated SEO content generation for [relevo.com](https://relevo.com). 24 sports
 
 **Live site:** [jpwaimann.github.io/relevo-content](https://jpwaimann.github.io/relevo-content/) (GitHub Pages from `main`).
 
+**Other documents:** [Project overview](docs/project-overview.html) · [Skill technical reference](docs/README.md) · [Test journal](docs/test-journal.html) · [Backlog](docs/backlog.html)
+
 ---
 
 ## Roadmap
