@@ -56,6 +56,67 @@
   <p><strong>How to read this journal.</strong> Each entry covers one focused test session. The <em>What was tested</em> block frames the scope. The <em>Steps</em> table shows every concrete action taken with its result. The <em>Follow-ups</em> block lists open questions or non-blocking issues that need attention before production launch.</p>
 </div>
 
+<h2>Second WP test — SEO &amp; post_author hardening <span class="date">2026-05-19 (PM)</span></h2>
+
+<dl class="meta-grid">
+  <dt>Result</dt><dd><span class="tag pass">Pass</span></dd>
+  <dt>Scope</dt><dd>Validation of three P1 items from the backlog (INFRA-01 post_author, SEO-01 meta description, SEO-02 schema.org) on a second WP draft, using the May 15 batch article #2.</dd>
+  <dt>Article reused</dt><dd>"Los tipos de tiro en el fútbol: volea, chilena y más" (May 15 batch art-2, Tactics, quality 93)</dd>
+  <dt>Output</dt><dd>Post <strong>16096</strong> created as <code>pending</code>; attachment <strong>16095</strong> uploaded with full-size 1024×1024 PNG via the new helper.</dd>
+  <dt>Reviewers</dt><dd>Pablo Waimann (autonomous run while in a meeting)</dd>
+</dl>
+
+<h3>What was tested</h3>
+
+<p>Three P1 items from the backlog needed live confirmation before the first real publish (INTEG-01). Rather than wait for the editorial review flow, this run validated all three against a real article without consuming a topic from the inventory.</p>
+
+<h3>Steps and findings</h3>
+
+<table>
+  <thead><tr><th>Item</th><th>Test</th><th>Outcome</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>SEO-01</strong> — where does the theme read the meta description from?</td>
+      <td>Fetched a live published post (ID 5608, a real Madrid article in <code>futbol/copa-del-rey</code>) over HTTPS and parsed the rendered head meta tags.</td>
+      <td><strong>Resolved.</strong> The theme renders <code>og:description</code> directly from <code>post_excerpt</code> — confirmed exact string match. No <code>&lt;meta name="description"&gt;</code> tag is emitted at all. No SEO plugin in <code>plugins_list</code> (no Yoast, Rank Math, or AIO SEO). Setting <code>post_excerpt = meta_description</code> in <code>posts_create</code> is the right approach; no custom meta keys required.</td>
+    </tr>
+    <tr>
+      <td><strong>SEO-02</strong> — does the site emit schema.org JSON-LD without the <code>ig-schema</code> plugin?</td>
+      <td>Parsed every <code>&lt;script type="application/ld+json"&gt;</code> block from the same live post.</td>
+      <td><strong>Resolved.</strong> The theme automatically emits <strong>two</strong> JSON-LD blocks: <code>BreadcrumbList</code> (Home → Category → Article) and <code>NewsArticle</code> (with headline, description from excerpt, datePublished, dateModified, mainEntityOfPage, author, publisher, image, articleSection). Coverage is solid for SEO out of the box. Two nice-to-have refinements were spun off as new backlog items: <code>SEO-03</code> (add <code>FAQPage</code> for articles with FAQ) and <code>SEO-04</code> (theme filter to use <code>Article</code> / <code>HowTo</code> instead of <code>NewsArticle</code> for evergreen content).</td>
+    </tr>
+    <tr>
+      <td><strong>INFRA-01</strong> — does <code>posts_update</code> accept <code>post_author</code> where <code>posts_create</code> silently ignored it?</td>
+      <td>Created post 16096 with <code>post_author: 77</code> in <code>posts_create</code>; observed that the response saved <code>post_author: 1</code> (admin). Then called <code>posts_update</code> with <code>post_author: 77</code>.</td>
+      <td><strong>Resolved.</strong> The update response shows <code>before.post_author=1</code> and <code>after.post_author=77</code>. The workaround is reliable. <code>cmd_new.md</code> step 7.c now does the two-call sequence (create → update with post_author) as part of the production pipeline.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Other confirmations</h3>
+
+<ul>
+  <li><strong>Helper Python at full size.</strong> The hero image was uploaded with <code>scripts/wp_upload.py</code> using the original 1024×1024 PNG (1.3 MB) without recompression. WP generated all six theme thumbnails (<code>thumbnail</code>, <code>card-feed</code>, <code>card-photo-top</code>, <code>card-small</code>, <code>card-video</code>, <code>author-avatar</code>, <code>team-logo</code>, <code>player-photo</code>). The interactive-session base64 ceiling is no longer a constraint.</li>
+  <li><strong><code>post_status: "pending"</code> works.</strong> Unlike the first test which used <code>draft</code>, this run used <code>pending</code> (production status for editorial review). No surprises — the post landed in the pending queue with all fields intact.</li>
+</ul>
+
+<h3>Follow-ups closed by this test</h3>
+
+<ul>
+  <li><code>INFRA-01</code> → <em>Resolved</em>. Workaround documented in <code>cmd_new.md</code>.</li>
+  <li><code>SEO-01</code> → <em>Resolved</em>. Pipeline behaviour confirmed correct; no change needed.</li>
+  <li><code>SEO-02</code> → <em>Resolved</em>. Theme already covers baseline structured data. Two nice-to-haves split off as <code>SEO-03</code> and <code>SEO-04</code> in the backlog.</li>
+</ul>
+
+<h3>Artifacts</h3>
+
+<ul>
+  <li>Draft article: <code>https://relevo-com.sub.plus/wp-admin/post.php?post=16096&action=edit</code></li>
+  <li>Featured image: <a href="https://relevo-com.sub.plus/wp-content/uploads/2026/05/tipos-tiro-futbol-hero.png">tipos-tiro-futbol-hero.png</a></li>
+  <li>Source article (May 15 batch art-2): <a href="../runs/art-2-1778849077/article.html">runs/art-2-1778849077/article.html</a></li>
+  <li>Updated skill step: <code>.claude/skills/relevo/lib/cmd_new.md</code> §7.c</li>
+</ul>
+
 <h2>First WordPress publish E2E <span class="date">2026-05-19</span></h2>
 
 <dl class="meta-grid">

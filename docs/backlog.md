@@ -59,29 +59,6 @@ This document is a living artefact. As items close they move to the bottom under
 
 ## P1 — Quality and robustness gates
 
-### `INFRA-01` `post_author` is overridden by the WP adapter
-- **Category:** Integrations / Infrastructure
-- **Owner:** Pablo (investigation), Pipeline (fix)
-- **Why:** On May 19, `posts_create` was called with `post_author: 77` (Pablo's WP user ID) and the saved post had `post_author: 1` (admin default). Either the adapter ignores `post_author` on create, or there is a capability check we are missing.
-- **Workarounds available:** (a) call `posts_update` immediately after create with the correct `post_author`; (b) set authorship manually in the admin. Either fine for the immediate publish; the real fix is to understand whether the adapter accepts the field.
-
-### `SEO-01` Meta description plumbing
-- **Category:** SEO / Schema
-- **Owner:** Pablo + SEO team
-- **Why:** The May 19 test stored the meta description in `post_excerpt`, which the Relevo theme **may** read as a fallback. We have not confirmed which key the theme actually reads:
-  - `post_excerpt` (current placement)
-  - `_yoast_wpseo_metadesc` (Yoast — not detected in `plugins_list`)
-  - `ig-optimizer` plugin (present, v6.3.10.2)
-- **Action:** confirm with SEO team, then update `cmd_new.md` step 7.b to set the right meta key.
-
-### `SEO-02` Schema.org structured data
-- **Category:** SEO / Schema
-- **Owner:** Pablo + BI team
-- **Why:** The `ig-schema` plugin is **absent** on `relevo-com.sub.plus`. If structured data matters (Article, FAQ, BreadcrumbList for the Rules pages), we need one of:
-  - Install `ig-schema` plugin (request to Debanjan / BI team)
-  - Generate JSON-LD inline in the article HTML during the pipeline
-  - Skip schema for MVP, revisit post-launch
-
 ### `INTEG-02` Round-robin reviewer pool and SLA
 - **Category:** Editorial
 - **Owner:** Pablo + Joel
@@ -170,10 +147,25 @@ This document is a living artefact. As items close they move to the bottom under
 
 ---
 
+### `SEO-03` (nice-to-have, downgraded from SEO-02) Add `FAQPage` JSON-LD for articles with FAQ section
+- **Category:** SEO / Schema
+- **Owner:** Pipeline
+- **Why:** The Relevo theme already emits `NewsArticle` + `BreadcrumbList` JSON-LD automatically for every post. For Rules articles that close with an FAQ section, adding a `FAQPage` JSON-LD block at the end of `post_content` would surface them in Google's FAQ rich results. Low effort, decent SEO upside. **Not blocking launch** — `NewsArticle` alone is correct schema and indexable.
+
+### `SEO-04` (nice-to-have, downgraded from SEO-02) Change `@type: NewsArticle` to `Article` / `HowTo` for Rules/Tactics
+- **Category:** SEO / Schema
+- **Owner:** Pablo + BI team (theme change)
+- **Why:** The theme hard-codes `@type: NewsArticle` for every post. Rules and Tactics articles are evergreen reference content, not news — they would be better classified as `Article` (Rules) or `HowTo` (Tactics). Requires a filter in the theme; not a skill change. Google accepts `NewsArticle` for evergreen content too, so this is purely a precision improvement.
+
+---
+
 ## Recently resolved
 
 For completeness — these were open at some point during May and have since closed.
 
+- ✅ **INFRA-01 — `post_author` workaround** (May 19) — confirmed that `posts_create` ignores `post_author` silently (writes admin default), but `posts_update` immediately after create accepts and persists the field correctly. Skill step 7.c now does the two-call sequence. Post 16096 verified: create returned `post_author=1`, update with `post_author=77` returned `post_author=77`.
+- ✅ **SEO-01 — meta description plumbing** (May 19) — verified against a live published post (5608) that the Relevo theme renders `og:description` directly from `post_excerpt` and does not emit `<meta name="description">` at all. No SEO plugin is in use (Yoast / Rank Math / AIO SEO all absent in `plugins_list`). Conclusion: setting `post_excerpt = meta_description` in `posts_create` is sufficient — no custom meta keys required.
+- ✅ **SEO-02 — schema.org JSON-LD baseline** (May 19) — verified that the Relevo theme automatically emits `BreadcrumbList` + `NewsArticle` JSON-LD on every post (with headline, description from excerpt, datePublished, dateModified, mainEntityOfPage, author, publisher, image, articleSection). Baseline structured data covered out of the box. Two refinements remain as nice-to-have: see `SEO-03` (FAQPage for articles with FAQ section) and `SEO-04` (`@type` precision for Rules/Tactics).
 - ✅ **WP MCP setup** (May 19) — `ig-mcp-proxy` wired to `relevo-com.sub.plus`, identity + connection persisted in `~/.ig-mcp/config.json`.
 - ✅ **Image upload helper** (May 19) — `scripts/wp_upload.py` validates against full-size 1024×1024 originals, no recompression needed. Eliminates the base64-inline ceiling.
 - ✅ **Image generation E2E** (May 18) — `gpt-image-2` via LiteLLM iGaming, C2PA / JUMBF / OpenAI markers stripped, integrated into `scripts/imagen/`.

@@ -219,6 +219,8 @@ End-to-end validation of the publication leg of the pipeline. The May 14 smoke a
 
 Open question logged for the next iteration: the `post_author` field was overridden by the WordPress adapter from the value passed (77) to the admin default (1). Either the adapter ignores `post_author` on creation, or a capability check is missing. Not blocking — can be corrected via `posts_update` post-create or set manually from the admin. Will revisit before the first real publish.
 
+A follow-up run on the same day (post 16096) validated the workaround: `posts_update` with `post_author` after creation persists the field correctly. The same run confirmed that the Relevo theme reads the meta description from `post_excerpt` and emits `NewsArticle` + `BreadcrumbList` JSON-LD automatically, closing the SEO follow-ups without pipeline changes.
+
 The full session log is captured in [`docs/test-journal.html`](docs/test-journal.html), with a reusable entry template for future test sessions.
 
 ---
