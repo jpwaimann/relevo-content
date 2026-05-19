@@ -164,15 +164,6 @@
 </p>
 <p>The <code>Sites.Selected</code> permission for the Azure app was requested against the whole <code>seoberlin</code> site, which includes 55 sibling folders for other ES Market projects. Pablo chose this on May 19 to move faster, but the CTO might prefer narrower scope. Plan B is to create a dedicated <code>/sites/relevo/</code> site, move the Content folder, and grant against that. Estimated cost of Plan B: ~45 minutes + script URL updates.</p>
 
-<h3><span class="item-code">INFRA-03</span> Image format quirk — Pillow re-encode</h3>
-<p class="item-meta">
-  <span class="label">Category:</span>Pipeline / Infrastructure
-  <span class="sep">·</span>
-  <span class="label">Owner:</span>Pipeline
-</p>
-<p><code>scripts/imagen/strip-ai-metadata.py</code> re-encodes images via Pillow to strip C2PA / JUMBF / OpenAI metadata. The output sometimes ends up as PNG bytes inside a <code>.jpg</code> file (extension lies). WordPress and most tools accept it without complaint, but it is technically incorrect.</p>
-<p><strong>Fix:</strong> make the strip script preserve the original format (detect from input bytes and write PNG to <code>.png</code>, JPEG to <code>.jpg</code>). Low priority — no functional impact today.</p>
-
 <h3><span class="item-code">INFRA-04</span> Theme brand visual style for image generation</h3>
 <p class="item-meta">
   <span class="label">Category:</span>Pipeline / Editorial
@@ -204,16 +195,6 @@
 <h3><span class="item-code">V2-05</span> Asana MCP — wire into Claude Code settings.json</h3>
 <p class="item-meta"><span class="label">Category:</span>Integrations</p>
 <p>The <code>asana_notify.py</code> helper covers the production need today, but a native Asana MCP would let the assistant query and create tasks inline. The setup requires a Claude Code restart (blast radius), so it is deferred until there is a concrete benefit.</p>
-
-<h3><span class="item-code">SEO-03</span> Add <code>FAQPage</code> JSON-LD for articles with FAQ section</h3>
-<p class="item-meta">
-  <span class="label">Category:</span>SEO / Schema
-  <span class="sep">·</span>
-  <span class="label">Owner:</span>Pipeline
-  <span class="sep">·</span>
-  <span class="label">Downgraded from:</span>SEO-02
-</p>
-<p>The Relevo theme already emits <code>NewsArticle</code> + <code>BreadcrumbList</code> JSON-LD automatically for every post (confirmed May 19). For Rules articles that close with an FAQ section, adding a <code>FAQPage</code> JSON-LD block at the end of <code>post_content</code> would surface them in Google's FAQ rich results. Low effort, decent SEO upside. <strong>Not blocking launch</strong> — <code>NewsArticle</code> alone is correct schema and indexable.</p>
 
 <h3><span class="item-code">SEO-04</span> Change <code>@type: NewsArticle</code> to <code>Article</code> / <code>HowTo</code> for Rules/Tactics</h3>
 <p class="item-meta">
@@ -248,7 +229,10 @@
 <p>For completeness — these were open at some point during May and have since closed.</p>
 
 <ul class="resolved-list">
-  <li><strong>INFRA-01 — <code>post_author</code> workaround</strong> (May 19) — confirmed that <code>posts_create</code> ignores <code>post_author</code> silently (writes admin default), but <code>posts_update</code> immediately after create accepts and persists the field correctly. Skill step 7.c now does the two-call sequence. Post 16096 verified: create returned <code>post_author=1</code>, update with <code>post_author=77</code> returned <code>post_author=77</code>.</li>
+  <li><strong>First fully autonomous E2E production run</strong> (May 19, late PM) — inventory row 5 (Fútbol / rules / penalti) processed end-to-end through every pipeline stage without human intervention. Final quality score 91, WP post 16100 in <code>pending</code>, inventory advanced to <code>status=review</code>. Validated that all stages wired together work in sequence on a real topic. Two minor invocation-side issues caught and resolved (<code>update_table_row</code> argument shape, schema column indexing for hand-written calls). Full details in <a href="test-journal.html">test journal</a>.</li>
+  <li><strong>SEO-03 — FAQPage JSON-LD generator</strong> (May 19) — implemented <code>scripts/seo_jsonld.py</code> with deterministic FAQ detection and idempotent injection. Integrated into the skill as Stage 7 of the pipeline (<code>cmd_new.md</code> step 7.b). Smoke-tested against the penalti article: detected the 6 FAQ questions, emitted a clean <code>FAQPage</code> JSON-LD block, and skipped re-injection on a second run.</li>
+  <li><strong>INFRA-03 — Pillow format quirk fix</strong> (May 19) — updated <code>scripts/imagen/strip-ai-metadata.py</code> to honour the file extension as the format contract (<code>.jpg</code> in → JPEG out, <code>.png</code> in → PNG out). Added a normalise path that fixes extension/content mismatches even when the file has no AI metadata markers. Smoke-tested: a PNG-bytes-inside-.jpg file was correctly rewritten to JPEG bytes.</li>
+  <li><strong>INFRA-01 — <code>post_author</code> workaround</strong> (May 19) — confirmed that <code>posts_create</code> ignores <code>post_author</code> silently (writes admin default), but <code>posts_update</code> immediately after create accepts and persists the field correctly. Skill step 7.d now does the two-call sequence. Post 16096 verified: create returned <code>post_author=1</code>, update with <code>post_author=77</code> returned <code>post_author=77</code>. Re-verified under real conditions during the autonomous E2E run (post 16100).</li>
   <li><strong>SEO-01 — meta description plumbing</strong> (May 19) — verified against a live published post (5608) that the Relevo theme renders <code>og:description</code> directly from <code>post_excerpt</code> and does <strong>not</strong> emit <code>&lt;meta name="description"&gt;</code> at all. No SEO plugin is in use (Yoast / Rank Math / AIO SEO all absent in <code>plugins_list</code>). Conclusion: setting <code>post_excerpt = meta_description</code> in <code>posts_create</code> is sufficient — no custom meta keys required.</li>
   <li><strong>SEO-02 — schema.org JSON-LD baseline</strong> (May 19) — verified that the Relevo theme automatically emits <code>BreadcrumbList</code> + <code>NewsArticle</code> JSON-LD on every post (with headline, description from excerpt, datePublished, dateModified, mainEntityOfPage, author, publisher, image, articleSection). Baseline structured data covered out of the box. Two refinements remain as nice-to-have: see SEO-03 (FAQPage for articles with FAQ section) and SEO-04 (<code>@type</code> precision for Rules/Tactics).</li>
   <li><strong>WP MCP setup</strong> (May 19) — <code>ig-mcp-proxy</code> wired to <code>relevo-com.sub.plus</code>, identity + connection persisted in <code>~/.ig-mcp/config.json</code>.</li>

@@ -87,12 +87,6 @@ This document is a living artefact. As items close they move to the bottom under
 - **Owner:** Pablo + CTO
 - **Why:** The `Sites.Selected` permission for the Azure app was requested against the whole `seoberlin` site, which includes 55 sibling folders for other ES Market projects. Pablo chose this on May 19 to move faster, but the CTO might prefer narrower scope. Plan B is to create a dedicated `/sites/relevo/` site, move the Content folder, and grant against that. Estimated cost of Plan B: ~45 minutes + script URL updates.
 
-### `INFRA-03` Image format quirk — Pillow re-encode
-- **Category:** Pipeline / Infrastructure
-- **Owner:** Pipeline
-- **Why:** `scripts/imagen/strip-ai-metadata.py` re-encodes images via Pillow to strip C2PA / JUMBF / OpenAI metadata. The output sometimes ends up as PNG bytes inside a `.jpg` file (extension lies). WordPress and most tools accept it without complaint, but it is technically incorrect.
-- **Fix:** make the strip script preserve the original format (detect from input bytes and write PNG to `.png`, JPEG to `.jpg`). Low priority — no functional impact today.
-
 ### `INFRA-04` Theme brand visual style for image generation
 - **Category:** Pipeline / Editorial
 - **Owner:** Pablo (define)
@@ -147,11 +141,6 @@ This document is a living artefact. As items close they move to the bottom under
 
 ---
 
-### `SEO-03` (nice-to-have, downgraded from SEO-02) Add `FAQPage` JSON-LD for articles with FAQ section
-- **Category:** SEO / Schema
-- **Owner:** Pipeline
-- **Why:** The Relevo theme already emits `NewsArticle` + `BreadcrumbList` JSON-LD automatically for every post. For Rules articles that close with an FAQ section, adding a `FAQPage` JSON-LD block at the end of `post_content` would surface them in Google's FAQ rich results. Low effort, decent SEO upside. **Not blocking launch** — `NewsArticle` alone is correct schema and indexable.
-
 ### `SEO-04` (nice-to-have, downgraded from SEO-02) Change `@type: NewsArticle` to `Article` / `HowTo` for Rules/Tactics
 - **Category:** SEO / Schema
 - **Owner:** Pablo + BI team (theme change)
@@ -163,7 +152,10 @@ This document is a living artefact. As items close they move to the bottom under
 
 For completeness — these were open at some point during May and have since closed.
 
-- ✅ **INFRA-01 — `post_author` workaround** (May 19) — confirmed that `posts_create` ignores `post_author` silently (writes admin default), but `posts_update` immediately after create accepts and persists the field correctly. Skill step 7.c now does the two-call sequence. Post 16096 verified: create returned `post_author=1`, update with `post_author=77` returned `post_author=77`.
+- ✅ **First fully autonomous E2E production run** (May 19, late PM) — inventory row 5 (Fútbol / rules / penalti) processed end-to-end through every pipeline stage without human intervention. Final quality score 91, WP post 16100 in `pending`, inventory advanced to `status=review`. Validated that all stages wired together work in sequence on a real topic. Two minor invocation-side issues caught and resolved (`update_table_row` argument shape, schema column indexing for hand-written calls). Full details in [test journal](test-journal.html).
+- ✅ **SEO-03 — FAQPage JSON-LD generator** (May 19) — implemented `scripts/seo_jsonld.py` with deterministic FAQ detection and idempotent injection. Integrated into the skill as Stage 7 of the pipeline (`cmd_new.md` step 7.b). Smoke-tested against the penalti article: detected the 6 FAQ questions, emitted a clean `FAQPage` JSON-LD block, and skipped re-injection on a second run.
+- ✅ **INFRA-03 — Pillow format quirk fix** (May 19) — updated `scripts/imagen/strip-ai-metadata.py` to honour the file extension as the format contract (`.jpg` in → JPEG out, `.png` in → PNG out). Added a `normalise` path that fixes extension/content mismatches even when the file has no AI metadata markers. Smoke-tested: a PNG-bytes-inside-.jpg file was correctly rewritten to JPEG bytes.
+- ✅ **INFRA-01 — `post_author` workaround** (May 19) — confirmed that `posts_create` ignores `post_author` silently (writes admin default), but `posts_update` immediately after create accepts and persists the field correctly. Skill step 7.d now does the two-call sequence. Post 16096 verified: create returned `post_author=1`, update with `post_author=77` returned `post_author=77`. Re-verified under real conditions during the autonomous E2E run (post 16100).
 - ✅ **SEO-01 — meta description plumbing** (May 19) — verified against a live published post (5608) that the Relevo theme renders `og:description` directly from `post_excerpt` and does not emit `<meta name="description">` at all. No SEO plugin is in use (Yoast / Rank Math / AIO SEO all absent in `plugins_list`). Conclusion: setting `post_excerpt = meta_description` in `posts_create` is sufficient — no custom meta keys required.
 - ✅ **SEO-02 — schema.org JSON-LD baseline** (May 19) — verified that the Relevo theme automatically emits `BreadcrumbList` + `NewsArticle` JSON-LD on every post (with headline, description from excerpt, datePublished, dateModified, mainEntityOfPage, author, publisher, image, articleSection). Baseline structured data covered out of the box. Two refinements remain as nice-to-have: see `SEO-03` (FAQPage for articles with FAQ section) and `SEO-04` (`@type` precision for Rules/Tactics).
 - ✅ **WP MCP setup** (May 19) — `ig-mcp-proxy` wired to `relevo-com.sub.plus`, identity + connection persisted in `~/.ig-mcp/config.json`.

@@ -46,7 +46,7 @@
 <div class="wrap">
 
 <header class="hero">
-  <div class="eyebrow">Project brief · Updated 2026-05-15</div>
+  <div class="eyebrow">Project brief · Updated 2026-05-19</div>
   <h1>Relevo Content Workflow — Project overview</h1>
   <p class="lede">A detailed brief on what we built, why we built it, how it works in practice, and what is still pending before production launch. Aimed at anyone joining the project or evaluating its design.</p>
 </header>
@@ -160,11 +160,12 @@
 
 <h3>Phase 4 · By Friday May 22 — Validation &amp; integrations</h3>
 <ul>
-  <li><strong>Editorial validation</strong> of the May 15 batch by the main content writer; <strong>style guide v1.1</strong> and category-template refinements merged.</li>
-  <li><strong>SharePoint Excel as live inventory</strong> via the Microsoft Graph API. Status: <em>v2 master inventory file (articles + logs sheets) created on May 15; Graph API integration pending.</em></li>
-  <li><strong>WordPress publishing</strong> via MCP (articles arrive as <code>pending_review</code>). Status: <em>pending credentials handoff.</em></li>
-  <li><strong>Asana reviewer subtasks</strong> with round-robin assignment. Status: <em>✓ functional. The <code>scripts/asana_notify.py</code> helper in the skill repository reads each finished article&rsquo;s metadata and creates a subtask under the &ldquo;Solicitar artículo Relevo.com&rdquo; inbox with the quality journey, public preview link, and the next reviewer assigned. Tested end-to-end on the May 15 batch on May 15.</em></li>
-  <li><strong>LiteLLM image models</strong> enabled (blocked on the BI team).</li>
+  <li><strong>Editorial validation</strong> of the May 15 batch by the main content writer; <strong>style guide v1.1</strong> and category-template refinements merged. Status: <em>Joel review pending.</em></li>
+  <li><strong>SharePoint Excel as live inventory</strong> via the Microsoft Graph API. Status: <em>✓ functional. Read + write via <code>scripts/sharepoint_msal.py</code> (device-code MSAL); <strong>148 topics seeded</strong> on May 18 across all 24 sports.</em></li>
+  <li><strong>WordPress publishing</strong> via MCP (articles arrive as <code>pending</code>). Status: <em>✓ functional. <code>ig-mcp-proxy</code> wired against <code>relevo-com.sub.plus</code> on May 19; helper <code>scripts/wp_upload.py</code> handles media upload at full resolution; the live theme already emits <code>NewsArticle</code> + <code>BreadcrumbList</code> JSON-LD automatically; an optional <code>FAQPage</code> block is appended for articles with FAQ sections via <code>scripts/seo_jsonld.py</code>.</em></li>
+  <li><strong>Asana reviewer subtasks</strong> with round-robin assignment. Status: <em>✓ functional. The <code>scripts/asana_notify.py</code> helper reads each finished article&rsquo;s metadata and creates a subtask under the &ldquo;Solicitar artículo Relevo.com&rdquo; inbox with the quality journey, public preview link, and the next reviewer assigned. Tested end-to-end on the May 15 batch.</em></li>
+  <li><strong>LiteLLM image models</strong> enabled. Status: <em>✓ functional. <code>gpt-image-2</code> via the LiteLLM iGaming proxy; C2PA / JUMBF / OpenAI metadata stripped automatically; integrated into the skill as Stage 6 of the pipeline.</em></li>
+  <li><strong>First fully autonomous E2E production run</strong>. Status: <em>✓ executed May 19. Inventory row 5 (&ldquo;Penalti en fútbol&rdquo;) processed end-to-end through every stage and landed as WP post 16100 with quality score 91. See the <a href="test-journal.html">test journal</a> for details.</em></li>
   <li><strong>Workflow live review on Friday May 22</strong> with all pieces wired end-to-end.</li>
 </ul>
 
@@ -178,8 +179,9 @@
 
 <h3>Cross-cutting</h3>
 <ul>
-  <li><strong>Three sports without official rulebooks</strong> in SharePoint (Wrestling, Olympic Games, Paralympic Games). Without those PDFs, Rules-category coverage for them cannot start.</li>
-  <li><strong>Reviewer workflow definition.</strong> Round-robin assignment in Asana, SLA, criteria for returning a draft versus approving it. The editorial team owns this.</li>
+  <li><strong>Rulebooks complete.</strong> 24 of 24 sport-federation rulebooks now live in the SharePoint folder, validated via Graph on May 18. Cycling UCI, Paralympics IPC and FIM (Motorcycling) were the last three added.</li>
+  <li><strong>Reviewer workflow definition.</strong> Round-robin assignment in Asana, SLA, criteria for returning a draft versus approving it. The editorial team owns this — currently the only reviewer in the pool is Joel; the helper supports adding more without code changes.</li>
+  <li><strong>Open follow-ups</strong> are tracked in the public <a href="backlog.html">backlog</a> with priority buckets (P0 blocks June 1, P1 quality gate, P2 post-launch, P3 tech debt).</li>
 </ul>
 
 <h2>Ownership</h2>
