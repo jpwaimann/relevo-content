@@ -56,6 +56,114 @@
   <p><strong>How to read this journal.</strong> Each entry covers one focused test session. The <em>What was tested</em> block frames the scope. The <em>Steps</em> table shows every concrete action taken with its result. The <em>Follow-ups</em> block lists open questions or non-blocking issues that need attention before production launch.</p>
 </div>
 
+<h2>First fully autonomous E2E production run <span class="date">2026-05-19 (late PM)</span></h2>
+
+<dl class="meta-grid">
+  <dt>Result</dt><dd><span class="tag pass">Pass</span></dd>
+  <dt>Scope</dt><dd>The first end-to-end run of the production pipeline against a real topic from the live inventory, with all stages executed in the order the skill <code>/relevo new</code> defines: inventory pick → research → draft → critique → revise → fact-check → image generation → WP upload (with the INFRA-01 post_author workaround) → inventory update. No human in the loop, no reused artifacts from earlier tests.</dd>
+  <dt>Topic</dt><dd>Row id <strong>5</strong> in the Excel inventory — Fútbol / rules · "Penalti en fútbol: cuándo se pita y cómo se ejecuta" · slug <code>penalti-futbol</code>. Approved out of <code>pending_review</code> for this run.</dd>
+  <dt>Output</dt><dd>WP post <strong>16100</strong> in <code>pending</code> status. Featured image attachment <strong>16099</strong> (1536×1024 JPEG, 11 theme thumbnails auto-generated). Inventory row 5 advanced to <code>status=review</code> with <code>quality_score=91</code> and the WP URL populated.</dd>
+  <dt>Reviewers</dt><dd>Pablo Waimann (autonomous run; visual review pending on return)</dd>
+</dl>
+
+<h3>What this run validates</h3>
+
+<p>Until this point each stage of the pipeline had been exercised in isolation: smoke article in May 14, batch generation in May 15, image generation in May 18, WordPress publish plumbing in earlier May 19 tests. This was the first run where <strong>everything fired in sequence on a real topic from the live SharePoint inventory</strong>. The intent was to surface integration bugs that piecewise tests can't catch — env-var plumbing, helper invocation order, schema-column drift between scripts, and the new post_author workaround under real conditions.</p>
+
+<h3>Steps</h3>
+
+<table>
+  <thead><tr><th>Stage</th><th>Tooling</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Pick a topic and approve it</td>
+      <td><code>scripts/relevo_approve.py approve --ids 5</code></td>
+      <td>Row 5 advanced from <code>pending_review</code> to <code>pending</code>. One row affected.</td>
+    </tr>
+    <tr>
+      <td>Lock the row (production mutex)</td>
+      <td><code>sharepoint_msal.update_table_row</code></td>
+      <td>Row 5 moved <code>pending</code> → <code>in_progress</code>. <strong>Discovered bug</strong>: the helper expects <code>values</code> as a flat list (the call wraps in <code>[values]</code> internally); passing the already-wrapped form yields a Graph 400. Documented in the skill (<code>lib/inventory.md</code> update queued).</td>
+    </tr>
+    <tr>
+      <td>Fetch the rulebook</td>
+      <td><code>scripts/get_reglamento.py futbol --extract</code></td>
+      <td>IFAB <em>Laws of the Game 2025/26</em> downloaded (14.8 MB) and extracted to plain text (208 KB).</td>
+    </tr>
+    <tr>
+      <td>Research + draft + critique 1 + revise + critique 2 + fact-check</td>
+      <td>Delegated to a subagent so the main session's context stayed clean</td>
+      <td>Critique pass 1: <strong>76</strong> (gate fail) — three priority fixes flagged. Revise applied. Critique pass 2: <strong>91</strong> (gate pass), anti-hallucination PASS, 15/15 checklist points green. Fact-check: 13 concrete claims verified against the IFAB text with line-level citations; 0 corrections, 0 softenings beyond a deliberate Panenka attribution call.</td>
+    </tr>
+    <tr>
+      <td>Image generation</td>
+      <td><code>scripts/imagen/generate-images.py</code> against LiteLLM iGaming</td>
+      <td>1536×1024 JPEG hero generated in 121s by <code>gpt-image-2</code>. C2PA / JUMBF / OpenAI / gpt-image markers stripped automatically. Pre-strip 2123 KB → post-strip 1868 KB.</td>
+    </tr>
+    <tr>
+      <td>Upload hero to WP media library</td>
+      <td><code>scripts/wp_upload.py</code> (the helper from earlier in the day)</td>
+      <td>Attachment 16099 created, URL <code>/wp-content/uploads/2026/05/penalti-futbol-hero.jpg</code>. WP generated <strong>11</strong> theme-defined thumbnails automatically; full-size original preserved with no recompression.</td>
+    </tr>
+    <tr>
+      <td>Create the post as <code>pending</code></td>
+      <td><code>posts.create</code></td>
+      <td>Post 16100. Featured image attached via <code>_thumbnail_id=16099</code>, category <code>futbol</code>, <code>post_excerpt</code> = meta description as expected (theme will read this for <code>og:description</code> and JSON-LD). <code>post_author</code> came back as <code>1</code> (admin default) — the documented gotcha.</td>
+    </tr>
+    <tr>
+      <td>Fix authorship</td>
+      <td><code>posts.update</code> with <code>post_author=77</code></td>
+      <td>Response shows <code>before.post_author=1</code> → <code>after.post_author=77</code>. INFRA-01 workaround held under real conditions.</td>
+    </tr>
+    <tr>
+      <td>Notify Asana reviewer</td>
+      <td><code>scripts/asana_notify.py --dry-run</code></td>
+      <td>Payload verified: task name <code>✅ Fútbol · rules: …</code>, parent set to the Relevo content inbox, assignee resolved to Joel Sierra, notes carry the full quality journey + run_id + GitHub Pages preview link. <strong>Live notify deferred</strong> — the env did not carry <code>ASANA_PAT</code> at the time of the autonomous run; will be issued on Pablo's return with a fresh ephemeral PAT.</td>
+    </tr>
+    <tr>
+      <td>Update inventory row</td>
+      <td><code>sharepoint_msal.update_table_row</code></td>
+      <td>Row 5 advanced to <code>status=review</code>, <code>quality_score=91</code>, <code>article_path</code> set, <code>wp_url</code> set, <code>asana_subtask_gid</code> left blank pending the live notify, <code>completed_at</code> stamped. <strong>Second discovered bug</strong>: a documentation drift between the skill's docstring (which lists 22 cols but in an older order) and the live Excel headers — fixed by reading the real header row via Graph and re-mapping. <code>lib/inventory.md</code> update queued.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>What got caught by running the real pipeline</h3>
+
+<p>Two production-relevant issues that earlier piecewise tests had not surfaced:</p>
+
+<ol>
+  <li><strong>Helper invocation signature drift.</strong> The <code>sharepoint_msal.update_table_row()</code> helper wraps the <code>values</code> argument internally; older call sites in scratch scripts wrapped it again, producing a Graph 400. The skill's <code>lib/inventory.md</code> shows the correct unwrapped form, so anything generated via the skill will be fine — but any helper code written by hand needs to know.</li>
+  <li><strong>Schema column drift between docs and live.</strong> The skill docs (and earlier conventions) had drifted on the order of columns 17–20. Live Excel headers as confirmed during this run: <code>quality_score</code> (17), <code>article_path</code> (18), <code>wp_url</code> (19), <code>asana_subtask_gid</code> (20). There is no <code>wp_post_id</code> column — the post ID has to be embedded in the URL. <code>lib/inventory.md</code> needs to be updated to match.</li>
+</ol>
+
+<h3>Quality of the article itself</h3>
+
+<p>The subagent's report describes three deliberate calls during generation that are worth flagging for editorial:</p>
+
+<ul>
+  <li>The Panenka technique is named but <strong>not attributed</strong> to Antonín Panenka or the 1976 Euro final — kept the article strictly normative, no historical narrative.</li>
+  <li><strong>No conversion-rate statistic</strong> ("X% of penalties are converted at elite level") was included — the IFAB rulebook does not provide one and the figure varies meaningfully by competition/season, so an invented number would have failed anti-hallucination.</li>
+  <li>The Bernabéu and Camp Nou references function as stadium-as-atmosphere only — no specific match is referenced, avoiding any hallucinated historical play.</li>
+</ul>
+
+<h3>Follow-up actions</h3>
+
+<ul>
+  <li><strong>Live Asana notify</strong> when Pablo returns and provides an ephemeral PAT. Then patch row 5's <code>asana_subtask_gid</code>.</li>
+  <li><strong>Visual review of post 16100</strong> by Pablo: title rendering, FAQ block, featured image at hero / card-feed sizes, theme JSON-LD on a published-style preview.</li>
+  <li><strong>Doc updates queued</strong> for <code>lib/inventory.md</code> (the two drift issues above) and <code>lib/pipeline.md</code> (which still references the old SKIP-WP flow).</li>
+</ul>
+
+<h3>Artifacts</h3>
+
+<ul>
+  <li>WP draft: <code>https://relevo-com.sub.plus/wp-admin/post.php?post=16100&action=edit</code></li>
+  <li>Featured image: <a href="https://relevo-com.sub.plus/wp-content/uploads/2026/05/penalti-futbol-hero.jpg">penalti-futbol-hero.jpg</a></li>
+  <li>Full run directory in this repo: <a href="../runs/rules-1779265200-real-e2e/article.html">runs/rules-1779265200-real-e2e/article.html</a> · <a href="../runs/rules-1779265200-real-e2e/article_final.json">descriptor</a> · <a href="../runs/rules-1779265200-real-e2e/critique_pass1.json">critique pass 1 (76)</a> · <a href="../runs/rules-1779265200-real-e2e/critique_pass2.json">critique pass 2 (91)</a></li>
+  <li>Inventory row 5 confirmed at <code>status=review</code>, <code>quality_score=91</code>, <code>wp_url</code> populated.</li>
+</ul>
+
 <h2>Second WP test — SEO &amp; post_author hardening <span class="date">2026-05-19 (PM)</span></h2>
 
 <dl class="meta-grid">

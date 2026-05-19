@@ -1,0 +1,15 @@
+{
+  "vars": {
+    "style": "Premium editorial sports photography. High-contrast cinematic color grade with directional rim light. Tight composition on athletic action. Deep shadows, warm highlights. Subtle film grain. No text overlays, no logos, no scores, no graphic elements. Photographic realism, magazine-cover quality."
+  },
+  "jobs": [
+    {
+      "name": "hero.jpg",
+      "size": "1536x1024",
+      "quality": "high",
+      "output_format": "jpeg",
+      "output_compression": 85,
+      "prompt": "Wide cinematic action shot of a professional football penalty kick. The striker plants the standing foot beside the ball on the penalty spot and strikes with the laces. The goalkeeper is crouched low on the goal line, fingertips spread, weight forward. Stadium evening setting with floodlights blazing. Shallow depth of field, the ball just leaving the foot in sharp focus. {style}"
+    }
+  ]
+}

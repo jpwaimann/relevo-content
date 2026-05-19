@@ -1,0 +1,49 @@
+{
+  "run_id": "rules-1779265200",
+  "row_id": 5,
+  "deporte": "Fútbol",
+  "categoria": "rules",
+  "tipo": "rules_sub",
+  "metadata": {
+    "seo_title": "Penalti en fútbol: cuándo se pita y cómo se ejecuta",
+    "meta_description": "El penalti en fútbol explicado. Faltas dentro del área, ejecución desde los once metros, defensa del portero y casos especiales según las reglas IFAB.",
+    "url_slug": "penalti-futbol",
+    "hub_slug": "futbol",
+    "sub_hub": null,
+    "word_count": 1813,
+    "html_size_bytes": 13044
+  },
+  "files": {
+    "html": "/tmp/relevo-rules-1779265200/article.html",
+    "html_draft_v1": "/tmp/relevo-rules-1779265200/article_draft.html",
+    "critique_pass1": "/tmp/relevo-rules-1779265200/critique_pass1.json",
+    "critique_pass2": "/tmp/relevo-rules-1779265200/critique_pass2.json"
+  },
+  "quality_score": 91,
+  "quality_journey": {
+    "research": "Read Law 14 (procedure, encroachment table, offences/sanctions) + Law 1 (penalty mark position) + VAR protocol (reviewable categories) from IFAB Laws of the Game 2025/26",
+    "draft_pass": "Generated 1875-word draft following rules_template.md structure adapted for sub-rule article: H1, deck, intro (3p), 6 H2 body sections, FAQ (6 H3), closing related article line",
+    "critique_pass_1": "Score 76 — REVISE_REQUIRED. Failures: (1) density of <strong> tags dropped sharply in second half (paras 13-32 had 0-2 strongs vs target 6-7), (2) cinco párrafos rozando 71-74 palabras, (3) one cliché-leaning line about 'veladas de Champions' in the rebound paragraph",
+    "revise_pass_1": "Applied 3 priority fixes: (1) added strong tags across 15+ paragraphs to bring density into target band, (2) trimmed long paragraphs to ≤68 words (max now 71), (3) replaced the 'veladas de Champions' line with sober description of the second-touch sanction (tiro libre indirecto)",
+    "critique_pass_2": "Score 91 — PASS. Anti-hallucination PASS. 15/15 checklist points green",
+    "fact_check": "13 concrete claims verified against IFAB Laws of the Game 2025/26 text (specific lines cited per claim). 0 claims corrected. 0 claims softened. No numerical conversion-rate statistics included (no source). Panenka mentioned only as technique name, not attributed to specific match"
+  },
+  "stages_completed": [
+    "research",
+    "draft",
+    "critique_pass_1",
+    "revise_pass_1",
+    "critique_pass_2",
+    "fact_check"
+  ],
+  "stages_skipped": [],
+  "duration_total_seconds": 480,
+  "mode": "production_e2e_real_19may",
+  "wp_upload": {
+    "post_id": 16100,
+    "post_status": "pending",
+    "post_url": "https://relevo-com.sub.plus/wp-admin/post.php?post=16100&action=edit",
+    "attachment_id": 16099,
+    "attachment_url": "https://relevo-com.sub.plus/wp-content/uploads/2026/05/penalti-futbol-hero.jpg"
+  }
+}

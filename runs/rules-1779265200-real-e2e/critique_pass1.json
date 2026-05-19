@@ -1,0 +1,28 @@
+{
+  "score": 76,
+  "anti_hallucination": "PASS",
+  "checklist_15": {
+    "1_voz": "PASS — registro periodista deportivo español, sin enciclopedismo ni streamer",
+    "2_ritmo": "PARTIAL — todos los párrafos ≤75 palabras pero varios entre 70-74 (paras 2, 5, 10, 15, 17). Margen estrecho",
+    "3_lexico": "PASS — usa pena máxima, taconazo, vaselina, amago, finta, banquillo",
+    "4_equivalencias": "PASS — penalti, prórroga (referenciada), portero, larguero, postes; sin penalty/offside/coach",
+    "5_extranjerismos": "PASS — encroachment en <em>, Panenka en <strong> (es nombre propio, correcto), Laws of the Game en <em>, amago en <em>",
+    "6_cliches": "FAIL_PARTIAL — usa 'pena máxima' (es equivalencia válida según la tabla del guide), pero 'noche/velada de Champions' raya el cliché; 'sentirse eterna' en VAR es discutible",
+    "7_adjetivos": "PASS — sin histórico/brutal/legendario gratuitos",
+    "8_seo": "PASS — cada H2 responde intención clara (cuándo, dónde, procedimiento, encroachment, gol, VAR, polémicas, FAQ)",
+    "9_negritas": "FAIL — densidad de negritas decae fuerte a partir del párrafo 9 (1-2 strong por párrafo cuando el target es 6-7). Paras 13, 14, 16, 21, 25-31 tienen 0-1 strong",
+    "10_cursivas": "PASS — solo <em>, sin <i>",
+    "11_ortotipografia": "PASS — cifras técnicas en número (11 metros, 9,15 metros, 2025/26), cifras 0-10 no técnicas usadas correctamente; mayúsculas en IFAB, VAR, Champions League, Mundiales, Bernabéu, Camp Nou",
+    "12_aclaraciones": "PASS — guion largo —usado correctamente—, comas, sin paréntesis para aclaraciones de redacción",
+    "13_nombres": "PASS — IFAB, VAR, VOR son siglas reconocidas; no se citan jugadores específicos",
+    "14_antialucinacion": "PASS — no se cita ningún jugador concreto ni un partido específico atribuido; solo conceptos generales (Bernabéu/Camp Nou como estadios, Champions/Mundial como competiciones reales). Panenka como nombre técnico del golpeo, no atribuido a partido concreto",
+    "15_cierre": "PASS — cierre con personalidad ('cabe en un balón, una marca y once metros'), añade perspectiva sin repetir"
+  },
+  "priority_fixes": [
+    "Aumentar densidad de negritas en la segunda mitad del artículo (paras 13-32) — bajar a ~5-7 strong por párrafo target. Especial atención: FAQ answers, sección Encroachment, sección Gol/rebote",
+    "Acortar levemente los párrafos 2, 5, 10, 15, 17 que rozan los 75 palabras, para dejar margen",
+    "Revisar la frase 'muchas veladas de Champions han acabado con remates en segunda jugada' — suena a relleno/cliché coyuntural; sustituir por descripción más concreta y sobria"
+  ],
+  "gate_status": "REVISE_REQUIRED",
+  "reason": "Score 76 < 80 y dos puntos del checklist en FAIL (negritas, ritmo en margen estrecho con un cliché menor)"
+}

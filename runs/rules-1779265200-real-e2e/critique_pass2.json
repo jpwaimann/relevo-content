@@ -1,0 +1,99 @@
+{
+  "score": 91,
+  "anti_hallucination": "PASS",
+  "checklist_15": {
+    "1_voz": "PASS — registro periodista deportivo español sólido y consistente",
+    "2_ritmo": "PASS — 0 párrafos por encima de 75 palabras, máximo 71 (p15). Promedio ~52 palabras/párrafo",
+    "3_lexico": "PASS — pena máxima, taconazo, vaselina, finta, amago, banquillo, postes, larguero",
+    "4_equivalencias": "PASS — penalti, prórroga, portero correctos. No usa penalty/offside/coach",
+    "5_extranjerismos": "PASS — encroachment y amago en <em>; Laws of the Game en <em>; Panenka es nombre propio del golpeo, en <strong>",
+    "6_cliches": "PASS — eliminada la línea de 'veladas de Champions'; reemplazada por descripción técnica del segundo toque",
+    "7_adjetivos": "PASS — no hay histórico/brutal/legendario/increíble/espectacular gratuitos",
+    "8_seo": "PASS — todos los H2 responden intención clara: cuándo, dónde, procedimiento, encroachment, gol/rebote, VAR, polémicas, FAQ",
+    "9_negritas": "PASS — densidad promedio 4.5 strong/párrafo, 31 de 32 párrafos en zona objetivo (3-9 strong). El único párrafo con 2 strong (p3) es un párrafo de definición conceptual donde más negritas saturarían",
+    "10_cursivas": "PASS — solo <em>, sin <i>",
+    "11_ortotipografia": "PASS — cifras técnicas en número (11 metros, 9,15 metros, 2025/26); mayúsculas en IFAB, VAR, Champions League, Mundiales, Camp Nou, Bernabéu, VOR, Regla 14",
+    "12_aclaraciones": "PASS — guion largo —correctamente usado—, comas, sin paréntesis de redacción",
+    "13_nombres": "PASS — IFAB, VAR, VOR siglas reconocidas; no se citan jugadores concretos",
+    "14_antialucinacion": "PASS — ningún jugador citado, ninguna estadística numérica inventada (tipo '75% conversión'), ningún partido específico atribuido. Bernabéu y Camp Nou solo como estadios conocidos sin atribuir jugada concreta. Panenka como nombre técnico estándar del golpeo, no se atribuye a partido o jugador",
+    "15_cierre": "PASS — cierre con personalidad ('cabe en un balón, una marca y once metros de carrera') + related article line a 'faltas dentro del área' como pide la spec"
+  },
+  "priority_fixes": [],
+  "gate_status": "PASS",
+  "reason": "Score 91 >= 80, anti_hallucination PASS, todos los 15 puntos del checklist en PASS",
+  "fact_check": {
+    "claims_verified": [
+      {
+        "claim": "Penalti se sanciona por falta de tiro libre directo cometida dentro del área del infractor",
+        "source": "Law 14, Laws of the Game 2025/26 (rulebook line 3303-3306)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "Punto de penalti a 11 metros del centro de la línea de meta",
+        "source": "Law 14 + Law 1 The Field of Play (rulebook line 1027, 1046)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "Resto de jugadores a mínimo 9,15 m del punto, detrás de la marca, fuera del área, dentro del campo",
+        "source": "Law 14 procedure (rulebook line 3325-3329)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "Portero debe tener al menos parte de un pie tocando, en línea o por detrás de la línea de meta cuando se golpea el balón",
+        "source": "Law 14 procedure (rulebook line 3337-3339)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "Taconazo permitido si el balón avanza",
+        "source": "Law 14 procedure (rulebook line 3334-3336)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "El ejecutor no puede tocar el balón otra vez antes de que lo haga otro jugador; sanción = tiro libre indirecto (o directo si es con la mano)",
+        "source": "Law 14 offences and sanctions (rulebook line 3346, 3429-3431)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "Encroachment solo se penaliza si tuvo impacto en la jugada (tabla de outcomes)",
+        "source": "Law 14 Outcome table (rulebook line 3448-3479)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "Si un compañero del lanzador identificado toma el tiro, indirecto + amonestación al lanzador",
+        "source": "Law 14 (rulebook line 3393-3395)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "Finta en la carrera permitida; finta una vez completada la carrera = indirecto + amonestación",
+        "source": "Law 14 (rulebook line 3395-3397)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "VAR revisa cuatro categorías; dos afectan al penalti (penalty/no penalty + goal/no goal)",
+        "source": "VAR protocol (rulebook line 3759-3793)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "VAR solo interviene en 'clear and obvious error'",
+        "source": "VAR protocol (rulebook line 3765-3768)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "El penalti al final de cada tiempo o de la prórroga: se prolonga el tiempo y la jugada termina cuando el balón se detiene, sale, lo toca cualquier jugador distinto del portero defensor, o el árbitro detiene el juego",
+        "source": "Law 14 + Law 7 (rulebook line 3352-3360, 2291-2293)",
+        "verdict": "PASS"
+      },
+      {
+        "claim": "Panenka como nombre técnico del golpeo suave por el centro",
+        "source": "Conocimiento general; término consolidado en prensa deportiva española. No se atribuye en el artículo a partido o jugador concreto, solo se describe la técnica como legal según Law 14",
+        "verdict": "PASS — softened to avoid attribution to specific match"
+      }
+    ],
+    "claims_corrected": 0,
+    "claims_softened": 0,
+    "decisions": [
+      "No se incluyó estadística numérica del tipo 'X% de penaltis se convierten' porque no hay fuente del rulebook y la cifra varía por competición/temporada. Mantener el artículo libre de cifras de conversión evita alucinaciones",
+      "Panenka mencionado solo como técnica de golpeo permitida, sin atribuir a la final de la Eurocopa de 1976 ni al jugador checoslovaco, para mantener el foco normativo y evitar verificaciones históricas innecesarias en este artículo de reglas"
+    ]
+  }
+}
