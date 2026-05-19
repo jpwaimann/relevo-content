@@ -56,6 +56,150 @@
   <p><strong>How to read this journal.</strong> Each entry covers one focused test session. The <em>What was tested</em> block frames the scope. The <em>Steps</em> table shows every concrete action taken with its result. The <em>Follow-ups</em> block lists open questions or non-blocking issues that need attention before production launch.</p>
 </div>
 
+<h2>Performance benchmarks</h2>
+
+<p>Wall-clock duration and cost per pipeline run, updated as new runs land. Tracking these matters for capacity planning before the Phase 5 ramp toward 50 articles/day.</p>
+
+<h3>Runs to date</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Run</th>
+      <th>Date</th>
+      <th>Articles</th>
+      <th>Wall-clock</th>
+      <th>Quality (mean)</th>
+      <th>Pipeline coverage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Smoke — Fútbol Rules</td>
+      <td>2026-05-14</td>
+      <td>1</td>
+      <td><strong>132 s</strong> (~2 min)</td>
+      <td>95</td>
+      <td>Research → draft → critique ×2 → revise → fact-check. <em>No image-gen, no WP upload, no Asana notify.</em></td>
+    </tr>
+    <tr>
+      <td>QA batch (parallel)</td>
+      <td>2026-05-15</td>
+      <td>10</td>
+      <td><strong>~17 min</strong></td>
+      <td>90.3</td>
+      <td>Same as above, all 10 in parallel. <em>No image-gen, no WP upload, no Asana notify.</em></td>
+    </tr>
+    <tr>
+      <td>First WP publish E2E (reused article)</td>
+      <td>2026-05-19</td>
+      <td>1</td>
+      <td>n/a (no generation)</td>
+      <td>95 (carried)</td>
+      <td>Validated MCP plumbing only: <code>media.upload</code> + <code>posts.create</code> as draft.</td>
+    </tr>
+    <tr>
+      <td>Second WP test — SEO + post_author</td>
+      <td>2026-05-19</td>
+      <td>1</td>
+      <td>n/a (no generation)</td>
+      <td>93 (carried)</td>
+      <td>Validated <code>posts.update</code> author fix, theme schema.org emission, meta description plumbing.</td>
+    </tr>
+    <tr>
+      <td><strong>First fully autonomous E2E production run</strong></td>
+      <td>2026-05-19 (late PM)</td>
+      <td>1</td>
+      <td><strong>~13–15 min</strong></td>
+      <td><strong>91</strong></td>
+      <td><strong>Full pipeline.</strong> Inventory pick → research from PDF → draft → critique ×2 → revise → fact-check → image-gen → WP upload + author fix → Asana notify (dry-run) → inventory advance to <code>review</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Stage breakdown for the first autonomous full run (post 16100)</h3>
+
+<table>
+  <thead><tr><th>Stage</th><th>Duration</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Approve + lock + rulebook download</td>
+      <td>~30 s</td>
+      <td>IFAB PDF (15 MB) downloaded from SharePoint and extracted to plain text. Cacheable across runs for the same sport.</td>
+    </tr>
+    <tr>
+      <td><strong>Research + draft + critique ×2 + revise + fact-check</strong></td>
+      <td><strong>528 s</strong> (~8 min 48 s)</td>
+      <td>The dominant cost. Critique pass 1 = 76 (fail), one revise pass, critique pass 2 = 91 (pass). 13 fact-check claims verified against the IFAB text.</td>
+    </tr>
+    <tr>
+      <td><strong>Image generation</strong> (<code>gpt-image-2</code>, 1536×1024 high)</td>
+      <td><strong>121 s</strong> (~2 min)</td>
+      <td>Single hero. C2PA / JUMBF / OpenAI metadata stripped automatically.</td>
+    </tr>
+    <tr>
+      <td>WP upload (media + post + author fix)</td>
+      <td>~10 s</td>
+      <td>Three MCP calls: <code>media.upload</code>, <code>posts.create</code>, <code>posts.update</code> with <code>post_author=77</code>.</td>
+    </tr>
+    <tr>
+      <td>Inventory advance + read-back</td>
+      <td>~10 s</td>
+      <td>One PATCH and one GET against Microsoft Graph.</td>
+    </tr>
+    <tr>
+      <td>Orchestration between stages (Claude side)</td>
+      <td>~1–2 min</td>
+      <td>Preparing arguments, reading outputs, planning the next call.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Cost per article (first autonomous run)</h3>
+
+<table>
+  <thead><tr><th>Component</th><th>Cost</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Claude (subagent + main session)</td>
+      <td>$0 marginal</td>
+      <td>Covered by the editor's Claude Code subscription. Token usage on the subagent run: 89 k total tokens, 36 tool calls.</td>
+    </tr>
+    <tr>
+      <td>OpenAI / <code>gpt-image-2</code> via LiteLLM iGaming</td>
+      <td>~$0.10–0.30</td>
+      <td>Single hero, 1536×1024, high quality. Pricing per LiteLLM dashboard, varies by plan.</td>
+    </tr>
+    <tr>
+      <td>Microsoft Graph, WordPress MCP, Asana</td>
+      <td>$0</td>
+      <td>Well within standard quotas.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Scaling implications</h3>
+
+<p>The cycle is dominated by the critique–revise loop (~60% of wall-clock) and image generation (~15%). For the Phase 5 target of <strong>50 articles per day</strong>:</p>
+
+<ul>
+  <li><strong>Serial (one run at a time):</strong> 50 × 13 min = <strong>~10.8 hours</strong> of wall-clock. Not viable for a single editor session.</li>
+  <li><strong>Parallel (multiple runs concurrently, like the May 15 batch):</strong> the May 15 batch achieved ~1.7 min effective per article running 10 in parallel without image-gen. Image generation partially serialises through LiteLLM's rate limits, so the realistic figure for the full pipeline is <strong>2–3 min effective per article</strong> in parallel. That puts 50 articles/day at <strong>~2 hours of wall-clock</strong> with one editor dispatching the batch.</li>
+  <li>The actual bottleneck at production scale is not generation — it is the <strong>human review SLA</strong>. As long as reviewers (Joel and future round-robin pool members) validate at the pace the pipeline produces, the system sustains 50/day without queueing.</li>
+</ul>
+
+<h3>Variability and how to refine these numbers</h3>
+
+<p>The autonomous E2E run is a single sample. Duration will vary with:</p>
+
+<ul>
+  <li>Size of the rulebook (Cycling UCI is larger than IFAB; that lengthens the research read).</li>
+  <li>Number of revise passes required (this article needed 1; some will pass critique 1 on the first try and skip revise; pathological cases will need 2).</li>
+  <li>Latency of LiteLLM iGaming at the moment of the image call.</li>
+</ul>
+
+<p>To get a stable baseline, the recommendation is to run 5–10 more articles end-to-end before the May 22 milestone and update the table above with the mean and the spread. <strong>~12–15 minutes per article single-track</strong> is the working number for capacity planning until that data lands.</p>
+
 <h2>First fully autonomous E2E production run <span class="date">2026-05-19 (late PM)</span></h2>
 
 <dl class="meta-grid">
