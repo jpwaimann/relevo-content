@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batch QA #1 — Vista previa de los 11 artículos regenerados + smoke</title>
+
+<style>
+:root { --rojo: #e63946; --azul: #1d3557; --azul-claro: #457b9d; --crema: #f1faee; --gris-1: #f8f9fa; --gris-2: #e9ecef; --gris-3: #adb5bd; --verde: #2a9d8f; --texto: #1a1a1a; --texto-suave: #495057; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--texto); background: #fff; margin: 0; line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 2.5em 1.5em 5em; }
+header.hero { border-bottom: 4px solid var(--rojo); padding-bottom: 1.4em; margin-bottom: 2em; }
+.eyebrow { display: inline-block; text-transform: uppercase; letter-spacing: 0.12em; font-size: 11px; font-weight: 700; color: var(--rojo); margin-bottom: 0.6em; }
+h1 { font-size: 1.9em; line-height: 1.2; margin: 0 0 0.3em; color: var(--azul); font-weight: 800; }
+.lede { font-size: 1.04em; color: var(--texto-suave); margin: 0; }
+a { color: var(--azul-claro); }
+a:hover { color: var(--rojo); }
+.crumb { font-size: 0.88em; color: var(--texto-suave); margin-bottom: 1em; }
+.crumb a { color: var(--texto-suave); }
+table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 0.94em; }
+th, td { text-align: left; padding: 0.7em 0.9em; border-bottom: 1px solid var(--gris-2); vertical-align: top; }
+th { background: var(--azul); color: #fff; font-weight: 600; border-bottom: none; font-size: 0.86em; text-transform: uppercase; letter-spacing: 0.06em; }
+tr.smoke td { background: #fffbea; }
+.pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75em; font-weight: 600; }
+.pill.rules { background: #2a9d8f; color: #fff; }
+.pill.tactics { background: #e76f51; color: #fff; }
+.pill.origins { background: #6a4c93; color: #fff; }
+.pill.smoke { background: #f4a261; color: #fff; }
+.view-btn { display: inline-block; padding: 4px 10px; background: var(--rojo); color: #fff !important; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 0.86em; }
+.view-btn:hover { background: var(--azul); color: #fff !important; }
+.note { background: var(--crema); border-left: 4px solid var(--rojo); padding: 1em 1.2em; margin: 1.4em 0; border-radius: 0 4px 4px 0; }
+footer { margin-top: 3em; padding-top: 1.5em; border-top: 1px solid var(--gris-2); color: var(--texto-suave); font-size: 0.88em; }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+<div class="crumb"><a href="../index.html">← Volver al overview</a></div>
+
+<header class="hero">
+  <div class="eyebrow">Editorial preview · 2026-05-20</div>
+  <h1>Batch QA #1 — Vista previa</h1>
+  <p class="lede">11 artículos regenerados bajo style guide v1.1.1 + templates v2 el 20/05/2026, más el smoke test inicial sobre tie-break. Lectura previa antes de pasar a QA #2 con Joel.</p>
+</header>
+
+<div class="note">
+  <strong>Lectura recomendada antes de mandarlos a Joel.</strong> Cada artículo aplica los fixes factuales que Joel marcó en QA #1 — palmarés actualizados, terminología corregida, ejemplos icónicos desarrollados, FAQs de curiosidad real. Si detectás algo crítico antes de pasárselos a Joel, lo arreglamos. La vista usa CSS aproximado al de relevo.com pero sin imagen hero.
+</div>
+
+<table>
+<thead>
+<tr><th>Tag</th><th>Título</th><th>Deporte</th><th>Tipo</th><th>Palabras</th><th></th></tr>
+</thead>
+<tbody>
+  <tr class="smoke">
+    <td><code>smoke</code></td>
+    <td><strong>Por qué Wimbledon introdujo el tie-break en el quinto set</strong></td>
+    <td>Tenis</td>
+    <td><span class="pill rules">Rules (sub-rule)</span></td>
+    <td>1,424</td>
+    <td><a class="view-btn" href="preview/smoke.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-1</code></td>
+    <td><strong>Posiciones en el fútbol: funciones y características</strong></td>
+    <td>Fútbol</td>
+    <td><span class="pill tactics">Tactics</span></td>
+    <td>2,503</td>
+    <td><a class="view-btn" href="preview/art-1.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-2</code></td>
+    <td><strong>Los tipos de tiro en el fútbol — del disparo raso a la chilena</strong></td>
+    <td>Fútbol</td>
+    <td><span class="pill tactics">Tactics</span></td>
+    <td>2,470</td>
+    <td><a class="view-btn" href="preview/art-2.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-3</code></td>
+    <td><strong>Reglas del baloncesto: normativa FIBA y NBA</strong></td>
+    <td>Baloncesto</td>
+    <td><span class="pill rules">Rules (pillar)</span></td>
+    <td>1,990</td>
+    <td><a class="view-btn" href="preview/art-3.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-4</code></td>
+    <td><strong>Tipos de tiro en baloncesto: bandeja, mate, triple y tiro libre</strong></td>
+    <td>Baloncesto</td>
+    <td><span class="pill tactics">Tactics</span></td>
+    <td>2,488</td>
+    <td><a class="view-btn" href="preview/art-4.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-5</code></td>
+    <td><strong>Reglas del tenis: puntuación, sets, tie-break y servicio</strong></td>
+    <td>Tenis</td>
+    <td><span class="pill rules">Rules (pillar)</span></td>
+    <td>2,005</td>
+    <td><a class="view-btn" href="preview/art-5.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-6</code></td>
+    <td><strong>Orígenes de Carlos Alcaraz: el murciano que conquistó el tenis</strong></td>
+    <td>Tenis</td>
+    <td><span class="pill origins">Origins</span></td>
+    <td>2,506</td>
+    <td><a class="view-btn" href="preview/art-6.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-7</code></td>
+    <td><strong>Reglas de la Fórmula 1 — puntuación, banderas y normativa técnica</strong></td>
+    <td>Fórmula 1</td>
+    <td><span class="pill rules">Rules (pillar)</span></td>
+    <td>1,976</td>
+    <td><a class="view-btn" href="preview/art-7.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-8</code></td>
+    <td><strong>Cómo funciona la estrategia de boxes en Fórmula 1</strong></td>
+    <td>Fórmula 1</td>
+    <td><span class="pill tactics">Tactics</span></td>
+    <td>2,274</td>
+    <td><a class="view-btn" href="preview/art-8.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-9</code></td>
+    <td><strong>Orígenes de Ilia Topuria: dónde nació, padres y trayectoria</strong></td>
+    <td>MMA</td>
+    <td><span class="pill origins">Origins</span></td>
+    <td>2,487</td>
+    <td><a class="view-btn" href="preview/art-9.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-10</code></td>
+    <td><strong>Reglas de MMA: rounds, decisiones y movimientos prohibidos en UFC</strong></td>
+    <td>MMA</td>
+    <td><span class="pill rules">Rules (pillar)</span></td>
+    <td>1,888</td>
+    <td><a class="view-btn" href="preview/art-10.html">Leer →</a></td>
+  </tr>
+  <tr>
+    <td><code>art-11</code></td>
+    <td><strong>Qué es el fuera de juego en el fútbol y cómo funciona</strong></td>
+    <td>Fútbol</td>
+    <td><span class="pill rules">Rules (sub-rule)</span></td>
+    <td>1,516</td>
+    <td><a class="view-btn" href="preview/art-11.html">Leer →</a></td>
+  </tr>
+</tbody>
+</table>
+
+<h2 style="font-size:1.3em;color:var(--azul);margin-top:2em;">¿Qué cambió respecto a v1.0?</h2>
+<p>Los 11 artículos absorben los <strong>12 defectos sistemáticos</strong> que Joel marcó en QA #1, más los fixes factuales específicos por artículo (palmarés Alcaraz hasta AO 2026, Topuria como peso ligero post-Oliveira junio 2025, Wenger law CPL 2026, F1 budget cap Red Bull 2022 breach, FIBA vs NBA explícito, eurostep ≠ doble paso, penalti y falta directa fuera de la lista de tipos de tiro, etc.).</p>
+<p>Métricas globales: 24.142 palabras · 0 párrafos &gt; 60 palabras · 0 bisagras prohibidas · 0 tags <code>&lt;b&gt;</code>/<code>&lt;i&gt;</code> raw · todas las entradillas en el rango 30-35 palabras.</p>
+
+<p>Más detalle en <a href="editorial-guide.html">Editorial guide v1.1</a>, <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/005-templates-v2-rework.md">ADR-005 (templates v2)</a>, <a href="https://github.com/jpwaimann/relevo-content/blob/main/prompts/joel-feedback-v1.md"><code>joel-feedback-v1.md</code></a> (los 12 defectos + per-article factual fixes), <a href="backlog.html#resolved">backlog (sección resolved)</a>.</p>
+
+<footer>
+  Preview generado 20/05/2026 · 12 páginas wrapper en <code>docs/preview/</code> · <a href="../index.html">Volver al overview</a>
+</footer>
+
+</div>
+</body>
+</html>
