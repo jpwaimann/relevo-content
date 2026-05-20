@@ -196,17 +196,19 @@
 <div class="wrap">
 
 <header class="hero">
-  <div class="eyebrow">Internal — Relevo Content · Updated 2026-05-15</div>
+  <div class="eyebrow">Internal — Relevo Content · Updated 2026-05-20</div>
   <h1>Relevo Content Workflow</h1>
   <p class="lede">Automated SEO content generation for relevo.com. 24 sports, 3 content categories, multi-pass quality gate. Built as a Claude Code skill replacing the legacy n8n workflow.</p>
   <div class="status-line">
-    <strong>Current phase:</strong> Phase 4 of 5 — Validation &amp; integrations. Writer review of the May 15 batch is in flight; SharePoint inventory API, WordPress + Asana MCPs, and LiteLLM image models all need to land by <strong>Friday May 22</strong> for the end-to-end workflow review. <strong>Hard launch date: June 1</strong>, ahead of the FIFA World Cup 2026 kickoff on <strong>June 11</strong>.
+    <strong>Current phase:</strong> Phase 4 of 5 — Validation &amp; integrations. Reviewer feedback on the May 15 batch landed May 20 and is incorporated as <a href="docs/editorial-guide.html">style guide v1.1</a>; SharePoint inventory API, WordPress + Asana MCPs, and LiteLLM image models all wired. Next gates: regenerate the May 15 batch under v1.1 prompts and the <strong>Friday May 22</strong> end-to-end workflow review. <strong>Hard launch date: June 1</strong>, ahead of the FIFA World Cup 2026 kickoff on <strong>June 11</strong>.
   </div>
   <p style="margin: 1em 0 0; font-size: 0.94em; color: var(--texto-suave);">
     <strong style="color: var(--azul);">Companion docs:</strong>
     <a href="docs/project-overview.html">Project overview</a> ·
+    <a href="docs/editorial-guide.html">Editorial guide v1.1</a> ·
     <a href="docs/test-journal.html">Test journal</a> ·
     <a href="docs/backlog.html">Backlog</a> ·
+    <a href="https://github.com/jpwaimann/relevo-content/tree/main/docs/adr">ADRs</a> ·
     <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/README.md">Skill technical reference</a>
   </p>
 </header>
@@ -237,11 +239,12 @@ gantt
     Public hosting (GitHub Pages)      :done, p3b, 2026-05-15, 1d
 
     section Phase 4 · Validation & integrations
-    Writer review of batch             :active, p4a, 2026-05-18, 5d
-    Style guide v1.1                   :active, p4b, 2026-05-18, 5d
-    SharePoint inventory API           :p4c, 2026-05-18, 5d
-    WordPress + Asana MCPs             :p4d, 2026-05-18, 5d
-    LiteLLM image models               :p4e, 2026-05-18, 5d
+    Writer review of batch             :done, p4a, 2026-05-18, 3d
+    Style guide v1.1                   :done, p4b, 2026-05-20, 1d
+    SharePoint inventory API           :done, p4c, 2026-05-18, 2d
+    WordPress + Asana MCPs             :done, p4d, 2026-05-18, 2d
+    LiteLLM image models               :done, p4e, 2026-05-18, 1d
+    Regenerate batch under v1.1        :active, p4f, 2026-05-20, 2d
     Workflow live review (Fri 22)      :milestone, m2, 2026-05-22, 0d
 
     section Phase 5 · Production launch
@@ -291,12 +294,13 @@ gantt
     <div class="h">Phase 4 <span class="badge">current</span></div>
     <div class="meta">May 18 – May 22 · Validation &amp; integrations</div>
     <ul>
-      <li>Content writer reviews the May 15 batch; style guide v1.1 merged</li>
+      <li>Reviewer feedback on the May 15 batch landed May 20 — 12 systematic editorial defects identified across all 11 articles. <strong>✓ Style guide v1.1 merged</strong> incorporating 11 of the 12 fixes; the twelfth (category template divergence) is captured for ADR-003. Details in <a href="docs/editorial-guide.html">editorial guide</a>.</li>
       <li>SharePoint Excel inventory wired via Microsoft Graph API <span class="badge">v2 master file created May 15</span></li>
       <li>WordPress publishing via MCP <strong>✓ functional</strong> — <code>ig-mcp-proxy</code> wired against <code>relevo-com.sub.plus</code> on May 19; first publish E2E completed with post 16091 as <code>draft</code>; ~200 site tools discovered (posts, media, terms, schema, shortcodes). Details in <a href="docs/test-journal.html">test journal</a>.</li>
       <li>Asana reviewer subtasks <strong>✓ functional</strong> via <code>scripts/asana_notify.py</code> helper (tested end-to-end on the May 15 batch; round-robin reviewer pool, starts with one reviewer and grows)</li>
       <li>LiteLLM image generation <strong>✓ functional</strong> — <code>gpt-image-2</code> via the LiteLLM iGaming proxy, integrated into <code>scripts/imagen/</code>; smoke test passed end-to-end with automatic C2PA / JUMBF metadata stripping</li>
       <li>Content inventory seeded with 148 topics across all 24 sports (2 Rules + 2 Tactics + 2 Origins each, Fútbol extras), all rows in <code>pending_review</code> awaiting editorial approval</li>
+      <li><strong>Active gate:</strong> regenerate the 11 articles of the May 15 batch under v1.1 prompts (<code>EDIT-04</code>) before the workflow review</li>
       <li><strong>Friday May 22:</strong> end-to-end workflow review with everything wired together</li>
     </ul>
   </div>

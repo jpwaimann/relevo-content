@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editorial guide v1.1 · Relevo Content Workflow</title>
+<style>
+  :root { --rojo: #e63946; --azul: #1d3557; --azul-claro: #457b9d; --crema: #f1faee; --gris-1: #f8f9fa; --gris-2: #e9ecef; --gris-3: #adb5bd; --verde: #2a9d8f; --texto: #1a1a1a; --texto-suave: #495057; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--texto); background: #fff; margin: 0; line-height: 1.65; font-size: 17px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 3em 1.5em 5em; }
+  header.hero { border-bottom: 4px solid var(--rojo); padding-bottom: 1.5em; margin-bottom: 2.4em; }
+  .eyebrow { display: inline-block; text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; font-weight: 700; color: var(--rojo); margin-bottom: 0.6em; }
+  h1 { font-size: 2.1em; line-height: 1.2; margin: 0 0 0.4em; color: var(--azul); font-weight: 800; letter-spacing: -0.01em; }
+  .lede { font-size: 1.12em; color: var(--texto-suave); margin: 0; }
+  h2 { font-size: 1.5em; color: var(--azul); margin: 2.4em 0 0.7em; font-weight: 700; letter-spacing: -0.01em; }
+  h3 { font-size: 1.15em; color: var(--azul); margin: 1.8em 0 0.5em; font-weight: 700; }
+  p { margin: 0 0 1em; }
+  strong { font-weight: 600; }
+  a { color: var(--azul-claro); }
+  a:hover { color: var(--rojo); }
+  code { background: var(--gris-2); padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, "SF Mono", Monaco, monospace; font-size: 0.88em; }
+  ul, ol { padding-left: 1.4em; margin: 0 0 1.2em; }
+  li { margin-bottom: 0.4em; }
+  .callout { background: var(--crema); border-left: 4px solid var(--rojo); padding: 1.1em 1.3em; margin: 1.4em 0; border-radius: 0 4px 4px 0; }
+  .callout.note { background: #f0f7ff; border-left-color: var(--azul-claro); }
+  .callout.good { background: #f0fbf7; border-left-color: var(--verde); }
+  .callout p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 1em 0 1.5em; font-size: 0.93em; }
+  th, td { text-align: left; padding: 0.7em 0.9em; border-bottom: 1px solid var(--gris-2); vertical-align: top; }
+  th { background: var(--azul); color: #fff; font-weight: 600; border-bottom: none; }
+  tr:last-child td { border-bottom: none; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin: 1.2em 0; }
+  @media (max-width: 600px) { .compare { grid-template-columns: 1fr; } }
+  .compare > div { padding: 1em 1.1em; border-radius: 4px; font-size: 0.95em; }
+  .compare .bad { background: #fdf2f2; border-left: 3px solid var(--rojo); }
+  .compare .good { background: #f0fbf7; border-left: 3px solid var(--verde); }
+  .compare h4 { margin: 0 0 0.5em; font-size: 0.82em; text-transform: uppercase; letter-spacing: 0.06em; color: var(--texto-suave); font-weight: 700; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75em; font-weight: 600; background: var(--gris-2); color: var(--texto-suave); margin-right: 0.3em; }
+  .tag.done { background: var(--verde); color: #fff; }
+  .tag.pending { background: var(--gris-3); color: #fff; }
+  footer { margin-top: 3.5em; padding-top: 1.5em; border-top: 1px solid var(--gris-2); color: var(--texto-suave); font-size: 0.9em; }
+  .nav { margin-bottom: 2em; font-size: 0.94em; }
+  .nav a { color: var(--texto-suave); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="nav">
+  <a href="../index.html">← Back to overview</a>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Editorial reference · Updated 2026-05-20</div>
+  <h1>Editorial guide v1.1</h1>
+  <p class="lede">How the Relevo style guide evolved after the first batch QA cycle. This page summarises what changed between v1.0 and v1.1, why, and what is still pending. The full style guide and source feedback are linked at the bottom.</p>
+</header>
+
+<div class="callout note">
+  <p><strong>One-line summary.</strong> After reviewing 11 articles produced by the May 15 pipeline run, the content reviewer identified 12 systematic editorial defects that repeat across sports and content categories. Eleven of those defects are now encoded as rules in <code>prompts/style_guide.md</code> v1.1 — the source of truth that the pipeline injects before every generation. The twelfth defect is structural (the three content categories share too much logic) and will be addressed in a separate template revision (ADR-003).</p>
+</div>
+
+<h2>What this page is</h2>
+
+<p>Relevo's editorial voice is encoded in two artefacts the content team owns:</p>
+
+<ol>
+  <li><strong>The style guide</strong> — <code>prompts/style_guide.md</code> — voice, lexicon, rhythm, typography, HTML semantics. Applies across all sports and all categories.</li>
+  <li><strong>The category templates</strong> — <code>prompts/rules_template.md</code>, <code>tactics_template.md</code>, <code>origins_template.md</code> — structural decisions for each piece type (sections, FAQ count, word count, schema).</li>
+</ol>
+
+<p>The pipeline injects both into the model's system prompt before any article is written. Editing those files is how editorial voice changes. No code changes required.</p>
+
+<h2>Why v1.1 exists</h2>
+
+<p>The first end-to-end batch landed on May 15 — 10 articles produced in parallel by the <code>/relevo new</code> command. The internal critic gave them a mean score of 90.3, which cleared the quality gate. The next step was a real editorial review.</p>
+
+<p>Between May 18 and May 20, the reviewer ran a <strong>systematic editorial analysis</strong> on the 11 pieces (the 10-article batch plus the original smoke test). The output was a 12-part diagnosis attached to <a href="https://app.asana.com/1/9544544431392/task/1214815492685881">an Asana parent task</a> with one subtask per article and a global synthesis. The diagnosis pulled no punches but it was specific: the problems were no longer technical (structure was sound, terminology was correct, SEO crud was absent) — they were <strong>editorial</strong>. The pieces lacked the Relevo layer.</p>
+
+<div class="callout">
+  <p><em>"The model already produces reasonable structure, correct terminology, and clean texts free of artificial SEO language. The problems are not in the basic technical quality. The problems are in the editorial layer, the contextual depth, the freshness of facts, the sports culture, the tone, and the ability to build visual, recognisable texts for real fans."</em> — Reviewer, global analysis, May 20.</p>
+</div>
+
+<h2>The 12 systematic defects</h2>
+
+<p>Each defect was present in <strong>every one of the 11 articles</strong>, regardless of sport or category. The fix column shows how v1.1 of the style guide (or the pending template work) addresses each one.</p>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Defect</th><th>Fix in v1.1</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Missing intro between H1 and first H2; first H2 too long</td><td>30-35 word intro required; first H2 short and editorial</td><td><span class="tag done">v1.1</span></td></tr>
+    <tr><td>2</td><td>Iconic examples mentioned in passing, never developed</td><td>2-5 developed examples per piece; canonical reference catalog per sport</td><td><span class="tag done">v1.1</span></td></tr>
+    <tr><td>3</td><td>Outdated or incorrect facts (palmarés, weight class, rules)</td><td>Explicit split evergreen vs live info; live info requires WebSearch before writing</td><td><span class="tag done">v1.1</span></td></tr>
+    <tr><td>4</td><td>Prefab epic tone — overly literary phrasing</td><td>List of v1.0 antipatterns with concrete examples; "describe scenes, don't stylise"</td><td><span class="tag done">v1.1</span></td></tr>
+    <tr><td>5</td><td>Templatised syntax — same hinges repeated (<em>"not only… but also…"</em>)</td><td>Explicit ban on repeated hinges; mandatory syntactic variety</td><td><span class="tag done">v1.1</span></td></tr>
+    <tr><td>6</td><td>Bold formatting with no hierarchy — scattered single words</td><td><strong>Reinterpreted:</strong> bold marks a 5-7 word phrase/idea, not scattered words; one bold per paragraph</td><td><span class="tag done">v1.1</span></td></tr>
+    <tr><td>7</td><td>Insufficient tactical depth — explains what, not why it matters</td><td>Three-layer structure required (what is it / how it works / why it matters today)</td><td><span class="tag done">v1.1</span></td></tr>
+    <tr><td>8</td><td>Generic FAQs (<em>"what nationality is X?"</em>)</td><td>FAQs must answer real curiosity-driven searches, not obvious questions</td><td><span class="tag done">v1.1</span></td></tr>
+    <tr><td>9</td><td>Paragraphs of 70-100+ words still appear</td><td>Hard ceiling lowered from 75 to <strong>60 words</strong> per paragraph</td><td><span class="tag done">v1.1</span></td></tr>
+    <tr><td>10</td><td>Anglicisms used correctly but uncontextualised for general readers</td><td>Minor technicisms require brief contextual explanation on first use; lookup table added</td><td><span class="tag done">v1.1</span></td></tr>
+    <tr><td>11</td><td>Bio, rule, and tactical guide written with the same structural logic</td><td>Requires divergence between Rules / Tactics / Origins templates — deferred to ADR-003</td><td><span class="tag pending">ADR-003</span></td></tr>
+    <tr><td>12</td><td>No "Relevo value" layer — generic explanations indistinguishable from a Wikipedia entry</td><td>Promoted to non-negotiable rule #6; mandatory self-check question on every piece</td><td><span class="tag done">v1.1</span></td></tr>
+  </tbody>
+</table>
+
+<h2>The biggest single change: bold formatting</h2>
+
+<p>The v1.0 guide said <em>"~6-7 highlighted words per paragraph"</em>. In practice, the model interpreted that as <strong>any</strong> 6-7 words — typically scattered single words sprinkled through the paragraph as decoration. The reviewer flagged this in every article. The intent was always different.</p>
+
+<div class="compare">
+  <div class="bad">
+    <h4>v1.0 — scattered single words (defect)</h4>
+    <p>El <strong>Barça</strong> completó una <strong>segunda parte</strong> mucho más <strong>agresiva</strong> en <strong>presión alta</strong>.</p>
+  </div>
+  <div class="good">
+    <h4>v1.1 — bold marks a complete idea</h4>
+    <p>El Barça <strong>completó una segunda parte mucho más agresiva</strong> en presión alta, recuperando balones cerca del área rival una y otra vez.</p>
+  </div>
+</div>
+
+<p>The v1.1 rule: the bold span is <strong>5 to 7 consecutive words that read as a complete idea when isolated from the rest of the paragraph</strong>. A reader scanning only the bold parts of the article should be able to follow the main message of each paragraph.</p>
+
+<p>The cap is also tighter — <strong>one bold span per paragraph</strong> in most cases, exceptionally two when a long paragraph carries two distinct ideas. The previous count rule ("~6-7 words") is preserved as a length constraint on each span, not as a frequency across the paragraph.</p>
+
+<h2>Three-layer depth — the test that separates a correct piece from a Relevo piece</h2>
+
+<p>Every important concept in the article must be developed in three layers, in this order:</p>
+
+<ol>
+  <li><strong>What it is</strong> — a clean, compact definition.</li>
+  <li><strong>How it works</strong> — mechanism, conditions, real application context.</li>
+  <li><strong>Why it matters today</strong> — what changed in the modern game, what tactical or cultural consequences it has, what debate it generates.</li>
+</ol>
+
+<p>Layer 3 is the editorial gap. A piece that stops at layer 2 is competent but indistinguishable from a generic encyclopedia entry. Layer 3 — context, current debate, tactical consequence — is what makes the piece sound like Relevo wrote it.</p>
+
+<h2>Live information requires verification</h2>
+
+<p>The reviewer flagged factual errors as one of the most damaging defects: outdated palmarés, an athlete's previous weight class, a rule change that already happened. In a piece about a contemporary figure (Alcaraz, Topuria), this kills credibility immediately.</p>
+
+<p>v1.1 introduces an explicit split:</p>
+
+<ul>
+  <li><strong>Evergreen</strong> — historical rules, mechanics of the game, tactical concepts, consolidated definitions. Safe to write from model knowledge.</li>
+  <li><strong>Live</strong> — palmarés, current ranking, current season's rules, weight class, current squad, recent statements, contracts. <strong>Requires WebSearch verification at write time.</strong> If you cannot verify it, you do not include it.</li>
+</ul>
+
+<p>The pipeline already has a fact-check stage, but moving this rule into the style guide moves the gate earlier — the model is told to verify before drafting, not after.</p>
+
+<h2>What this means operationally</h2>
+
+<h3>Immediate</h3>
+
+<ul>
+  <li><strong>Style guide v1.1 is live.</strong> Any pipeline run from now on uses the new rules.</li>
+  <li><strong>The 11 articles in the May 15 batch are obsolete.</strong> They will be regenerated against v1.1 before any of them is considered for publication.</li>
+</ul>
+
+<h3>Pending — captured in the backlog</h3>
+
+<ul>
+  <li><code>EDIT-04</code> — Regenerate the 11 articles of batch QA #1 with prompts v1.1+ and a fact-check pass via WebSearch.</li>
+  <li><code>EDIT-05</code> — Rework the three category templates (Rules / Tactics / Origins) to address defect #11 and absorb category-specific aspects of #2, #3, #7, #8. Tracked in ADR-003 when started.</li>
+  <li><code>EDIT-06</code> — Second QA cycle with the reviewer after the regeneration. Validation of v1.1 end-to-end.</li>
+</ul>
+
+<h2>References</h2>
+
+<ul>
+  <li><a href="https://github.com/jpwaimann/relevo-content/blob/main/prompts/style_guide.md">prompts/style_guide.md</a> — full style guide v1.1 (Spanish, source of truth)</li>
+  <li><a href="https://github.com/jpwaimann/relevo-content/blob/main/prompts/joel-feedback-v1.md">prompts/joel-feedback-v1.md</a> — consolidated reviewer feedback (Spanish)</li>
+  <li><a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/002-style-guide-v1-1.md">docs/adr/002-style-guide-v1-1.md</a> — decision record</li>
+  <li><a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/001-architecture.md">docs/adr/001-architecture.md</a> — original architecture decision</li>
+  <li><a href="backlog.html">Project backlog</a> — current open items</li>
+</ul>
+
+<footer>
+  <p>Editorial guide v1.1 · 2026-05-20 · <a href="../index.html">Back to project overview</a></p>
+</footer>
+
+</div>
+</body>
+</html>

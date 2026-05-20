@@ -1,6 +1,6 @@
 # Relevo Content Workflow — Backlog
 
-Consolidated open items pulled from session memories, README follow-ups, and integration tests through 2026-05-19. Each item has a **priority** (P0 / P1 / P2 / P3), a **category**, an **owner**, and a brief **why**. The HTML version of this file lives at [`backlog.html`](backlog.html) and is rendered on the public site.
+Consolidated open items pulled from session memories, README follow-ups, and integration tests through 2026-05-20. Each item has a **priority** (P0 / P1 / P2 / P3), a **category**, an **owner**, and a brief **why**. The HTML version of this file lives at [`backlog.html`](backlog.html) and is rendered on the public site.
 
 This document is a living artefact. As items close they move to the bottom under **Recently resolved**. As new items emerge (during reviewer feedback, infra changes, or v2 design) they get added in their natural priority bucket.
 
@@ -39,10 +39,16 @@ This document is a living artefact. As items close they move to the bottom under
 - **Tools already in place:** `scripts/relevo_approve.py approve --sport <X> --category <Y>` (or `--ids 11,12,13`).
 - **Decision pending:** how Joel performs the review at scale. Three options framed on 2026-05-18 EOD: (a) one giant Asana task with all 147 rows; (b) sport-by-sport with a 30-topic first batch; (c) approval in lots via `relevo_approve.py` after a visual review in the Excel.
 
-### `EDIT-02` Style guide v1.1
+### `EDIT-04` Regenerate the 11 articles of batch QA #1 under prompts v1.1
+- **Category:** Editorial / Pipeline
+- **Owner:** Pablo
+- **Why:** After the reviewer's batch QA #1 feedback (Asana task `1214815492685881`) was incorporated as style guide v1.1 on May 20, the original 11 articles are obsolete. They must be regenerated under the new prompts before any of them ships, including a WebSearch fact-check pass to fix the per-article factual errors (Alcaraz palmarés through May 2026, Topuria as lightweight after the Oliveira KO, Wenger law tested in the Canadian league, etc. — see `prompts/joel-feedback-v1.md` for the per-article list). Closes the Phase 4 quality loop.
+- **Pre-reqs:** EDIT-01 (so the regenerated topics flow through the normal `pending` queue), or run them as one-off `/relevo new` calls against the existing topic IDs.
+
+### `EDIT-05` Rework the three category templates — ADR-003
 - **Category:** Editorial
-- **Owner:** Joel
-- **Why:** The main content writer's feedback on the May 15 batch (10 articles, mean score 90.3) was supposed to land in a v1.1 of `prompts/style_guide.md` before the Friday May 22 workflow review. Phase 4 milestone depends on it.
+- **Owner:** Pablo (decision) + Joel (review)
+- **Why:** Defect #11 of the batch QA #1 feedback: Rules, Tactics, and Origins articles all read with the same structural logic when they should diverge. Biographies need scenes, conflict, and direct quotes; rules need worked examples and current debates; tactical guides need a "when used / who represents it / what changed" frame. v1.1 of the style guide captures the transversal fixes; the category-specific ones belong in the templates. To be tracked as `docs/adr/003-templates-rework.md` when started.
 
 ### `INTEG-01` First real publish E2E
 - **Category:** Integrations / Pipeline
@@ -53,7 +59,13 @@ This document is a living artefact. As items close they move to the bottom under
 ### `EDIT-03` Workflow live review milestone — May 22
 - **Category:** Editorial / Pipeline
 - **Owner:** Pablo
-- **Why:** The Friday May 22 review is the hard close of Phase 4. Demonstrate `/relevo content-plan` and `/relevo new` end-to-end with a real topic, real WP draft, real Asana subtask. The earlier `EDIT-01`/`INTEG-01` items have to feed into this.
+- **Why:** The Friday May 22 review is the hard close of Phase 4. Demonstrate `/relevo content-plan` and `/relevo new` end-to-end with a real topic, real WP draft, real Asana subtask. The earlier `EDIT-01`/`INTEG-01`/`EDIT-04` items have to feed into this.
+
+### `EDIT-06` Batch QA #2 — validate style guide v1.1 with the reviewer
+- **Category:** Editorial
+- **Owner:** Joel (review) + Pablo (coordination)
+- **Why:** The first round of reviewer feedback drove style guide v1.1 (see [editorial guide](editorial-guide.html) and [ADR-002](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/002-style-guide-v1-1.md)). After `EDIT-04` regenerates the 11 articles under the new prompts, a second QA cycle with the reviewer validates that v1.1 actually addresses the 12 systematic defects without regressing what already worked. Output: either a v1.2 patch or sign-off to scale production.
+- **Pre-reqs:** EDIT-04.
 
 ---
 
@@ -152,6 +164,7 @@ This document is a living artefact. As items close they move to the bottom under
 
 For completeness — these were open at some point during May and have since closed.
 
+- ✅ **EDIT-02 — Style guide v1.1** (May 20) — reviewer feedback on the May 15 batch (Asana task `1214815492685881`, 12 subtasks, 23 attachments) landed and was incorporated into [`prompts/style_guide.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/style_guide.md) v1.1. The 12 systematic editorial defects identified across the 11 articles drove 11 new rules; the twelfth (template divergence) is deferred to ADR-003 / `EDIT-05`. The biggest single change is the reinterpretation of bold formatting: 5-7 consecutive words forming a complete idea, one per paragraph — not scattered single words. Full details in the public [editorial guide](editorial-guide.html) and [ADR-002](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/002-style-guide-v1-1.md). Source feedback consolidated at [`prompts/joel-feedback-v1.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/joel-feedback-v1.md).
 - ✅ **First fully autonomous E2E production run** (May 19, late PM) — inventory row 5 (Fútbol / rules / penalti) processed end-to-end through every pipeline stage without human intervention. Final quality score 91, WP post 16100 in `pending`, inventory advanced to `status=review`. Validated that all stages wired together work in sequence on a real topic. Two minor invocation-side issues caught and resolved (`update_table_row` argument shape, schema column indexing for hand-written calls). Full details in [test journal](test-journal.html).
 - ✅ **SEO-03 — FAQPage JSON-LD generator** (May 19) — implemented `scripts/seo_jsonld.py` with deterministic FAQ detection and idempotent injection. Integrated into the skill as Stage 7 of the pipeline (`cmd_new.md` step 7.b). Smoke-tested against the penalti article: detected the 6 FAQ questions, emitted a clean `FAQPage` JSON-LD block, and skipped re-injection on a second run.
 - ✅ **INFRA-03 — Pillow format quirk fix** (May 19) — updated `scripts/imagen/strip-ai-metadata.py` to honour the file extension as the format contract (`.jpg` in → JPEG out, `.png` in → PNG out). Added a `normalise` path that fixes extension/content mismatches even when the file has no AI metadata markers. Smoke-tested: a PNG-bytes-inside-.jpg file was correctly rewritten to JPEG bytes.
