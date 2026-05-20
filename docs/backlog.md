@@ -78,6 +78,16 @@ This document is a living artefact. As items close they move to the bottom under
 - **Why:** Once EDIT-07 has applied all the tactical fixes (reformulations, factual corrections, dedup, expansion), Joel does a second pass to confirm the inventory is clean before any further `/relevo new` runs at scale. Same pattern as EDIT-06 but for the ideation side instead of the writing side.
 - **Pre-reqs:** EDIT-07.
 
+### `EDIT-09` Automated dedup pass against relevo.com
+- **Category:** Pipeline / Editorial
+- **Owner:** Pablo
+- **Why:** The dedup principle is now policy (L2 in `topic_ideation_lineamientos.md`) but automated execution is blocked: relevo.com disallows Anthropic's crawler so the in-tool WebSearch can't query it directly, and DuckDuckGo's HTML search rate-limits past ~1 scripted query before returning captcha. The 3 rugby duplicates Joel explicitly cited (ids 53, 55, 56) were handled inline as part of EDIT-07. A full pass over the remaining ~170 rows needs either (a) a Google Custom Search API key (paid), (b) a paid scraping setup that handles DDG's anti-bot, or (c) an internal relevo.com search endpoint if one exists. Joel's `EDIT-08` QA #2 catches any clear duplicates manually in the meantime.
+
+### `EDIT-10` Decide sport-list coverage for IndyCar / Álex Palou
+- **Category:** Editorial / Pipeline
+- **Owner:** Pablo
+- **Why:** Álex Palou (3x IndyCar champion, biggest Spanish name in US single-seaters) is in Joel's list of mandatory bios but does not fit cleanly into the current 24-sport list. The closest existing slot is Fórmula 1, but he competes in IndyCar — a different series. Three options: (a) classify Palou under F1 with an explanatory note in his bio, (b) expand the sport list to include IndyCar (or a broader "Automovilismo" umbrella covering F1 + IndyCar + Rallies), (c) drop Palou. Until Pablo decides, the Palou row is `status=blocked` with the rationale in `notes`.
+
 ---
 
 ## P1 — Quality and robustness gates
