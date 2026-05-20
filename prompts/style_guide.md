@@ -1,6 +1,6 @@
 # Guía de estilo Relevo — Voz y redacción
 
-**Versión 1.1** · 20/05/2026 · Incorpora el feedback editorial del batch QA #1 (Joel Sastre) sobre los 11 primeros artículos del pipeline. Ver `prompts/joel-feedback-v1.md` para el detalle completo.
+**Versión 1.1** · 20/05/2026 · Incorpora el feedback editorial del batch QA #1 (Joel Sierra) sobre los 11 primeros artículos del pipeline. Ver `prompts/joel-feedback-v1.md` para el detalle completo.
 
 ## Changelog
 

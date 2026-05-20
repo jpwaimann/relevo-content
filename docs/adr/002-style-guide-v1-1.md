@@ -3,13 +3,13 @@
 **Status**: Approved
 **Fecha**: 2026-05-20
 **Supersedes**: `prompts/style_guide.md` v1.0 (14/05/2026)
-**Drivers**: Joel Sastre (review editorial), Pablo Waimann (project lead)
+**Drivers**: Joel Sierra (review editorial), Pablo Waimann (project lead)
 
 ---
 
 ## 1. Contexto
 
-El 15/05/2026 el pipeline `/relevo new` produjo un batch de 10 artículos en paralelo (puntuación media 90.3 sobre 100 según el critic interno). Entre el 18/05 y el 20/05, Joel Sastre, único reviewer editorial del proyecto Relevo.com tras la salida de Tiziana, realizó el análisis sistemático de los 11 artículos del batch (los 10 originales más el smoke test del 14/05) y entregó el feedback en la task de Asana `1214815492685881`, con 12 subtasks y 23 adjuntos (11 `.docx` de análisis individual + 11 `.pdf` con los artículos originales + 1 `.docx` con el análisis global).
+El 15/05/2026 el pipeline `/relevo new` produjo un batch de 10 artículos en paralelo (puntuación media 90.3 sobre 100 según el critic interno). Entre el 18/05 y el 20/05, Joel Sierra, único reviewer editorial del proyecto Relevo.com tras la salida de Tiziana, realizó el análisis sistemático de los 11 artículos del batch (los 10 originales más el smoke test del 14/05) y entregó el feedback en la task de Asana `1214815492685881`, con 12 subtasks y 23 adjuntos (11 `.docx` de análisis individual + 11 `.pdf` con los artículos originales + 1 `.docx` con el análisis global).
 
 El feedback no marca defectos puntuales: identifica **12 defectos sistemáticos** que se repiten en los 11 artículos **independientemente del deporte y del tipo de pieza** (Rules / Tactics / Origins). En palabras textuales de Joel: *"Los problemas ya no están en la calidad técnica básica. Los problemas están en la capa editorial, la profundidad contextual, la actualización, la cultura deportiva, el tono y la capacidad de construir textos visuales y reconocibles para el aficionado real."*
 

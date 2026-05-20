@@ -1,6 +1,6 @@
 # Feedback Joel — Batch QA #1 (mayo 2026)
 
-**Origen.** Análisis editorial realizado por Joel Sastre (reviewer único del proyecto Relevo.com) sobre los 11 primeros artículos generados por el pipeline. Entregado en Asana el 18-20/05/2026 (task `1214815492685881`, 12 subtasks con `.docx`). Esta es la base editorial sobre la que se construyen las versiones v1.1+ de los prompts.
+**Origen.** Análisis editorial realizado por Joel Sierra (reviewer único del proyecto Relevo.com) sobre los 11 primeros artículos generados por el pipeline. Entregado en Asana el 18-20/05/2026 (task `1214815492685881`, 12 subtasks con `.docx`). Esta es la base editorial sobre la que se construyen las versiones v1.1+ de los prompts.
 
 **Estado del modelo según Joel:** *"Los problemas ya no están en la calidad técnica básica. Los problemas están en la capa editorial, la profundidad contextual, la actualización, la cultura deportiva, el tono y la capacidad de construir textos visuales y reconocibles para el aficionado real."*
 
@@ -142,4 +142,4 @@ La regla 11 ("diferenciar el tipo de pieza") implica que los 3 templates deben *
 
 ## Anchor
 
-> *"El modelo ya produce estructuras razonables, buena terminología y textos limpios de SEO artificial. Es exactamente en la capa editorial, la profundidad contextual, la actualización, la cultura deportiva y el tono donde Relevo marca diferencias respecto al contenido deportivo genérico. Y es precisamente ahí donde los prompts necesitan volverse muchísimo más específicos."* — Joel Sastre, análisis global batch #1, 20/05/2026.
+> *"El modelo ya produce estructuras razonables, buena terminología y textos limpios de SEO artificial. Es exactamente en la capa editorial, la profundidad contextual, la actualización, la cultura deportiva y el tono donde Relevo marca diferencias respecto al contenido deportivo genérico. Y es precisamente ahí donde los prompts necesitan volverse muchísimo más específicos."* — Joel Sierra, análisis global batch #1, 20/05/2026.
