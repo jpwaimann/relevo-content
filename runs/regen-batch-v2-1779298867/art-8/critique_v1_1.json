@@ -1,0 +1,75 @@
+{
+  "article": "art-8",
+  "slug": "estrategia-boxes-f1",
+  "title": "Cómo funciona la estrategia de boxes en Fórmula 1",
+  "category": "Tactics",
+  "subtype": "concept",
+  "version": "v1.1",
+  "prompts_version": {
+    "style_guide": "v1.1",
+    "tactics_template": "v2.0"
+  },
+  "word_count": 2289,
+  "entradilla_words": 35,
+  "paragraphs_over_60": 0,
+  "self_check_20pt": {
+    "1_voz_periodista_espanol": "ok — registro de prensa deportiva española, sin Wikipedia ni streamer",
+    "2_entradilla_30_35": "ok — 35 palabras, complementa H1 sin repetirlo",
+    "3_primer_h2_corto": "ok — 'El domingo en que Abu Dabi cambió un Mundial' (8 palabras, anclaje narrativo)",
+    "4_ritmo_paragrafos": "ok — 0 párrafos sobre 60 palabras tras pase de trimming",
+    "5_variedad_sintactica": "ok — sin bisagras prohibidas repetidas; verificado 'no solo… sino también', 'más que…', 'no era… era…', 'eso explica…'",
+    "6_tres_capas": "ok — undercut/overcut/ventana de parada/safety car desarrollados con qué es / cómo funciona / por qué importa; capa 3 cubierta en sección dedicada 'Por qué importa hoy: presupuesto y aerodinámica'",
+    "7_ejemplos_iconicos": "ok — Abu Dabi 2021 (apertura desarrollada), Mónaco como laboratorio undercut, Red Bull/Verstappen como referente de precisión, Ferrari como contraejemplo recurrente (Mónaco/Hungría 2022, Países Bajos 2023). 4 ejemplos desarrollados, dentro del rango 2-5",
+    "8_info_viva_websearch": "ok — WebSearch ejecutado para 2026 tyre regs (Pirelli C1-C5, drop C6, 25mm/30mm narrower, single rain compound exploration). Pirelli proveedor hasta 2027 verificado",
+    "9_lexico_peninsular": "ok — 'muro', 'pit lane', 'paddock', 'pelotón', 'pista', 'goma', 'tanda', 'relevo', registro coherente",
+    "10_equivalencias": "n/a en F1 — los falsos amigos típicos (penalti/derbi) no aplican; sí se respeta 'gran premio' en lugar de 'GP' a secas, 'monoplaza' en lugar de 'single-seater'",
+    "11_extranjerismos": "ok — undercut, overcut, safety car, VSC, delta, graining, pit lane, budget cap, pit-wall, dirty air, cockpit en <em>. Primera mención de undercut, overcut, safety car y VSC contextualizada con guion explicativo",
+    "12_cliches": "ok — sin 'el deporte rey de los motores', 'reyes del paddock', 'duelo titánico' ni similares",
+    "13_epica_prefabricada": "ok — sin frases construidas para 'sonar importantes'; cierre breve sin grandilocuencia",
+    "14_adjetivos_grandilocuentes": "ok — 'devastador', 'letal' (overcut/undercut) justificados con mecánica; 'célebres' (errores Ferrari) justificado con casos concretos",
+    "15_seo_h2_intencion": "ok — cada H2 responde intención real (qué es, undercut, overcut, una vs dos paradas, safety car, evolución, por qué importa hoy, FAQs)",
+    "16_faqs_curiosidad_real": "ok — 6 FAQs, 3 nuevas obligatorias incluidas: 'Por qué algunos pilotos paran aunque sus neumáticos aún estén bien', 'Qué es el aire limpio en F1', 'Por qué una parada bajo safety car cuesta menos tiempo'. Sin preguntas obvias tipo 'qué nacionalidad'",
+    "17_negritas_5_7_frase": "ok — 15 strongs totales, una por párrafo máximo, cada uno marca una frase/idea de 5-7 palabras consecutivas (ej. 'Una decisión de pit-wall valió un campeonato', 'Allí el undercut decide la carrera', 'Los equipos punteros priorizan el hardware'). Cero strongs sobre palabras sueltas dispersas",
+    "18_cursivas_em": "ok — 26 <em>, cero <i>",
+    "19_ortotipografia_nombres": "ok — Lewis Hamilton / Max Verstappen primera mención con nombre+apellido; después solo apellido. Pirelli, FIA, Mercedes, Red Bull, Ferrari en mayúscula. Cifras técnicas en número (2,5 segundos, 215 millones, 60 km/h, 25 milímetros)",
+    "20_antialucinacion_valor_relevo": "ok — Abu Dabi 2021 (Hamilton/Verstappen/Latifi) factual; ban repostaje 2010 factual; Pirelli desde 2011 factual; reglamento 2022 factual; cap 2026 215M$ factual; errores Ferrari Mónaco/Hungría 2022 + Países Bajos 2023 factuales. Valor Relevo: el lector entiende por qué el muro decide carreras y mundiales, qué cambia en 2026 y por qué Ferrari es contraejemplo recurrente — no es definición plana"
+  },
+  "per_article_fixes_applied": {
+    "1_2026_tyre_regs": "applied — sección 'Compuestos de neumáticos en 2026' cita explícitamente C1-C5, drop del C6 tras tests, neumáticos más estrechos (25mm front / 30mm rear), reglamento técnico nuevo",
+    "2_pirelli_supplier_2027": "applied — 'Pirelli, proveedor único hasta 2027' + 'Pirelli estudia un neumático único de lluvia que sustituya a intermedio y extremo a partir de 2027'",
+    "3_pit_loss_by_circuit": "applied — 'En Mónaco ronda los 19 segundos, en Spa o Silverstone se acerca a 22, en Monza supera los 25 por la longitud del trazado de boxes'",
+    "4_iconic_examples_developed": {
+      "abu_dabi_2021": "applied — apertura H2 entera dedicada (Latifi crash, Red Bull para a Verstappen, Mercedes deja a Hamilton fuera, una vuelta de reinicio decide el mundial, mención discusión sobre safety car management)",
+      "monaco_undercut": "applied — 'Mónaco es el laboratorio perfecto. Adelantar en pista es casi imposible y la única forma de ganar posiciones es el muro'",
+      "red_bull_verstappen": "applied — 'Red Bull y Verstappen han hecho del cálculo bajo presión una marca de la casa, con paradas de 2,1 segundos cuando el resto del pelotón ronda los tres'",
+      "ferrari_errores": "applied — párrafo dedicado: 'Mónaco 2022, Hungría 2022, Países Bajos 2023 — en los que el muro escogió tarde o eligió mal el compuesto. La estrategia de Maranello se ha vuelto el contraejemplo recurrente'"
+    },
+    "5_anglicism_context": "applied — undercut ('parar antes que el rival para ganar tiempo con goma fresca'), overcut ('parar después que el rival confiando en seguir rápido con goma usada'), safety car ('coche de seguridad que neutraliza la carrera'), VSC ('neutralización sin coche físico en pista'), delta ('diferencia de tiempo por vuelta'), graining ('desgaste superficial irregular de la banda de rodadura'), dirty air contextualizado, budget cap ('tope de gasto anual, fijado en 215 millones de dólares en 2026')",
+    "6_evolucion_section": "applied — H2 dedicado 'Cómo ha evolucionado la estrategia de boxes': era del repostaje libre → ban 2010 → Pirelli 2011 → reglamento técnico 2022 → reglamento 2026. Cuatro escalones históricos claros",
+    "7_por_que_importa_hoy": "applied — H2 dedicado 'Por qué importa hoy: presupuesto y aerodinámica': budget cap obliga a priorizar hardware de parada, cambios aero 2022/2026 afectan degradación, muro tan determinante como piloto",
+    "8_better_faqs": "applied — las 3 obligatorias incluidas: 'Por qué algunos pilotos paran aunque sus neumáticos aún estén bien', 'Qué es el aire limpio en F1', 'Por qué una parada bajo safety car cuesta menos tiempo'. Más 3 FAQs útiles (undercut vs overcut, quién decide, por qué dos compuestos)"
+  },
+  "tactics_v2_compliance": {
+    "subtype": "concept (no tipología, no comparativa)",
+    "structure_expected": "H1 + entradilla + H2 anclaje + H2 qué es + H2 cuándo + H2 quién/cómo (jugadores/equipos) + H2 evolución + H2 por qué importa + H2 FAQs + cierre",
+    "structure_actual": "ok — Abu Dabi anclaje / qué es / compuestos / ventana parada / undercut / overcut / 1 vs 2 paradas / safety car (con Red Bull y Ferrari como representantes) / evolución / por qué importa hoy / FAQs / cierre",
+    "iconic_examples_count": 4,
+    "evolution_section_present": true,
+    "modern_relevance_section_present": true
+  },
+  "websearch_log": [
+    {
+      "query": "Pirelli F1 2026 tyre compounds C1 C5 narrower regulations",
+      "key_findings": [
+        "Pirelli mantiene gama C1-C5 (5 compuestos) en 2026; C6 testeado 2025 quedó fuera por insuficiente delta vs C5",
+        "Neumáticos más estrechos en 2026: front 25mm menos, rear 30mm menos; diámetro total 15mm menos delante / 10mm menos detrás",
+        "Pirelli como proveedor + FIA preferían rango más simple y predecible para el primer año del nuevo reglamento técnico"
+      ]
+    }
+  ],
+  "open_risks": [
+    "Falta verificar de forma puntual el coste exacto del pit lane de Mónaco (cifra 19s usada como referencia común en prensa especializada, puede oscilar entre 18-20s según fuente)",
+    "Cifra 215M$ del budget cap 2026 mencionada como referencia general; ajuste por inflación FIA anual puede mover el número 1-2M"
+  ],
+  "passes": true
+}

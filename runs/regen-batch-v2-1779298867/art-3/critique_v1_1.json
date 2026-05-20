@@ -1,0 +1,122 @@
+{
+  "article": "art-3",
+  "title": "Reglas del baloncesto: normativa FIBA y NBA",
+  "slug": "reglas-baloncesto",
+  "sport": "Baloncesto",
+  "category": "Rules (pillar)",
+  "version_target": "style_guide v1.1 + rules_template v2.0",
+  "regen_run": "regen-batch-v2-1779298867",
+  "metrics": {
+    "word_count": 1990,
+    "word_count_target": "1500-2000",
+    "word_count_ok": true,
+    "entradilla_words": 31,
+    "entradilla_target": "30-35",
+    "entradilla_ok": true,
+    "first_h2": "Mismo juego, dos libros",
+    "first_h2_words": 4,
+    "first_h2_ok": true,
+    "paragraphs_over_60_words": 0,
+    "paragraphs_over_60_ok": true,
+    "strong_spans_total": 11,
+    "strong_spans_out_of_5_7_range": 0,
+    "strong_spans_ok": true,
+    "b_tags": 0,
+    "i_tags": 0,
+    "semantic_html_ok": true,
+    "h2_count": 14,
+    "faq_h3_count": 6,
+    "banned_hinges_found": [],
+    "banned_hinges_ok": true
+  },
+  "self_check_20_points": {
+    "1_voz": {"pass": true, "note": "Voz de periodista deportivo español, tono cercano sin academicismo."},
+    "2_entradilla": {"pass": true, "note": "31 palabras, complementa el titular sin repetirlo, sitúa el enfoque (frontera FIBA/NBA)."},
+    "3_primer_h2_corto": {"pass": true, "note": "'Mismo juego, dos libros' — 4 palabras, editorial."},
+    "4_ritmo_parrafos": {"pass": true, "note": "Ningún párrafo supera 60 palabras."},
+    "5_variedad_sintactica": {"pass": true, "note": "Sin 'no solo... sino también', sin 'más que...', sin 'eso explica', sin 'la evolución de'."},
+    "6_tres_capas": {"pass": true, "note": "Cada regla mayor (goaltending, pasos, 3 segundos defensivos, triple) tiene qué es / cómo funciona / por qué importa hoy."},
+    "7_ejemplos_iconicos": {"pass": true, "note": "Curry/Warriors, D'Antoni Suns, Jokić, Porzingis, Harden, Draymond Green — 5 ejemplos desarrollados con escena."},
+    "8_info_viva": {"pass": "partial", "note": "Info evergreen (reglas, dimensiones, fechas históricas). La cifra de '+30 triples por partido en la pasada década' es agregada de tendencia, no estadística viva concreta. Jokić 3 MVP es verificable post-2024."},
+    "9_lexico_peninsular": {"pass": true, "note": "Triple, mate, base, escolta, alero, ala-pívot, pívot, bote, doble regate, prórroga, tiro libre, canasta."},
+    "10_equivalencias": {"pass": true, "note": "Prórroga (no overtime), entrenador (no coach), EuroLiga, ACB."},
+    "11_extranjerismos": {"pass": true, "note": "small ball, gather step, seven seconds or less, restricted area, flopping, coach's challenge, positionless basketball, flagrant — todos en <em>. NBA/FIBA/MVP integrados sin cursiva."},
+    "12_cliches": {"pass": true, "note": "Sin 'el deporte rey', sin 'leyes de la física', sin grandilocuencia prefabricada."},
+    "13_epica_prefabricada": {"pass": true, "note": "Sin frases construidas para impresionar; cada afirmación describe una escena o un dato."},
+    "14_adjetivos_grandilocuentes": {"pass": true, "note": "Ningún 'histórico/brutal/legendario' sin justificación."},
+    "15_seo": {"pass": true, "note": "Cada H2 responde a intención de búsqueda real (cancha, duración, faltas, goaltending, pasos, small ball, polémicas)."},
+    "16_faqs_curiosidad": {"pass": true, "note": "6 FAQs de curiosidad real: triple/goaltending/3 segundos defensivos/pasos/coach's challenge/duración. Cero 'qué nacionalidad / cuántos años'."},
+    "17_negritas": {"pass": true, "note": "11 <strong>, todas entre 5-7 palabras consecutivas formando idea legible al aislarse. Una por párrafo. Cero <b>."},
+    "18_cursivas": {"pass": true, "note": "Solo <em> para extranjerismos no integrados. Cero <i>."},
+    "19_ortotipografia": {"pass": true, "note": "James Naismith primera mención completa, Stephen Curry/James Harden/Nikola Jokić/Kristaps Porzingis primera mención nombre+apellido. EuroLiga / Boston Celtics / Phoenix Suns con mayúsculas. Cifras técnicas en número (6,75 m / 7,24 m / 24 segundos / 48 minutos)."},
+    "20_antialucinacion_valor_relevo": {"pass": true, "note": "Datos verificables (Naismith 1891 Springfield, Warriors 2015/2017/2018, Curry rango, Harden flopping, D'Antoni Suns). Aporta lectura comparada FIBA/NBA (goaltending, pasos, 3 defensivos, distancia triple) y conexión reglamento↔táctica que no está en una entrada genérica."}
+  },
+  "joel_fixes_addressed": {
+    "1_diferencias_fiba_nba_explicitas": {
+      "covered": true,
+      "where": [
+        "H2 'La cancha y la línea que separa dos baloncestos' — 6,75 vs 7,24 m triple",
+        "H2 'Cuánto dura un partido' — 4x10 vs 4x12 / 40 vs 48 min",
+        "H2 'Faltas: cinco o seis para eliminar' — 5 vs 6",
+        "H2 'Las reglas de tiempo' — 3 segundos defensivos solo NBA",
+        "H2 'Goaltending e interposición' — sección dedicada al matiz del aro",
+        "Reloj 24/14 reset común en ambos reglamentos mencionado"
+      ]
+    },
+    "2_debate_pasos": {
+      "covered": true,
+      "where": "H2 'El debate eterno de los pasos' — gather step NBA 2009 vs FIBA, sensación europea de paso 'regalado'."
+    },
+    "3_small_ball": {
+      "covered": true,
+      "where": "H2 'La pista del small ball y la era del triple' — D'Antoni Suns, Curry/Warriors, conexión con reglamento (3 seg defensivos)."
+    },
+    "4_flopping_harden": {
+      "covered": true,
+      "where": "H2 'Polémicas y debates' — flopping como icono Harden, sanciones NBA 2012 económicas + 2023 técnica en directo, FIBA criterio más laxo."
+    },
+    "5_coach_challenge": {
+      "covered": true,
+      "where": "H2 'Polémicas y debates' — coach's challenge NBA implantado 2019, FIBA empezando a aplicar sistemas similares."
+    },
+    "6_positionless_castellano_primero": {
+      "covered": true,
+      "where": "H2 'Posiciones y baloncesto sin posiciones fijas' — concepto introducido en español primero ('baloncesto sin posiciones fijas'), después el anglicismo positionless basketball en <em> con contexto (Warriors de Kerr)."
+    },
+    "7_por_que_importa_polemicas": {
+      "covered": true,
+      "where": "Dos H2 dedicados: 'Polémicas y debates' (dependencia del triple, flopping, challenge) y 'Por qué importa hoy' (Jokić, Porzingis, Curry, step-back Harden). 3-point dependency debate y propuesta de retrasar la línea presentes."
+    },
+    "8_jugadores_iconicos_desarrollados": {
+      "covered": true,
+      "examples": [
+        "Stephen Curry — convirtió el small ball en doctrina, Warriors 2015/2017/2018, rango por detrás del arco",
+        "Nikola Jokić — tres MVP organizando desde el poste alto",
+        "Kristaps Porzingis — cuatro de 2,21 m que tira de tres en Celtics",
+        "James Harden — icono del flopping, step-back",
+        "Mike D'Antoni — seven seconds or less en Phoenix Suns",
+        "Draymond Green — ala-pívot defendiendo a centímetros más altos"
+      ]
+    }
+  },
+  "differences_vs_v1": [
+    "Entradilla periodística añadida (31 palabras) — antes ausente.",
+    "Primer H2 reescrito a 4 palabras ('Mismo juego, dos libros'); antes era una metadescription disfrazada con 4 <strong> dispersos.",
+    "Negritas reinterpretadas: 11 spans de 5-7 palabras formando idea, cero palabras sueltas. v1 abusaba de <strong> sobre sustantivos (FIBA, NBA, Naismith, Springfield, etc.).",
+    "Goaltending FIBA vs NBA — nueva sección dedicada (ausente en v1).",
+    "Debate de pasos / gather step — nueva sección (ausente en v1).",
+    "Small ball y era del triple — nueva sección con D'Antoni, Curry, Warriors (ausente en v1).",
+    "Polémicas y debates — nueva sección con flopping/Harden, coach's challenge, dependencia del triple, propuesta de retrasar la línea (ausente en v1).",
+    "'Positionless' introducido primero en español ('baloncesto sin posiciones fijas'), después el anglicismo en <em>. v1 lo metía con calzador como término inglés directo.",
+    "Ejemplos icónicos desarrollados: Jokić, Porzingis, Curry, Harden, D'Antoni, Draymond Green. v1 solo nombraba a Naismith.",
+    "FAQs reescritas de obvias ('cuántos jugadores tiene', 'cuánto mide la cancha') a curiosidad real ('por qué el triple cambió el baloncesto', 'qué es el goaltending', 'qué son los tres segundos defensivos', 'por qué se discute la regla de los pasos').",
+    "Cierre con personalidad reescrito; sin reincorporar la línea de 'artículo relacionado' final que era SEO crudo."
+  ],
+  "open_risks": [
+    "Cifra '+30 triples por partido en la pasada década' es tendencia agregada, no fuente puntual; si se quiere fact-check duro habría que confirmar el promedio 2023-24 o 2024-25 exacto vía WebSearch.",
+    "Jokić 3 MVP — verificar en WebSearch que tras la temporada 2025-26 sigue siendo 3 (cerró 3 en 2024).",
+    "Flopping rule de 2023 'falta técnica en directo' — verificar fecha exacta de implementación (introducción in-game technical fue 2023-24 preseason según comunicado NBA).",
+    "Coach's challenge 'implantado 2019' — correcto (octubre 2019, temporada 2019-20). Verificar si en 2024-25 se modificó el número de challenges concedidos por acierto."
+  ],
+  "verdict": "PASS — cumple todos los criterios de aceptación duros (word count 1990, entradilla 31, párrafos <=60, strong spans 5-7, sin hinges, Polémicas presentes, FAQs de curiosidad, léxico peninsular) y absorbe las 8 correcciones factual/estructural de Joel para el artículo de reglas de baloncesto."
+}

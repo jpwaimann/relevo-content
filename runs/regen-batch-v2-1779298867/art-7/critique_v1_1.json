@@ -1,0 +1,143 @@
+{
+  "article_id": "art-7",
+  "slug": "reglas-formula1",
+  "title": "Reglas de la Fórmula 1 — puntuación, banderas y normativa técnica",
+  "sport": "Fórmula 1",
+  "category": "Rules",
+  "subtype": "pillar",
+  "template_version": "rules_template v2.0",
+  "style_guide_version": "v1.1",
+  "regen_source": "/tmp/repo-push/runs/art-7-1778849077/article.html",
+  "metrics": {
+    "word_count": 1998,
+    "target_range": "1500-2000",
+    "entradilla_words": 32,
+    "entradilla_target": "30-35",
+    "first_h2_chars": 37,
+    "h2_count": 15,
+    "h3_count": 4,
+    "paragraphs_over_60_words": 0,
+    "banned_hinges_found": 0,
+    "b_tags": 0,
+    "i_tags": 0,
+    "strong_count": 26
+  },
+  "mandatory_fixes_applied": [
+    {
+      "id": 1,
+      "fix": "Fastest lap bonus point clarified",
+      "status": "done",
+      "notes": "Sección 'Puntuación' especifica: introducido 2019, vigente entre 2019-2024, condicionado a terminar entre los diez primeros, eliminado en 2025 tras el caso Singapur 2024 (Ricciardo le quita el punto a Norris). Verificado via WebSearch."
+    },
+    {
+      "id": 2,
+      "fix": "FAQ 'descalificación tras meta' reformulada",
+      "status": "done",
+      "notes": "Reformulada como '¿Por qué se aplican descalificaciones técnicas después de cruzar la meta?'. Respuesta apunta a parc fermé y al caso Hamilton/Leclerc Austin 2023."
+    },
+    {
+      "id": 3,
+      "fix": "Ejemplos recientes desarrollados",
+      "status": "done",
+      "notes": "Abu Dabi 2021 desarrollado en sección dedicada (Latifi, Masi, desdoblar 5 coches, victoria Verstappen, reforma dirección de carrera). Límites de pista en Austria con detalle del Red Bull Ring 2023 (1200+ infracciones revisadas). Descalificaciones técnicas Hamilton/Leclerc Austin 2023 con plank por debajo de 9mm. Porpoising 2022 con TD039 y testimonios Hamilton/Russell."
+    },
+    {
+      "id": 4,
+      "fix": "Budget cap (cost cap) añadido",
+      "status": "done",
+      "notes": "Sección dedicada 'El tope de gasto y el caso Red Bull'. Año intro 2021, monto 145M USD, exclusiones (salarios pilotos + 3 ingenieros top). Caso Red Bull octubre 2022: 1,6% sobre tope 2021, multa 7M USD y -10% túnel de viento. Reacción Horner ('error contable') y Brown ('trampa'). Verificado via WebSearch."
+    },
+    {
+      "id": 5,
+      "fix": "DRS y ERS desarrollados",
+      "status": "done",
+      "notes": "DRS: zonas marcadas, ventana <1 segundo en punto de detección, inhabilitado tras salida/reanudación, debate de su carácter artificial. ERS: recuperación en frenada+escape, batería, tope por vuelta, gestión estratégica del piloto."
+    },
+    {
+      "id": 6,
+      "fix": "Sección 'Polémicas y debates' presente",
+      "status": "done",
+      "notes": "Cubre los 4 debates pedidos: aplicación del tope presupuestario, dependencia del DRS para adelantar, autoridad del director de carrera post-Masi 2021, reforma del sistema de puntos tras caída del bonus por vuelta rápida."
+    },
+    {
+      "id": 7,
+      "fix": "FAQs nuevas añadidas",
+      "status": "partial",
+      "notes": "Añadidas: '¿Qué es el límite presupuestario en F1?', '¿Cómo funciona el semáforo de salida?', '¿Por qué algunos pilotos salen desde el pit lane?'. La FAQ del porpoising se eliminó al final del trim de longitud porque el concepto ya está cubierto en sección body. La FAQ de descalificación post-meta sí está incluida (reformulada). Total FAQs: 4."
+    },
+    {
+      "id": 8,
+      "fix": "Contexto 2026 incorporado",
+      "status": "done",
+      "notes": "Sección '2026: nueva era técnica' menciona coches más cortos/estrechos, aerodinámica activa, unidad de potencia 50-50, combustible sostenible. Pirelli C1-C5 (sin C6, descartado), neumáticos 25mm/30mm más estrechos. Verificado via WebSearch."
+    }
+  ],
+  "structural_checklist": {
+    "entradilla_30_35_words": true,
+    "first_h2_short_editorial": true,
+    "paragraphs_under_60_words": true,
+    "polemicas_section_present": true,
+    "faqs_real_curiosity": true,
+    "no_banned_hinges": true,
+    "anglicismos_contextualized_first_mention": {
+      "DRS": "alerón trasero móvil que reduce carga aerodinámica",
+      "ERS": "sistema de recuperación de energía",
+      "parc_fermé": "régimen cerrado en el que el coche queda confinado y no se puede modificar",
+      "safety_car": "coche de seguridad",
+      "ground_effect": "el efecto suelo que sella el coche contra el asfalto",
+      "porpoising": "el rebote vertical a alta velocidad",
+      "plank": "la plancha del fondo del coche",
+      "undercut_overcut": "no presentes en este artículo (concepto de boxes, fuera de scope)"
+    },
+    "spanish_peninsular": true,
+    "html_semantic_strong_em_only": true,
+    "tres_capas_per_concept": "aplicado a DRS, ERS, parc fermé, safety car, budget cap, porpoising, fastest lap bonus"
+  },
+  "facts_verified_websearch": [
+    {"fact": "Fastest lap point introduced 2019, removed 2025", "verified": true, "source": "Sky Sports / Motorsport Week"},
+    {"fact": "Budget cap introduced 2021 at $145M, Red Bull breached 2021 cap by 1.6%, fined $7M + 10% wind tunnel cut", "verified": true, "source": "Sky Sports / ESPN / Motorsport.com"},
+    {"fact": "Abu Dhabi 2021: Masi unlapped only 5 cars, pulled safety car a lap early, FIA admitted human error, replaced Masi", "verified": true, "source": "FIA report via Sky Sports / Formula1.com"},
+    {"fact": "Hamilton/Leclerc DSQ Austin 2023 for plank wear under 9mm (Article 3.5.9e)", "verified": true, "source": "Formula1.com / Sky Sports"},
+    {"fact": "Porpoising 2022: TD039 issued mid-season, effective at Belgian GP, after Hamilton/Russell complaints", "verified": true, "source": "RaceFans / Formula1.com"},
+    {"fact": "Pirelli 2026: C1-C5 range, C6 dropped, tyres narrower (-25mm front, -30mm rear)", "verified": true, "source": "Pirelli / Formula1.com / Motorsport.com"}
+  ],
+  "open_issues": [
+    {
+      "id": "trim_pressure",
+      "severity": "low",
+      "note": "Pillar Rules con tantas correcciones factuales obligatorias (8 puntos) presiona el ceiling de 2000 palabras. Quedó en 1998. Si Joel pide más profundidad en alguna sección concreta (ej. desarrollo del semáforo de salida, o reglamento financiero), habrá que recortar en otra. Una alternativa es subir el techo a 2100 para pillars Rules con muchas polémicas vivas."
+    },
+    {
+      "id": "porpoising_faq_removed",
+      "severity": "low",
+      "note": "Eliminada del bloque FAQ por word-count, no por falta de pertinencia. El concepto sigue cubierto en sección body con TD039 y testimonios. Si se quiere recuperarla, restar palabras de la sección 'Banderas' (muy descriptiva)."
+    },
+    {
+      "id": "first_h2_check",
+      "severity": "low",
+      "note": "El primer H2 'Un guion que se reescribe en invierno' (37 chars) es editorial-corto, pero la sección inmediata sigue siendo orientación de bloques FIA. Para sub-rules sería más natural empezar con escena anclaje; en pillar Rules se ha optado por anclaje de premisa editorial (el reglamento como guion vivo) que conecta con la entradilla."
+    }
+  ],
+  "self_check_20_points": {
+    "1_voice_periodistic_spanish": "pass",
+    "2_entradilla_30_35": "pass (32)",
+    "3_first_h2_short": "pass (37 chars)",
+    "4_paragraphs_under_60": "pass (0 over)",
+    "5_syntactic_variety_no_banned_hinges": "pass",
+    "6_three_layers_per_concept": "pass",
+    "7_iconic_examples_2_5_developed": "pass (Abu Dabi 2021, Austin 2023, Singapur 2024, Austria 2023, Red Bull cost cap 2022, porpoising 2022)",
+    "8_live_info_verified_websearch": "pass",
+    "9_lexico_spanish_peninsular": "pass",
+    "10_equivalencias": "pass",
+    "11_extranjerismos_em_contextualized": "pass",
+    "12_no_cliches": "pass",
+    "13_no_prefab_epic": "pass",
+    "14_no_grandiloquent_adjetives": "pass",
+    "15_seo_real_intent_per_h2": "pass",
+    "16_faqs_real_curiosity": "pass",
+    "17_strong_only_5_7_word_ideas": "mostly pass (list-item labels exempt, ideas mostly 5-7 with a couple 8)",
+    "18_em_only_no_i": "pass",
+    "19_ortotipografia_names": "pass",
+    "20_antialucinacion_valor_relevo": "pass"
+  }
+}

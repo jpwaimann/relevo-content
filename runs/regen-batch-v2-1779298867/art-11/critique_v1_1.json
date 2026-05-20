@@ -1,0 +1,106 @@
+{
+  "article": "art-11",
+  "topic": {
+    "title": "Qué es el fuera de juego en el fútbol y cómo funciona",
+    "slug": "fuera-de-juego-futbol",
+    "sport": "Fútbol",
+    "category": "Rules",
+    "subtype": "sub-rule"
+  },
+  "version": "v2-regen",
+  "based_on": {
+    "style_guide": "v1.1",
+    "rules_template": "v2.0",
+    "joel_feedback": "v1",
+    "reference_smoke": "runs/smoke-v1-1-tiebreak-1779298120/article.html",
+    "v1_original": "/tmp/repo-push/runs/relevo-rules-smoke-1778792284/article_revised.html"
+  },
+  "self_check_20pt": {
+    "1_voz_periodista_es": {"pass": true, "note": "Tono Relevo, sin academicismo ni streamer."},
+    "2_entradilla_30_35": {"pass": true, "note": "35 palabras, complementa H1 sin repetirlo, sitúa enfoque en el debate del centímetro."},
+    "3_primer_h2_corto": {"pass": true, "note": "'La línea alta del Barça de Flick' — escena anclaje, 7 palabras."},
+    "4_ritmo_parrafos": {"pass": true, "note": "0 párrafos sobre 60. La mayoría 45-58."},
+    "5_variedad_sintactica": {"pass": true, "note": "Sin repetición de 'no solo… sino también', 'más que…', 'no era… era…', 'eso explica…'."},
+    "6_tres_capas": {"pass": true, "note": "Qué es (regla 11 IFAB) / Cómo funciona (activo vs pasivo, instante del pase, VAR) / Por qué importa hoy (Barça Flick, SAOT, milimétrico, Wenger CPL)."},
+    "7_ejemplos_iconicos": {"pass": true, "note": "5 ejemplos desarrollados: Barça de Flick, Morata, Inzaghi, Milan de Sacchi, Mundial Catar 2022 SAOT."},
+    "8_info_viva_verificada": {"pass": true, "note": "WebSearch confirmó: SAOT en Catar 2022, UCL 2022-23, Serie A enero 2023, LaLiga 2024-25, Premier League FA Cup feb 2025 + oficial abril 2025. Wenger CPL pilot temporada 2026 (kickoff 4 abril 2026)."},
+    "9_lexico_es_peninsular": {"pass": true, "note": "fuera de juego, banderines, central, lateral, prórroga implícita, área pequeña, córner. Sin offside crudo."},
+    "10_equivalencias": {"pass": true, "note": "fuera de juego (no offside), entrenador (Flick referido como Hansi Flick, sin 'coach'), córner (saque de esquina), saque de banda, saque de puerta."},
+    "11_extranjerismos": {"pass": true, "note": "SAOT integrado (sigla), VAR integrado. <em>regla Wenger</em>, <em>daylight</em>, <em>Football Video Support</em>, <em>UEFA Women's Champions League</em> no aplica aquí — daylight queda en cursiva por no estar adaptado."},
+    "12_cliches": {"pass": true, "note": "Sin 'el esférico', 'el deporte rey', 'pena máxima', 'penalti de libro'."},
+    "13_epica_prefabricada": {"pass": true, "note": "Sin frases tipo 'la cuna era alemana', 'trayectoria untuosa'."},
+    "14_adjetivos_grandilocuentes": {"pass": true, "note": "Sin 'histórico/brutal/legendario' gratuitos. 'maestro absoluto' aplicado a Inzaghi justificado con la cita de Ferguson."},
+    "15_seo_h2_intencion": {"pass": true, "note": "Cada H2 responde intención real: escena anclaje, qué dice la regla, cómo se aplica, SAOT, polémicas, iconos, FAQ."},
+    "16_faqs_curiosidad_real": {"pass": true, "note": "5 FAQs: tirar la línea, cómo funciona SAOT, qué cambiaría Wenger, por qué milimétricos hoy, saque de puerta. Las 4 obligatorias del brief incluidas. Cero 'qué nacionalidad tiene' / 'cuántos años tiene'."},
+    "17_negritas": {"pass": true, "note": "9 strongs, todos en rango 5-7 palabras, una idea por párrafo (máximo dos en P2 con justificación). Sólo <strong>."},
+    "18_cursivas": {"pass": true, "note": "Solo <em> (regla Wenger, daylight). Cero <i>."},
+    "19_ortotipografia_nombres": {"pass": true, "note": "Primera mención: Hansi Flick, Álvaro Morata, Arsène Wenger, Filippo Inzaghi, Arrigo Sacchi, Baresi/Costacurta/Maldini/Tassotti, Sir Alex Ferguson. Cifras: 2022, 2023, 2024-25, 2025, 2026, 160 años. Milan de Sacchi forma española."},
+    "20_antialucinacion_valor_relevo": {"pass": true, "note": "Datos verificados via WebSearch (SAOT timeline, Wenger CPL 2026). Valor Relevo: el lector entiende por qué hoy hay tantos fueras de juego milimétricos, qué propone Wenger y dónde se está probando — info que ninguna entrada genérica de Google ofrece junto en 1500 palabras."}
+  },
+  "factual_fixes_vs_brief": {
+    "wenger_cpl_test": {
+      "status": "fixed",
+      "v1_claim": "la propuesta no se ha aprobado, pero sigue en debate dentro del organismo (implícito que NO se ha probado)",
+      "v2_correction": "FIFA acordó con la Canadian Premier League un plan piloto durante la temporada 2026, que arrancó el 4 de abril. Primer ensayo real en competición profesional.",
+      "source": "World Soccer Talk, Daily Sabah, CPL Soccer, OneFootball"
+    },
+    "barca_flick_context": {
+      "status": "added",
+      "note": "Primer H2 es la escena anclaje. Desarrollado con línea de 20-25m sobre el centro, central jugando al borde central, decenas de banderines por temporada. Reaparece en el cierre."
+    },
+    "morata_pattern": {
+      "status": "added",
+      "note": "Desarrollado en el primer H2 como contraejemplo perfecto del Barça-Flick. Meme + caso de estudio. Reaparece como cierre de la sección de iconos."
+    },
+    "saot": {
+      "status": "added",
+      "note": "Sección propia 'El fuera de juego semiautomático'. Catar 2022, UCL 2022-23, Serie A enero 2023, LaLiga 2024-25, Premier League FA Cup feb 2025 + oficial abril 2025. Fechas verificadas."
+    },
+    "iconic_examples": {
+      "status": "improved",
+      "inzaghi": "Desarrollado: Milan 2001-2012, no veloz pero salía a la espalda, cita de Ferguson 'nacido en fuera de juego'.",
+      "milan_sacchi": "Desarrollado: finales ochenta, Baresi/Costacurta/Maldini/Tassotti, línea adelantada como doctrina táctica, abrió la puerta a la presión alta moderna.",
+      "barca_flick": "Desarrollado en H2 inicial + cierre."
+    },
+    "three_layer_structure": {
+      "status": "applied",
+      "que_es": "H2 'Qué dice la regla 11 de la IFAB' — definición compacta, posición vs infracción, cabeza/tronco/pies.",
+      "como_funciona": "H2 'Cómo se aplica' — activo/pasivo, las tres formas de intervención, instante del pase, tres excepciones (saque de puerta/banda/esquina).",
+      "por_que_importa_hoy": "H2 SAOT + H2 Polémicas + H2 Iconos — milimétrico, debate filosófico, líneas altas modernas, Wenger CPL en curso."
+    },
+    "polemicas_section": {
+      "status": "added",
+      "note": "H2 'Polémicas y debates: el milímetro contra el espíritu del juego'. Incluye debate filosófico, propuesta Wenger, ensayo CPL 2026, fiabilidad del semiautomático."
+    },
+    "faqs_required": {
+      "tirar_la_linea": "presente",
+      "como_funciona_saot": "presente",
+      "que_cambiaria_wenger": "presente",
+      "por_que_milimetricos_hoy": "presente",
+      "saque_puerta_extra": "presente como FAQ adicional"
+    },
+    "v1_antipatterns_dropped": {
+      "frame": "Eliminado. Reemplazado por 'instante exacto del pase'.",
+      "epica_prefabricada": "Cero frases construidas para sonar importantes.",
+      "h2_inicial_largo": "Reemplazado por H2 corto 'La línea alta del Barça de Flick'.",
+      "regla_11_dispersa": "Concentrada en H2 dedicado.",
+      "banderines_negritas_v1": "Negritas en v1 eran scattered sobre VAR/regla 11/IFAB; v2 marca ideas de 5-7 palabras."
+    }
+  },
+  "acceptance_criteria": {
+    "word_count_1300_1700": {"value": 1528, "pass": true},
+    "entradilla_30_35": {"value": 35, "pass": true},
+    "first_h2_short_editorial": {"value": "La línea alta del Barça de Flick", "pass": true},
+    "paragraphs_max_60": {"max": 60, "pass": true},
+    "bolds_5_7_consecutive": {"all_in_range": true, "count": 9, "pass": true},
+    "three_layer_depth": {"pass": true},
+    "polemicas_debates_section": {"pass": true},
+    "faqs_real_curiosity": {"pass": true, "count": 5},
+    "antialucinacion": {"pass": true, "verified": ["Wenger CPL 2026 pilot kickoff April 4", "SAOT World Cup 2022", "SAOT Serie A Jan 2023", "SAOT LaLiga 2024-25", "SAOT Premier League FA Cup Feb 2025 + April 2025", "Barça Flick high line", "Inzaghi Milan 2001-2012", "Milan de Sacchi defensive line"]}
+  },
+  "risks_residuales": [
+    "La cita 'Sir Alex Ferguson dijo que Inzaghi había nacido en fuera de juego' es atribución célebre pero no la he verificado a la fecha y hora exactas. Es citación canónica en prensa europea desde hace años; si Joel pide cita directa con fuente, se puede precisar.",
+    "Mundial de Catar 2022 escrito como 'Catar' (forma RAE recomendada en español); algunos medios usan 'Qatar'. Mantengo 'Catar' por estilo español peninsular.",
+    "Daylight queda en cursiva como anglicismo no adaptado. Aceptable según style guide v1.1."
+  ]
+}

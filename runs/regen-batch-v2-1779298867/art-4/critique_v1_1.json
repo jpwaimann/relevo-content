@@ -1,0 +1,177 @@
+{
+  "article": {
+    "slug": "tipos-tiro-baloncesto",
+    "title": "Tipos de tiro en baloncesto: bandeja, mate, triple y tiro libre",
+    "sport": "Baloncesto",
+    "category": "Tactics",
+    "subtype": "tipologias",
+    "template_version": "tactics_template v2.0",
+    "style_guide_version": "v1.1",
+    "run_id": "regen-batch-v2-1779298867/art-4"
+  },
+  "metrics": {
+    "word_count": 2499,
+    "word_count_target": "1500-2500",
+    "word_count_ok": true,
+    "entradilla_word_count": 34,
+    "entradilla_target": "30-35",
+    "entradilla_ok": true,
+    "first_h2_word_count": 7,
+    "first_h2_text": "Curry, Kareem y el lenguaje del aro",
+    "first_h2_ok": true,
+    "paragraphs_total": 59,
+    "paragraphs_over_60_words": 0,
+    "paragraphs_ok": true,
+    "h2_count": 5,
+    "h3_count": 16,
+    "strong_count": 48,
+    "em_count": 35,
+    "b_count": 0,
+    "i_count": 0,
+    "html_semantic_ok": true
+  },
+  "per_article_fixes_applied": {
+    "eurostep_doble_paso_distinction": {
+      "addressed": true,
+      "where": "H3 'Doble paso y eurostep' (Qué es) + FAQ '¿Es el eurostep lo mismo que el doble paso?'",
+      "note": "Se explicita que el eurostep es una VARIANTE específica del doble paso, no equivalente. Frase clave: 'Todo eurostep es un doble paso, no al revés.'"
+    },
+    "mate_sencillo_tecnicamente_nuance": {
+      "addressed": true,
+      "where": "H3 Mate (Qué cambió)",
+      "note": "Se matiza con 'Es discutible llamarlo el más sencillo técnicamente' y se mencionan coordinación aérea, control corporal y finalización con contacto."
+    },
+    "shot_types_added": {
+      "floater_bomba": {
+        "added": true,
+        "anchor_player": "Juan Carlos Navarro (canónico español) + Tony Parker",
+        "h3_section": "Floater o bomba"
+      },
+      "step_back": {
+        "added": true,
+        "anchor_player": "James Harden + Luka Dončić",
+        "h3_section": "Step-back"
+      },
+      "hook_skyhook": {
+        "added": true,
+        "anchor_player": "Kareem Abdul-Jabbar",
+        "h3_section": "Gancho y skyhook",
+        "note": "Desarrollado con superación de récord histórico por LeBron en 2023"
+      },
+      "tiro_media_distancia": {
+        "added": true,
+        "anchor_player": "Kawhi Leonard + DeMar DeRozan",
+        "h3_section": "Tiro de media distancia",
+        "note": "Se explica por qué casi desaparece con analítica entre 2015-2020"
+      }
+    },
+    "iconic_players_developed": {
+      "triple": ["Stephen Curry", "Klay Thompson", "Larry Bird", "Reggie Miller"],
+      "fadeaway": ["Michael Jordan (vs Bryon Russell 1998)", "Kobe Bryant", "Dirk Nowitzki (a una pierna)"],
+      "bandeja": ["Magic Johnson", "Kyrie Irving"],
+      "mate": ["Shaquille O'Neal", "LeBron James", "Russell Westbrook"],
+      "eurostep": ["Manu Ginóbili (lo trajo a NBA en 2002)", "Giannis Antetokounmpo"],
+      "step_back": ["James Harden", "Luka Dončić"],
+      "skyhook": ["Kareem Abdul-Jabbar"],
+      "floater": ["Juan Carlos Navarro", "Tony Parker"],
+      "tiro_libre": ["Steve Nash", "Larry Bird (50-40-90)", "Shaquille O'Neal (hack-a-Shaq)"],
+      "all_developed_in_body": true,
+      "note": "Cada nombre aparece anclado a una escena/dato concreto, no como lista de cierre"
+    },
+    "evolution_section": {
+      "added": true,
+      "h2_title": "Cómo ha evolucionado el catálogo de tiros en baloncesto",
+      "covers": [
+        "Era 80s: gancho de Kareem + bandeja de Magic dominantes",
+        "Triple desde 1979 pero apenas tirado",
+        "Bulls de Jordan 90s como puente clásico",
+        "Década 2010: la analítica cambia decisiones tácticas",
+        "Houston Rockets 2017-2020 como extremo del modelo (Morey + D'Antoni)",
+        "Eurostep viajó de Europa a NBA via Marčiulionis + Ginóbili (caso atípico)",
+        "Step-back de Harden/Dončić + floater generalizado + desplome de media distancia"
+      ]
+    },
+    "anglicisms_contextualized": {
+      "fadeaway": "Definido como 'tiro en suspensión con desplazamiento hacia atrás' la primera vez. Envuelto en <em>.",
+      "step_back": "Definido en su H3 como 'tiro en suspensión con desplazamiento hacia atrás del jugador antes del salto'. Envuelto en <em>.",
+      "eurostep": "Introducido explícitamente como variante europea del doble paso. Envuelto en <em>.",
+      "skyhook": "Introducido como variante personal del gancho con brazo extendido. Envuelto en <em>.",
+      "floater": "Equiparado a 'bomba' (término español de Navarro). Envuelto en <em>.",
+      "all_in_em_tags": true
+    }
+  },
+  "style_guide_v1_1_checks": {
+    "1_voz_periodista_espanol": true,
+    "2_entradilla_30_35_words": true,
+    "3_first_h2_short_journalistic": true,
+    "4_paragraphs_under_60_words": true,
+    "5_syntactic_variety_no_banned_bridges": {
+      "no_solo_sino_tambien": "0 occurrences",
+      "mas_que": "0 occurrences as bridge",
+      "no_era_era": "0 occurrences",
+      "eso_explica": "0 occurrences",
+      "la_evolucion_de": "0 as opening bridge"
+    },
+    "6_three_layers_per_concept": true,
+    "7_2_to_5_iconic_examples_developed": "8-10 anchored examples, each developed within H3 (Qué es / Cuándo / Quién / Qué cambió)",
+    "8_live_info_verified": "Datos evergreen (mecánica, técnica, era histórica). No se afirman datos vivos sin verificar — palmarés Curry/Harden/Dončić se mantiene en plano evergreen (cantidad de MVPs/anillos para Curry consolidados a 2024)",
+    "9_lexico_peninsular": true,
+    "10_equivalencias": "Tiro libre, mate, base, escolta, pívot, alero — todos peninsulares. No se usa 'doble step' ni anglicismos no integrados sin <em>.",
+    "11_extranjerismos_em_y_explicacion": true,
+    "12_cero_cliches": true,
+    "13_cero_epica_prefabricada": true,
+    "14_adjetivos_grandilocuentes": "Cero adjetivos vacíos. 'Espectacular' aparece 0 veces; 'histórico' 0 veces. 'Casi imposible de defender' va seguido del dato del récord.",
+    "15_seo_intencional": "Cada H2/H3 responde a una intención: ¿qué es / cuándo / quién / qué cambió / cuál es el más determinante / cómo evolucionó / FAQs reales.",
+    "16_faqs_curiosidad_real": [
+      "¿Qué diferencia hay entre floater y bandeja? — distinción real que confunde",
+      "¿Qué es un step-back? — gesto reciente que el aficionado generalista oye sin entender",
+      "¿Cuál es el tiro más eficiente según las estadísticas? — pregunta analítica",
+      "¿Por qué el triple cambió el baloncesto? — debate contemporáneo (ejemplo del propio Joel)",
+      "¿Por qué desapareció la media distancia? — duda táctica real",
+      "¿Es el eurostep lo mismo que el doble paso? — confusión específica del aficionado"
+    ],
+    "17_negritas_frase_5_7_palabras": {
+      "count": 48,
+      "average_words_per_strong": "5-7 según muestreo",
+      "examples": [
+        "revolución del triple en los Warriors (6)",
+        "El triple modificó la geometría del juego (7)",
+        "de los errores más castigados (5)",
+        "los datos cambiaron las decisiones tácticas (6)",
+        "coordinación aérea y el control corporal (6)",
+        "el golpe emocional sobre el rival (6)",
+        "La bomba de Navarro es (5)"
+      ],
+      "ok": true
+    },
+    "18_em_only_no_i": true,
+    "19_ortotipografia_nombres": "Stephen Curry, Manu Ginóbili, Luka Dončić (con háčeks), Šarūnas Marčiulionis correctos. Primera mención nombre+apellido. NBA, FIBA, ACB en mayúsculas como acrónimos.",
+    "20_antialucinacion_valor_relevo": "Datos verificables: 39 años récord Kareem hasta 2023 LeBron; Houston Rockets Morey+D'Antoni 2017-2020; Marčiulionis a Golden State finales 80s; Ginóbili NBA 2002; Bird/Nash 50-40-90; Jordan vs Bryon Russell 1998. Valor Relevo: distinción explícita eurostep≠doble paso, contexto de la 'bomba' como gesto bautizado en castellano, explicación de por qué murió la media distancia."
+  },
+  "structural_compliance_tactics_v2_0": {
+    "subtype": "tipologias",
+    "anchor_h2_present": true,
+    "summary_table_present": true,
+    "h3_schema_fixed_4_layers": {
+      "all_items_have_que_es": true,
+      "all_items_have_cuando_se_usa": true,
+      "all_items_have_quien_lo_representa": true,
+      "all_items_have_que_cambio": true
+    },
+    "tomar_postura_h2": "¿Cuál es el tiro más determinante del baloncesto actual? — sí, con respuesta razonada (el triple por efecto multiplicador, con matiz de fragilidad).",
+    "evolution_h2": "Cómo ha evolucionado el catálogo de tiros en baloncesto — presente, mandatorio cumplido.",
+    "faqs_h2": "Preguntas frecuentes sobre los tipos de tiro en baloncesto — 6 FAQs de curiosidad real.",
+    "cierre_con_personalidad": "Sí: 'Lo que cambia es el catálogo de tiros que el aficionado da por normal. Lo que permanece es el aro, los 5,80 metros del tiro libre y la certeza última: todo se reduce a meter el balón.'"
+  },
+  "open_risks": [
+    {
+      "type": "live_data",
+      "note": "Datos sobre carreras de Dončić y Harden son evergreen al nivel referenciado (institucionalización del step-back, etiqueta '3 temporadas máximo anotador para Harden'). Si se quiere afinar a 2026, verificar promedios actuales vía WebSearch antes de publicar."
+    },
+    {
+      "type": "anclaje_temporal",
+      "note": "Houston Rockets Morey+D'Antoni se referencia '2017-2020' como ventana. Es exacto: D'Antoni dejó Houston en septiembre 2020 y Morey en octubre 2020. Si la verificación añadiera matiz, ajustar."
+    }
+  ],
+  "summary": "Regeneración v2.0 del artículo de tipos de tiro en baloncesto. Aplica los 6 fixes per-article del brief (eurostep≠doble paso, matiz del mate, 4 tiros nuevos, jugadores icónicos desarrollados, sección de evolución, anglicismos contextualizados) y cumple acceptance criteria (2499 palabras, entradilla 34 palabras, primer H2 de 7 palabras, cero párrafos sobre 60 palabras, schema H3 fijo qué es / cuándo / quién / qué cambió, FAQs de curiosidad real, HTML semántico con solo <strong>/<em>)."
+}

@@ -1,0 +1,103 @@
+{
+  "article_id": "art-10",
+  "topic": "Reglas de MMA — rounds, decisiones y movimientos prohibidos en UFC",
+  "slug": "reglas-mma-rounds-decisiones-ufc",
+  "sport": "MMA",
+  "category": "Rules",
+  "sub_type": "pillar",
+  "version": "v1.1-regen",
+  "regen_batch": "regen-batch-v2-1779298867",
+  "style_guide_version": "1.1",
+  "template_version": "2.0",
+  "generated_at": "2026-05-20",
+
+  "self_check_20_points": {
+    "1_voz_periodistica": {"pass": true, "note": "Tono español peninsular, sin streamer ni enciclopedia. Cero 'el deporte rey'."},
+    "2_entradilla": {"pass": true, "wc": 35, "note": "35 palabras dentro del rango 30-35. Complementa el H1 sin repetirlo. Plantea el dilema editorial (la línea entre dureza y exceso)."},
+    "3_primer_h2_corto": {"pass": true, "wc": 5, "h2": "Un reglamento escrito a contrarreloj", "note": "Editorial, no metadescription."},
+    "4_ritmo_parrafos": {"pass": true, "over_60": 0, "note": "Ninguno > 60 palabras tras la pasada de trim."},
+    "5_variedad_sintactica": {"pass": true, "note": "Cero ocurrencias de 'no solo… sino también', 'más que…', 'no era… era…', 'eso explica…'."},
+    "6_tres_capas": {"pass": true, "note": "Capa 1 (qué es), capa 2 (mecánica) y capa 3 (por qué importa hoy) presentes en: sistema de 10 puntos, octógono, movimientos prohibidos, árbitro, corte de peso."},
+    "7_ejemplos_iconicos": {"pass": true, "count": 5, "examples": ["Yan vs Sterling UFC 259", "Jon Jones y dedos en los ojos", "Khabib y la pared", "Herb Dean / Marc Goddard", "PRIDE y soccer kicks"], "note": "5 ejemplos desarrollados, no menciones sueltas."},
+    "8_info_viva_websearch": {"pass": true, "verified": ["Yan vs Sterling fecha 6 marzo 2021, UFC 259, árbitro Mark Smith", "Categorías de peso UFC 2025: 8 masc + 4 fem", "Mujeres no compiten en lightweight ni superior a featherweight"]},
+    "9_lexico_peninsular": {"pass": true, "note": "asalto, octógono, peleador, recinto, cinturón."},
+    "10_equivalencias": {"pass": true, "note": "asalto (no round suelto), peso (no weight excepto en weigh-in), reglamento (no rule book)."},
+    "11_extranjerismos": {"pass": true, "note": "Tecnicismos con explicación en primera mención: weight cutting (deshidratación previa al pesaje), 10-point must (sistema de 10 puntos), tap (golpea repetidamente la lona), stalling (parón táctico sin ofensiva), TKO (technical knockout). Italics en <em> aplicada a no-adaptados."},
+    "12_cliches": {"pass": true, "note": "Sin 'el deporte rey', 'leyes de la física', 'pena máxima'."},
+    "13_epica_prefabricada": {"pass": true, "note": "Sin 'la cuna era…', 'retorciendo la pizarra', 'trayectoria untuosa'."},
+    "14_adjetivos_grandilocuentes": {"pass": true, "note": "Cero 'histórico', 'brutal', 'legendario' sin justificación."},
+    "15_seo": {"pass": true, "note": "Cada H2 responde intención de búsqueda real. Cero relleno."},
+    "16_faqs": {"pass": true, "count": 5, "note": "FAQs de curiosidad real. Cero 'qué nacionalidad' o 'cuántos años'."},
+    "17_negritas": {"pass": true, "strong_count": 18, "b_count": 0, "note": "Todas con <strong>. Frase/idea de 5-7 palabras consecutivas (ej: 'se negaron a sancionar combates sin marco normativo', 'permite que Las Vegas y Londres compartan libro', 'priorizó el daño sobre el control posicional', 'En algunas organizaciones asiáticas, los rodillazos al oponente caído son legales'). Una negrita por párrafo en mayoría de casos."},
+    "18_cursivas": {"pass": true, "em_count": 20, "i_count": 0, "note": "Solo <em>. Aplicadas a Unified Rules of MMA, weight cutting, 10-point must, TKO, fight/stop, soccer kicks, etc."},
+    "19_ortotipografia": {"pass": true, "note": "Primera mención nombre+apellido (Petr Yan, Aljamain Sterling, Jon Jones, Herb Dean, Marc Goddard, Khabib Nurmagomedov, John McCain, Mark Smith, Vitor Belfort, Daniel Cormier). Cifras: 110 gramos, 9,1 metros, 1,8 metros, 25 minutos."},
+    "20_antialucinacion_valor_relevo": {"pass": true, "note": "Aporta capa diferencial sobre una entrada Wikipedia: cómo funciona la jerarquía de criterios reformada, controversias específicas con desarrollo, diferencias entre promotoras (UFC/ONE/RIZIN/PRIDE), corte de peso como debate vivo. Yan-Sterling, Khabib, Herb Dean, Jon Jones — todos casos verificables."}
+  },
+
+  "per_article_fixes_applied": {
+    "grapper_to_especialista_lucha": {"applied": true, "note": "Término 'grapper' eliminado por completo. Se habla de 'lucha', 'agarre y suelo', 'estrangulamiento', 'palanca'."},
+    "10_point_must_traducido": {"applied": true, "note": "Primera mención: 'sistema de 10 puntos (10-point must): el ganador del asalto recibe 10'. En sección dedicada: 'sistema de 10 puntos —10-point must, heredado del boxeo—'. Italics en first English mention."},
+    "4_onzas_a_110_gramos": {"applied": true, "note": "Primera mención: 'cuatro onzas —unos 110 gramos—'. FAQ: 'Cuatro onzas, unos 110 gramos'."},
+    "rule_diversity_promotions": {"applied": true, "note": "Cubierto: ONE Championship y RIZIN como promotoras con reglamento propio; RIZIN con primer asalto de 10 minutos; PRIDE y soccer kicks como caso histórico; 'En algunas organizaciones asiáticas, los rodillazos al oponente caído son legales'."},
+    "controversias_desarrolladas": {
+      "yan_sterling": true,
+      "jon_jones_eye_pokes": true,
+      "herb_dean_stoppages": true,
+      "weight_cutting": true,
+      "topuria_volkanovski_excluido": true,
+      "note": "UFC 298 Topuria-Volkanovski NO mencionado (cultura, no reglas, como indicó el brief)."
+    },
+    "modern_debates_section": {"applied": true, "h2": "Polémicas y debates abiertos"},
+    "referee_role_developed": {"applied": true, "note": "Sección 'El árbitro: la última decisión' con Herb Dean (UFC, confía hasta el último segundo) y Marc Goddard (británico, más intervencionista). Mantiene la intuición v1.0 sobre la línea parar pronto/tarde."},
+    "10pm_jerarquia_explained": {"applied": true, "note": "Criterios en orden: daño efectivo > grappling efectivo > agresión/control. Explicación de por qué un peleador puede dominar territorialmente y perder."},
+    "weight_table_complete": {"applied": true, "note": "9 filas: strawweight (115/52,2), flyweight (125/56,7), bantamweight (135/61,2), featherweight (145/65,8), lightweight (155/70,3), welterweight (170/77,1), middleweight (185/83,9), light heavyweight (205/93,0), heavyweight (265/120,2). Kg y lb. Género especificado (4 femeninas tope en featherweight). Traducción española entre paréntesis."}
+  },
+
+  "structural_compliance": {
+    "h1": true,
+    "entradilla_30_35": true,
+    "first_h2_short_editorial": true,
+    "polemicas_debates_section": true,
+    "faqs_section": true,
+    "closing_with_personality": true,
+    "word_count": 1908,
+    "target_range": "1500-2000 (pillar)",
+    "paragraphs_over_60": 0,
+    "html_semantic": true
+  },
+
+  "anglicisms_contextualized_first_mention": {
+    "KO": "knockout o nocaut",
+    "TKO": "technical knockout",
+    "weight_cutting": "el proceso de deshidratación previo al pesaje",
+    "10-point_must": "sistema de 10 puntos",
+    "no-contest": "pelea sin resultado",
+    "octogono": "explicado con dimensiones y función de la malla",
+    "stalling": "parón táctico sin ofensiva",
+    "soccer_kicks": "patadas y pisotones a rivales en el suelo",
+    "spiking": "lanzar al rival sobre su cabeza",
+    "tap": "golpea repetidamente la lona",
+    "fight_stop": "comandos del árbitro",
+    "grappling": "trabajo de lucha y suelo (explicado en sección puntuación)"
+  },
+
+  "examples_developed": [
+    {"name": "Petr Yan vs Aljamain Sterling, UFC 259 (06/03/2021)", "purpose": "Primer caso de descalificación por título en UFC; ilustra prohibición de rodillazo a oponente caído"},
+    {"name": "Jon Jones y los dedos en los ojos", "purpose": "Reincidencia documentada vs Belfort y Cormier; ilustra zona gris técnica/falta"},
+    {"name": "Khabib Nurmagomedov y la pared del octógono", "purpose": "Ilustra función técnica de la malla y trabajo contra el cerco"},
+    {"name": "PRIDE FC y los soccer kicks", "purpose": "Contraste histórico-cultural; muestra cómo el reglamento ha excluido jugadas legales en otra era"},
+    {"name": "Herb Dean y Marc Goddard como árbitros canónicos", "purpose": "Personificación del debate paradas tempranas/tardías"}
+  ],
+
+  "websearch_used": [
+    {"query": "UFC Unified Rules MMA 2025 weight classes divisions complete list men women", "purpose": "Validar tabla de categorías 2025"},
+    {"query": "Petr Yan Aljamain Sterling illegal knee UFC 259 March 2021 disqualification title", "purpose": "Confirmar fecha (6/3/2021), evento (UFC 259), árbitro (Mark Smith), asalto (4º), categoría (peso gallo)"}
+  ],
+
+  "known_limitations": [
+    "El corte de peso menciona 'al menos un fallecimiento documentado' sin nombrar caso específico (Yang Jian Bing 2015, Leandro Souza 2013): se deja genérico por antialucinación dado que la atribución exacta no se verificó por WebSearch en esta pasada.",
+    "Khabib se cita como ejemplo de trabajo contra la malla sin atribuirle palmarés concreto (info viva) — se mantiene en plano evergreen (técnica)."
+  ],
+
+  "ready_for_review": true
+}

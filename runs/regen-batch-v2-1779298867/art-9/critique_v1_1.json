@@ -1,0 +1,140 @@
+{
+  "topic": "Orígenes de Ilia Topuria — dónde nació, padres y trayectoria",
+  "slug": "origenes-ilia-topuria-padres-trayectoria",
+  "category": "Origins",
+  "sport": "MMA",
+  "prompts_version": {
+    "style_guide": "v1.1",
+    "origins_template": "v2.0"
+  },
+  "regen_batch": "regen-batch-v2-1779298867",
+  "art_id": "art-9",
+  "supersedes": "/tmp/repo-push/runs/art-9-1778849077/article.html",
+  "factual_fixes_applied": {
+    "categoria_actual": {
+      "v1_0": "peso pluma (outdated)",
+      "v1_1": "peso ligero (current). Doble campeón tras KO a Charles Oliveira el 29/06/2025 en UFC 317 (Las Vegas, 2:27 R1).",
+      "verified_via": "WebSearch UFC 317 Topuria Oliveira",
+      "sources": [
+        "https://www.aljazeera.com/sports/2025/6/29/topuria-beats-oliveira-to-win-ufc-lightweight-title-with-stunning-knockout",
+        "https://www.mmamania.com/2025/6/29/24458088/ufc-317-results-ilia-topuria-charles-oliveira-knockout-double-champion-paddy-pimblett-mma"
+      ]
+    },
+    "birthplace": {
+      "v1_0": "Halle (correct in body) — pero en v1.0 también se confundía con 'Halep' en notas internas / o variantes. Corregido y reafirmado: Halle, Sajonia-Anhalt (RDA).",
+      "v1_1": "Halle, Alemania — ciudad del estado federado de Sajonia-Anhalt. No confundir con Halep (tenista) ni con Halle belga.",
+      "verified_via": "Wikipedia Ilia Topuria + Al Jazeera profile"
+    },
+    "volkanovski_ko": {
+      "fecha": "17 de febrero de 2024",
+      "evento": "UFC 298, T-Mobile Arena (Anaheim, California)",
+      "tecnica": "overhand de derecha + flurry, KO 2º asalto",
+      "verified_via": "WebSearch UFC 298 + ESPN + CBS Sports",
+      "sources": [
+        "https://www.espn.com/mma/story/_/id/39550497/ilia-topuria-knocks-alexander-volkanovski-ufc-298",
+        "https://cagesidepress.com/2024/02/18/ufc-298-ilia-topuria-wins-featherweight-gold-with-thunderous-ko-of-alexander-volkanovski/"
+      ]
+    },
+    "white_house_fight": {
+      "fecha": "14 de junio de 2026",
+      "evento": "UFC Freedom 250, South Lawn de la Casa Blanca",
+      "rival": "Justin Gaethje",
+      "contexto": "Conmemora los 250 años de la Declaración de Independencia. Presentación oficial en Despacho Oval con Trump.",
+      "verified_via": "WebSearch + Bloody Elbow + MMAMania + Washington Times",
+      "sources": [
+        "https://bloodyelbow.com/2026/04/07/ilia-topuria-sends-a-warning-to-donald-trump-as-he-prepares-to-close-the-ufc-white-house-event/",
+        "https://www.washingtontimes.com/news/2026/may/1/trump-says-construction-ufc-fight-arena-white-house-begin-next-week/"
+      ]
+    },
+    "sergio_ramos_bernabeu": {
+      "amistad": "Pública. Ramos acompañó a Topuria en pesaje ceremonial UFC 308 (Abu Dabi, octubre 2024).",
+      "sueño_bernabeu": "Topuria ha repetido en entrevistas el deseo de pelear en el Santiago Bernabéu. Cita verificada: 'Estaría a la altura de una final de Champions' (oct 2024).",
+      "verified_via": "WebSearch eldesmarque + eldebate",
+      "sources": [
+        "https://www.eldesmarque.com/otros-deportes/mma-artes-marciales-mixtas/20241018/ilia-topuria-pelear-santiago-bernabeu-altura-final-champions_300476220.html",
+        "https://www.eldebate.com/deportes/20250730/ilia-topuria-suena-pelear-bernabeu-confia-ufc-llegue-espana-2026_316679.html"
+      ]
+    },
+    "polemica_expareja": {
+      "hechos_verificados": "Giorgina Uzcategui presentó denuncia por presuntos malos tratos en noviembre 2025 (Móstoles). Topuria negó cualquier episodio violento y denunció extorsión. Febrero 2026: acuerdo extrajudicial, denuncia retirada. Prevalece presunción de inocencia.",
+      "tratamiento_editorial": "Tono sobrio, sin tabloide. Se cita la denuncia, la negación, el desenlace judicial. No se especula.",
+      "verified_via": "WebSearch El Español + Infobae + Mediterráneo Digital",
+      "sources": [
+        "https://www.elespanol.com/deportes/otros-deportes/20260205/ilia-topuria-vuelta-exmujer-retira-denuncia-presuntos-malos-tratos-prepara-proxima-pelea/1003744118412_0.html",
+        "https://www.infobae.com/america/agencias/2026/01/02/ilia-topuria-citado-en-un-juzgado-tras-la-denuncia-de-su-exmujer-por-presuntos-malos-tratos/"
+      ]
+    },
+    "exceso_violencia_kos": {
+      "marco": "Debate público sobre golpes adicionales tras impacto definitivo a Oliveira. Se presenta como debate clásico del MMA y de la lectura de parada arbitral, no como acusación tabloide.",
+      "fuente": "Cobertura post-UFC 317 (Al Jazeera, MMA Mania)"
+    },
+    "mcgregor_angle": {
+      "cita_verificada": "Topuria a Ariel Helwani: 'Si me ofrecen esa pelea, lo veremos... Nunca cierro la puerta, aunque ahora mismo no estemos al mismo nivel.'",
+      "verified_via": "WebSearch DAZN + beIN Sports",
+      "sources": [
+        "https://www.dazn.com/es-MX/news/mma/ilia-topuria-abre-la-puerta-a-conor-mcgregor-pero-lanza-un-aviso/oz922ajozk481jb0tjtvgwwq8"
+      ]
+    },
+    "yo_lo_sone": {
+      "contexto": "Frase repetida por Topuria en el túnel antes de salir al octógono en UFC 298, mientras sonaba La canción del mariachi (Antonio Banderas, banda sonora de Desperado). Se convirtió en momento icónico.",
+      "verified_via": "Eurosport + El Español",
+      "sources": [
+        "https://www.eurosport.es/mma/ufc/2024/ufc-298-yo-lo-sone-el-video-mas-epico-de-topuria-en-su-ya-inolvidable-conquista-del-cinturon_vid2095093/video.shtml",
+        "https://www.elespanol.com/deportes/otros-deportes/20240222/epico-discurso-ilia-topuria-minutos-pelear-titulo-no-puedo-sentir-miedo/834666540_0.html"
+      ]
+    }
+  },
+  "antipatterns_dropped": [
+    "la cuna era alemana, pero el patio fue alicantino",
+    "Los Topuria encajan en ese molde clásico de saga deportiva",
+    "Una Costa Blanca que terminó siendo casa (reemplazado con descripción concreta)"
+  ],
+  "v2_0_blocks_used": [
+    "Escena anclaje: El puño que cambió la carrera",
+    "Dónde nació y su familia: Halle, el Cáucaso y una mudanza decisiva",
+    "Cómo llegó al deporte: Del judo georgiano al tatami valenciano",
+    "Momento bisagra (gimnasio): Climent Club",
+    "Cómo combate: Su estilo: agarre georgiano, manos de boxeador",
+    "Personalidad pública y citas: La voz pública: fe, disciplina y la frase del túnel",
+    "Trayectoria reciente: De Volkanovski a Oliveira",
+    "Próximo combate: La Casa Blanca, Trump y Justin Gaethje",
+    "Polémicas y sombras",
+    "Rivalidad mediática: La sombra McGregor",
+    "Palmarés (tabla)",
+    "Preguntas frecuentes",
+    "Cierre con personalidad"
+  ],
+  "metrics": {
+    "word_count": 2513,
+    "target_range": "2500-3000",
+    "entradilla_words": 34,
+    "entradilla_target": "30-35",
+    "paragraphs_over_60_words": 0,
+    "h2_count": 12,
+    "h3_count": 6,
+    "strong_tags": 17,
+    "strong_word_range": "4-8 (mostly 5-7, ideas not isolated words)",
+    "em_tags": 14,
+    "direct_quotes_verified": 7
+  },
+  "self_check_v1_1": {
+    "voz_periodistica": "OK",
+    "entradilla_30_35": "OK (34)",
+    "primer_h2_corto": "OK ('El puño que cambió la carrera')",
+    "parrafos_60_max": "OK (todos ≤60)",
+    "variedad_sintactica": "OK (sin 'no solo… sino también', sin 'no era… era…')",
+    "tres_capas_conceptos": "Aplicado a estilo (qué hace / cómo lo hace / por qué importa) y a Climent Club",
+    "ejemplos_iconicos_2_5": "5 escenas desarrolladas: KO Volkanovski, KO Oliveira, entrada Mariachi, pesaje Ramos UFC 308, Despacho Oval con Trump",
+    "info_viva_websearch": "Verificada: peso ligero actual, fecha KO Oliveira, fecha Casa Blanca, denuncia + retirada, citas Helwani",
+    "lexico_espanol_peninsular": "OK (overhand, clinch, striking en cursiva donde corresponde)",
+    "negritas_strong_idea": "OK (17 strongs, todos 4-8 palabras como idea legible)",
+    "cursivas_em": "OK (14 em — 7 citas directas + 7 extranjerismos/anglicismos en cursiva)",
+    "faqs_curiosidad_real": "OK (cero edad/nacionalidad/lugar nacimiento; sí: España+Georgia, categoría actual, Casa Blanca, vacante pluma, Sergio Ramos, hermanos Climent)",
+    "antialucinacion": "Todas las fechas y nombres verificados via WebSearch",
+    "valor_relevo": "OK: doble campeón + Casa Blanca + Bernabéu + polémica judicial + sombra McGregor — todo verificable, sin equivalente en bio genérica"
+  },
+  "files": {
+    "article": "/tmp/repo-push/runs/regen-batch-v2-1779298867/art-9/article.html",
+    "critique": "/tmp/repo-push/runs/regen-batch-v2-1779298867/art-9/critique_v1_1.json"
+  }
+}

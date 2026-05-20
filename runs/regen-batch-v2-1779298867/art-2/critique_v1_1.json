@@ -1,0 +1,102 @@
+{
+  "run_id": "regen-batch-v2-1779298867/art-2",
+  "topic_inventory_id": 2,
+  "sport": "Fútbol",
+  "category": "tactics",
+  "sub_type": "tipologias",
+  "topic": "Los tipos de tiro en el fútbol — del disparo raso a la chilena",
+  "url_slug": "tipos-tiro-futbol",
+  "style_guide_version": "v1.1",
+  "template": "tactics_template.md (v2.0)",
+  "passes": "single-shot draft with metric-driven revision (entradilla, paragraph length, bold span length, word count)",
+  "metrics": {
+    "word_count": 2491,
+    "paragraphs_total": 58,
+    "paragraphs_over_60_words": 0,
+    "h2_sections": 5,
+    "h3_item_sections": 11,
+    "h3_faqs": 6,
+    "bold_spans_total_narrative": 20,
+    "bold_spans_within_5_to_7_words": 20,
+    "entradilla_words": 32,
+    "first_h2_words": 5
+  },
+  "self_check_v1_1": {
+    "voice_periodistic_es": "pass — natural sports-press tone, no Wikipedia formalism, no streamer register",
+    "entradilla_present_30_35_words": "pass — 32w between H1 and first H2 anchoring on Zidane Glasgow 2002, complements title without repeating it",
+    "first_h2_short_editorial": "pass — 'Glasgow, una volea, una idea' (5w)",
+    "paragraph_ceiling_60_words": "pass — 0 paragraphs over 60w out of 58 total",
+    "syntactic_variety_no_banned_hinges": "pass — zero 'no solo… sino también', 'más que…', 'no era… era…', 'eso explica…', 'la evolución de…' in the body",
+    "three_layer_depth": "pass — every H3 item follows the fixed Tactics v2.0 schema (qué es / cuándo se usa / quién lo representa / qué cambió when applicable); also applied at section level in evolution H2",
+    "iconic_examples_2_to_5_developed": "pass — multiple developed exemplars per shot type: Zidane Glasgow 2002 (volea), Cristiano vs Juventus 2018 + Rivaldo vs Valencia 2001 (chilena), Messi al Betis + Raúl al Valencia + Totti al Inter (vaselina), Juninho + Beckham + Roberto Carlos (rosca), Ramos en Lisboa + Aduriz + Budimir/Muriqi (cabezazo), Quaresma + Modrić + Roberto Carlos (trivela), Madjer 1987 + Henry + Benzema (taconazo), Quaresma + Lamela Puskás (rabona), Ronaldo Nazário 2002 (punterazo), Gerrard + Iniesta/Modrić (bote pronto), Haaland + Lewandowski (raso)",
+    "live_info_verified": "pass — all cited events are evergreen historical facts (Glasgow 2002, Madjer 1987, Lisbon 2014, Ronaldo Nazário 2002 final, Cristiano vs Juventus 2018, Rivaldo vs Valencia 2001, Roberto Carlos vs France 1997, Lamela Puskás for the Arsenal goal). No squad/ranking/season-dependent claims",
+    "lexicon_es_peninsular": "pass — escuadra, rosca, taconazo, rabona, trivela, peinada, balón picado, palo cercano, segundo palo, frontal, prórroga (in cabezazo context). No Latin American variants",
+    "equivalences_obligatorias": "pass — penalti (not penalty), falta directa (not 'golpe franco al gol' — explicitly contextualized inside the Joel fix), balón picado / picar el balón (not 'picadito'), efecto/rosca (not 'comba'), remate a bote pronto / peinada (not 'semivolea o peinado')",
+    "joel_factual_fixes_applied": {
+      "penalti_falta_directa_removed_from_list": "pass — explicit disclaimer paragraph + 'falta directa' only mentioned contextually inside Tiro con rosca H3 as the situation in which rosca is the best option",
+      "missing_types_added": "pass — taconazo, rabona, trivela/tiro con exterior, punterazo all included with full schema",
+      "golpe_franco_al_gol_replaced": "pass — 'falta directa' / 'tiro libre' used; the phrase 'golpe franco al gol' does NOT appear in the article",
+      "picadito_replaced": "pass — uses 'balón picado' / 'picar el balón'; 'picadito' does NOT appear",
+      "semivolea_renamed": "pass — H3 is 'Remate a bote pronto'; 'peinada' used inside cabezazo H3 (not 'semivolea o peinado')",
+      "comba_replaced": "pass — uses 'efecto' / 'rosca'; 'comba' does NOT appear",
+      "portero_context_fixed": "pass — vaselina says 'cuando está adelantado' (not 'cuando sale del área') and notes 'esté dentro o fuera del área'",
+      "iconic_player_exemplars_developed": "pass — every requested example is included and developed in 1-2 sentences: Cristiano/Rivaldo for chilena, Messi/Raúl/Totti for vaselina, Juninho/Beckham/Roberto Carlos for falta directa with rosca, Cristiano/Ramos en Lisboa/Aduriz/Budimir/Muriqi for cabezazo, Zidane Glasgow 2002 for volea, Quaresma/Modrić/Roberto Carlos for trivela. Benzema/Thiago first-touch implicitly via Benzema in taconazo and Modrić as bote-pronto reference"
+    },
+    "extranjerismos_em_or_native": "pass — 'trivela' introduced with native gloss ('término portugués'), 'hat-trick' used unquoted (consolidated). No untranslated foreign technical terms needing <em>",
+    "cliches_zero": "pass — no esférico, deporte rey, once guerreros, pena máxima, leyes de la física",
+    "epica_prefab_zero": "pass — no 'la cuna era alemana', 'trayectoria untuosa', 'gesto sucio en el segundo justo' (these were explicitly in the v1.0 article and have been removed)",
+    "adjetivos_grandilocuentes": "pass — 'espectacular' used once for chilena with concrete justification (the whole H3 develops why); 'memorables' used once for Henry/Benzema taconazos — concrete examples follow",
+    "seo_h2_real_intention": "pass — each H2 maps to a real query: resumen (featured snippet), individual H3s (one per shot type), 'cuál es el remate más efectivo dentro del área' (Joel FAQ), 'cómo han evolucionado los tipos de tiro' (depth), 'preguntas frecuentes'",
+    "faqs_curiosity_not_obvious": "pass — six FAQs of real curiosity: most effective shot inside the box, chilena vs tijera difference, etymology of vaselina, etymology of trivela, future of heading in formative football, why some forwards choose puntera over empeine. Zero 'qué nacionalidad tiene' / 'cuántos años tiene' / 'cuántos tipos hay' patterns",
+    "bold_phrase_5_to_7_consecutive": "pass — all 20 narrative bold spans are 5-7 word phrases reading as complete ideas: 'Penalti y falta directa no se cuentan' (7), 'Haaland y Lewandowski viven del raso' (5), 'El delantero ya no remata el centro' (7), 'Zinedine Zidane en Glasgow 2002' (5), 'Steven Gerrard fue maestro reconocido del gesto' (7), 'Cristiano Ronaldo, Sergio Ramos y Aduriz' (6), 'Tres vaselinas distintas, el mismo gesto' (6), 'La fantasía es ahora opción real' (6), 'Cristiano firmó la chilena contra la Juventus' (7), 'Rivaldo firmó la suya ante el Valencia' (7), 'Juninho Pernambucano marcó setenta goles de falta' (7), 'La rosca pura es hoy menos previsible' (7), 'Ricardo Quaresma la convirtió en su marca' (7), 'Modrić la usa al palo largo' (6), 'Henry y Benzema han firmado taconazos' (6), 'Quaresma firmó goles y asistencias de rabona' (7), 'Ronaldo Nazário firmó con un punterazo' (6), 'El gesto define al goleador moderno' (6), 'Tres tendencias dibujan el fútbol' (5), 'Los porteros anticipan con menos margen' (6)",
+    "italics_em_only": "pass — no <em> blocks needed since no untranslated extranjerismos used; trivela introduced with native gloss inside the body text",
+    "ortotipografia_names_numbers": "pass — first mention with name+surname (Zinedine Zidane, Cristiano Ronaldo, Sergio Ramos, Aritz Aduriz, Steven Gerrard, Juninho Pernambucano, David Beckham, Roberto Carlos, Ricardo Quaresma, Luka Modrić, Erik Lamela, Erling Haaland, Robert Lewandowski, Harry Kane, Ronaldo Nazário); years and minutes in figures (1987, 1997, 2001, 2002, 2014, 2018, '93 de la final'); clubs in Spanish form (Juventus, Bayer Leverkusen, Real Madrid, Atlético, Oporto)",
+    "antialucinacion_proper_nouns_verified": "pass — every cited moment is verifiable evergreen: Glasgow Champions 2002 final Real Madrid-Bayer Leverkusen (Zidane goal); Madjer's backheel 1987 Oporto-Bayern in European Cup final; Ramos header Lisbon 2014 Champions final (90+3); Cristiano bicycle kick vs Juventus quarter-final 2018 with applause from Juventus Stadium; Rivaldo bicycle kick vs Valencia 2001 last-minute hat-trick clinching Champions spot; Roberto Carlos free kick vs France Tournoi 1997; Ronaldo Nazário World Cup final 2002 second goal vs Germany; Lamela Puskás Award (Tottenham vs Arsenal North London derby)",
+    "valor_relevo": "pass — article answers WHAT each shot type is, WHEN it appears, WHO mastered it, and HOW the modern game changed it (three layers per item). It also corrects the very common conflation of penalti/falta directa as 'shot types' (a misconception the original v1.0 reinforced) and frames the evolution around three concrete tendencies (advanced keepers, modern balls, finishing analytics) — depth that a generic Wikipedia entry on 'tipos de tiro' does not provide"
+  },
+  "tactics_v2_template_compliance": {
+    "fixed_per_item_schema": "pass — every H3 item (Disparo raso, Volea, Remate a bote pronto, Cabezazo, Vaselina, Chilena, Tiro con rosca, Trivela, Taconazo, Rabona, Punterazo) has qué es / cuándo se usa / quién lo representa, plus qué cambió for items where modern evolution is relevant (raso, volea, cabezazo, vaselina, chilena, rosca)",
+    "h2_deck_removed": "pass — entradilla replaces the v1.0 deck-style H2 ('El dominio de los distintos tipos de tiro separa a un buen delantero…')",
+    "summary_table_for_featured_snippet": "pass — 11-row table under 'Los once tipos de tiro: resumen' as featured-snippet target",
+    "editorial_take_h2": "pass — '¿Cuál es el remate más efectivo dentro del área?' takes a position (raso desde el área) grounded in xG analytics and contemporary goalscorer profiles",
+    "evolution_h2": "pass — 'Cómo han evolucionado los tipos de tiro en el fútbol moderno' covers three concrete tendencies (advanced keepers, lighter balls, finishing analytics) with mechanical consequences for each",
+    "faqs_curiosity_block": "pass — 6 FAQs all of real curiosity, none re-defining what is already in the body"
+  },
+  "joel_fixes_per_article_audit": {
+    "penalti_no_es_tipo_de_tiro": "applied — removed from the list, only contextual mention",
+    "falta_directa_no_es_tipo_de_tiro": "applied — removed from the list, mentioned contextually inside Tiro con rosca",
+    "taconazo_added": "applied — full H3 with Madjer 1987, Henry, Benzema",
+    "rabona_added": "applied — full H3 with Quaresma, Lamela Puskás",
+    "trivela_tiro_con_exterior_added": "applied — full H3 with Quaresma, Modrić, Roberto Carlos",
+    "punterazo_added": "applied — full H3 with Ronaldo Nazário 2002 final",
+    "golpe_franco_al_gol_terminology": "applied — replaced with falta directa / tiro libre throughout",
+    "picadito_terminology": "applied — replaced with balón picado / picar el balón",
+    "semivolea_peinado_terminology": "applied — H3 renamed Remate a bote pronto, peinada introduced inside cabezazo H3 as variante",
+    "comba_terminology": "applied — using efecto / rosca consistently",
+    "portero_adelantado_context": "applied — vaselina says 'cuando está adelantado' and notes 'esté dentro o fuera del área'",
+    "iconic_exemplars_developed": "applied — every requested exemplar is included with at least one developed sentence; Benzema/Thiago first-touch is partially covered via Benzema in taconazo H3"
+  },
+  "potential_improvements_for_future_passes": [
+    "Could add a Benzema/Thiago Alcántara first-touch H3 ('a la primera') as a 12th item if the editorial target is to maximize the technical catalog rather than tighten word count",
+    "FAQ on 'cuántos tipos de tiro hay' was removed (it was generic); could be replaced with 'qué es la Panenka' as a sub-variant the v1.0 only mentioned in passing",
+    "Internal linking step still pending: hub Fútbol, Reglas del fútbol pillar, Origins of Zidane / Cristiano / Messi / Ronaldo Nazário, sibling tactics 'tercer hombre', 'posiciones-futbol'",
+    "Image generation step not run in this pass; hero would ideally be Zidane Glasgow 2002 volley or a composite of three iconic strikes"
+  ],
+  "comparison_v1_0_vs_v1_1_observations": {
+    "v1_0_pattern_avoided_1": "v1.0 listed penalti and falta directa as shot types; v1.1 explicitly corrects this in a dedicated paragraph after the entradilla and removes them from the table",
+    "v1_0_pattern_avoided_2": "v1.0 missed taconazo, rabona, trivela, punterazo; v1.1 includes all four with full schema and developed exemplars",
+    "v1_0_pattern_avoided_3": "v1.0 first H2 was a metadescription-style sentence ('El dominio de los distintos tipos de tiro separa a un buen delantero de un goleador de élite, y cada uno responde a una intención táctica concreta'); v1.1 first H2 is 'Glasgow, una volea, una idea' (5w editorial)",
+    "v1_0_pattern_avoided_4": "v1.0 had no entradilla between H1 and the first H2; v1.1 has explicit 32w entradilla anchoring on Zidane Glasgow",
+    "v1_0_pattern_avoided_5": "v1.0 used 'golpe franco al gol', 'picadito', 'comba', 'semivolea o peinado' — all replaced per Joel's terminology fixes",
+    "v1_0_pattern_avoided_6": "v1.0 used scattered single-word bolds ('escuadra', 'finalizadores fríos', 'palos bajos', etc.); v1.1 uses 20 bold spans, all 5-7 word phrases reading as complete ideas",
+    "v1_0_pattern_avoided_7": "v1.0 had 'gesto sucio en el segundo justo' épica prefabricada and 'trayectoria untuosa' (the latter survived even into the FAQ); v1.1 removes both",
+    "v1_0_pattern_avoided_8": "v1.0 mentioned Zidane in passing ('el de Zinedine Zidane en la final de Glasgow es el ejemplo canónico'); v1.1 develops the scene (centro de Roberto Carlos, golpeo con la zurda a la escuadra, ante el Bayer Leverkusen)",
+    "v1_0_pattern_avoided_9": "v1.0 portero context: 'cuando sale del área'; v1.1 corrects to 'cuando está adelantado' per Joel's fix (he can be inside the box and still beaten by vaselina)"
+  },
+  "open_questions_for_joel_qa_2": [
+    "Is the explicit 'penalti y falta directa no se cuentan' disclaimer the best place (right after entradilla and intro), or should it sit inside the resumen H2 closer to the table?",
+    "Should the article add a 12th item — 'A la primera / control orientado y remate' — with Benzema and Thiago Alcántara as exemplars, or is that better as its own concept piece?",
+    "FAQ on 'es el cabezazo un gesto en peligro de desaparición' opens a contemporary debate. Is this the right tone for Tactics, or does it bleed into Rules/Polémica territory?",
+    "The chilena section closes with a line about VAR no longer disallowing spectacular goals as dangerous play. Worth grounding with a specific case, or leave generic?"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "article": "reglas-tenis",
+  "version": "v1.1-regen",
+  "category": "Rules (pillar)",
+  "sport": "Tenis",
+  "metrics": {
+    "word_count": 1974,
+    "word_count_target": "1500-2000 (pillar)",
+    "word_count_pass": true,
+    "entradilla_words": 33,
+    "entradilla_target": "30-35",
+    "entradilla_pass": true,
+    "first_h2_words": 6,
+    "first_h2_text": "Un marcador que viene del reloj",
+    "first_h2_pass": true,
+    "paragraphs_total": 38,
+    "paragraphs_over_60_words": 0,
+    "paragraph_length_pass": true,
+    "bolds_total": 11,
+    "bolds_in_5_7_range": 11,
+    "bolds_out_of_range": 0,
+    "bolds_pass": true,
+    "faqs_count": 5,
+    "polemicas_section_present": true,
+    "html_semantic_pass": true,
+    "banned_hinges_count": 0,
+    "banned_hinges_pass": true
+  },
+  "per_article_fixes_applied": {
+    "historical_origin_15_30_40": {
+      "applied": true,
+      "where": "H2 'Un marcador que viene del reloj' + FAQ '¿Por qué el tenis puntúa 15, 30 y 40?'",
+      "details": "Esfera de reloj medieval con cuartos de quince minutos; simplificación de 45 a 40 por economía oral y encaje del deuce; mito etimológico de l'oeuf/love."
+    },
+    "electronic_line_calling": {
+      "applied": true,
+      "where": "H2 'Del ojo de halcón al adiós de los jueces de línea' + FAQ '¿Cómo funciona el ojo de halcón?'",
+      "details": "Ojo de halcón con challenge desde 2006, ELC en US Open y Open de Australia desde 2021, ATP obligatorio desde 2025, Wimbledon retirado en 2025. Controversia incluida."
+    },
+    "shot_clock": {
+      "applied": true,
+      "where": "H2 'Cuánto dura un partido y el papel del shot clock'",
+      "details": "25 segundos, introducido ATP 2018, polémica Kyrgios sobre violaciones de tiempo."
+    },
+    "super_tie_break_unification_2022": {
+      "applied": true,
+      "where": "H2 'Puntuación: del juego al set y al tie-break' + H2 'El partido que cambió el reglamento' + FAQ '¿Por qué Wimbledon cambió el quinto set?'",
+      "details": "Marzo 2022, super tie-break a 10 con dos de ventaja, aplicado en los 4 Grand Slams. Wimbledon abandona el 12-12 y Roland Garros acepta el desempate."
+    },
+    "iconic_examples_developed": {
+      "applied": true,
+      "examples": [
+        "Isner vs Mahut Wimbledon 2010 — desarrollado en H2 propio: 22 jun 2010, tres días, 70-68, marcador rendido a 47-47.",
+        "Roger Federer y saque-volea en hierba — última gran etapa adaptándose al nuevo ritmo de la hierba ralentizada.",
+        "Rafa Nadal y dominio en Roland Garros — 14 títulos entre 2005 y 2022; drive y revés liftado en superficie lenta.",
+        "Novak Djokovic — siete coronas Wimbledon desde el fondo de pista; semifinal 2018 contra Nadal interrumpida por toque de queda.",
+        "Nick Kyrgios — polémicas de shot clock, violaciones de tiempo y código en su firma deportiva."
+      ]
+    },
+    "surface_impact_developed": {
+      "applied": true,
+      "where": "H2 'La pista y el peso decisivo de la superficie'",
+      "details": "Hierba ralentizada deliberadamente por All England Club a inicios de los 2000; consecuencias (Federer adaptado, Nadal 2008-2010, Djokovic siete coronas); tierra batida con Nadal 14 RG."
+    },
+    "polemicas_section": {
+      "applied": true,
+      "where": "H2 'Polémicas y debates abiertos'",
+      "frentes_cubiertos": [
+        "Automatización de líneas vs textura humana del juego",
+        "Desaparición del saque-volea (Federer último ganador habitual con repertorio de volea)",
+        "Calendario exhaustivo (Nadal y Djokovic pidiendo recorte)",
+        "Best-of-5 vs best-of-3 (igualdad estructural + presión TV)"
+      ]
+    }
+  },
+  "style_guide_compliance": {
+    "voz_periodista_espanol": "pass",
+    "entradilla_complementa_no_repite": "pass",
+    "primer_h2_corto": "pass — 6 palabras",
+    "tres_capas_por_concepto": "pass — qué es / cómo funciona / por qué importa hoy aplicado a puntuación, superficie, tie-break, ELC, servicio",
+    "ejemplos_iconicos_2_a_5": "pass — 5 desarrollados",
+    "info_viva_verificada": "pass — Nadal 14 RG (2005-2022), Isner-Mahut 22/06/2010, shot clock 2018, ELC US Open 2021, ATP 2025, Wimbledon 2025; unificación super tie-break marzo 2022",
+    "lexico_espana_peninsular": "pass — fondo de pista, drive, revés, bola de rotura implícito, juez de silla, saque-volea",
+    "tecnicismos_explicados": "pass — fondo de pista (defiende desde atrás), drive (golpe natural del lado derecho), deuce, let, hindrance, electronic line calling, shot clock — todos con contexto la primera vez",
+    "extranjerismos_em": "pass — deuce, love, l'oeuf, match tie-break, shot clock, challenge, electronic line calling, hindrance, let en cursiva",
+    "negritas_5_a_7_palabras": "pass — 11/11 dentro del rango",
+    "negritas_una_por_parrafo": "pass",
+    "html_semantico": "pass — solo <strong> y <em>",
+    "faqs_curiosidad_real": "pass — todas no obvias: origen 15-30-40, mecánica ojo de halcón, cambio quinto set, qué es let, desaparición saque-volea",
+    "no_cliches_lista_negra": "pass",
+    "no_epica_prefabricada": "pass",
+    "cierre_con_personalidad": "pass — 'El tenis ha cambiado más en los últimos veinte años que en el siglo anterior. Quedan la red, el saque cruzado y los cuatro puntos del reloj medieval. El resto se ha rehecho a velocidad de cámara automática.'"
+  },
+  "potential_issues_to_monitor": [
+    "Open de Australia ELC: el AO lo desplegó parcialmente en 2021 (pistas exteriores) y completó después; el artículo dice 'hizo lo mismo ese año' que puede leerse como total — verificar con fact-check.",
+    "ATP 'obligatorio desde 2025': la decisión fue anunciada en 2024 para entrar en vigor 2025. Confirmar wording exacto si fact-check requiere mayor precisión.",
+    "Wimbledon retira jueces de línea 2025: confirmado por anuncio oficial del All England Club; revisar si hay matices (mantienen árbitros en pistas menores).",
+    "Etimología 15-30-40: la teoría del reloj es la más asentada pero hay teorías alternativas (sistema sexagesimal, apuestas de monedas francesas). El artículo lo presenta como 'teoría más asentada', tono correcto.",
+    "Isner-Mahut: comienzo 22/06/2010, no terminó hasta el 24/06/2010. Verificado en el sample tie-break."
+  ],
+  "valor_relevo_check": {
+    "pregunta": "¿Qué aprende aquí el lector que no encontraría en una entrada genérica de Wikipedia o la primera página de Google?",
+    "respuesta": "El origen medieval del marcador explicado con la simplificación 45->40 y el encaje con deuce; el contexto de la ralentización deliberada de Wimbledon como decisión histórica; la cronología completa de la unificación del super tie-break en 2022; la cadena causal Isner-Mahut 2010 -> Wimbledon 2018 12-12 -> 2022 super tie-break al 6-6; la retirada de los jueces de línea en Wimbledon 2025 como cierre simbólico; la lectura de polémicas vivas (saque-volea desaparecido, calendario, best-of-5)."
+  }
+}
