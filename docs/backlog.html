@@ -137,6 +137,23 @@
 <p>The first round of reviewer feedback drove style guide v1.1 (see the <a href="editorial-guide.html">editorial guide</a> and <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/002-style-guide-v1-1.md">ADR-002</a>). After <code>EDIT-04</code> regenerates the 11 articles under the new prompts, a second QA cycle with the reviewer validates that v1.1 actually addresses the 12 systematic defects without regressing what already worked. Output: either a v1.2 patch or sign-off to scale production.</p>
 <p><strong>Pre-reqs:</strong> EDIT-04.</p>
 
+<h3><span class="item-code">EDIT-07</span> Apply Joel's topic ideation feedback to the inventory</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Editorial / Pipeline
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo
+</p>
+<p>Joel passed a second-pass feedback (via Teams, May 20 PM) on the <strong>ideation</strong> side — the 148 topics seeded into the Excel inventory on May 18. The general principles are now codified as <a href="https://github.com/jpwaimann/relevo-content/blob/main/prompts/topic_ideation_lineamientos.md"><code>topic_ideation_lineamientos.md</code></a> and injected into <code>/relevo content-plan</code> (see <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/003-topic-ideation-lineamientos.md">ADR-003</a>). What remains is the <strong>tactical</strong> application to the current inventory: reformulate 3 elementary topics for tier-1 sports (duración, penalti, tie-break) into angle-driven versions, fix 4 factual errors in bios (Topuria/Halle, Lin futsal vs goalkeeper, Marc Márquez 125cc, Hugo González de Oliveira disambiguation), run a dedup pass against relevo.com, and append the 4 angle topics + ~22 bios that Joel suggested. Full breakdown in <a href="https://github.com/jpwaimann/relevo-content/blob/main/prompts/joel-topic-feedback-v1.md"><code>joel-topic-feedback-v1.md</code></a>.</p>
+
+<h3><span class="item-code">EDIT-08</span> Topic QA #2 — validate inventory after EDIT-07</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Editorial
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Joel (review) + Pablo (coordination)
+</p>
+<p>Once EDIT-07 has applied all the tactical fixes (reformulations, factual corrections, dedup, expansion), Joel does a second pass to confirm the inventory is clean before any further <code>/relevo new</code> runs at scale. Same pattern as EDIT-06 but for the ideation side instead of the writing side.</p>
+<p><strong>Pre-reqs:</strong> EDIT-07.</p>
+
 <h2>Quality and robustness gates <span class="prio-pill p1">P1</span></h2>
 
 <h3><span class="item-code">INTEG-02</span> Round-robin reviewer pool and SLA</h3>

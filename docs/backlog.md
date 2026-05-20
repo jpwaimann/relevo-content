@@ -67,6 +67,17 @@ This document is a living artefact. As items close they move to the bottom under
 - **Why:** The first round of reviewer feedback drove style guide v1.1 (see [editorial guide](editorial-guide.html) and [ADR-002](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/002-style-guide-v1-1.md)). After `EDIT-04` regenerates the 11 articles under the new prompts, a second QA cycle with the reviewer validates that v1.1 actually addresses the 12 systematic defects without regressing what already worked. Output: either a v1.2 patch or sign-off to scale production.
 - **Pre-reqs:** EDIT-04.
 
+### `EDIT-07` Apply Joel's topic ideation feedback to the inventory
+- **Category:** Editorial / Pipeline
+- **Owner:** Pablo
+- **Why:** Joel passed a second-pass feedback (via Teams, May 20 PM) on the **ideation** side — the 148 topics seeded into the Excel inventory on May 18. The general principles are now codified as [`topic_ideation_lineamientos.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/topic_ideation_lineamientos.md) and injected into `/relevo content-plan` (see [ADR-003](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/003-topic-ideation-lineamientos.md)). What remains is the **tactical** application to the current inventory: reformulate 3 elementary topics for tier-1 sports (duración, penalti, tie-break) into angle-driven versions, fix 4 factual errors in bios (Topuria/Halle, Lin futsal vs goalkeeper, Marc Márquez 125cc, Hugo González de Oliveira disambiguation), run a dedup pass against relevo.com, and append the 4 angle topics + ~22 bios that Joel suggested. Full breakdown in [`joel-topic-feedback-v1.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/joel-topic-feedback-v1.md).
+
+### `EDIT-08` Topic QA #2 — validate inventory after EDIT-07
+- **Category:** Editorial
+- **Owner:** Joel (review) + Pablo (coordination)
+- **Why:** Once EDIT-07 has applied all the tactical fixes (reformulations, factual corrections, dedup, expansion), Joel does a second pass to confirm the inventory is clean before any further `/relevo new` runs at scale. Same pattern as EDIT-06 but for the ideation side instead of the writing side.
+- **Pre-reqs:** EDIT-07.
+
 ---
 
 ## P1 — Quality and robustness gates
