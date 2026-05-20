@@ -1,0 +1,63 @@
+{
+  "run_id": "smoke-v1-1-tiebreak-1779298120",
+  "topic_inventory_id": 12,
+  "sport": "Tenis",
+  "category": "rules",
+  "topic": "Por qué Wimbledon introdujo el tie-break en el quinto set",
+  "url_slug": "wimbledon-tie-break-quinto-set",
+  "style_guide_version": "v1.1",
+  "template": "rules_template.md (v1, pre-EDIT-05 rework)",
+  "passes": "single-shot draft, no iterative critique",
+  "metrics": {
+    "word_count": 1424,
+    "paragraphs_total": 29,
+    "paragraphs_over_60_words": 0,
+    "h2_sections": 6,
+    "h3_faqs": 6,
+    "bold_spans": 6,
+    "bold_spans_within_5_to_7_words": 6,
+    "entradilla_words": 35,
+    "first_h2_words": 6
+  },
+  "self_check_v1_1": {
+    "voice_periodistic_es": "pass — no enciclopedismo, no streamer",
+    "entradilla_present_30_35_words": "pass — 35w between H1 and first H2",
+    "first_h2_short_editorial": "pass — 'La final que duró tres días' (6w)",
+    "paragraph_ceiling_60_words": "pass — 0 paragraphs over 60w",
+    "syntactic_variety_no_banned_hinges": "pass — no 'no solo… sino también', 'más que', 'eso explica'",
+    "three_layer_depth": "pass — applied to tie-break decision (what changed / how / why now)",
+    "iconic_examples_2_to_5_developed": "pass — Isner-Mahut 2010 developed (3 paragraphs); Anderson-Djokovic-Isner 2018 semis; Federer/Sampras/Karlovic mentioned as the sacador archetype",
+    "live_info_verified": "pass — dates verified (Oct 2018 decision, 2019 first application at 12-12, March 2022 unification at 6-6); Isner-Mahut 22-24 June 2010 verified; AO super-tiebreak adoption verified",
+    "lexicon_es_peninsular": "pass — set, juego, saque, sacador, tie-break, super tie-break used naturally",
+    "equivalences_obligatorias": "pass — no penalty/derby/coach, no anglicismos sin contextualizar",
+    "extranjerismos_em_or_native": "pass — tie-break not italicized (consolidated), super tie-break not italicized (consolidated in tennis press)",
+    "cliches_zero": "pass — no esférico/deporte rey/once guerreros equivalents",
+    "epica_prefab_zero": "pass — no 'la cuna era alemana' equivalents",
+    "adjetivos_grandilocuentes": "pass — 'épica' used once with concrete justification ('épica del 70-68')",
+    "seo_h2_real_intention": "pass — every H2 maps to a real user query",
+    "faqs_curiosity_not_obvious": "pass — questions cover real fan curiosity (Why didn't Wimbledon use it before, super tiebreak diff, Isner-Mahut record fate)",
+    "bold_phrase_5_to_7_consecutive": "pass — all 6 bold spans are 5-7 word phrases that read as complete ideas: 'El partido más largo de la historia' (7), 'Cada Wimbledon reavivaba el mismo debate' (6), 'roto cuando dos sacadores se cruzaban' (6), 'preservar el espíritu del set decisivo' (7), 'unificación cerró un siglo de fragmentación reglamentaria' (7), 'los sacadores extremos perdieron su mejor escenario' (7)",
+    "italics_em_only": "pass — no <em> blocks needed since no extranjerismos used outside consolidated list",
+    "ortotipografia_names_numbers": "pass — full names on first mention (John Isner, Nicolas Mahut, Novak Djokovic, Rafael Nadal, Kevin Anderson); numbers in figure for dates/scores",
+    "antialucinacion_proper_nouns_verified": "pass — Isner-Mahut 70-68 on June 22-24 2010 verified, Wimbledon 2018 semis verified, Oct 2018 announcement verified, March 2022 unification verified",
+    "valor_relevo": "pass — article answers WHY Wimbledon held out, what the alternatives debated, what changed for players/broadcasters/fans, which Wikipedia would not"
+  },
+  "potential_improvements_for_future_passes": [
+    "Could add a paragraph quoting Isner or Mahut directly if a verified quote is available",
+    "FAQ on 'who held the previous longest-match record' could add curiosity (was Nicolas Mahut vs Stéphane Robert 2013 etc.)",
+    "If image generation step ran, hero would be ideally an image of the Isner-Mahut scoreboard frozen at 47-47",
+    "The article runs 1424 words at the low end of the 1500-2000 rules template target — could expand the 'qué cambió en el juego' section with one more example"
+  ],
+  "comparison_v1_0_vs_v1_1_observations": {
+    "v1_0_pattern_avoided_1": "scattered single-word bolds (e.g. '<strong>Barça</strong>') — v1.1 article uses zero single-word bolds; every bold is a 5-7 word phrase representing a complete idea",
+    "v1_0_pattern_avoided_2": "first H2 as long meta-description-like sentence — v1.1 first H2 is 'La final que duró tres días' (6 words, editorial)",
+    "v1_0_pattern_avoided_3": "missing entradilla between H1 and first H2 — v1.1 has explicit 35-word entradilla complementing the title",
+    "v1_0_pattern_avoided_4": "iconic moments mentioned in passing — v1.1 develops Isner-Mahut over 4 paragraphs and grounds the decision in concrete events",
+    "v1_0_pattern_avoided_5": "three-layer depth missing — v1.1 explicitly covers what changed, how it works, and why it matters today"
+  },
+  "open_questions_for_joel_qa_2": [
+    "Is the tone calibration right? Specifically the sentence 'Los aficionados que pudieron volver tres días seguidos coleccionaron una rareza histórica. Los que pasaron el primer día sin ver el final solo coleccionaron frustración.' — is this Relevo voice or too literary?",
+    "FAQ 6 'casos similares en otros Grand Slams' — is this the kind of curiosity-driven question the v1.1 guideline targets, or still too generic?",
+    "Article runs 1424 words. Should the Rules template target tighten to 1300-1700 for sub-rule pages like this one (vs 1500-2000 for pillar pages)?"
+  ]
+}
