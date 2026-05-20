@@ -162,13 +162,21 @@
 </p>
 <p>The dedup principle is now policy (L2 in <code>topic_ideation_lineamientos.md</code>) but automated execution is blocked: relevo.com disallows Anthropic's crawler so the in-tool WebSearch can't query it directly, and DuckDuckGo's HTML search rate-limits past ~1 scripted query before returning captcha. The 3 rugby duplicates Joel explicitly cited (ids 53, 55, 56) were handled inline as part of EDIT-07. A full pass over the remaining ~170 rows needs either (a) a Google Custom Search API key (paid), (b) a paid scraping setup that handles DDG's anti-bot, or (c) an internal relevo.com search endpoint if one exists. Joel's <code>EDIT-08</code> QA #2 catches any clear duplicates manually in the meantime.</p>
 
-<h3><span class="item-code">EDIT-10</span> Decide sport-list coverage for IndyCar / Álex Palou</h3>
+<h3><span class="item-code">INTEG-05</span> Dynamic regulation fetch for umbrella hubs (Más motor / Más deporte)</h3>
 <p class="item-meta">
-  <span class="label">Category:</span>Editorial / Pipeline
+  <span class="label">Category:</span>Pipeline
   <span class="sep">·</span>
   <span class="label">Owner:</span>Pablo
 </p>
-<p>Álex Palou (3x IndyCar champion, biggest Spanish name in US single-seaters) is in Joel's list of mandatory bios but does not fit cleanly into the current 24-sport list. The closest existing slot is Fórmula 1, but he competes in IndyCar — a different series. Three options: (a) classify Palou under F1 with an explanatory note in his bio, (b) expand the sport list to include IndyCar (or a broader "Automovilismo" umbrella covering F1 + IndyCar + Rallies), (c) drop Palou. Until Pablo decides, the Palou row is <code>status=blocked</code> with the rationale in <code>notes</code>.</p>
+<p>ADR-004 introduces two umbrella hubs (Más motor with sub_hubs indycar/nascar/formula-e/endurance, Más deporte initially empty). These hubs do not have a single canonical rulebook PDF in SharePoint — each sub-discipline has its own (IndyCar Rule Book, NASCAR Rule Book, FIA WEC, FIA Formula E). Today <code>cmd_content_plan.md</code> Paso 3a downloads a local PDF per sport. When the first Rules or Tactics topic lands in an umbrella hub, the command needs an alternative path: fetch the appropriate regulation dynamically via WebSearch (or by curating per-sub_hub rulebook URLs in <code>sports_config.json</code>). Not blocking — current bios for these hubs are Origins only, which uses WebSearch already (Paso 3c).</p>
+
+<h3><span class="item-code">INTEG-06</span> Confirm WP category mapping for new umbrella hubs</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Integrations
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo
+</p>
+<p>ADR-004 adds the slugs <code>mas-motor</code> and <code>mas-deporte</code> to the sport list. relevo-com.sub.plus already has "Más motor" and "Más deporte" as live sections per Pablo on 2026-05-20. Before the first publish in either hub, confirm via <code>posts_meta_set</code> / theme query that the slug used by the skill renders under the right category and that breadcrumbs/canonical URLs match the existing website structure.</p>
 
 <h2>Quality and robustness gates <span class="prio-pill p1">P1</span></h2>
 
@@ -280,6 +288,7 @@
 <p>For completeness — these were open at some point during May and have since closed.</p>
 
 <ul class="resolved-list">
+  <li><strong>EDIT-10 — Sport-list coverage for Álex Palou</strong> (May 20) — resolved by expanding the sport list from 24 → 26 with two umbrella hubs (<code>Más motor</code> covering IndyCar/NASCAR/Formula E/endurance and <code>Más deporte</code> for future minoritarian sports), aligning the skill with the homonymous live sections on relevo.com. Palou re-classified under <code>Más motor</code> / sub_hub <code>indycar</code> and unblocked (<code>status=pending_review</code>). Full rationale + alternatives considered in <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/004-umbrella-hubs-mas-motor-mas-deporte.md">ADR-004</a>. Two follow-up backlog items spawned: <code>INTEG-05</code> (dynamic regulation fetch for umbrella hubs), <code>INTEG-06</code> (verify WP category mapping before first publish).</li>
   <li><strong>EDIT-02 — Style guide v1.1</strong> (May 20) — reviewer feedback on the May 15 batch (Asana task <code>1214815492685881</code>, 12 subtasks, 23 attachments) landed and was incorporated into <a href="https://github.com/jpwaimann/relevo-content/blob/main/prompts/style_guide.md"><code>prompts/style_guide.md</code></a> v1.1. The 12 systematic editorial defects identified across the 11 articles drove 11 new rules; the twelfth (template divergence) is deferred to ADR-003 / EDIT-05. The biggest single change is the reinterpretation of bold formatting: 5-7 consecutive words forming a complete idea, one per paragraph — not scattered single words. Full details in the <a href="editorial-guide.html">editorial guide</a> and <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/002-style-guide-v1-1.md">ADR-002</a>. Source feedback consolidated at <a href="https://github.com/jpwaimann/relevo-content/blob/main/prompts/joel-feedback-v1.md"><code>prompts/joel-feedback-v1.md</code></a>.</li>
   <li><strong>First fully autonomous E2E production run</strong> (May 19, late PM) — inventory row 5 (Fútbol / rules / penalti) processed end-to-end through every pipeline stage without human intervention. Final quality score 91, WP post 16100 in <code>pending</code>, inventory advanced to <code>status=review</code>. Validated that all stages wired together work in sequence on a real topic. Two minor invocation-side issues caught and resolved (<code>update_table_row</code> argument shape, schema column indexing for hand-written calls). Full details in <a href="test-journal.html">test journal</a>.</li>
   <li><strong>SEO-03 — FAQPage JSON-LD generator</strong> (May 19) — implemented <code>scripts/seo_jsonld.py</code> with deterministic FAQ detection and idempotent injection. Integrated into the skill as Stage 7 of the pipeline (<code>cmd_new.md</code> step 7.b). Smoke-tested against the penalti article: detected the 6 FAQ questions, emitted a clean <code>FAQPage</code> JSON-LD block, and skipped re-injection on a second run.</li>
