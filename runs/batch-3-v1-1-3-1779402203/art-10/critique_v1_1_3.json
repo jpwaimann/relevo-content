@@ -1,0 +1,263 @@
+{
+  "article_id": "art-10",
+  "topic": "Reglas de MMA — rounds, decisiones y movimientos prohibidos en UFC",
+  "slug": "reglas-mma-rounds-decisiones-ufc",
+  "sport": "MMA",
+  "category": "Rules",
+  "sub_type": "pillar",
+  "version": "v1.1.3-batch-3-regen",
+  "batch": "batch-3-v1-1-3-1779402203",
+  "style_guide_version": "v1.1.3",
+  "template": "rules_template.md v2.0",
+  "generated_at": "2026-05-21",
+  "supersedes": "regen-batch-v2-1779298867/art-10 (v1.1)",
+
+  "metrics": {
+    "word_count_total": 2369,
+    "word_count_prose_only": 1939,
+    "word_count_target_range": "2000-2500 (extended pillar — many polémicas + nuevas secciones antidopaje y 12-6)",
+    "paragraphs_total": 39,
+    "paragraphs_with_strong": 39,
+    "bolds_coverage_ratio": 1.000,
+    "bolds_coverage_target": ">= 0.80",
+    "strong_total": 43,
+    "em_total": 24,
+    "b_tags": 0,
+    "i_tags": 0,
+    "h2_count": 12,
+    "h3_count_in_faq": 6,
+    "entradilla_word_count": 32,
+    "entradilla_target_range": "30-35"
+  },
+
+  "hard_gates": {
+    "bolds_coverage_geq_0_80": true,
+    "el_MMA_count_eq_0": true,
+    "el_UFC_count_eq_0": true,
+    "b_tags_eq_0": true,
+    "i_tags_eq_0": true,
+    "word_count_in_range": true,
+    "entradilla_in_range": true,
+    "all_pass": true
+  },
+
+  "lexico_critical_audit": {
+    "el_MMA_occurrences": 0,
+    "las_MMA_occurrences": 6,
+    "el_UFC_occurrences": 0,
+    "la_UFC_occurrences": 12,
+    "del_MMA_occurrences": 0,
+    "al_MMA_occurrences": 0,
+    "del_UFC_occurrences": 0,
+    "al_UFC_occurrences": 0,
+    "note": "Joel pattern explicitly applied — 'las MMA' (femenino plural) y 'la UFC' (la organización) en todas las menciones. Zero ocurrencias de las formas masculino-singular incorrectas."
+  },
+
+  "joel_round_2_pattern_fixes_applied": {
+    "patron_1_bolds_subbold": {
+      "applied": true,
+      "ratio_v1": "18/x = subbold v1.1",
+      "ratio_v1_1_3": 1.000,
+      "note": "Cobertura 100% — todos los párrafos del cuerpo llevan al menos un <strong>. Bolds son frases-idea, no tecnicismos sueltos. Excepción label aplicada solo a items de lista de movimientos prohibidos."
+    },
+    "patron_2_entradilla": {
+      "applied": true,
+      "note": "Entradilla situa el ARTÍCULO ENTERO (las MMA y su libro de reglas), no una anécdota singular. 32 palabras."
+    },
+    "patron_3_primer_h2_marco_general": {
+      "applied": true,
+      "h2": "Un reglamento escrito a contrarreloj",
+      "note": "Marco general — historia del reglamento, no caso paradigmático singular (NO arranca con Yan-Sterling ni con un evento concreto)."
+    },
+    "patron_4_errores_facticos_atribucion": {
+      "applied": true,
+      "note": "WebSearch usado para: (1) Unified Rules updates agosto 2025 + criterio 'damage' como principal — verificado vía ABC PDF y reportes; (2) UFC weight classes 2026 — 8 masc + 4 fem confirmado; (3) USADA → Drug Free Sport Intl + CSAD transición 1 enero 2024 + George Piro + SMRTL Salt Lake City; (4) 12-6 elbow legalizado por ABC noviembre 2024, NJ no lo adoptó en UFC 316 junio 2025."
+    },
+    "patron_5_lexico_es": {
+      "applied": true,
+      "fixes": {
+        "el_MMA_a_las_MMA": "0 ocurrencias mal / 6 ocurrencias bien",
+        "el_UFC_a_la_UFC": "0 ocurrencias mal / 12 ocurrencias bien",
+        "tecnicismos_en_em": "weight cutting, 10-point must, knockout, technical knockout, fight, stop, stalling, weigh-in, soccer kicks, spiking, tap, back of the head, mixed martial arts en <em>",
+        "Drug_Free_Sport_International_en_em": true,
+        "Combat_Sports_Anti_Doping_en_em": true,
+        "Association_of_Boxing_Commissions_en_em": true,
+        "Unified_Rules_of_Mixed_Martial_Arts_en_em": true,
+        "New_Jersey_State_Athletic_Control_Board_en_em": true,
+        "World_Anti_Doping_Agency_en_em": true,
+        "no_falsa_cursiva": "Cero <em> sobre palabras españolas consolidadas (asalto, peleador, octógono, cinturón, lona, recinto, malla — todas sin cursiva)."
+      }
+    },
+    "patron_6_staccato": {
+      "applied": true,
+      "note": "Auditadas cadenas — alternancia corta+media+media-larga consistente. Cero secuencias de 3+ frases de <6 palabras consecutivas."
+    },
+    "patron_7_ejemplos_desarrollados": {
+      "applied": true,
+      "count": 5,
+      "examples": [
+        "Petr Yan vs Aljamain Sterling, UFC 259 (6 marzo 2021) — descalificación por título, árbitro Mark Smith",
+        "Jon Jones y dedos en los ojos vs Vitor Belfort, Daniel Cormier",
+        "Khabib Nurmagomedov y trabajo contra la malla",
+        "PRIDE FC y los soccer kicks históricos",
+        "UFC 316 (junio 2025) — Nueva Jersey no adoptó el cambio del 12-6 elbow, mostrando que la unificación tiene asteriscos"
+      ]
+    }
+  },
+
+  "error_de_base_en_espana_diagnosis": {
+    "diagnosed": true,
+    "joel_flag": "Joel marcó en v1.1: 'Error de base: en España …'",
+    "root_cause": "El artículo v1 podría haber asumido implícitamente que en España hay marco regulatorio nacional de MMA equivalente a las athletic commissions estatales norteamericanas. La realidad es que en España las MMA NO son deporte oficial independiente — el Consejo Superior de Deportes las encuadra como disciplina asociada dentro de la Federación Española de Luchas Olímpicas, y el comité técnico de MMA Profesional homologa eventos bajo reglas internacionales (Unified Rules), no bajo un reglamento español propio.",
+    "fix_v1_1_3": "El artículo regenerado NO afirma que España tenga reglamento propio ni comisión nacional de MMA. Habla siempre del marco internacional (Unified Rules, ABC, CSAD, comisiones estatales norteamericanas) y de promotoras (UFC, ONE, RIZIN, PRIDE). Ninguna frase del cuerpo atribuye a España estructura regulatoria que no existe. El léxico 'comisión española de MMA' o equivalente NO aparece.",
+    "verification_grep": "Cero menciones a 'España' o 'Federación' o 'CSD' en el artículo — el marco regulatorio descrito es siempre el norteamericano + asiático (ONE, RIZIN, PRIDE), que es donde el aficionado español sí encuentra el deporte que ve por TV."
+  },
+
+  "self_check_22_points_v1_1_3": {
+    "1_voz": {"pass": true, "note": "Periodista deportivo español, no Wikipedia, no streamer. Sin clichés tipo 'deporte rey'."},
+    "2_entradilla": {"pass": true, "wc": 32, "note": "Sitúa el artículo entero (libro de reglas, controversia recurrente), no anécdota singular. Complementa el H1 sin repetirlo."},
+    "3_primer_h2_marco_general": {"pass": true, "h2": "Un reglamento escrito a contrarreloj", "note": "Marco general — historia del reglamento, no ejemplo paradigmático singular."},
+    "4_ritmo_parrafos": {"pass": true, "over_60": 0, "staccato_cadenas": 0, "note": "Ningún párrafo > 60 palabras. Sin cadenas de 3+ frases muy cortas."},
+    "5_variedad_sintactica": {"pass": true, "note": "Cero 'no solo… sino también', 'más que…', 'no era… era…', 'eso explica…'."},
+    "6_tres_capas": {"pass": true, "note": "Qué es / cómo funciona / por qué importa hoy en: octógono, sistema de 10 puntos, movimientos prohibidos, árbitro, corte de peso, antidopaje, 12-6 elbow."},
+    "7_ejemplos_iconicos": {"pass": true, "count": 5, "developed": true},
+    "8_info_viva_websearch": {
+      "pass": true,
+      "verified": [
+        "ABC Unified Rules update agosto 2025 — damage como criterio principal",
+        "UFC weight classes 2026 — 8 masc + 4 fem confirmado",
+        "USADA → Drug Free Sport Intl 1 enero 2024 + George Piro + SMRTL Salt Lake City + CSAD",
+        "12-6 elbow legalizado 1 noviembre 2024 + UFC 316 (junio 2025) NJ no adoptó",
+        "Yan-Sterling UFC 259 — 6 marzo 2021, árbitro Mark Smith, peso gallo"
+      ]
+    },
+    "9_lexico_peninsular": {"pass": true, "note": "asalto, octógono, peleador, recinto, cinturón, lona, malla, deshidratación, comisión."},
+    "10_equivalencias_critical": {
+      "pass": true,
+      "las_MMA_femenino_plural": "6 ocurrencias correctas, 0 incorrectas",
+      "la_UFC_organizacion": "12 ocurrencias correctas, 0 incorrectas",
+      "asalto_no_round_suelto": true,
+      "decisión_no_decision_inglés": true,
+      "reglamento_no_rule_book": true,
+      "note": "Joel pattern v1.1.2 explícitamente aplicado. Hard gate cumplido."
+    },
+    "11_extranjerismos_em": {
+      "pass": true,
+      "em_first_mention": ["Unified Rules of Mixed Martial Arts", "New Jersey State Athletic Control Board", "Association of Boxing Commissions and Combative Sports", "10-point must", "weigh-in", "knockout", "technical knockout", "tap", "back of the head", "spiking", "soccer kicks", "stalling", "fight", "stop", "weight cutting", "Drug Free Sport International", "Combat Sports Anti-Doping", "World Anti-Doping Agency", "mixed martial arts"],
+      "contexto_primera_mencion": ["10-point must explicado como sistema 10 al ganador, 9 o menos al perdedor", "weight cutting explicado como deshidratación previa al pesaje", "stalling explicado como parón táctico sin ofensiva", "tap explicado como golpear repetidamente la lona", "spiking explicado como lanzar al rival sobre la cabeza", "no-contest explicado como pelea sin resultado", "back of the head explicado como nuca/columna", "soccer kicks explicado como patadas a rivales en el suelo"]
+    },
+    "12_cliches": {"pass": true, "note": "Cero 'deporte rey', 'leyes de la física', 'pena máxima', 'esférico'."},
+    "13_epica_prefabricada": {"pass": true, "note": "Sin 'la cuna era…', 'retorciendo la pizarra', 'trayectoria untuosa'."},
+    "14_adjetivos_grandilocuentes": {"pass": true, "note": "'enorme' usado una vez en el cierre con anclaje concreto (el esfuerzo por dejar atrás la imagen de espectáculo sin reglas). Cero 'histórico', 'brutal', 'legendario', 'increíble', 'espectacular' sin justificación."},
+    "15_seo_h2_intencion": {"pass": true, "note": "Cada H2 responde intención de búsqueda real: reglamento, reglas básicas, octógono, duración, categorías, formas de ganar, sistema de puntos, prohibidos, polémicas, árbitro, antidopaje, FAQs."},
+    "16_faqs_curiosidad_real": {
+      "pass": true,
+      "count": 6,
+      "preguntas": [
+        "¿Qué diferencia hay entre la UFC y las MMA? — confusión real del aficionado (mencionada en style guide v1.1 como ejemplo bueno)",
+        "¿Por qué son ilegales los rodillazos a oponente caído? — duda técnica real, no obvia",
+        "¿Qué es el corte de peso? — debate médico vivo",
+        "¿Cómo puntúan realmente los jueces? — duda sobre criterios reformados 2025",
+        "¿Cuánto pesan los guantes de las MMA? — dato concreto + comparativa boxeo",
+        "¿Quién controla el antidopaje en la UFC hoy? — transición USADA → DFSI todavía poco conocida"
+      ],
+      "note": "Cero 'qué nacionalidad tiene' o 'cuántos años tiene'."
+    },
+    "17_negritas_cobertura_geq_80": {
+      "pass": true,
+      "strong_count": 43,
+      "paragraphs_count": 39,
+      "p_with_strong": 39,
+      "coverage_ratio": 1.000,
+      "target": ">= 0.80",
+      "calculation": "39/39 = 1.000",
+      "note": "Cobertura 100% — todos los párrafos del cuerpo llevan al menos un <strong>. Cumple holgadamente el target v1.1.3."
+    },
+    "18_negritas_test_aislamiento": {
+      "pass": true,
+      "note": "Auditadas las 43 negritas en orden. Cada una se lee como idea completa (frase de 5-10 palabras consecutivas) o como label de ítem en lista de movimientos prohibidos (Cabezazos, Dedos en los ojos) y en sección polémicas (Petr Yan vs Aljamain Sterling, Jon Jones y los dedos en los ojos, Paradas tempranas o tardías, El corte de peso). Cero bolds sobre tecnicismos sueltos (porpoising-style)."
+    },
+    "19_cursivas_em": {
+      "pass": true,
+      "em_count": 24,
+      "i_count": 0,
+      "inventario_obligado": "10-point must, weight cutting, mixed martial arts, knockout, technical knockout, tap, stalling, soccer kicks, spiking, fight, stop, back of the head, weigh-in — todos en <em>",
+      "falsa_cursiva_evitada": "Cero <em> sobre asalto, peleador, octógono, cinturón, lona, recinto, malla — palabras españolas consolidadas."
+    },
+    "20_ortotipografia_nombres": {
+      "pass": true,
+      "primera_mencion_nombre_apellido": ["John McCain", "Petr Yan", "Aljamain Sterling", "Mark Smith", "Jon Jones", "Vitor Belfort", "Daniel Cormier", "Khabib Nurmagomedov", "Herb Dean", "Marc Goddard", "George Piro"],
+      "cifras": "110 gramos, 9,1 metros, 1,8 metros, 25 minutos, 15 minutos, 226-396 gramos, 52,2 kg, 265 lb, 6 marzo 2021, 1 noviembre 2024, 1 enero 2024, julio 2015, diciembre 2023, agosto 2025, junio 2025, abril 2001, UFC 259, UFC 316.",
+      "comillas_dobles": "'lucha humana de jaula' con comillas dobles correcto.",
+      "guion_largo_aclaraciones": "Múltiples — para weight cutting, 10-point must, Drug Free Sport International, etc.",
+      "mayusculas_competiciones": "UFC, ONE Championship, PFL, RIZIN, PRIDE FC, Unified Rules — todas correctas."
+    },
+    "21_antialucinacion_factcheck": {
+      "pass": true,
+      "atribuciones_gesto_verificadas": "Khabib y la malla (técnica evergreen, sin atribuir palmarés específico). Yan-Sterling, fecha y árbitro verificados. Jon Jones-Belfort-Cormier dedos en los ojos verificados.",
+      "datos_geograficos": "Singapur (ONE Championship base), Japón (RIZIN base), Salt Lake City (SMRTL) — verificados.",
+      "datos_numericos_vivos": "Categorías UFC 2026 (8+4=12), 12-6 elbow legalizado 1 nov 2024, USADA→DFSI 1 enero 2024, ABC update agosto 2025, UFC 316 junio 2025 — todos vía WebSearch.",
+      "posiciones_roles": "Herb Dean árbitro principal UFC + más de mil combates; Marc Goddard británico intervencionista — atribuciones de carácter, verificables.",
+      "atribuciones_tecnicas": "Khabib y trabajo contra el cerco (técnica evergreen sin reclamar título o récord específico). Jon Jones reincidencia documentada vía WebSearch.",
+      "error_de_base_en_espana": "Diagnosticado y evitado — el artículo NO atribuye a España un marco regulatorio independiente que no existe. Cero menciones a 'Federación Española', 'comisión española', 'CSD' u otras instituciones cuya intervención sería incorrecta."
+    },
+    "22_valor_relevo": {
+      "pass": true,
+      "note": "Capa diferencial sobre Wikipedia: (1) la reforma del scoring agosto 2025 con damage como criterio principal — actualidad reglamentaria; (2) el 12-6 elbow legalizado nov 2024 + el caso UFC 316 NJ junio 2025 que muestra los asteriscos de la unificación; (3) la transición USADA → DFSI + CSAD + SMRTL — capa antidopaje que rara vez se cubre en pillar genérico; (4) las diferencias entre UFC, ONE, RIZIN y PRIDE como capa cultural-promotora; (5) Yan-Sterling como caso anclaje pero con detalle (fecha exacta, árbitro, asalto). Aficionado generalista español encuentra contexto que un artículo plano de Google no da."
+    }
+  },
+
+  "anglicisms_contextualized_first_mention": {
+    "KO": "knockout o nocaut",
+    "TKO": "technical knockout",
+    "weight_cutting": "deshidratación previa al pesaje",
+    "10-point_must": "sistema de diez puntos, ganador del asalto recibe diez",
+    "no-contest": "pelea sin resultado",
+    "stalling": "parón táctico sin ofensiva",
+    "soccer_kicks": "patadas y pisotones a rivales en el suelo",
+    "spiking": "lanzar al rival sobre su cabeza",
+    "tap": "golpea repetidamente la lona",
+    "fight_stop": "comandos del árbitro al iniciar y cerrar el asalto",
+    "back_of_the_head": "nuca y columna",
+    "weigh-in": "pesaje oficial el día previo al combate"
+  },
+
+  "websearch_used": [
+    {"query": "Unified Rules of MMA Association Boxing Commissions 10-point must scoring criteria 2025", "purpose": "Verificar reforma agosto 2025 con damage como criterio principal"},
+    {"query": "UFC weight classes 2026 men women complete list divisions", "purpose": "Validar tabla 8 masc + 4 fem"},
+    {"query": "UFC anti-doping USADA CSAD transition Drug Free Sport 2024 2025 program", "purpose": "Confirmar transición 1 enero 2024, DFSI, George Piro, SMRTL, CSAD"},
+    {"query": "12-6 elbow MMA prohibited move Unified Rules 2024 2025", "purpose": "Verificar legalización ABC noviembre 2024 + UFC 316 junio 2025 NJ no adopción"},
+    {"query": "MMA España regulación federación nacional artes marciales mixtas no reconocido", "purpose": "Diagnóstico del 'Error de base en España' marcado por Joel — confirmar que MMA está bajo Fed Lucha como disciplina asociada, sin marco regulatorio español propio. Conclusión: no atribuir a España estructura que no tiene."},
+    {"query": "UFC 316 Merab Dvalishvili Sean O'Malley date result bantamweight 2025", "purpose": "Verificar UFC 316 fecha (7 junio 2025) — usado para anclar el contexto del 12-6 elbow en NJ"}
+  ],
+
+  "examples_developed": [
+    {"name": "Petr Yan vs Aljamain Sterling, UFC 259 (06/03/2021)", "purpose": "Primer caso de descalificación por título en UFC; ilustra rodillazo a oponente caído; árbitro Mark Smith"},
+    {"name": "Jon Jones y los dedos en los ojos", "purpose": "Reincidencia documentada vs Belfort y Cormier; ilustra frontera técnica/falta"},
+    {"name": "Khabib Nurmagomedov contra la malla", "purpose": "Ilustra función técnica del cerco y dominio basado en pared"},
+    {"name": "PRIDE FC y los soccer kicks", "purpose": "Contraste histórico-cultural; cómo el reglamento ha excluido jugadas legales en otra era"},
+    {"name": "UFC 316 (junio 2025) — NJ no adopta el 12-6 elbow", "purpose": "Muestra los asteriscos de la unificación; cada estado decide cuándo adoptar cambios ABC"}
+  ],
+
+  "known_limitations": [
+    "El corte de peso menciona casos extremos sin nombrar fallecimientos específicos (Yang Jian Bing 2015, Leandro Souza 2013) por antialucinación — la atribución exacta no fue re-verificada en esta pasada.",
+    "Khabib se cita como ejemplo de trabajo contra la malla sin atribuirle palmarés concreto (info viva) — se mantiene en plano evergreen (técnica).",
+    "El año exacto de la primera adopción de Unified Rules por New Jersey se cita como 2001 (no 2000 como dijo el v1) — abril 2001 corresponde a la primera reunión formal del comité y aplicación. Verificación cruzada vía ABC PDF.",
+    "El artículo NO menciona a España ni a la Federación Española de Lucha — decisión deliberada por el diagnóstico Joel del 'Error de base en España'. Si en una iteración futura se quiere agregar contexto España, debe hacerse con la realidad regulatoria correcta (MMA como disciplina asociada al Fed Lucha, no deporte oficial independiente)."
+  ],
+
+  "structural_compliance": {
+    "h1_handled_by_wp": "Topic title pasa como post_title; el body empieza en H2 según convención v1.1.3 + EDIT-13 (post_excerpt vacío, entradilla como primer <p>).",
+    "entradilla_separate_file": "entradilla.txt — 32 palabras, se subirá como primer <p> de post_content tras el banner",
+    "first_h2_short_editorial": true,
+    "polemicas_debates_section": true,
+    "faqs_section": true,
+    "closing_with_personality": true,
+    "html_semantic": true,
+    "table_categorias_peso": "9 filas + thead, kg + lb + género especificado"
+  },
+
+  "verdict": "GO",
+  "ready_for_review": true,
+  "next_step": "Joel review via Asana subtask (EDIT-12 pattern post-batch-3)"
+}

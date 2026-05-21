@@ -47,7 +47,7 @@
 <div class="wrap">
 
 <header class="hero">
-  <div class="eyebrow">Test journal · Updated 2026-05-19</div>
+  <div class="eyebrow">Test journal · Updated 2026-05-21</div>
   <h1>Relevo Content Workflow — Test journal</h1>
   <p class="lede">Chronological log of integration and end-to-end tests run against the Relevo content pipeline. Each entry captures what was tested, how it behaved, what was confirmed, and what was logged for follow-up. Newest entries at the top.</p>
 </header>
@@ -55,6 +55,46 @@
 <div class="callout note">
   <p><strong>How to read this journal.</strong> Each entry covers one focused test session. The <em>What was tested</em> block frames the scope. The <em>Steps</em> table shows every concrete action taken with its result. The <em>Follow-ups</em> block lists open questions or non-blocking issues that need attention before production launch.</p>
 </div>
+
+<h2>Batch 3 regen + overnight publish to beta <span class="date">2026-05-21 (EOD)</span></h2>
+
+<dl class="meta-grid">
+  <dt>Result</dt><dd><span class="tag pass">Pass</span> on generation; visual layout gap still <span class="tag warn">Pending</span> for Friday.</dd>
+  <dt>Scope</dt><dd>End-of-day execution under Pablo Waimann's direction: regenerate the 9 batch-2 articles flagged ⚠️ by Joel under the freshly bumped style guide v1.1.3, publish each to the beta WordPress as drafts with hero images, hand off to Joel via a single Asana review task, and start the GitHub → GitLab cutover. Same day saw two style guide bumps (v1.1.2 absorbing Joel's batch QA #2 + v1.1.3 absorbing Pablo's smoke review of the post 21187 render).</dd>
+  <dt>Topics</dt><dd>art-1 Fútbol/Tactics · art-3 Baloncesto/Rules · art-4 Baloncesto/Tactics · art-6 Tenis/Origins (Alcaraz) · art-7 Fórmula 1/Rules · art-8 Fórmula 1/Tactics (estrategia de boxes) · art-9 MMA/Origins (Topuria) · art-10 MMA/Rules · art-11 Fútbol/Rules (fuera de juego).</dd>
+  <dt>Output</dt><dd>9 WordPress posts 21195/21198/21201/21204/21207/21210/21213/21216/21219 in <code>draft</code>. 9 hero images generated (gpt-image-2 via LiteLLM iGaming, ~200-340 KB per image after C2PA strip) and attached as featured. 1 Asana review task <code>1215038718722890</code> for Joel containing all 9 preview URLs and acceptance criteria.</dd>
+  <dt>Reviewers</dt><dd>Pablo Waimann (orchestration, decision-making) + Joel Sierra (editorial QA scheduled for Friday morning).</dd>
+</dl>
+
+<h3>What this run validates</h3>
+<p>This is the first batch run that exercises every gate of the v1.1.3 style guide at the same time, in parallel across 9 articles with different sport / category / template combinations. Bolds-coverage hard gate (≥80% paragraphs) cleared on every article (range 0.95–1.00). Fact-check pass corrected baseline errata that Joel had not flagged manually (Halle/Westfalen vs Sajonia-Anhalt for Topuria, Iniesta historical role under Rijkaard, Ronaldo Nazário 2002 punterazo as semifinal vs Turquía rather than the final). Pipeline reused the corrected upload pattern (post_excerpt = entradilla, post_content starts at first <code>&lt;h2&gt;</code>) discovered earlier the same day on the smoke v1.1.3 round.</p>
+
+<h3>Steps</h3>
+<table>
+  <thead><tr><th>#</th><th>Step</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>9 parallel subagents launched against batch-2 baselines, each reading style guide v1.1.3 + the appropriate category template + the per-art critique + ADR-006/008.</td><td>All 9 completed in 6–12 min each. Score range 91–95/100.</td></tr>
+    <tr><td>2</td><td>Bolds-coverage hard gate verified per article: <code>bolds_count / paragraphs_count ≥ 0.80</code>.</td><td>All clear. Range 0.947 (art-7) to 1.00 (art-3, art-4, art-10).</td></tr>
+    <tr><td>3</td><td>9 hero images generated in parallel (gpt-image-2, 1536×1024, JPEG, C2PA / JUMBF / OpenAI metadata stripped).</td><td>All 9 generated. Pablo previously signed off on the v1.1.3 smoke hero; same prompt template reused per sport context.</td></tr>
+    <tr><td>4</td><td>9 WP <code>posts.create</code> as drafts with the v1.1.3 upload pattern (post_excerpt = entradilla, body starts at first <code>&lt;h2&gt;</code>).</td><td>9 post IDs returned (21195–21219). Two posts needed a follow-up <code>posts.update</code> to fix title + slug — the critique JSONs nested the topic differently for those two articles.</td></tr>
+    <tr><td>5</td><td>9 <code>media.upload</code> calls with <code>set_as_thumbnail_for</code> attaching the hero as featured image.</td><td>9 attachments registered. Theme generated 6+ thumbnail sizes per image. <code>_thumbnail_id</code> meta confirmed on each post.</td></tr>
+    <tr><td>6</td><td>Single Asana review task created for Joel with all 9 preview URLs, per-article metrics, and acceptance criteria. Note added that the WP visual header gap is a separate task — not a content defect.</td><td>Task <code>1215038718722890</code> ready for Friday morning review.</td></tr>
+  </tbody>
+</table>
+
+<h3>Confirmed</h3>
+<ul>
+  <li><strong>Bolds coverage rule (v1.1.3) holds in production.</strong> Average coverage across the 9 articles is 0.98. Pattern Joel flagged as cross-batch (1 bold per section, not per paragraph) is structurally fixed.</li>
+  <li><strong>Upload pattern (post_excerpt = entradilla + body starting at H2) is the correct architecture for the Relevo theme.</strong> Single source of truth for the entradilla, no theme-rendering duplication.</li>
+  <li><strong>Parallel subagent generation scales.</strong> 9 simultaneous generations completed in ~12 min wall-clock. Mediana score 92/100 with one revise pass per article max.</li>
+  <li><strong>Fact-check pass catches errors Joel did not manually flag.</strong> Two factual corrections landed (Topuria birthplace city detail, Iniesta tactical role under Rijkaard) that would have shipped under v1.0/v1.1.</li>
+</ul>
+
+<h3>Follow-ups</h3>
+<ul>
+  <li><strong>WP header layout gap still pending.</strong> Three CSS iterations today did not fully resolve the visible white space between hero and byline. Three diagnosis hypotheses queued for Friday: dev-tools inspection of the gap source, hero aspect-ratio change (3:2 → 16:9 / 21:9), and single-column header refactor if CSS alone will not fix it.</li>
+  <li><strong>Critique JSON schema drift.</strong> art-4 (nested under <code>.article.slug</code>) and art-11 (nested under <code>.topic.slug</code>) had non-canonical structures vs the 7 other articles (root-level <code>url_slug</code>). Add schema validation to the next batch run.</li>
+</ul>
 
 <h2>Performance benchmarks</h2>
 

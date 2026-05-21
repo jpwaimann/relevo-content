@@ -1,0 +1,9 @@
+  ok      /tmp/repo-push/runs/batch-3-v1-1-3-1779402203/art-4/hero.jpg  2200KB -> 207KB  (-2040678B)  removed: c2pa,jumbf,contentauth,openai,gpt-image
+backend:    litellm  (https://litellm.bidwhig.com/v1/images/generations)
+output dir: /tmp/repo-push/runs/batch-3-v1-1-3-1779402203/art-4
+jobs:       1 defined in imagen-job.json
+
+  queue hero.jpg  (1536x1024, high)
+  ok    hero.jpg  (2200 KB, 125s)
+
+stripping AI metadata from 1 new file(s)...

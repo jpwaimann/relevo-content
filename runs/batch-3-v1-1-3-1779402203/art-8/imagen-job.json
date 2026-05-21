@@ -1,0 +1,8 @@
+{
+  "vars": {
+    "style": "Premium editorial sports photography. High-contrast cinematic color grade with directional rim light. Tight composition. Deep shadows, warm highlights. Subtle film grain. No text overlays, no logos, no scores, no graphic elements. Photographic realism, magazine-cover quality."
+  },
+  "jobs": [
+    {"name":"hero.jpg","size":"1536x1024","quality":"high","output_format":"jpeg","output_compression":85,"prompt":"Editorial F1 pit-lane scene during a tyre change — multiple crew members in choreographed motion around the front of a car. Bright pit-lane lighting, sense of speed. No livery branding. {style}"}
+  ]
+}

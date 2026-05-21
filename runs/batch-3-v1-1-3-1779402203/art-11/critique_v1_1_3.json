@@ -1,0 +1,150 @@
+{
+  "article": "art-11",
+  "topic": {
+    "title": "Qué es el fuera de juego en el fútbol y cómo funciona",
+    "slug": "fuera-de-juego-futbol",
+    "sport": "Fútbol",
+    "category": "Rules",
+    "subtype": "sub-rule"
+  },
+  "style_guide_version": "v1.1.3",
+  "template": "rules_template.md v2.0",
+  "based_on": {
+    "baseline_v2_regen": "runs/regen-batch-v2-1779298867/art-11/article.html",
+    "joel_flags_round_2": "ADR-006 §1.3 patrón #3 (primer H2 demasiado circunstancial — caso 'Barça de Flick' marcado en art 11)",
+    "adr_v1_1_3": "ADR-008 (bolds coverage ≥80%)",
+    "reference_shape": "runs/smoke-v1-1-3-tiros-1779398893/article.html"
+  },
+  "metrics": {
+    "word_count_prose": 2037,
+    "word_count_target": "2000-2500",
+    "paragraphs_total": 36,
+    "paragraphs_with_strong": 35,
+    "bolds_count": 35,
+    "bolds_coverage_ratio": 0.9722,
+    "bolds_coverage_target": "≥ 0.80",
+    "paragraphs_over_60w": 0,
+    "max_paragraph_words": 60,
+    "entradilla_word_count": 32,
+    "entradilla_target": "30-35",
+    "first_h2": "Qué es el fuera de juego y por qué define el ataque moderno",
+    "first_h2_marco_general": true,
+    "h2_count": 7,
+    "h3_count": 5,
+    "em_count": 6,
+    "forbidden_b_tags": 0,
+    "forbidden_i_tags": 0
+  },
+  "checklist_22pts": {
+    "1_voz_periodista_es": {"pass": true, "note": "Tono Relevo, periodista deportivo español. Sin academicismo, sin streamer."},
+    "2_entradilla_30_35_situa_articulo_entero": {"pass": true, "note": "32 palabras. Sitúa el artículo entero ('la regla más vieja') y el debate (centímetros, hombros, espíritu del juego). NO anécdota singular. Test mental superado: leyendo solo H1+entradilla el lector entiende QUÉ va a aprender."},
+    "3_primer_h2_marco_general_no_paradigmatico": {"pass": true, "note": "'Qué es el fuera de juego y por qué define el ataque moderno' — marco general / pregunta funcional. ⚠️ CORREGIDO vs baseline v2 que abría con 'La línea alta del Barça de Flick' (caso específico singular, flagged por Joel en ADR-006 patrón #3). El Barça de Flick entra ahora en el H2 de iconos como caso histórico contextualizado."},
+    "4_ritmo_parrafos_40_60_anti_staccato": {"pass": true, "note": "0/36 párrafos > 60w. Máximo 60w. Mayoría 45-58w. Sin staccato (cero cadenas de 3+ frases muy cortas consecutivas)."},
+    "5_variedad_sintactica": {"pass": true, "note": "Cero repeticiones de 'no solo… sino también', 'más que…', 'no era… era…', 'eso explica…', 'la evolución de…'."},
+    "6_tres_capas": {"pass": true, "note": "Qué es (H2 1+2: marco general + regla 11 IFAB) / Cómo funciona (H2 3: activo/pasivo, instante del pase, excepciones, ajuste 2025-26) / Por qué importa hoy (H2 4 SAOT + H2 5 polémicas + H2 6 iconos modernos incluyendo Flick)."},
+    "7_ejemplos_iconicos_2_5_desarrollados": {"pass": true, "note": "5 ejemplos desarrollados con escena visualizable: Inzaghi (Milan 2001-2012, cita Ferguson), Milan de Sacchi (Baresi/Costacurta/Maldini/Tassotti, doctrina táctica), linaje táctico (Cruyff/Benítez/Klopp), Barça de Flick (línea 20-25m), Morata (meme + caso de estudio)."},
+    "8_info_viva_websearch": {"pass": true, "note": "Verificado via WebSearch: IFAB Law 11 2025-26 (incluyendo cambio sobre lanzamiento del portero como punto de referencia), Inzaghi Milan 2001-2012 + 126 goles en 300 partidos + cita Ferguson, SAOT timeline (Catar 2022, UCL 2022-23, Serie A enero 2023, LaLiga 2024-25, Premier FA Cup feb 2025 + estreno oficial 12 abril 2025), Wenger CPL piloto kickoff 4 abril 2026 + Football Video Support, IFAB axila como límite del brazo (2020)."},
+    "9_lexico_es_peninsular": {"pass": true, "note": "fuera de juego (no offside), penúltimo defensor, central, lateral, área pequeña, córner, banderín, bloque alto, línea defensiva, presión tras pérdida, escuadra (en sentido figurado solo si aplicase, aquí no usado). Sin offside crudo en el cuerpo."},
+    "10_equivalencias_obligatorias": {"pass": true, "note": "fuera de juego (no offside), entrenador (Hansi Flick, Sacchi referidos así), córner (saque de esquina), saque de puerta, saque de banda. Ningún 'penalty', 'derby', 'staff', 'deadline day'."},
+    "11_extranjerismos_cursivas": {"pass": true, "note": "VAR, SAOT, FIFA, UEFA, FA Cup integrados sin cursiva (consolidados). En <em>: regla Wenger, daylight, Football Video Support, onside (cita Inzaghi). Cero anglicismos sueltos sin cursiva."},
+    "12_cliches": {"pass": true, "note": "Cero 'el esférico', 'el deporte rey', 'pena máxima', 'penalti de libro', 'leyes de la física'."},
+    "13_epica_prefabricada": {"pass": true, "note": "Cero frases construidas para sonar importantes. Sin 'la cuna era alemana', 'trayectoria untuosa', 'el gesto sucio'."},
+    "14_adjetivos_grandilocuentes": {"pass": true, "note": "Cero 'histórico', 'brutal', 'legendario' gratuitos. 'maestro absoluto' aplicado a Inzaghi se justifica con dato (126 goles en 300 partidos) y cita Ferguson."},
+    "15_seo_h2_intencion_real": {"pass": true, "note": "7 H2s, cada uno con intención de búsqueda real: marco/qué es, regla 11 IFAB, cómo se aplica, SAOT, polémicas/Wenger, iconos históricos, FAQs. Cero H2 de relleno."},
+    "16_faqs_curiosidad_real": {"pass": true, "note": "5 FAQs reales: tirar la línea (concepto reconocible pero rara vez explicado), cómo funciona SAOT (curiosidad técnica), qué cambiaría Wenger (actualidad reglamentaria), por qué milimétricos hoy (debate contemporáneo), saque de puerta (excepción operativa). Cero 'qué nacionalidad tiene', 'cuántos años tiene'."},
+    "17_negritas_cobertura_80pct": {"pass": true, "note": "35 bolds / 36 párrafos = 97.2% cobertura, muy por encima del 80% target. Solo P36 (cierre narrativo de 1 párrafo) queda sin negrita, lo que es estilísticamente válido para el cierre. Todas las negritas son frases-idea de 5-10 palabras consecutivas (rango: 5-10w). Cero bolds sobre tecnicismos sueltos (cero porpoising/pole/FIA/pit-wall/clutch en negrita). Solo <strong>, cero <b>."},
+    "18_negritas_test_aislamiento": {"pass": true, "note": "Test ejecutado: extracción de las 35 bolds en orden reconstruye el hilo argumental del artículo (función original → impacto omnipresente → debate actual → regla → cómo se mide → instante del pase → excepciones → SAOT cronología → polémica milímetro → Wenger CPL → linaje histórico Inzaghi/Sacchi/Flick/Morata). Cada bold se lee como idea completa o label de ítem."},
+    "19_cursivas_inventario": {"pass": true, "note": "Solo <em>, cero <i>. Cursivas: regla Wenger (3x — propuesta con nombre), daylight (anglicismo no adaptado), Football Video Support (sistema con nombre propio en inglés), onside (cita Inzaghi en inglés). Cero cursivas sobre palabras españolas consolidadas (cero escuadra/amago/taconazo/banderín en cursiva)."},
+    "20_ortotipografia_nombres": {"pass": true, "note": "Primera mención nombre+apellido: Hansi Flick, Arrigo Sacchi, Franco Baresi, Alessandro Costacurta, Paolo Maldini, Mauro Tassotti, Filippo Inzaghi, Arsène Wenger, Sir Alex Ferguson, Álvaro Morata. Después solo apellido. Cifras: 1863, 2020, 2022, 2023, 2024-25, 2025, 2025-26, 2026, 126 goles, 300 partidos, ciento sesenta años. Forma española: Catar (RAE), Milan de Sacchi, Camp Nou. Comillas latinas en cita Inzaghi («…»). LaLiga, FIFA, UEFA, IFAB, VAR, SAOT en mayúsculas según norma."},
+    "21_antialucinacion_factcheck": {"pass": true, "note": "Atribuciones específicas verificadas: Inzaghi en Milan 2001-2012 (Wikipedia + UEFA), cita Ferguson 'born offside' + respuesta Inzaghi 'thankfully I was born a metre onside' (FourFourTwo, UEFA), Milan de Sacchi finales 80s con Baresi/Costacurta/Maldini/Tassotti (canon táctico), SAOT cronología completa (Premier League oficial + Genius Sports + ESPN + FA), Wenger CPL piloto 4 abril 2026 (Sports Illustrated + FIFA + Morocco World News). El cuerpo defiende solo lo verificable: la línea de descendencia táctica (Cruyff/Benítez/Klopp) es descripción de un patrón histórico documentado, no atribución de gesto. Cero geografía/clima dudoso."},
+    "22_valor_relevo": {"pass": true, "note": "Aporta lo que ninguna entrada de Wikipedia ofrece en 2000 palabras: la conexión cronológica completa SAOT (Catar → UCL → Serie A → LaLiga → Premier), el primer piloto profesional REAL de la regla Wenger en CPL 2026, el linaje táctico Sacchi→Flick aplicado al fuera de juego como cierre defensivo, y la cita Ferguson contestada por Inzaghi. El lector general no encuentra esta combinación junta en una primera página de Google."}
+  },
+  "factual_fixes_vs_baseline_v2": {
+    "primer_h2_corregido": {
+      "status": "fixed",
+      "v2_claim": "Primer H2: 'La línea alta del Barça de Flick' — caso paradigmático singular (Joel flagged en ADR-006 patrón #3)",
+      "v1_1_3_correction": "Primer H2: 'Qué es el fuera de juego y por qué define el ataque moderno' — marco general / pregunta funcional. El Barça de Flick se redistribuye al H2 de iconos como caso histórico final, contextualizado tras Inzaghi y Sacchi.",
+      "anchor_in_concrete": "Se mantiene el anclaje histórico (1863, función original) y se introduce el debate moderno (centímetros, hombros, espíritu del juego) sin abrir con un equipo específico."
+    },
+    "bolds_coverage_corregido": {
+      "status": "fixed",
+      "v2_claim": "9 bolds en ~28 párrafos del cuerpo + FAQs (baseline v2) — ratio sustancialmente por debajo de 0.80 según el patrón flagged en ADR-008",
+      "v1_1_3_correction": "35 bolds / 36 párrafos = 0.972 ratio, muy por encima de target 0.80. Cada párrafo del cuerpo y de las FAQs lleva una negrita-idea de 5-10 palabras."
+    },
+    "errata_ifab_axila_2020": {
+      "status": "added",
+      "note": "Precisión IFAB del límite superior del brazo en la axila (2020) — añadida y citada como dato verificado vía WebSearch (IFAB Law 11 current text)."
+    },
+    "ifab_2025_26_portero_lanzamiento": {
+      "status": "added",
+      "note": "Cambio reglamentario 2025-26: cuando el portero lanza con la mano, el último punto de contacto define la referencia del fuera de juego. Verificado vía WebSearch (US Soccer + The FA + IFAB downloads). Añadido al H2 de aplicación práctica."
+    },
+    "premier_saot_fechas_precisas": {
+      "status": "verified",
+      "note": "FA Cup quinta ronda febrero 2025 (siete cruces en estadios Premier). Estreno oficial Premier: sábado 12 de abril de 2025, jornada 32. Verificado vía Premier League comm + Genius Sports + Sky Sports."
+    },
+    "inzaghi_milan_dates_cita_ferguson": {
+      "status": "verified",
+      "note": "Milan 2001-2012, 126 goles en 300 partidos, cita 'born offside' Ferguson, respuesta Inzaghi 'thankfully I was born a metre onside'. Verificado vía Wikipedia + FourFourTwo + UEFA."
+    },
+    "wenger_cpl_kickoff": {
+      "status": "verified",
+      "note": "Canadian Premier League temporada 2026 arrancó 4 de abril. Regla daylight activada plenamente desde la tercera jornada. Football Video Support introducido simultáneamente. Verificado vía Sports Illustrated + FIFA inside + Morocco World News + CPL Soccer."
+    },
+    "linaje_tactico_cruyff_benitez_klopp": {
+      "status": "kept_generic",
+      "note": "El linaje táctico Sacchi → Cruyff/Benítez/Klopp se mantiene como descripción de un patrón canónico documentado en el periodismo táctico europeo, no como atribución de gesto específico a jugador. Política de duda razonable cumplida."
+    }
+  },
+  "acceptance_criteria": {
+    "word_count_2000_2500": {"value": 2037, "pass": true},
+    "entradilla_30_35": {"value": 32, "pass": true},
+    "first_h2_marco_general": {"value": "Qué es el fuera de juego y por qué define el ataque moderno", "pass": true},
+    "first_h2_no_anecdotal_singular": {"pass": true},
+    "paragraphs_max_60w": {"max": 60, "pass": true},
+    "bolds_coverage_80pct": {"value": 0.9722, "pass": true},
+    "bolds_5_to_10_word_ideas": {"all_in_range": true, "min": 5, "max": 10, "pass": true},
+    "no_b_no_i_tags": {"pass": true},
+    "three_layer_depth": {"pass": true},
+    "polemicas_debates_section": {"pass": true},
+    "faqs_real_curiosity": {"pass": true, "count": 5},
+    "antialucinacion_verified": {
+      "pass": true,
+      "verified": [
+        "IFAB Law 11 current text 2025-26",
+        "IFAB armpit boundary 2020",
+        "IFAB 2025-26 goalkeeper hand-launch reference point change",
+        "SAOT World Cup Qatar 2022",
+        "SAOT UCL 2022-23",
+        "SAOT Serie A January 2023",
+        "SAOT LaLiga 2024-25",
+        "SAOT FA Cup February 2025",
+        "SAOT Premier League official April 12 2025",
+        "Inzaghi Milan 2001-2012 (126 goals / 300 games)",
+        "Ferguson 'born offside' quote + Inzaghi response",
+        "Milan de Sacchi late 1980s back four",
+        "Wenger CPL pilot kickoff April 4 2026",
+        "Football Video Support CPL 2026"
+      ]
+    }
+  },
+  "risks_residuales": [
+    "El linaje táctico 'Cruyff/Benítez/Klopp' se cita como herencia general de la idea Sacchi sin atribución de gesto específico. Es descripción canónica del periodismo táctico europeo (Marca, El País, The Athletic), no afirmación cuantitativa.",
+    "Catar mantenido en lugar de Qatar (RAE preferred form en español). Si Joel prefiere Qatar para alineación con prensa internacional, ajuste de 1 palabra.",
+    "P36 (cierre) sin negrita por decisión estilística — el cierre narrativo prescinde de bold por norma del style guide (cierre con personalidad). Coverage 35/36 = 97.2% sigue muy por encima del target 80%.",
+    "Cita Ferguson sobre Inzaghi: verificada con respuesta de Inzaghi documentada (FourFourTwo, UEFA), pero fecha y contexto exacto de la frase original Ferguson no se cita expresamente (es atribución célebre repetida en prensa europea)."
+  ],
+  "gates": {
+    "hard_gates_passed": [
+      "word_count 2000-2500: 2037 ✓",
+      "bolds_coverage ≥ 0.80: 0.972 ✓",
+      "paragraphs ≤ 60w: max 60 ✓",
+      "first_h2 marco general (no anecdotal singular): ✓",
+      "entradilla 30-35w: 32 ✓",
+      "no <b> no <i>: ✓",
+      "all bolds 5-10w ideas (not isolated tech terms): ✓"
+    ],
+    "verdict": "GO",
+    "score_estimate": 95
+  }
+}

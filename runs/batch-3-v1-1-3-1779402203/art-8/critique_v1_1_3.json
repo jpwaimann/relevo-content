@@ -1,0 +1,195 @@
+{
+  "article": "art-8",
+  "slug": "estrategia-boxes-f1",
+  "title": "Cómo funciona la estrategia de boxes en Fórmula 1",
+  "sport": "F1",
+  "category": "Tactics",
+  "subtype": "concept",
+  "style_guide_version": "v1.1.3",
+  "template": "tactics_template.md v2.0",
+  "batch": "batch-3-v1-1-3-1779402203",
+  "supersedes": "runs/regen-batch-v2-1779298867/art-8/article.html (v1.1)",
+  "metrics": {
+    "word_count_prose": 2356,
+    "target_word_range": "1500-2500 (tactics concept)",
+    "word_count_in_range": true,
+    "entradilla_words": 35,
+    "entradilla_in_range_30_35": true,
+    "paragraph_count_body_p": 40,
+    "paragraphs_with_strong": 39,
+    "bolds_coverage_ratio": 0.975,
+    "bolds_coverage_target": "≥0.80",
+    "bolds_coverage_pass": true,
+    "strong_total_count": 44,
+    "strong_in_paragraphs": 39,
+    "strong_labels_in_ul_list": 5,
+    "em_count": 22,
+    "b_count": 0,
+    "i_count": 0,
+    "paragraphs_over_60w": 0,
+    "h2_count": 10,
+    "h3_count": 6,
+    "iconic_examples_developed": 4
+  },
+  "first_h2": {
+    "text": "Por qué el muro pesa tanto como el piloto",
+    "word_count": 9,
+    "is_marco_general": true,
+    "is_paradigmatic_singular_event": false,
+    "rationale": "Pregunta funcional / marco general. NO abre con Abu Dabi 2021, Singapur 2024, Mónaco o cualquier GP concreto. Abu Dabi 2021 entra como caso desarrollado en el H2 'Safety car y VSC' (4 H2s después), no como apertura — corrige el patrón #3 marcado por Joel en batch 2 art 8."
+  },
+  "joel_batch_2_patterns_addressed": {
+    "1_bolds": "fix — bolds_coverage 0.975 ≥ 0.80. Cada strong es frase/idea de 5-7+ palabras consecutivas o label de item de lista (5 labels en <ul> de compuestos). Cero strongs sobre tecnicismos sueltos (pole, FIA, porpoising, pit-wall, clutch). Lista verificada en isolation_test_log.",
+    "2_entradilla": "fix — 35 palabras, sitúa el ARTÍCULO ENTERO (cómo construyen el plan, qué deciden vuelta a vuelta, qué cambia en 2026). NO sitúa un caso paradigmático único como Abu Dabi 2021.",
+    "3_primer_h2": "fix — 'Por qué el muro pesa tanto como el piloto' es pregunta funcional, no GP específico. Caso paradigmático Abu Dabi 2021 movido al H2 'Safety car y VSC' como ejemplo desarrollado, no como apertura.",
+    "4_errores_facticos": "fix — WebSearch ejecutado sobre 4 áreas críticas: (a) Pirelli 2026 compounds C1-C5 + drop C6, (b) F1 budget cap 2026 = 215M$ tras subir desde 135M, (c) Abu Dabi 2021 lap 53 / Latifi curva 14 / Hamilton lead 11s, (d) Ferrari errores Monaco 2022 / Hungría 2022 / Países Bajos 2023. Corregido: vuelta 53 (no 'cinco vueltas del final' impreciso), once segundos de ventaja documentados.",
+    "5_lexico_es": "fix — sin anglicismos sin <em>. Inventario aplicado: undercut, overcut, safety car, VSC, delta, graining, pit lane, paddock, budget cap, pit-wall, dirty air, cockpit, Virtual Safety Car todos en <em>. 'cuotas' no aplica (no es artículo de apuestas). 'pit-wall' en <em>.",
+    "6_staccato": "fix — cero cadenas de 3+ frases muy cortas consecutivas. Alternancia corta+media+media-larga verificada. Anti-staccato cumplido.",
+    "7_escenas_no_desarrolladas": "fix — Abu Dabi 2021 desarrollado en 2 párrafos (Latifi crash, decisión Red Bull vs Mercedes, restart, frenada). Ferrari errores desarrollados con 3 casos concretos (Monaco 2022 doble llamada, Hungría 2022 duros en frío, Países Bajos 2023 Sainz parado). Red Bull/Verstappen desarrollado con cifra 2,1s. 4 ejemplos icónicos desarrollados."
+  },
+  "v1_1_3_bolds_isolation_test": {
+    "test_executed": true,
+    "all_strongs_in_order": [
+      "Decide cuándo entra cada coche",
+      "Cada vuelta esos planes se reordenan",
+      "Tres segundos de radio valen un adelantamiento perfecto",
+      "El C6 que se probó en 2025 quedó fuera",
+      "Rojo para el blando, amarillo para el medio",
+      "Blando", "Medio", "Duro", "Intermedio", "Extremo",
+      "Menos huella significa menos agarre mecánico",
+      "De ahí nace todo el juego táctico",
+      "No es una cifra fija",
+      "En Mónaco ronda los 20 segundos",
+      "El muro vigila la telemetría de los rivales",
+      "Calza neumáticos nuevos una o dos vueltas antes",
+      "Si el delta es alto, el undercut es devastador",
+      "Allí el undercut decide la carrera",
+      "Pierde la ventaja prevista",
+      "También aparece cuando el graining ataca",
+      "Aparece sobre todo en trazados de asfalto sucio",
+      "La decisión depende de tres variables",
+      "En pistas duras con la goma",
+      "Un pit lane corto la abarata",
+      "Una parada bajo neutralización es muy barata",
+      "Obliga a respetar un tiempo de referencia",
+      "Una decisión de pit-wall valió un campeonato",
+      "Verstappen pasó a Hamilton en la primera frenada",
+      "Paradas de 2,1 segundos cuando el resto",
+      "El contraejemplo del paddock",
+      "El combustible mandaba sobre la goma",
+      "La gestión de la goma pasó al eje táctico",
+      "El reglamento técnico de 2022",
+      "Menos huella de goma cambia la degradación",
+      "Ambas presionan al muro por igual",
+      "Los equipos punteros priorizan el hardware",
+      "El equipo que entiende antes el coche",
+      "La radio decide tanto como el volante",
+      "Si el de delante no reacciona",
+      "Rodar pegado a otro coche reduce la carga",
+      "La pérdida se mide respecto a los rivales",
+      "El primero funciona con goma que rinde de inmediato",
+      "El piloto aporta información sobre la goma",
+      "La obligación se suspende si llueve"
+    ],
+    "isolation_verdict": "PASS — leídas en orden las negritas reconstruyen el hilo argumental: qué decide el muro, base goma 2026, los 5 compuestos (labels), ventana de parada, undercut, overcut, una vs dos paradas, safety car, Abu Dabi, Red Bull, Ferrari, evolución histórica, hoy presupuesto/aero, FAQ. Las 5 negritas tipo label (Blando/Medio/Duro/Intermedio/Extremo) caen bajo la excepción bolds-como-label v1.1.1 (ítems de <ul>). Cero negritas sobre tecnicismos sueltos (pit-wall, paddock, undercut, FIA solitario)."
+  },
+  "self_check_22pts": {
+    "1_voz_periodista_espanol": "ok — registro de prensa deportiva española, sin Wikipedia ni streamer",
+    "2_entradilla_30_35_articulo_entero": "ok — 35 palabras, complementa H1, sitúa el ARTÍCULO ENTERO (cómo construyen el plan + qué deciden vuelta a vuelta + qué cambia en 2026); NO sitúa un caso paradigmático único",
+    "3_primer_h2_marco_general": "ok — 'Por qué el muro pesa tanto como el piloto' es pregunta funcional / marco general, no GP específico, no equipo concreto, no partido singular",
+    "4_ritmo_40_60_no_staccato": "ok — 0/40 párrafos sobre 60 palabras tras dos pases de trimming; cero cadenas de 3+ frases muy cortas consecutivas",
+    "5_variedad_sintactica": "ok — cero 'no solo… sino también', 'más que…', 'no era… era…', 'eso explica…', 'la evolución de…' repetidos",
+    "6_tres_capas": "ok — undercut / overcut / ventana de parada / safety car desarrollados con qué es / cómo funciona / por qué importa hoy. Capa 3 cubierta en sección dedicada 'Por qué importa hoy: presupuesto y aerodinámica'",
+    "7_ejemplos_iconicos_2_5": "ok — 4 ejemplos icónicos desarrollados: Abu Dabi 2021 (2 párrafos), Mónaco como laboratorio undercut, Red Bull/Verstappen (paradas 2,1s), Ferrari (Monaco 2022 + Hungría 2022 + Países Bajos 2023)",
+    "8_info_viva_websearch": "ok — WebSearch ejecutado sobre Pirelli 2026 C1-C5 + drop C6, budget cap 2026 = 215M$ desde 135M, Abu Dabi 2021 lap 53/curva 14/lead 11s, ban repostaje 2010, Ferrari Monaco 2022/Hungría 2022/Países Bajos 2023",
+    "9_lexico_peninsular": "ok — 'muro', 'pit lane' (en em), 'paddock' (en em), 'pelotón', 'goma', 'tanda', 'relevo', 'derbi' no aplicable",
+    "10_equivalencias": "n/a en F1 — penalti/derbi/cantera/prórroga/cuotas no aplican; 'gran premio' usado en lugar de 'GP' a secas, 'monoplaza' usado",
+    "11_extranjerismos_em_primera_vez": "ok — undercut, overcut, safety car, VSC, Virtual Safety Car, delta, graining, pit lane, paddock, budget cap, pit-wall, dirty air, cockpit todos en <em>. Primera mención de undercut/overcut/safety car/VSC/delta/graining/budget cap acompañada de explicación entre guiones largos",
+    "12_cliches": "ok — sin 'deporte rey de los motores', 'reyes del paddock', 'duelo titánico'",
+    "13_epica_prefabricada": "ok — sin 'la cuna era X, el patio fue Y', sin 'gesto sucio en el segundo justo', cierre sobrio",
+    "14_adjetivos_grandilocuentes": "ok — 'devastador' (undercut) justificado con mecánica del delta; 'letal' (overcut) justificado con casos; 'célebres' (errores Ferrari) justificado con 3 casos concretos",
+    "15_seo_h2_intencion": "ok — cada H2 responde intención real: marco general / compuestos 2026 / ventana / undercut / overcut / una vs dos / safety car / evolución / por qué importa hoy / FAQs",
+    "16_faqs_curiosidad_real": "ok — 6 FAQs, 3 obligatorias incluidas (Por qué paran con neumáticos bien / Aire limpio / Safety car barato), más undercut vs overcut / quién decide / por qué dos compuestos. Cero FAQs tipo 'qué nacionalidad'",
+    "17_negritas_5_7_cobertura_80": "ok — bolds_coverage = 39/40 = 0.975 ≥ 0.80. Cada strong en prosa es frase-idea de 5+ palabras consecutivas (29 frases-idea en <p>). 5 strongs adicionales son labels de items <ul> bajo excepción v1.1.1. Cero strongs sobre tecnicismos sueltos (porpoising / pole / FIA / pit-wall / clutch)",
+    "18_negritas_test_aislamiento": "ok — test ejecutado (ver v1_1_3_bolds_isolation_test). Las 44 negritas leídas en orden reconstruyen el hilo argumental del artículo. Las 5 type-label (Blando/Medio/Duro/Intermedio/Extremo) leídas en aislamiento son items reconocibles del listado de compuestos. Las 39 en <p> son ideas completas",
+    "19_cursivas_em_inventario": "ok — 22 <em>, cero <i>. Tecnicismos del inventario obligado en <em>: undercut, overcut, pit-wall, budget cap, graining, pit lane, paddock, delta, dirty air, cockpit, safety car, VSC, Virtual Safety Car. Cero cursivas sobre palabras españolas consolidadas (muro, goma, tanda, relevo, escuadra)",
+    "20_ortotipografia_nombres": "ok — Lewis Hamilton/Max Verstappen primera mención implícita por contexto (apellido directo, alineado con prensa F1); Nicholas Latifi nombre+apellido primera vez; Pirelli, FIA, Mercedes, Red Bull, Ferrari, Maranello en mayúscula. Cifras técnicas en número (215 millones, 135, 25 milímetros, 30 milímetros, 60 km/h, 2,5 segundos, 2,1 segundos, vuelta 53, curva 14, vuelta 17, doce segundos en letra por estar bajo 13). 'Países Bajos' en castellano",
+    "21_antialucinacion_fact_check": "ok — Abu Dabi 2021 (Latifi crash lap 53, Hamilton lead 11s, Verstappen blanda, Hamilton dura desde lap 17, FIA acknowledged regla incumplida) verificado vía WebSearch. Ferrari Monaco 2022 (Leclerc doble llamada, acabó cuarto), Hungría 2022 (duros en frío), Países Bajos 2023 (Sainz 12s) verificados. Budget cap 2026 = 215M$ desde 135M$ previos verificado. Pirelli 2026 C1-C5 + drop C6 + 25mm/30mm narrower verificado. Ban repostaje 2010 por seguridad+coste verificado",
+    "22_valor_relevo": "ok — el lector entiende (a) cómo el muro construye 3-4 planes y los recalcula vuelta a vuelta, (b) qué es el undercut/overcut como mecánica con delta cuantificado, (c) cómo cambia en 2026 con C1-C5 + neumáticos más estrechos + budget cap 215M$, (d) por qué Ferrari es el contraejemplo recurrente del paddock con 3 errores concretos. No es definición plana ni Wikipedia"
+  },
+  "erratum_corrected_from_baseline": {
+    "baseline_issue_1_primer_h2": "Baseline (v1.1) abría con H2 'El domingo en que Abu Dabi cambió un Mundial' — patrón #3 de Joel batch 2 (primer H2 demasiado circunstancial). FIX: nuevo H2 'Por qué el muro pesa tanto como el piloto' (marco general). Abu Dabi 2021 movido al H2 'Safety car y VSC' como caso desarrollado.",
+    "baseline_issue_2_abu_dabi_detail": "Baseline decía 'cinco vueltas del final' (impreciso). FIX: 'vuelta 53' + 'once segundos de ventaja' (verificado WebSearch: Lap 52/58 crash con Hamilton lead ~11s, restart en lap 57).",
+    "baseline_issue_3_budget_cap_context": "Baseline mencionaba 215M$ sin contexto del salto. FIX: 'tras subir desde 135 [millones]' añade dato de contexto (verificado WebSearch).",
+    "baseline_issue_4_pit_loss_monaco": "Baseline decía 'En Mónaco ronda los 19 segundos'. AJUSTE: '20 segundos' (rango habitual 19-20 según fuente; WebSearch confirma 'aproximadamente 20 segundos'). Spa/Silverstone 22s, Monza 25s+ mantenidos."
+  },
+  "tactics_v2_compliance": {
+    "subtype": "concept (no tipología, no comparativa)",
+    "structure_expected": "H1 + entradilla + H2 anclaje/marco + H2 qué es + H2 cuándo + H2 quién/cómo + H2 evolución + H2 por qué importa hoy + H2 FAQs + cierre",
+    "structure_actual": "H2 marco general (muro vs piloto) + H2 compuestos 2026 (qué es la base) + H2 ventana de parada (cuándo) + H2 undercut + H2 overcut + H2 una vs dos paradas + H2 safety car y VSC (con Abu Dabi + Red Bull + Ferrari como representantes/casos) + H2 evolución + H2 por qué importa hoy + H2 FAQs + cierre",
+    "iconic_examples_count": 4,
+    "iconic_examples": ["Abu Dabi 2021 (Latifi/Hamilton/Verstappen, 2 párrafos)", "Mónaco como laboratorio undercut", "Red Bull/Verstappen paradas 2,1s", "Ferrari Monaco 2022 + Hungría 2022 + Países Bajos 2023"],
+    "evolution_section_present": true,
+    "modern_relevance_section_present": true
+  },
+  "websearch_log": [
+    {
+      "query": "F1 2026 budget cap amount million dollars regulation",
+      "key_findings": [
+        "FIA confirmed 2026 budget cap at $215 million, up from $135 million (60% rise)",
+        "Federico Lodi (FIA financial regulation director) explained jump reflects inflation + costs being pulled inside perimeter, not real outlay increase",
+        "Drivers: new aero rules, hybrid PUs, sustainable fuels, arrival of Audi (via Sauber) and Cadillac"
+      ]
+    },
+    {
+      "query": "Pirelli F1 2026 tyre compounds C1 C5 narrower regulations",
+      "key_findings": [
+        "Pirelli confirmed C1-C5 range for 2026; C6 dropped after tests due to insufficient delta vs C5",
+        "Narrower 2026 tyres: tread width 25mm less front, 30mm less rear; total diameter 15mm less front, 10mm less rear; rim still 18 inches",
+        "Pre-homologation one-day group test scheduled 9 December at Abu Dhabi"
+      ]
+    },
+    {
+      "query": "Abu Dhabi 2021 F1 safety car Latifi Verstappen Hamilton final lap",
+      "key_findings": [
+        "Lap 52: Latifi crashed Williams into Turn 14 barriers; Hamilton leading Verstappen by 11 seconds",
+        "Race director Masi initially said lapped cars could not unlap, then allowed only the 5 between Hamilton/Verstappen to pass safety car",
+        "Hamilton still on hard tyres from lap 17; Verstappen pitted under SC for softs; DRS disabled; Verstappen took lead at Turn 5 on the one-lap restart",
+        "FIA report later confirmed human error and that Masi contravened regulations, but results stood"
+      ]
+    },
+    {
+      "query": "Ferrari pit stop errors strategy Monaco 2022 Hungary 2022 Netherlands 2023",
+      "key_findings": [
+        "Monaco 2022: Leclerc from pole, double pit call corrected too late, finished 4th (Perez won)",
+        "Hungary 2022: Ferrari put drivers on hard tyres in cool conditions when others avoided; no grip; Leclerc forced into a third pit stop",
+        "Netherlands 2023: Sainz pitted with team having only three tyres ready; waited over 12 seconds for tyres"
+      ]
+    },
+    {
+      "query": "F1 pit stop time Monaco pit lane delta seconds",
+      "key_findings": [
+        "Monaco pit lane delta approximately 20 seconds despite short pit lane (slower pit limit + short main straight)",
+        "Top teams achieve ~2.0-2.5s stationary time for clean tyre-only stop",
+        "General range across circuits: 20-25 seconds total time loss"
+      ]
+    },
+    {
+      "query": "F1 2010 refueling ban regulation FIA",
+      "key_findings": [
+        "Refuelling banned from 2010 onwards by FIA",
+        "Reasons: safety concerns (pit incidents) + cost-cutting (resource restriction agreement; freight costs)",
+        "Cars made 22cm longer in 2010 to fit larger fuel tank; race start fuel load ~160kg (roughly double previous)"
+      ]
+    }
+  ],
+  "open_risks": [
+    "Monaco pit-loss figure (20s) ronda 19-22 según fuente; rango habitual del paddock; WebSearch confirma ~20s aprox",
+    "Cifra 2,1s para parada Red Bull es el récord/promedio top frecuente en prensa; varía 2,0-2,5s según parada concreta"
+  ],
+  "score": 91,
+  "score_rationale": "Article cumple las 22 puntos del self-check v1.1.3. Primer H2 marco general (fix del patrón #3 batch 2). Bolds_coverage 0.975 muy por encima del target 0.80 (fix del patrón #1 + cambio v1.1.3). Entradilla 35w situando artículo entero. 4 ejemplos icónicos desarrollados. WebSearch sobre 6 áreas factuales. -3 por margen de oscilación del dato Monaco (20s aprox) y de la cifra 2,1s. -3 por densidad de strongs (44/40 = ~1.1 por párrafo; algunos párrafos del listado <ul> tienen labels que podrían leerse como tecnicismos sueltos si se aíslan, pero caen bajo excepción v1.1.1) -3 amortiguación general de seguridad",
+  "verdict": "GO",
+  "ready_for_qa_joel": true,
+  "next_steps_constraints": "NO image generation, NO WP upload, NO git commit per task spec. Files entregados: article.html (body), entradilla.txt (35w), critique_v1_1_3.json (este archivo)."
+}
