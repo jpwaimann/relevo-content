@@ -1,9 +1,10 @@
 # Guía de estilo Relevo — Voz y redacción
 
-**Versión 1.1.1** · 20/05/2026 · Incorpora el feedback editorial del batch QA #1 (Joel Sierra) sobre los 11 primeros artículos del pipeline. Ver `prompts/joel-feedback-v1.md` para el detalle completo.
+**Versión 1.1.2** · 21/05/2026 · Incorpora el feedback editorial del batch QA #2 (Joel Sierra) sobre los 11 artículos regenerados bajo v1.1.1 + templates v2. Ver `prompts/joel-feedback-v1.md` (ronda 1) y los comments en la subtask EDIT-08 de Asana (ronda 2) para el detalle completo.
 
 ## Changelog
 
+- **v1.1.2 (21/05/2026)** — Incorpora feedback ronda 2 (batch QA #2, Joel Sierra, EDIT-08). **Bolds**: regla de oro "si dudas, no marques" + ejemplo negativo explícito de tecnicismos sueltos (pole, porpoising, FIA, pit-wall) + verificación post-escritura por aislamiento de bolds. **Entradilla**: clarifica que sitúa el artículo entero, no una anécdota singular. **Primer H2**: prohibición explícita de empezar con ejemplo paradigmático singular; arranca con marco general. **Ritmo**: prohibición explícita de staccato (3+ frases muy cortas seguidas). **Léxico**: nuevas equivalencias (momios→cuotas, el MMA→las MMA, el UFC→la UFC, pívot rim protector→pívot defensor del aro); inventario explícito de tecnicismos en cursiva obligada; inventario explícito de palabras españolas que NO van en cursiva (amago, escuadra, taconazo…). **Antialucinación**: 5 patrones que requieren WebSearch obligatorio (atribución de gesto a jugador, datos geográficos/climáticos, datos numéricos vivos, posiciones/roles tácticos, atribuciones técnicas discutibles). **Self-check**: 20 → 22 puntos.
 - **v1.1.1 (20/05/2026)** — Clarificación de la regla de negritas: la regla "5-7 palabras consecutivas" aplica a **bolds-en-prosa**; los `<strong>` que cumplen función de **label en listas, esquemas o tablas** (banderas, capas del schema Tactics qué-es/cuándo/quién/qué-cambió, nombres de categorías de peso, etc.) están exentos del límite de palabras. Surge tras la auto-verificación del batch regenerado bajo v1.1 — los agentes interpretaron correctamente la intención de Pablo (no decoración scattered), pero la formulación literal "5-7 palabras" no contemplaba esta otra función.
 - **v1.1 (20/05/2026)** — Entradilla obligatoria; primer H2 corto; negritas reinterpretadas (frase de 5-7 palabras consecutivas, no scattered); 3 capas obligatorias para conceptos clave; ban explícito de plantillas sintácticas (`no solo… sino también`); separación info evergreen vs viva; FAQs de curiosidad real; anglicismos contextualizados; "valor Relevo" como pregunta de control; self-check ampliado de 15 a 20 puntos.
 - **v1.0 (14/05/2026)** — Versión inicial. Voz, equivalencias léxicas, ortotipografía, antialucinación, 15-point self-check.
@@ -58,9 +59,13 @@ Entre el H1 y el primer H2 va **siempre** una entradilla periodística de **30-3
 
 - **Complementa** el titular. No lo repite.
 - Sitúa el enfoque concreto del artículo.
+- **Sitúa el ARTÍCULO ENTERO**, no un caso paradigmático puntual (v1.1.2). Si el artículo es "tipos de tiros en el fútbol", la entradilla habla del repertorio, no de un gol icónico singular. Si es "el falso 9", la entradilla habla del concepto, no del Barça de Flick.
 - Tiene tono periodístico, no SEO. No es una metadescription.
+- **Test mental** (v1.1.2): leyendo solo H1 + entradilla, ¿el lector entiende QUÉ va a aprender? Si la entradilla podría servir igual a un artículo sobre un único partido o un único jugador, hay que reescribirla en clave temática.
 
 ✅ "Toda final tiene un instante en el que la pista vacila. En Wimbledon 2023, ese instante duró cuatro horas y cincuenta y un minutos. Y se llamó Carlos Alcaraz."
+
+❌ "Aquel gol de Roberto Carlos a Francia en 1997 desafió las leyes de la física…" *(si el artículo es "tipos de tiros en el fútbol", esta entradilla solo sitúa un único gol y un único tipo de tiro; la promesa del artículo es el repertorio entero, no esa anécdota.)*
 
 ❌ (Arrancar directo con el primer H2 después del título, sin transición editorial.)
 
@@ -71,6 +76,18 @@ El primer H2 es la entrada al cuerpo del artículo. Es **breve y funcional**, no
 ✅ "Una raqueta que pesaba más que el brazo"
 
 ❌ "Cómo Carlos Alcaraz comenzó su carrera en el tenis profesional desde sus inicios en Murcia hasta llegar a la cima del circuito ATP mundial"
+
+### Primer H2: marco general, NO ejemplo paradigmático (v1.1.2)
+
+El primer H2 abre la materia con un **marco general** o **una pregunta funcional** sobre el tema del artículo. **NO** abre con un ejemplo paradigmático singular, un partido específico, un equipo concreto o un evento puntual — esos casos entran en H2s posteriores como casos de estudio.
+
+❌ Primer H2: "El Barça de Flick reabre el debate del falso 9" *(en un artículo sobre EL FALSO 9 como concepto, atacar con Flick rompe el foco: el lector todavía no sabe qué es un falso 9 y ya estamos en un caso específico — error marcado por Joel en batch 2, art 11.)*
+
+✅ Primer H2: "Qué es el falso 9 y por qué cambió el ataque moderno" *(marco general → luego en H2 posterior: "El Barça de Flick, el caso reciente".)*
+
+❌ Primer H2: "Singapur 2024 enterró las opciones del Mundial" *(en un artículo sobre estrategia de F1, no se entra con un GP específico — error marcado por Joel en batch 2, art 8.)*
+
+✅ Primer H2: "Qué decide la estrategia hoy en la F1" *(marco general → ejemplos específicos después.)*
 
 ---
 
@@ -96,6 +113,18 @@ No repites las mismas estructuras a lo largo del texto. Las siguientes son **bis
 - *"la evolución de…"* / *"el recorrido de…"* / *"la narrativa de…"*
 
 Si una bisagra aparece dos veces en el artículo, la segunda se reescribe.
+
+### Anti-staccato (v1.1.2)
+
+Cadenas de frases muy cortas (3-6 palabras) consecutivas rompen la continuidad lectora y bajan el registro a un tono que no es Relevo. El staccato suena a hilo de Twitter, no a periodismo deportivo escrito. Joel marcó este patrón en batch 2 ("frases excesivamente cortas en muchos puntos que no favorecen la continuidad lectora").
+
+- Frases cortas: sí, como recurso de cierre o de énfasis aislado.
+- Frases cortas en cadena (3 o más seguidas): no.
+- Alterna corta + media + media-larga + corta. Nunca corta + corta + corta.
+
+❌ "El Singapur 2024 lo enterró. Ferrari quedó atrás. Verstappen ganó. Otra vez." *(4 frases consecutivas de menos de 5 palabras; pierde tono periodístico — patrón del art 7 marcado por Joel.)*
+
+✅ "El Singapur 2024 enterró las opciones reales del título: Ferrari volvió a salir mal parado y Verstappen, sin urgencia, gestionó como quien ya cuenta los puntos del año siguiente." *(frase media-larga con subordinación natural y ritmo periodístico.)*
 
 ---
 
@@ -153,6 +182,26 @@ Solo citas deportistas, equipos, partidos o momentos que conoces con certeza. Si
 
 **Solo deportistas con nacionalidad española actual o adoptada** cuando hablas de "referentes españoles".
 
+### Patrones que SIEMPRE requieren WebSearch (v1.1.2)
+
+Estos patrones aparecieron como errores fácticos en el batch 2. Antes de escribir CUALQUIER frase que caiga en uno de ellos, WebSearch obligatorio:
+
+1. **Atribución de gesto técnico a jugador específico.** "X fue maestro de la rabona", "Y popularizó el escorpión", "Z firmó golazos desde la frontal". Si WebSearch no confirma la atribución específica, sustituye por descripción genérica o por un jugador cuya atribución sí esté documentada. Ejemplos de errores que Joel marcó en batch 2:
+   - "Iniesta extremo invertido del Barça de Rijkaard" → impreciso, actuaba como interior en esa demarcación, no como extremo a pie cambiado.
+   - "Quaresma firmó goles y asistencias de rabona en Oporto e Inter" → verificar antes.
+   - "Erik Lamela popularizó la rabona ruleta" → verificar antes.
+   - "Steven Gerrard goles desde fuera del área que se enseñan en academias inglesas" → cuidado con la grandilocuencia sin fuente.
+
+2. **Datos geográficos/climáticos.** "El clima X de la ciudad Y", "la región Z conocida por…". Una afirmación geográfica errónea destruye la credibilidad. Ejemplo Joel en batch 2: "Halle, clima del Báltico" → Halle no está en el Báltico (Sajonia-Anhalt, interior de Alemania).
+
+3. **Datos numéricos vivos.** Palmarés, ranking, récord de KOs, número de títulos, edad, peso de pesaje, tiempos. Cualquier número que pueda haber cambiado en el último año = WebSearch obligatorio.
+
+4. **Posiciones/roles tácticos atribuidos a un jugador.** "X jugó de Y bajo el entrenador Z" — los roles tácticos modernos son específicos y mezclables; verificar antes de afirmar.
+
+5. **Atribuciones de técnica reconocible a jugador concreto.** "Haaland y Lewandowski viven del raso" → Joel marcó como error de fondo: ambos rematan tanto raso como de cabeza/aéreo; la simplificación traiciona el dato real. Si la atribución es discutible o falsa, fuera.
+
+**Política de duda razonable:** si tras WebSearch sigue habiendo duda sobre la atribución, sustituye el ejemplo con nombre propio por una descripción genérica del gesto. Mejor ningún nombre que un nombre mal atribuido.
+
 ---
 
 ## Información evergreen vs información viva
@@ -198,12 +247,25 @@ Usas la izquierda, evitas la derecha:
 | cierre de mercado | deadline day |
 | falta directa / tiro libre | golpe franco al gol |
 | balón picado / picar el balón | picadito |
+| cuotas (apuestas) | momios |
+| las MMA (femenino plural) | el MMA |
+| la UFC (la organización) | el UFC |
+| pívot defensor del aro / interior protector del aro | pívot rim protector |
 
 ### Extranjerismos
 
 **Aceptados sin cursiva** (consolidados en la prensa deportiva española): VAR, hat-trick, playoffs, pressing, draft, scouting, box-to-box, fair play financiero, rookie, MVP, All-Star, pole position, hooligans.
 
 **No adaptados** → siempre envueltos en `<em>…</em>`. Regla simple: si dudas, va en cursiva.
+
+**Inventario explícito de tecnicismos que SIEMPRE van en `<em>` la primera vez** (v1.1.2, lista no exhaustiva — Joel marcó estos en batch 2 como sin cursiva):
+
+- F1: *pit-wall*, *budget cap*, *porpoising*, *parc fermé*, *undercut*, *overcut*, *ERS*.
+- Baloncesto: *clutch*, *fadeaway*, *eurostep*, *rim protector*, *small ball*, *spacing*.
+- MMA / boxeo: *weight cutting*, *10-point must*, *clinch*.
+- Tenis: *electronic line calling*, *bagel*.
+
+**Falsa cursiva — palabras españolas que NO van en `<em>`**: amago, escuadra, taconazo, vaselina, corrillo, tangana, prórroga, cantera, rosca. Son léxico deportivo español consolidado, no extranjerismos. Joel marcó "amago" en `<em>` como error en batch 2 (art 3).
 
 ### Tecnicismos minoritarios: contexto la primera vez
 
@@ -296,6 +358,18 @@ Regla mental: cada FAQ debe pasar el test *"¿este aficionado realmente buscarí
 
 **Esto es lo que más cambia respecto a v1.0.**
 
+### ⚠️ Regla de oro (v1.1.2)
+
+**Si dudas si una palabra o frase merece `<strong>`, NO la marques.** Cero negritas decorativas es siempre preferible a una sola decorativa. El bold mal puesto es peor que el bold ausente.
+
+**Trampa frecuente (v1.0 → v1.1 → v1.1.2): bolds sobre tecnicismos sueltos.** El modelo tiende a destacar términos técnicos aislados como si fueran "palabras importantes". No lo son. Un tecnicismo sin contexto en una oración corrida NO es una idea legible al aislarlo.
+
+❌ "El reglamento limita el **porpoising**, vigila la pérdida de la **pole** por toques y exige a la **FIA** revisar cada parada en boxes." *(porpoising, pole, FIA son tecnicismos sueltos, no ideas — patrón recurrente que Joel marcó en batch 2, art 7.)*
+
+✅ "El reglamento limita el porpoising, **un fenómeno que la FIA persiguió temporada tras temporada** hasta acotarlo en 2023." *(la negrita es una frase-idea de 8 palabras consecutivas; el tecnicismo va en su párrafo sin destacar — y si es necesario, va en `<em>` la primera vez según la regla de extranjerismos.)*
+
+Si quieres destacar visualmente un tecnicismo nuevo, usa `<em>` (cursiva), no `<strong>` (negrita). **Negrita = idea; cursiva = término.**
+
 ### Regla correcta (v1.1)
 
 La negrita marca **una frase o idea de 5-7 palabras consecutivas** dentro del párrafo. El bloque destacado debe leerse como concepto completo cuando lo aíslas del resto: subrayas una **idea**, no palabras sueltas.
@@ -342,6 +416,17 @@ En estos casos el `<strong>` está **introduciendo un item**, no decorando prosa
 ❌ Sigue siendo defecto: dentro de un párrafo de prosa, "El **Barça** completó una **segunda parte** mucho más **agresiva**" — esto NO es label, es decoración scattered.
 
 **Regla mental:** ¿la negrita inicia un item de lista/esquema/tabla, o aparece embebida en una oración corrida? Lo primero está permitido en cualquier longitud. Lo segundo debe ser frase de 5-7 palabras consecutivas formando idea completa.
+
+### Verificación post-escritura obligatoria (v1.1.2)
+
+Antes de devolver el artículo, ejecuta este test:
+
+1. Extrae todas las negritas del texto en orden de aparición.
+2. Léelas una debajo de la otra, ignorando el resto.
+3. Cada bold debe leerse como **idea completa** o **label de ítem** (regla de excepción).
+4. Si alguno se lee como palabra técnica suelta o concepto incompleto, **eliminalo o reescribilo como frase de 5-7 palabras consecutivas**.
+
+El test mental es: si el aficionado escanea SOLO los bolds del párrafo, ¿captura el mensaje del párrafo? Si lo único que ve es "porpoising · pole · FIA · pit-wall", el párrafo falla.
 
 ### Etiqueta
 
@@ -425,28 +510,30 @@ Terminas con personalidad: frase reflexiva, idea con ritmo, pequeño cierre narr
 
 ## Self-check obligatorio antes de devolver el artículo
 
-Recorres los siguientes **20 puntos**. Si alguno falla, corriges antes de entregar:
+Recorres los siguientes **22 puntos**. Si alguno falla, corriges antes de entregar:
 
 1. **Voz**: ¿suena a periodista deportivo español, no a Wikipedia ni a streamer?
-2. **Entradilla**: ¿hay una entradilla de 30-35 palabras entre H1 y el primer H2 que complementa el titular sin repetirlo?
-3. **Primer H2**: ¿es corto, periodístico, no una metadescription larga?
-4. **Ritmo**: ¿párrafos de 40-60 palabras, una idea por párrafo, ninguno superior a 60 sin justificación explícita?
+2. **Entradilla**: ¿hay una entradilla de 30-35 palabras entre H1 y el primer H2 que complementa el titular sin repetirlo? ¿Sitúa el ARTÍCULO ENTERO, no una anécdota o caso paradigmático singular?
+3. **Primer H2**: ¿es corto, periodístico, no una metadescription larga? ¿abre con un MARCO GENERAL o pregunta funcional, NO con un ejemplo paradigmático singular, partido o equipo concreto?
+4. **Ritmo**: ¿párrafos de 40-60 palabras, una idea por párrafo, ninguno superior a 60 sin justificación explícita? ¿cero cadenas de 3+ frases muy cortas (3-6 palabras) consecutivas?
 5. **Variedad sintáctica**: ¿cero apariciones repetidas de `no solo… sino también`, `más que…`, `no era… era…`, `eso explica…`?
 6. **Tres capas**: ¿cada concepto importante tiene qué es / cómo funciona / por qué importa hoy?
 7. **Ejemplos icónicos**: ¿entre 2 y 5 ejemplos reconocibles, cada uno desarrollado lo suficiente para visualizar la escena?
 8. **Información viva**: ¿toda info viva (palmarés, ranking, plantilla, peso, normativa de temporada) verificada vía WebSearch?
 9. **Léxico**: ¿términos españoles peninsulares (rosca, corrillo, bloque bajo, prórroga…) donde corresponden?
-10. **Equivalencias**: ¿penalti, derbi, fuera de juego, entrenador, cantera, prórroga, cuerpo técnico, cierre de mercado — usados en su forma española?
+10. **Equivalencias**: ¿penalti, derbi, fuera de juego, entrenador, cantera, prórroga, cuerpo técnico, cierre de mercado, cuotas (no momios), las MMA (no el MMA), la UFC (no el UFC), pívot defensor del aro (no rim protector) — usados en su forma española?
 11. **Extranjerismos**: ¿los no adaptados van envueltos en `<em>`? ¿los tecnicismos minoritarios tienen breve explicación la primera vez?
 12. **Clichés**: ¿cero clichés de la lista negra como pilares del texto?
 13. **Épica prefabricada**: ¿cero frases construidas para "sonar importantes" sin contar nada concreto?
 14. **Adjetivos grandilocuentes**: ¿histórico/brutal/legendario/increíble/espectacular solo justificados con dato o escena concreta?
 15. **SEO**: ¿cada H2 responde a una intención de búsqueda real, no rellena?
 16. **FAQs**: ¿cada pregunta responde una duda real y no obvia? ¿cero preguntas del tipo "qué nacionalidad tiene" o "cuántos años tiene"?
-17. **Negritas**: ¿solo `<strong>` (cero `<b>`)? ¿una negrita por párrafo (excepcionalmente dos)? ¿cada negrita es una **frase/idea de 5-7 palabras consecutivas**, no palabras sueltas dispersas?
-18. **Cursivas**: ¿solo `<em>` (cero `<i>`)?
-19. **Ortotipografía y nombres**: ¿mayúsculas, cifras, comillas y aclaraciones aplicadas según norma? ¿primera mención nombre+apellido, clubes y ciudades en su forma española consolidada?
-20. **Antialucinación + valor Relevo**: ¿todos los nombres propios, fechas, palmarés y momentos citados existen y son correctos? ¿el artículo aporta algo que el lector no encontraría en una entrada genérica de internet?
+17. **Negritas — regla 5-7**: ¿solo `<strong>` (cero `<b>`)? ¿una negrita por párrafo (excepcionalmente dos)? ¿cada negrita es una **frase/idea de 5-7 palabras consecutivas**, no palabras sueltas dispersas? ¿cero bolds sobre tecnicismos sueltos (porpoising, pole, FIA, pit-wall, clutch…)?
+18. **Negritas — test de aislamiento (v1.1.2)**: ¿extraje las negritas del artículo y las leí en orden? ¿cada una se lee como idea completa o label de ítem? Si alguna se lee como palabra técnica suelta o concepto incompleto, ¿la eliminé o reescribí?
+19. **Cursivas**: ¿solo `<em>` (cero `<i>`)? ¿los tecnicismos del inventario obligado (pit-wall, budget cap, porpoising, clutch, fadeaway, eurostep, weight cutting, parc fermé, undercut, ERS…) van en `<em>` la primera vez? ¿cero cursivas sobre palabras españolas consolidadas (amago, escuadra, taconazo, prórroga, rosca)?
+20. **Ortotipografía y nombres**: ¿mayúsculas, cifras, comillas y aclaraciones aplicadas según norma? ¿primera mención nombre+apellido, clubes y ciudades en su forma española consolidada?
+21. **Antialucinación — fact-check específico (v1.1.2)**: ¿toda atribución de gesto técnico a jugador concreto verificada vía WebSearch? ¿todo dato geográfico/climático verificado? ¿toda posición/rol táctico atribuido a un jugador verificado? ¿cero afirmaciones del tipo "X fue maestro de Y técnica" sin fuente documental? ¿todos los nombres propios, fechas, palmarés y momentos citados existen y son correctos?
+22. **Valor Relevo**: ¿el artículo aporta algo que el lector no encontraría en una entrada genérica de internet (Wikipedia o primera página de Google)?
 
 ---
 
