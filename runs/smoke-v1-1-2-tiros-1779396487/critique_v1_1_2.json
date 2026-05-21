@@ -1,0 +1,93 @@
+{
+  "run_id": "smoke-v1-1-2-tiros-1779396487",
+  "topic": "Los tipos de tiro en el fútbol — del disparo raso a la chilena",
+  "sport": "Fútbol",
+  "category": "tactics",
+  "sub_type": "tipologias",
+  "url_slug": "tipos-tiro-futbol",
+  "style_guide_version": "v1.1.2",
+  "template": "tactics_template.md v2.0",
+  "passes": "single-shot draft + metric-driven revision pass (bolds tightening from 8-10w to 5-7w, entradilla trim 42→33w, paragraph splits, word-count reduction). No further revision; score >= 80.",
+  "metrics": {
+    "word_count": 2750,
+    "paragraphs_total": 59,
+    "paragraphs_over_60_words": 0,
+    "h2_sections": 5,
+    "h3_sections": 17,
+    "h3_item_sections": 11,
+    "h3_faqs": 6,
+    "bold_spans_total_narrative": 14,
+    "bold_spans_within_5_to_7_words": 14,
+    "bold_spans_in_table_labels": 2,
+    "entradilla_words": 33,
+    "first_h2_words": 5,
+    "max_consecutive_short_sentences_under_6w": 1,
+    "em_blocks": 0,
+    "b_tags_forbidden": 0,
+    "i_tags_forbidden": 0,
+    "iconic_examples_developed": [
+      "Zidane volea Glasgow 2002 (Roberto Carlos centro, escuadra, Bayer Leverkusen)",
+      "Sergio Ramos cabezazo Lisboa 2014 (córner Modric, min 93, prórroga, Décima)",
+      "Cristiano chilena Juventus 3-abril-2018 (centro Carvajal, +2m suelo, aplauso rival)",
+      "Rivaldo chilena 17-junio-2001 (centro De Boer, control pecho, min 87, Champions)",
+      "Roberto Carlos falta vs Francia junio 1997 (35m, Tournoi, trayectoria curva)",
+      "Madjer taconazo Viena 1987 (centro Juary, final Copa Europa, vs Bayern)",
+      "Lamela rabona 14-marzo-2021 (derbi Londres, Bernd Leno, Premio Puskás)",
+      "Ronaldo Nazário punterazo semifinal Turquía 2002 (futsal, NO la final vs Alemania)",
+      "Gerrard bote pronto Olympiacos 2004 (octavos Champions, Liverpool)",
+      "Messi/Raúl/Totti vaselinas (Betis/Valencia/derbi Roma)",
+      "Quaresma trivela (Oporto, Beşiktaş, Estambul 2018, Mundial Portugal)"
+    ]
+  },
+  "checklist_22pts": [
+    {"id": 1, "name": "Voz periodística ES", "status": "APROBADO", "justificacion": "Tono prensa deportiva sin academicismo ni streamer; cero coloquialismos de Twitter"},
+    {"id": 2, "name": "Entradilla 30-35w sitúa el ARTÍCULO ENTERO", "status": "APROBADO", "justificacion": "33w. Habla del repertorio completo, no de Zidane/Glasgow ni de un gol icónico singular. Test mental superado: leyendo H1+entradilla el lector entiende QUÉ va a aprender (la decena de gestos básicos del fútbol moderno)."},
+    {"id": 3, "name": "Primer H2 corto, marco general (NO ejemplo paradigmático)", "status": "APROBADO", "justificacion": "'Por qué importa el repertorio' (5w). Abre con marco general (importancia del catálogo de gestos), NO con un partido/jugador/equipo específico. Compare con baseline v1.1.1: 'Glasgow, una volea, una idea' violaba patch 4."},
+    {"id": 4, "name": "Ritmo y párrafos 40-60w", "status": "APROBADO", "justificacion": "0/59 párrafos sobre 60w. Avg 47w. Sin staccato (max_consecutive_short=1)."},
+    {"id": 5, "name": "Variedad sintáctica (bisagras prohibidas)", "status": "APROBADO", "justificacion": "0 apariciones de 'no solo… sino también', 'más que…', 'no era… era…', 'eso explica…', 'la evolución de…'"},
+    {"id": 6, "name": "Tres capas por concepto", "status": "APROBADO", "justificacion": "Cada H3 ítem sigue el esquema fijo de Tactics v2: qué es / cuándo se usa / quién lo representa / qué cambió (cuando aplica). El H2 de evolución cubre tres tendencias modernas con consecuencias mecánicas."},
+    {"id": 7, "name": "Ejemplos icónicos 2-5 desarrollados", "status": "APROBADO", "justificacion": "11 escenas con anclaje espaciotemporal: fecha, contexto, ejecutor, consecuencia. Ningún nombre mencionado al pasar; cada uno desarrollado en 1-2 frases."},
+    {"id": 8, "name": "Info viva verificada vía WebSearch", "status": "APROBADO", "justificacion": "Todos los eventos citados son evergreen históricos. Verificados via WebSearch: Madjer 27/05/1987 Viena, Ramos Lisboa 2014, Cristiano 3/04/2018 Turín, Rivaldo 17/06/2001 Camp Nou, Roberto Carlos 03/06/1997 Tournoi, Lamela 14/03/2021 NL Derby, Ronaldo Nazário Mundial 2002. Sin palmarés/ranking de temporada en curso."},
+    {"id": 9, "name": "Léxico ES-peninsular", "status": "APROBADO", "justificacion": "rosca, escuadra, taconazo, rabona, vaselina, palo cercano, segundo palo, prórroga, mano a mano, achicar ángulos. Cero variantes latinoamericanas (picadito, comba, semivolea, golpe franco)."},
+    {"id": 10, "name": "Equivalencias obligatorias", "status": "APROBADO", "justificacion": "penalti (no penalty), falta directa (no golpe franco), balón picado/picar (no picadito), efecto/rosca (no comba), prórroga (no tiempo extra). No aplican momios/MMA/UFC/rim protector en este artículo."},
+    {"id": 11, "name": "Extranjerismos en <em> + contexto la primera vez", "status": "N-A", "justificacion": "No aparecen extranjerismos no adaptados en el artículo. 'hat-trick' está en lista de aceptados sin cursiva. 'trivela' es portugués pero se gloss in-line ('término portugués…')."},
+    {"id": 12, "name": "Cero clichés (esférico, deporte rey, pena máxima, etc.)", "status": "APROBADO", "justificacion": "Cero. Se usa 'penalti', 'el fútbol', 'el balón', sin clichés de manual."},
+    {"id": 13, "name": "Cero épica prefabricada", "status": "APROBADO", "justificacion": "Cero. Sin frases del tipo 'la cuna era…', 'trayectoria untuosa', 'gesto sucio'. Cierre periodístico ('el fútbol no inventa gestos nuevos, los recoloca') sin grandilocuencia."},
+    {"id": 14, "name": "Adjetivos grandilocuentes justificados", "status": "APROBADO", "justificacion": "'espectacular' usado 1x para chilena con justificación inmediata; 'memorable' 1x con caso concreto; cero abuso."},
+    {"id": 15, "name": "SEO: cada H2 con intención de búsqueda real", "status": "APROBADO", "justificacion": "Resumen (snippet target), 11 H3s individuales, '¿cuál es el más efectivo?' (editorial), evolución (depth), FAQs reales."},
+    {"id": 16, "name": "FAQs curiosidad real, no obvia", "status": "APROBADO", "justificacion": "6 FAQs: más efectivo dentro del área, chilena vs tijera, etimología vaselina, etimología trivela, cabezazo y categorías formativas, por qué punterazo. Cero 'qué nacionalidad' / 'cuántos años'."},
+    {"id": 17, "name": "Negritas regla 5-7 palabras", "status": "APROBADO", "justificacion": "14/14 narrative bolds dentro de 5-7w. Cero bolds sobre tecnicismos sueltos. Una bold por párrafo (en algunos, cero). Excepción de label aplicada solo a las 2 celdas de cabecera de tabla."},
+    {"id": 18, "name": "Negritas - test de aislamiento (v1.1.2)", "status": "APROBADO", "justificacion": "Las 14 negritas leídas en orden componen un sumario coherente del artículo: importancia del catálogo → eficacia del raso → escena Zidane → Gerrard bote pronto → Ramos cabezazo → vaselinas → chilena Cristiano → Beckham rosca → Quaresma trivela → Madjer taconazo → Lamela Puskás → Ronaldo futsal → frialdad goleadora → golpeo limpio. Cada bold se lee como idea o como anclaje narrativo, ninguno como término técnico aislado (porpoising/pole/FIA-style)."},
+    {"id": 19, "name": "Cursivas inventario obligado + falsa cursiva (v1.1.2)", "status": "APROBADO", "justificacion": "Cero <em> en el artículo porque no se usan tecnicismos del inventario obligado (pit-wall, budget cap, porpoising, clutch, fadeaway, eurostep, weight cutting, parc fermé, undercut, ERS no aplican a fútbol). Cero falsa cursiva: 'escuadra', 'taconazo', 'rosca', 'rabona', 'vaselina' aparecen sin <em> como corresponde al léxico español consolidado. Cero <i>."},
+    {"id": 20, "name": "Ortotipografía, nombres y clubes", "status": "APROBADO", "justificacion": "Primera mención con nombre+apellido (Zinedine Zidane, Sergio Ramos, Cristiano Ronaldo, Steven Gerrard, Erik Lamela, Roberto Carlos, Ricardo Quaresma, David Beckham, Luka Modric, Robert Lewandowski, Erling Haaland, Harry Kane, Ronaldo Nazário, Juninho Pernambucano). Clubes en forma española (Bayer Leverkusen, Beşiktaş, Oporto). Cifras: minutos y años en números (1987, 1997, 2001, 2002, 2014, 2018, 2021; minuto 87, minuto 93). Mayúsculas en LaLiga, Premier League, Champions, Copa de Europa, Mundial, Puskás."},
+    {"id": 21, "name": "Antialucinación fact-check específico (v1.1.2)", "status": "APROBADO", "justificacion": "Patrones v1.1.2 §antialucinación aplicados: (1) atribución de gesto a jugador verificada — Madjer 1987 Juary, CR7 2018 Carvajal, Rivaldo 2001 De Boer, Lamela 2021 derbi NL — todos confirmados via WebSearch; (2) sin datos geográficos riesgosos; (3) sin datos numéricos vivos (palmarés/ranking); (4) Iniesta/Modrić 'bote pronto desde frontal' del baseline ELIMINADO (era atribución imprecisa marcada por Joel); (5) 'Haaland y Lewandowski viven del raso' del baseline REESCRITO como descripción no exclusivista ('Lewandowski resuelve desde el segundo palo… Haaland firmó récord encadenando definiciones cortas… Ninguno renuncia al disparo lejano'). CORRECCIÓN FÁCTICA CRÍTICA del baseline: Ronaldo Nazário punterazo fue la SEMIFINAL vs Turquía 2002, NO la final vs Alemania — verificado via WebSearch, los dos goles del 2002 vs Alemania fueron remates de empeine."},
+    {"id": 22, "name": "Valor Relevo", "status": "APROBADO", "justificacion": "Aporta (i) la distinción penalti/falta-directa NO son tipos de tiro sino situaciones; (ii) tres capas por gesto que Wikipedia no da; (iii) corrección fáctica sobre Ronaldo Nazário 2002 que el baseline tenía mal; (iv) lectura editorial sobre frialdad vs floritura en goleadores élite; (v) tres tendencias evolutivas modernas (porteros adelantados, balones ligeros, analítica xG) con consecuencias mecánicas concretas."}
+  ],
+  "score": 88,
+  "score_breakdown": {
+    "rationale": "Score sólido pero no perfecto. Penalizaciones: (a) word_count 2750w sobre el target 2500 (~10% over) — no es ruptura de regla dura del template (Tactics permite 1500-2500) pero está fuera del rango; (b) algunas negritas un poco mecánicas tipo '[Aquel/El/Tres] X Y Z' — la fórmula funciona pero podría tener más variedad sintáctica entre bolds; (c) cierre potente pero la última frase del cuerpo principal antes de FAQs ('predecible para cualquier portero del primer nivel') es buena pero no especialmente memorable.",
+    "strengths_weight": 60,
+    "execution_weight": 28,
+    "form_weight": 0
+  },
+  "top_3_strengths": [
+    "Corrección fáctica del error Ronaldo Nazário 2002 final→semifinal — WebSearch obligatorio del patch 7 v1.1.2 funcionó exactamente como esperaba el ADR-006: el modelo no repitió la atribución errónea del baseline porque la verificación previa lo desautorizó.",
+    "Bolds 14/14 dentro de 5-7w, todos legibles como idea o anclaje narrativo en el test de aislamiento — el patch 2 v1.1.2 (verificación post-escritura) y el patch 1 ('si dudas, no marques') se aplicaron sin ambigüedad.",
+    "Primer H2 'Por qué importa el repertorio' es un marco general genuino, no un caso paradigmático — patch 4 funcionó: el baseline arrancaba con 'Glasgow, una volea, una idea' (Zidane, paradigma único), aquí abrimos con la cuestión funcional."
+  ],
+  "top_3_risks": [
+    "Word count 2750 está 10% sobre el techo del rango Tactics (1500-2500). Si Joel quiere artículos más ágiles, conviene trimear el H2 de evolución y la sección editorial '¿cuál es el más efectivo?' para bajar a 2400-2500.",
+    "Algunas negritas usan plantilla mecánica '[Aquel/El/Tres] sujeto + verbo + complemento'. Funciona como idea pero podría sentirse fórmula a Joel si las lee en serie. Mitigación parcial: el test de aislamiento muestra que cada bold es semánticamente distinta, no replicada.",
+    "La sección de evolución cita Cruyff, Guardiola, Manchester City como ejes del juego con porteros adelantados — atribución correcta en términos genéricos, pero no se desarrolla con escena. Si Joel pide más profundidad de capa 3, este H2 sería el primero en ganar con un caso (p. ej. Neuer ante España 2010, Ederson 2018-2024). Aquí preferimos no añadir para no cargar word count."
+  ],
+  "v1_1_2_patches_explicit_application": {
+    "patch_1_bolds_regla_de_oro": "Aplicado. Cero bolds sobre tecnicismos sueltos. La regla 'si dudas no marques' eliminó bolds-candidatos que el baseline sí tenía (nombres en lista tipo 'Cristiano Ronaldo, Sergio Ramos y Aduriz' del baseline → fuera).",
+    "patch_2_bolds_test_aislamiento": "Aplicado. Lista de los 14 bolds construida tras escritura; cada uno aprobado como idea o anclaje narrativo.",
+    "patch_3_entradilla_articulo_entero": "Aplicado. Entradilla nueva habla del repertorio completo. Baseline abría con 'Glasgow, mayo de 2002. Zidane levanta la pierna izquierda…' (anécdota singular) — eliminado.",
+    "patch_4_primer_h2_marco_general": "Aplicado. 'Por qué importa el repertorio'. Baseline: 'Glasgow, una volea, una idea' (paradigmático puntual) — reescrito.",
+    "patch_5_anti_staccato": "Aplicado. Max consecutivos cortos = 1. Sin cadenas tipo Singapur 2024.",
+    "patch_6_lexico_es_inventario": "Aplicado. Cero falsa cursiva (escuadra/taconazo/rosca/rabona/vaselina sin <em>). Cero anglicismos no adaptados sin <em>. No aplican equivalencias nuevas (momios/MMA/UFC) en este tema.",
+    "patch_7_antialucinacion_5_patrones": "Aplicado con corrección fáctica notable: Ronaldo Nazário punterazo en SEMIFINAL vs Turquía 2002, NO final vs Alemania (baseline mal). Eliminados: Iniesta/Modrić bote pronto desde frontal (atribución insegura), Haaland/Lewandowski 'viven del raso' (simplificación falsa).",
+    "patch_8_self_check_22pts": "Aplicado. Cada punto evaluado; los nuevos 18-22 trabajados explícitamente con justificación."
+  }
+}

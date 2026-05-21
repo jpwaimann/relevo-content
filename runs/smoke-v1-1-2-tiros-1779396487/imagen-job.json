@@ -1,0 +1,15 @@
+{
+  "vars": {
+    "style": "Premium editorial sports photography. High-contrast cinematic color grade with directional rim light. Tight composition on athletic action. Deep shadows, warm highlights. Subtle film grain. No text overlays, no logos, no scores, no graphic elements. Photographic realism, magazine-cover quality."
+  },
+  "jobs": [
+    {
+      "name": "hero.jpg",
+      "size": "1536x1024",
+      "quality": "high",
+      "output_format": "jpeg",
+      "output_compression": 85,
+      "prompt": "A dynamic editorial sports photograph capturing the precise moment a professional male footballer strikes a ball. Right leg fully extended after impact, ball slightly deformed in mid-air showing the force of the strike, motion trail behind it. Low-angle composition, the player silhouetted against stadium floodlights creating dramatic rim light on his form. Background a softly out-of-focus modern stadium at dusk. No team identification, no kit branding visible. Cinematic depth of field, frozen action. {style}"
+    }
+  ]
+}
