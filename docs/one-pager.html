@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relevo.com — Content Automation Roadmap · One-pager ejecutivo</title>
+<style>
+  :root {
+    --color-primary: #7464DE;
+    --color-text: #1a1a1a;
+    --color-muted: #595959;
+    --color-light: #999;
+    --color-bg: #ffffff;
+    --color-bg-soft: #fafafa;
+    --color-border: #e8e8e8;
+    --color-accent: #E91E90;
+    --color-good: #2e8540;
+    --color-block: #f3f1ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--color-text);
+    background: var(--color-bg);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .wrapper { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header {
+    border-bottom: 3px solid var(--color-primary);
+    padding-bottom: 16px;
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  .sub {
+    color: var(--color-muted);
+    font-size: 14px;
+    margin: 0;
+  }
+  .meta-line {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+  .meta-line strong { color: var(--color-text); }
+  .meta-line a { color: var(--color-primary); text-decoration: none; }
+  .meta-line a:hover { text-decoration: underline; }
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-primary);
+    margin: 36px 0 12px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 4px;
+  }
+  p { margin: 0 0 14px; font-size: 15px; }
+  .one-liner {
+    background: var(--color-block);
+    border-left: 4px solid var(--color-primary);
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    font-size: 15px;
+    color: var(--color-text);
+  }
+  ul, ol { margin: 0 0 16px 22px; padding: 0; font-size: 15px; }
+  li { margin-bottom: 6px; padding-left: 4px; }
+  li strong { color: var(--color-text); }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .kpi {
+    background: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+  }
+  .kpi-value { font-size: 18px; font-weight: 700; color: var(--color-text); }
+  .kpi-detail { font-size: 13px; color: var(--color-muted); margin-top: 2px; }
+  .decision {
+    background: var(--color-bg-soft);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .decision strong.tag {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-right: 6px;
+    color: #fff;
+  }
+  .decision .reject { background: #b94a48; }
+  .decision .adopt { background: var(--color-good); }
+  .decision .approve { background: var(--color-primary); }
+  footer {
+    margin-top: 48px;
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-light);
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    .kpi-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+  <h1>Relevo.com — Content Automation Roadmap</h1>
+  <p class="sub">One-pager ejecutivo · snapshot diario para C-level briefing</p>
+  <div class="meta-line">
+    <strong>Project lead:</strong> Pablo Waimann (sole driver) ·
+    <strong>Editorial reviewer:</strong> Joel Sierra ·
+    <strong>Última actualización:</strong> 21 May 2026, EOD<br>
+    <strong>Repositorio oficial:</strong> <a href="https://git.igaming.com/relevo/content">git.igaming.com/relevo/content</a> ·
+    <strong>Roadmap público:</strong> <a href="https://jpwaimann.github.io/relevo-content/">jpwaimann.github.io/relevo-content</a>
+  </div>
+</header>
+
+<h2>El proyecto en una frase</h2>
+<p class="one-liner">Pipeline 100% automatizado de generación de artículos para Relevo.com (investigación → redacción → review editorial → imagen → SEO → publish), entregando ~50 artículos/día a $0.10–0.30 por artículo, en tiempo para la ventana de tráfico FIFA World Cup 2026.</p>
+
+<h2>Dónde estamos hoy</h2>
+<ul>
+  <li><strong>Base técnica completa (Fases 1–3).</strong> Pipeline end-to-end funcional bajo orquestación de Pablo: inventario en SharePoint, generación de imágenes vía LiteLLM, publicación a WordPress, hand-off editorial a Asana, roadmap público, audit trail completo en repositorio oficial.</li>
+  <li><strong>Base editorial en v3 del manual de estilo.</strong> Dos rondas de feedback con Joel Sierra absorbidas. La regla de cobertura de negritas (≥80% de los párrafos llevan una idea destacada) se ajustó hoy tras validación en vivo en la beta de WordPress, decisión de Pablo al revisar el primer artículo renderizado.</li>
+  <li><strong>11 artículos regenerados bajo el último estilo.</strong> 2 con sign-off del reviewer; los 9 restantes en producción esta noche bajo el manual v1.1.3 y los nuevos gates editoriales.</li>
+  <li><strong>Calendario crítico.</strong> Launch público hard 1 de junio. FIFA World Cup kickoff 11 de junio.</li>
+</ul>
+
+<h2>Qué cambió esta semana (bajo dirección de Pablo)</h2>
+<ul>
+  <li>Doble bump del manual de estilo (v1.1.2 + v1.1.3) en el mismo día: dos rondas distintas de feedback absorbidas en cadena, sin perder cadencia.</li>
+  <li>Cuatro decisiones de arquitectura documentadas formalmente (ADR-006, ADR-007, ADR-008 más la corrección del patrón de upload a WordPress).</li>
+  <li>Theme de WordPress refrescado en la beta para legibilidad editorial (ritmo de headings, estilo de tablas, breakpoint móvil).</li>
+  <li>Nuevo repositorio oficial en GitLab (<code>git.igaming.com/relevo/content</code>) seedeado; migración completa desde el mirror público se cierra esta noche bajo ownership de Pablo.</li>
+</ul>
+
+<h2>Decisiones clave que tomó Pablo hoy</h2>
+
+<div class="decision">
+  <strong class="tag reject">Rechazado</strong> patches al style guide por artículo<br>
+  <strong class="tag adopt">Adoptado</strong> <em>regenerate-en-bloque</em> tras cada ronda de feedback. Un solo prompt, calidad consistente, escala lineal.
+</div>
+
+<div class="decision">
+  <strong class="tag reject">Rechazado</strong> workaround silencioso del gap visual de WordPress<br>
+  <strong class="tag adopt">Adoptado</strong> follow-up task explícito con tres hipótesis de diagnóstico para el viernes. Evita que el problema escale a producción sin detectar.
+</div>
+
+<div class="decision">
+  <strong class="tag approve">Aprobado</strong> política <em>gate-by-text</em> para hero images (ADR-007). Gate manual para el primer batch; integración al pipeline programada post-launch.
+</div>
+
+<h2>Bloqueadores abiertos (Pablo monitoring)</h2>
+<ol>
+  <li><strong>Gap visual del header del template WP</strong> sobre la beta: el contenido es correcto, el layout no. Tres caminos de diagnóstico priorizados para la mañana del viernes.</li>
+  <li><strong>QA editorial batch 3 con Joel:</strong> 9 artículos como drafts overnight, veredicto esperado antes del demo del viernes.</li>
+</ol>
+
+<h2>Próximos 7 días (ownership Pablo)</h2>
+<ul>
+  <li><strong>Viernes 22/5:</strong> cierre de Fase 3 con demo en vivo + QA batch 3 con Joel + fix del gap visual WP.</li>
+  <li><strong>Lunes 26/5:</strong> primer batch productivo live bajo el pipeline v1.1.3 acordado.</li>
+  <li><strong>Miércoles 28/5:</strong> tracking de presupuesto de generación de imágenes online; primer reporte semanal de costos.</li>
+  <li><strong>Domingo 1/6:</strong> launch público.</li>
+</ul>
+
+<h2>KPIs que estamos monitoreando</h2>
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="kpi-label">Editorial sign-off rate</div>
+    <div class="kpi-value">2 / 11 hoy → ≥7 / 9 target</div>
+    <div class="kpi-detail">% de artículos con sign-off de Joel a la primera. Target post-v1.1.3: ≥78%.</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Throughput objetivo</div>
+    <div class="kpi-value">50 artículos / día</div>
+    <div class="kpi-detail">Publication-ready, end-to-end automatizado.</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Calidad (self-critique)</div>
+    <div class="kpi-value">91 / 100</div>
+    <div class="kpi-detail">Mediana de score automático del batch generado hoy.</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Costo por artículo</div>
+    <div class="kpi-value">$0.10 – $0.30</div>
+    <div class="kpi-detail">Incluye generación de imagen (gpt-image-2 vía LiteLLM iGaming).</div>
+  </div>
+</div>
+
+<footer>
+  Este one-pager se actualiza al EOD de cada jornada útil por Pablo Waimann. Diseñado para snapshot de 30 segundos. Para drill-down técnico ver el <a href="https://jpwaimann.github.io/relevo-content/">roadmap público</a>, el <a href="backlog.html">backlog</a> y el <a href="test-journal.html">test journal</a>.
+</footer>
+
+</div>
+</body>
+</html>
