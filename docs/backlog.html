@@ -120,14 +120,23 @@
 <p>The first round of reviewer feedback drove style guide v1.1 (see the <a href="editorial-guide.html">editorial guide</a> and <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/002-style-guide-v1-1.md">ADR-002</a>). After <code>EDIT-04</code> regenerates the 11 articles under the new prompts, a second QA cycle with the reviewer validates that v1.1 actually addresses the 12 systematic defects without regressing what already worked. Output: either a v1.2 patch or sign-off to scale production.</p>
 <p><strong>Pre-reqs:</strong> EDIT-04.</p>
 
-<h3><span class="item-code">EDIT-08</span> Topic QA #2 — validate inventory after EDIT-07</h3>
+<h3><span class="item-code">EDIT-11</span> Regenerate batch 3 (9 articles) under style guide v1.1.3</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Editorial / Pipeline
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo (orchestration) + skill subagents (generation)
+</p>
+<p>Joel's batch QA #2 (subtask EDIT-08 of Asana parent <code>1214981761607196</code>, ronda 2 del 21/5) marcó 9 de los 11 artículos del <code>runs/regen-batch-v2-1779298867/</code> como ⚠️ con 7 patrones transversales. <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/006-style-guide-v1-1-2-round-2-feedback.md">ADR-006</a> incorporó los 7 patrones en style guide v1.1.2. Pablo revisó el smoke v1.1.2 en la beta de WP el 21/5 PM y detectó un fallo residual de cobertura de negritas (24% vs target esperado) → <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/008-style-guide-v1-1-3-smoke-feedback-bolds-coverage.md">ADR-008</a> + style guide v1.1.3. Cada artículo del batch 3 se genera bajo v1.1.3 + templates v2, se sube a WP como draft con hero image attacheada (post_excerpt vacío, entradilla como primer <code>&lt;p&gt;</code> per ADR-008 §2.4), y dispara 1 subtask de Asana a Joel para QA #3 (vía <code>EDIT-12</code>). Smoke v1.1.3 validado en post <code>21187</code> el 21/5 (score 91, bolds coverage 98.3%, word count 2503 prose). Artículos en cola: arts 1, 2 (ya regenerado como smoke v1.1.3 — reusable), 3, 4, 6, 7, 8, 9, 10, 11 del batch 2.</p>
+<p><strong>Pre-reqs:</strong> ADR-008 + style guide v1.1.3 publicados (✅), smoke v1.1.3 aprobado por Pablo (en curso 21/5 PM), WP MCP + hero image gen + <code>wp_upload.py</code> (✅), Asana MCP wired (parcial — usa CLI por ahora).</p>
+
+<h3><span class="item-code">EDIT-12</span> Batch QA #3 with Joel — validate style guide v1.1.3 end-to-end</h3>
 <p class="item-meta">
   <span class="label">Category:</span>Editorial
   <span class="sep">·</span>
   <span class="label">Owner:</span>Joel (review) + Pablo (coordination)
 </p>
-<p>Once EDIT-07 has applied all the tactical fixes (reformulations, factual corrections, dedup, expansion), Joel does a second pass to confirm the inventory is clean before any further <code>/relevo new</code> runs at scale. Same pattern as EDIT-06 but for the ideation side instead of the writing side.</p>
-<p><strong>Pre-reqs:</strong> EDIT-07.</p>
+<p>Después de EDIT-11 (regen batch 3 bajo v1.1.3), Joel revisa los 9 artículos publicados como draft en la beta de WP. Mismo patrón que EDIT-06/EDIT-08: 1 Asana subtask por artículo a Joel, cada una con link al draft preview + métrica de cobertura de bolds + diff vs batch 2. Métrica objetivo: pasar de 2/11 sign-off (batch 2) a ≥ 7/9 sign-off (batch 3), con los 7 patrones cross-batch reducidos a defectos puntuales — no transversales. Output esperado: sign-off para escalar producción O v1.2 bump si surge un nuevo patrón sistémico.</p>
+<p><strong>Pre-reqs:</strong> EDIT-11.</p>
 
 <h3><span class="item-code">EDIT-09</span> Automated dedup pass against relevo.com</h3>
 <p class="item-meta">
@@ -154,6 +163,23 @@
 <p>ADR-004 adds the slugs <code>mas-motor</code> and <code>mas-deporte</code> to the sport list. relevo-com.sub.plus already has "Más motor" and "Más deporte" as live sections per Pablo on 2026-05-20. Before the first publish in either hub, confirm via <code>posts_meta_set</code> / theme query that the slug used by the skill renders under the right category and that breadcrumbs/canonical URLs match the existing website structure.</p>
 
 <h2>Quality and robustness gates <span class="prio-pill p1">P1</span></h2>
+
+<h3><span class="item-code">EDIT-13</span> Document the WP upload pattern definitively in <code>lib/cmd_new.md</code></h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Pipeline / Doc
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo
+</p>
+<p>ADR-008 §2.4 documenta el patrón <code>post_excerpt</code> vacío + entradilla como primer <code>&lt;p&gt;</code> de <code>post_content</code> para evitar la duplicación que el theme renderiza si ambos campos comparten contenido. Hoy es convención implícita en ADR-008; mañana debe ser instrucción explícita en el stage de upload del pipeline (paso 7 de <code>cmd_new.md</code>). Cuando se reintroduzca <code>post_excerpt</code> para SEO de listing pages, agregar lógica condicional: si <code>meta_description ≠ entradilla</code> → setear <code>post_excerpt = meta_description</code>, else dejar vacío.</p>
+
+<h3><span class="item-code">EDIT-14</span> Implement ADR-007 hero image gate-by-text policy</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Pipeline / Editorial
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo
+</p>
+<p><a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/007-hero-image-policy-gate-by-text.md">ADR-007</a> (aprobado 21/5) define el flujo de aprobación humana en Asana para hero images: paso 1 propone prompt textual + review Asana, paso 2 valida imagen generada + review Asana, antes de attach al post. Hoy el pipeline genera + sube hero sin gate (Pablo aprobó la del smoke v1.1.2 en directo, sin issues). El gate se vuelve crítico cuando el batch sea recurrente sin Pablo en el loop. Implementación: extender <code>cmd_new.md</code> paso 6 (image) con 2 sub-pasos gateados por Asana antes de invocar <code>wp_upload.py --set-as-thumbnail-for</code>.</p>
+<p><strong>Pre-reqs:</strong> Asana MCP setup completo (no solo CLI), o helper Python que cree subtask + polling de estado.</p>
 
 <h3><span class="item-code">INTEG-02</span> Round-robin reviewer pool and SLA</h3>
 <p class="item-meta">
@@ -242,6 +268,14 @@
 
 <h2>Tech debt and cleanup <span class="prio-pill p3">P3</span></h2>
 
+<h3><span class="item-code">EDIT-15</span> CSS gap audit if <code>post_excerpt</code> is reintroduced</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Theme / CSS
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Pablo
+</p>
+<p>ADR-008 §2.4 dejó <code>post_excerpt</code> vacío como default del pipeline. Si en alguna iteración futura se reintroduce (para SEO de listing pages, o porque un caso de uso lo requiera), hay un white-space gap visible entre el bloque excerpt y el banner autor/fecha/share que detectó Pablo en el smoke v1.1.2. La causa raíz del gap está en el theme (margen del excerpt-block y/o del banner) — el <code>content-block.css</code> que se actualizó el 21/5 vía v1.1.2 CSS fix no lo cubre porque opera fuera del scope de <code>.content-block</code>. Acción: medir con devtools la pareja de elementos involucrados, agregar override en theme global CSS si el gap es estructural, o documentar en <code>cmd_new.md</code> que <code>post_excerpt</code> queda vacío by design.</p>
+
 <h3><span class="item-code">INFRA-05</span> Cleanup old Cloudflare tunnel and nginx on the AWS VM</h3>
 <p class="item-meta"><span class="label">Category:</span>Infrastructure</p>
 <p>The May 15 preview tunnel was deprecated when GitHub Pages took over. The tunnel still runs on the VM (<code>/tmp/relevo-nginx.conf</code>) until we confirm nothing depends on it.</p>
@@ -263,6 +297,7 @@
 <p>For completeness — these were open at some point during May and have since closed.</p>
 
 <ul class="resolved-list">
+  <li><strong>EDIT-08 — Topic + Batch QA #2 with Joel</strong> (May 21) — cerró absorbida en <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/006-style-guide-v1-1-2-round-2-feedback.md">ADR-006</a> (style guide v1.1.2) + <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/008-style-guide-v1-1-3-smoke-feedback-bolds-coverage.md">ADR-008</a> (style guide v1.1.3). Ronda 1 del feedback (mañana 21/5): 7 patrones cross-batch identificados sobre los 11 artículos de <code>runs/regen-batch-v2-1779298867/</code>, todos incorporados como patches al style guide v1.1.2 + 5 patrones obligatorios de fact-check en patch 7 (atribución de gesto, datos geográficos, datos numéricos vivos, posiciones/roles tácticos, atribuciones técnicas discutibles). Ronda 2 del feedback (tarde 21/5): micro-feedback de Pablo sobre el smoke v1.1.2 publicado como draft en post <code>21187</code> — duplicación de entradilla (causa: <code>post_excerpt</code> + primer <code>&lt;p&gt;</code> mismo texto) y cobertura de bolds (24% vs target esperado), corregidos en style guide v1.1.3 + cambio de upload pattern (excerpt vacío). El smoke v1.1.3 en post 21187 cubre el cierre técnico de los 7 patrones de ronda 1 + el patrón de cobertura de ronda 2. La validación end-to-end con Joel (review editorial sobre los 9 artículos del batch 3 regenerado) pasa a <code>EDIT-12</code> para no confundir las rondas.</li>
   <li><strong>EDIT-04 — Regenerate the 11 articles batch under v1.1 + templates v2</strong> (May 20) — eleven parallel sub-agents regenerated each article from the May 15 QA batch applying the per-article factual fixes Joel flagged (Alcaraz palmarés through May 2026, ruptura Ferrero Dec 2025, Topuria lightweight after Oliveira KO June 2025 + Casa Blanca fight + Halle correction, Wenger law CPL pilot 2026, F1 budget cap Red Bull 2022 breach, Pirelli 2026 C1-C5, 10-point must / 4 onzas → 110g, FIBA vs NBA explicit differences, eurostep ≠ doble paso, penalti out of "tipos de tiro" list, etc.). Total 24,142 words / 11 articles / zero paragraphs over 60 words / zero raw <code>&lt;b&gt;</code> or <code>&lt;i&gt;</code> tags / all entradillas in the 30-35 word range. Artifacts in <code>runs/regen-batch-v2-1779298867/</code>. Each article has a sibling <code>critique_v1_1.json</code>. Awaits Joel QA #2 (<code>EDIT-06</code>) for editorial validation. Companion style guide bump to v1.1.1 clarifies that bold-as-label in lists/schemas/tables is exempt from the 5-7-consecutive-words rule (which targets in-prose decoration).</li>
   <li><strong>EDIT-05 — Templates v2 rework (Rules/Tactics/Origins)</strong> (May 20) — defect #11 of Joel's batch QA #1 feedback closed by reworking the three category templates to diverge editorially on four axes (voice, central question, structure, mandatory third layer). Rules v2 separates pillar from sub-rule and adds scene anchor + "Polémicas y debates"; Tactics v2 introduces a fixed per-item schema (what / when / who / what changed) + obligatory "Cómo ha evolucionado"; Origins v2 replaces the rigid chronological skeleton with flexible narrative blocks anchored in scenes, mandatory verified direct quotes, and curiosity-driven FAQs (banning the v1.0 obvious questions about age and nationality). Full rationale in <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/005-templates-v2-rework.md">ADR-005</a>. Validated by a smoke test on <code>tie-break-quinto-set</code> under v1.1 + v2 that passed the automated style-guide self-check in one shot.</li>
   <li><strong>Smoke test v1.1 — tie-break quinto set</strong> (May 20) — first article generated under style guide v1.1 + rules_template v2 (sub-rule of rule-evolution kind). 1424 words, 35-word intro between H1 and first H2, six bold spans all in the 5-7 consecutive words range, zero paragraphs above 60 words, six FAQs of real curiosity (no "what is" / "how old"). Demonstrates that the v1.1 + v2 combination produces structurally different output from the v1.0 batch on the same kind of topic. Artifacts in <code>runs/smoke-v1-1-tiebreak-1779298120/</code>. Awaits Joel QA #2 for editorial validation.</li>
