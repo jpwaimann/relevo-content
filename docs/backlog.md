@@ -55,12 +55,6 @@ This document is a living artefact. Pruned periodically — items that no longer
 - **Why:** The new official repository at [`git.igaming.com/relevo/content`](https://git.igaming.com/relevo/content) replaces the public GitHub mirror as the canonical home for everything Relevo content. All editorial assets currently in SharePoint need to migrate (inventory Excel, rulebook PDFs, ancillary folders under `seoberlin/ES MARKET/Relevo.com/Content/`). Pending decisions: (a) inventory Excel — convert to versioned CSV/JSON or keep SharePoint as source with mirror; (b) reglamento PDFs — git LFS vs external hosting; (c) full audit of the `seoberlin` workspace for assets not yet inventoried.
 - **Status:** Audit + scope decisions targeted for Friday 22/5. Execution starts Monday 26/5.
 
-### `WP-VISUAL-GAP` WordPress visual header gap on the beta theme
-- **Category:** Pipeline / Theme
-- **Owner:** JPW
-- **Why:** The `.layout-article-header` of `single.php` shows a visible white space between the hero image lower third and the byline banner across all article drafts on the beta. Content is correct, layout is not. Three CSS iterations on 21/5 did not resolve. Three diagnosis paths queued for Friday morning: (a) dev-tools inspection of the exact gap source, (b) hero aspect ratio change (3:2 → 16:9 / 21:9), (c) refactor of `single.php` to a single-column header if CSS alone cannot fix it.
-- **Asana ref:** `1215031100850822` (subtask of Phase 3).
-
 ---
 
 ## P1 — Quality and robustness gates
@@ -121,6 +115,17 @@ This document is a living artefact. Pruned periodically — items that no longer
 - **Category:** Pipeline / Doc
 - **Owner:** JPW
 - **Why:** ADR-008 §2.4 documents the canonical pattern (`post_excerpt = entradilla`, `post_content` starts at first `<h2>`) to avoid the theme rendering duplication. Today it is an implicit convention from the ADR; it should become an explicit instruction in the pipeline doc. Post-launch hygiene.
+
+### `HEADER-REDESIGN` Header redesign with fixed-height + 16:9 hero — Phase 4
+- **Category:** Pipeline / Theme / Image generation
+- **Owner:** JPW
+- **Why:** The `.layout-article-header` of `single.php` shows a visible white gap in 2-column desktop layout because the hero image (generated 3:2, 1024×683) is naturally taller than the text block. Five CSS attempts during Friday 22/5 diagnosis confirmed no CSS-only fix preserves all three of: 2-col layout, full uncropped image, current 3:2 aspect. Root cause and Phase 4 plan documented in [ADR-009](adr/009-wp-visual-header-gap-deferred.md). On 22/5 EOD the CSS was reverted to the original state (gap visible, known/stable) and the fix deferred to Phase 4 to avoid contaminating Joel's batch 3 QA over the weekend.
+- **Phase 4 plan (3 coordinated steps, ~45 min total execution):**
+  1. CSS: `.layout-article-header` gets `min-height: 350px` (breakpoint-tuned) + text column gets `display: flex; flex-direction: column; justify-content: center;`. ~10 min.
+  2. Image generation: change `scripts/imagen/` / `lib/image.md` from 3:2 (1024×683) to 16:9 (1792×1024). Smoke test with 1 article. ~15 min.
+  3. Regenerate batch 3 hero images (10) and swap featured images on posts 21195–21219 via WP MCP. ~20 min.
+- **Smoke test required before bulk regen.** A single article must run end-to-end with the new image size before touching the 10 production drafts.
+- **Asana ref:** new subtask under Phase 4 to be created (replaces the Phase 3 subtask `1215031100850822` which closed with the deferral decision).
 
 ### `EDIT-14` Implement ADR-007 hero image gate-by-text policy
 - **Category:** Pipeline / Editorial
