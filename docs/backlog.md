@@ -1,10 +1,10 @@
 # Relevo Content Workflow — Backlog
 
-Consolidated open items pulled from session memories, README follow-ups, and integration tests through 2026-05-20. Each item has a **priority** (P0 / P1 / P2 / P3), a **category**, an **owner**, and a brief **why**. The HTML version of this file lives at [`backlog.html`](backlog.html) and is rendered on the public site.
+Consolidated open items pulled from session memories, README follow-ups, and integration tests through 2026-05-22 EOD. Each item has a **priority** (P0 / P1 / P2 / P3), a **category**, an **owner**, and a brief **why**. The HTML version of this file lives at [`backlog.html`](backlog.html) and is rendered on the public site.
 
-This document is a living artefact. As items close they move to the bottom under **Recently resolved**. As new items emerge (during reviewer feedback, infra changes, or v2 design) they get added in their natural priority bucket.
+This document is a living artefact. Pruned periodically — items that no longer block the next milestone get downgraded or moved to **Recently resolved**. JPW periodically does a sweep against the 80/20 principle: the top of P0 must be the items that actually move the needle for the next milestone, not a long tail of nice-to-haves.
 
-> See also: [README roadmap](../README.md#roadmap), [project overview](project-overview.html), [test journal](test-journal.html).
+> See also: [README roadmap](../README.md#roadmap), [project overview](project-overview.html), [test journal](test-journal.html), [one-pager](one-pager.html).
 
 ---
 
@@ -34,56 +34,32 @@ This document is a living artefact. As items close they move to the bottom under
 
 ### `EDIT-01` Review flow for the 148 seeded topics
 - **Category:** Editorial
-- **Owner:** Pablo + Joel (Joel reviews; Pablo runs the flip)
-- **Why:** Nothing downstream runs until topics graduate from `pending_review` to `pending`. The Inventory has had 148 rows in `pending_review` since the May 18 bulk seed. `/relevo new` has no material to pick from until at least the first batch is approved.
+- **Owner:** JPW + Joel (Joel reviews; JPW runs the flip)
+- **Why:** Nothing downstream runs until topics graduate from `pending_review` to `pending`. The Inventory has had 175 rows (148 original + 27 added via EDIT-07) in `pending_review` since the May 18 bulk seed. `/relevo new` has no material to pick from until at least the first batch is approved.
 - **Tools already in place:** `scripts/relevo_approve.py approve --sport <X> --category <Y>` (or `--ids 11,12,13`).
-- **Decision pending:** how Joel performs the review at scale. Three options framed on 2026-05-18 EOD: (a) one giant Asana task with all 147 rows; (b) sport-by-sport with a 30-topic first batch; (c) approval in lots via `relevo_approve.py` after a visual review in the Excel.
-
-
-### `INTEG-01` First real publish E2E
-- **Category:** Integrations / Pipeline
-- **Owner:** Pablo
-- **Why:** The May 19 test reused the May 14 smoke article and pushed it as a draft (post 16091) — that validated the plumbing. The first **production** publish needs an approved topic from EDIT-01, the correct `post_author`, the SEO meta wired in, and the Asana subtask flowing to the actual reviewer.
-- **Pre-reqs:** EDIT-01, SEO-01, INFRA-01.
+- **Decision pending:** how Joel performs the review at scale. Three options framed on 2026-05-18 EOD: (a) one giant Asana task with all 175 rows; (b) sport-by-sport with a 30-topic first batch; (c) approval in lots via `relevo_approve.py` after a visual review in the Excel.
 
 ### `EDIT-03` Workflow live review milestone — May 22
 - **Category:** Editorial / Pipeline
-- **Owner:** Pablo
-- **Why:** The Friday May 22 review is the hard close of Phase 4. Demonstrate `/relevo content-plan` and `/relevo new` end-to-end with a real topic, real WP draft, real Asana subtask. The earlier `EDIT-01`/`INTEG-01`/`EDIT-04` items have to feed into this.
-
-### `EDIT-06` Batch QA #2 — validate style guide v1.1 with the reviewer
-- **Category:** Editorial
-- **Owner:** Joel (review) + Pablo (coordination)
-- **Why:** The first round of reviewer feedback drove style guide v1.1 (see [editorial guide](editorial-guide.html) and [ADR-002](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/002-style-guide-v1-1.md)). After `EDIT-04` regenerates the 11 articles under the new prompts, a second QA cycle with the reviewer validates that v1.1 actually addresses the 12 systematic defects without regressing what already worked. Output: either a v1.2 patch or sign-off to scale production.
-- **Pre-reqs:** EDIT-04.
-
-### `EDIT-11` Regenerate batch 3 (9 articles) under style guide v1.1.3
-- **Category:** Editorial / Pipeline
-- **Owner:** Pablo (orchestration) + skill subagents (generation)
-- **Why:** Joel's batch QA #2 (subtask EDIT-08 of Asana parent `1214981761607196`, ronda 2 del 21/5) marcó 9 de los 11 artículos del `runs/regen-batch-v2-1779298867/` como ⚠️ con 7 patrones transversales. ADR-006 incorporó los 7 patrones en style guide v1.1.2. Pablo revisó el smoke v1.1.2 en la beta de WP el 21/5 PM y detectó un fallo residual de cobertura de negritas (24% vs target esperado) → ADR-008 + style guide v1.1.3. Cada artículo del batch 3 se genera bajo **v1.1.3** + templates v2, se sube a WP como draft con hero image attacheada (post_excerpt vacío, entradilla como primer `<p>` per ADR-008 §2.4), y dispara 1 subtask de Asana a Joel para QA #3 (vía `EDIT-12`). Smoke v1.1.3 validado en post `21187` el 21/5 (score 91, bolds coverage 98.3%, word count 2503 prose). Artículos en cola: arts 1, 2 (ya regenerado como smoke v1.1.3 — reusable), 3, 4, 6, 7, 8, 9, 10, 11 del batch 2.
-- **Pre-reqs:** ADR-008 + style guide v1.1.3 publicados (✅), smoke v1.1.3 aprobado por Pablo (en curso 21/5 PM), WP MCP + hero image gen + wp_upload.py (✅), Asana MCP wired (parcial — usa CLI por ahora).
-- **Asana parent:** `1214981761607196` (EDIT-08 cerrada). Cada subtask del batch 3 cuelga del parent task de Phase 4 (verificar parent correcto en upload).
+- **Owner:** JPW
+- **Why:** The Friday May 22 review is the hard close of Phase 3. Demonstrate `/relevo content-plan` and `/relevo new` end-to-end with a real topic, real WP draft, real Asana subtask. Depends on the WP visual gap being fixed.
 
 ### `EDIT-12` Batch QA #3 with Joel — validate style guide v1.1.3 end-to-end
 - **Category:** Editorial
-- **Owner:** Joel (review) + Pablo (coordination)
-- **Why:** Después de EDIT-11 (regen batch 3 bajo v1.1.3), Joel revisa los 9 artículos publicados como draft en la beta de WP. Mismo patrón que EDIT-06/EDIT-08: 1 Asana subtask por artículo a Joel, cada una con link al draft preview + métrica de cobertura de bolds + diff vs batch 2. Métrica objetivo: pasar de 2/11 sign-off (batch 2) a ≥ 7/9 sign-off (batch 3), con los 7 patrones cross-batch reducidos a defectos puntuales — no transversales. Output esperado: sign-off para escalar producción O v1.2 bump si surge un nuevo patrón sistémico.
-- **Pre-reqs:** EDIT-11.
+- **Owner:** Joel (review) + JPW (coordination)
+- **Why:** 9 articles regenerated under v1.1.3 published as WP drafts overnight (posts 21195/21198/21201/21204/21207/21210/21213/21216/21219). Asana task `1215038718722890` consolidates the review. Metric target: pass from 2/11 sign-off (batch 2) to ≥ 7/9 sign-off, with the 7 cross-batch patterns reduced to per-article defects only. Expected output: sign-off to scale production OR a v1.2 cycle if a new systemic pattern emerges.
 
-### `EDIT-09` Automated dedup pass against relevo.com
-- **Category:** Pipeline / Editorial
-- **Owner:** Pablo
-- **Why:** The dedup principle is now policy (L2 in `topic_ideation_lineamientos.md`) but automated execution is blocked: relevo.com disallows Anthropic's crawler so the in-tool WebSearch can't query it directly, and DuckDuckGo's HTML search rate-limits past ~1 scripted query before returning captcha. The 3 rugby duplicates Joel explicitly cited (ids 53, 55, 56) were handled inline as part of EDIT-07. A full pass over the remaining ~170 rows needs either (a) a Google Custom Search API key (paid), (b) a paid scraping setup that handles DDG's anti-bot, or (c) an internal relevo.com search endpoint if one exists. Joel's `EDIT-08` QA #2 catches any clear duplicates manually in the meantime.
+### `SHAREPOINT-01` SharePoint → GitLab content migration
+- **Category:** Integrations / Infrastructure
+- **Owner:** JPW
+- **Why:** The new official repository at [`git.igaming.com/relevo/content`](https://git.igaming.com/relevo/content) replaces the public GitHub mirror as the canonical home for everything Relevo content. All editorial assets currently in SharePoint need to migrate (inventory Excel, rulebook PDFs, ancillary folders under `seoberlin/ES MARKET/Relevo.com/Content/`). Pending decisions: (a) inventory Excel — convert to versioned CSV/JSON or keep SharePoint as source with mirror; (b) reglamento PDFs — git LFS vs external hosting; (c) full audit of the `seoberlin` workspace for assets not yet inventoried.
+- **Status:** Audit + scope decisions targeted for Friday 22/5. Execution starts Monday 26/5.
 
-### `INTEG-05` Dynamic regulation fetch for umbrella hubs (Más motor / Más deporte)
-- **Category:** Pipeline
-- **Owner:** Pablo
-- **Why:** ADR-004 introduces two umbrella hubs (Más motor with sub_hubs indycar/nascar/formula-e/endurance, Más deporte initially empty). These hubs do not have a single canonical rulebook PDF in SharePoint — each sub-discipline has its own (IndyCar Rule Book, NASCAR Rule Book, FIA WEC, FIA Formula E…). Today `cmd_content_plan.md` Paso 3a downloads a local PDF per sport. When the first Rules or Tactics topic lands in an umbrella hub, the command needs an alternative path: fetch the appropriate regulation dynamically via WebSearch (or by curating per-sub_hub rulebook URLs in `sports_config.json`). Not blocking — current bios for these hubs are Origins only, which uses WebSearch already (Paso 3c).
-
-### `INTEG-06` Confirm WP category mapping for new umbrella hubs
-- **Category:** Integrations
-- **Owner:** Pablo
-- **Why:** ADR-004 adds the slugs `mas-motor` and `mas-deporte` to the sport list. relevo-com.sub.plus already has "Más motor" and "Más deporte" as live sections per Pablo on 2026-05-20. Before the first publish in either hub, confirm via `posts_meta_set` / theme query that the slug used by the skill renders under the right category and that breadcrumbs/canonical URLs match the existing website structure.
+### `WP-VISUAL-GAP` WordPress visual header gap on the beta theme
+- **Category:** Pipeline / Theme
+- **Owner:** JPW
+- **Why:** The `.layout-article-header` of `single.php` shows a visible white space between the hero image lower third and the byline banner across all article drafts on the beta. Content is correct, layout is not. Three CSS iterations on 21/5 did not resolve. Three diagnosis paths queued for Friday morning: (a) dev-tools inspection of the exact gap source, (b) hero aspect ratio change (3:2 → 16:9 / 21:9), (c) refactor of `single.php` to a single-column header if CSS alone cannot fix it.
+- **Asana ref:** `1215031100850822` (subtask of Phase 3).
 
 ---
 
@@ -91,12 +67,12 @@ This document is a living artefact. As items close they move to the bottom under
 
 ### `INTEG-02` Round-robin reviewer pool and SLA
 - **Category:** Editorial
-- **Owner:** Pablo + Joel
+- **Owner:** JPW + Joel
 - **Why:** Asana subtasks currently all go to Joel because he is the only reviewer in the pool. Once a second reviewer joins, the `asana_notify.py` helper has a round-robin slot but the SLA criteria (return vs approve, response time) are not defined.
 
 ### `PIPE-01` Origins category — fresh topic generation
 - **Category:** Pipeline
-- **Owner:** Pablo (decision)
+- **Owner:** JPW (decision)
 - **Why:** Rules and Tactics topics derive cleanly from the rulebook PDF. **Origins** (athlete biographies) needs current relevance — who is trending, who is breaking out, who recently transferred. The model does not know this without help.
 - **Options:** (a) mandatory WebSearch in the Origins flow; (b) editorial curation (the editor pre-fills the candidate list and the skill only generates hooks); (c) sports data API; (d) hybrid.
 - **Status:** Deferred during the May 18 bulk seed; the 48 Origins topics there were generated blind. Quality of those should be re-checked.
@@ -104,38 +80,53 @@ This document is a living artefact. As items close they move to the bottom under
 ### `INTEG-03` Azure app — application permissions (path B)
 - **Category:** Integrations / Infrastructure
 - **Owner:** Debanjan (BI team)
-- **Why:** Path A (device-code MSAL) works and is what `scripts/sharepoint_msal.py` uses today. Path B (application permissions + admin consent on the Azure AD app `n8n`) would let server-side automation run without Pablo's user session — needed for cron daily reports or any unattended workflow.
+- **Why:** Path A (device-code MSAL) works and is what `scripts/sharepoint_msal.py` uses today. Path B (application permissions + admin consent on the Azure AD app `n8n`) would let server-side automation run without a user session — needed for cron daily reports or any unattended workflow.
 - **Status:** Debanjan said on May 18 the grant was applied, but client_credentials still returns `roles: []` and `/sites` + `/shares/.../driveItem` still 401. Pending: screenshot of the API permissions page to verify whether he added Delegated instead of Application, or did not click "Grant admin consent".
 
 ### `INFRA-02` Rotate the Azure client secret
 - **Category:** Infrastructure
-- **Owner:** Pablo + Debanjan
-- **Why:** The client secret for the Azure AD app `n8n` was pasted into chat on May 15 to verify the credentials. The secret ends in `…CVqxKcYr`. Once path B (`INTEG-03`) lands, rotate the secret in Azure Portal → Certificates & secrets and update Passbolt.
+- **Owner:** JPW + Debanjan
+- **Why:** The client secret for the Azure AD app `n8n` was pasted into chat on May 15 to verify the credentials. Once path B (`INTEG-03`) lands, rotate the secret in Azure Portal → Certificates & secrets and update Passbolt.
 
 ### `INTEG-04` Sites.Selected scope confirmation with CTO
 - **Category:** Infrastructure
-- **Owner:** Pablo + CTO
-- **Why:** The `Sites.Selected` permission for the Azure app was requested against the whole `seoberlin` site, which includes 55 sibling folders for other ES Market projects. Pablo chose this on May 19 to move faster, but the CTO might prefer narrower scope. Plan B is to create a dedicated `/sites/relevo/` site, move the Content folder, and grant against that. Estimated cost of Plan B: ~45 minutes + script URL updates.
+- **Owner:** JPW + CTO
+- **Why:** The `Sites.Selected` permission for the Azure app was requested against the whole `seoberlin` site, which includes 55 sibling folders for other ES Market projects. JPW chose this on May 19 to move faster, but the CTO might prefer narrower scope. Plan B is to create a dedicated `/sites/relevo/` site, move the Content folder, and grant against that. Estimated cost of Plan B: ~45 minutes + script URL updates.
 
 ### `INFRA-04` Theme brand visual style for image generation
 - **Category:** Pipeline / Editorial
-- **Owner:** Pablo (define)
-- **Why:** `lib/image.md` has a conservative placeholder for `vars.style` ("Premium editorial sports photography. Cinematic. ..."). It works but is generic. When Pablo defines the real brand visual (rim light? colour grade? composition rules?), update that field — zero code change required.
+- **Owner:** JPW (define)
+- **Why:** `lib/image.md` has a conservative placeholder for `vars.style` ("Premium editorial sports photography. Cinematic. ..."). It works but is generic. When the real brand visual is defined (rim light? colour grade? composition rules?), update that field — zero code change required.
 
 ---
 
+## P2 — Post-launch (no commit date, scheduled after FIFA WC)
+
+### `EDIT-09` Automated dedup pass against relevo.com
+- **Category:** Pipeline / Editorial
+- **Owner:** JPW
+- **Why:** The dedup principle is now policy (L2 in `topic_ideation_lineamientos.md`) but automated execution is blocked: relevo.com disallows Anthropic's crawler so the in-tool WebSearch can't query it directly, and DuckDuckGo's HTML search rate-limits past ~1 scripted query before returning captcha. The 3 rugby duplicates Joel explicitly cited (ids 53, 55, 56) were handled inline. A full pass over the remaining ~170 rows needs (a) a Google Custom Search API key (paid), (b) a paid scraping setup, or (c) an internal relevo.com search endpoint. Joel's manual QA covers any clear duplicates in the meantime — non-blocking for launch.
+
+### `INTEG-05` Dynamic regulation fetch for umbrella hubs (Más motor / Más deporte)
+- **Category:** Pipeline
+- **Owner:** JPW
+- **Why:** ADR-004 introduces two umbrella hubs (Más motor with sub_hubs indycar/nascar/formula-e/endurance, Más deporte initially empty). These hubs do not have a single canonical rulebook PDF — each sub-discipline has its own. When the first Rules or Tactics topic lands in an umbrella hub, the command needs an alternative path: fetch the appropriate regulation dynamically via WebSearch or curate per-sub_hub rulebook URLs. Not blocking — current bios for these hubs are Origins only, which uses WebSearch already.
+
+### `INTEG-06` Confirm WP category mapping for new umbrella hubs
+- **Category:** Integrations
+- **Owner:** JPW
+- **Why:** ADR-004 adds the slugs `mas-motor` and `mas-deporte` to the sport list. Before the first publish in either hub, confirm via `posts_meta_set` / theme query that the slug renders under the right category and that breadcrumbs / canonical URLs match the existing website structure. Becomes blocking only when the first umbrella article is queued for publish.
+
 ### `EDIT-13` Document the WP upload pattern definitively in `lib/cmd_new.md`
 - **Category:** Pipeline / Doc
-- **Owner:** Pablo
-- **Why:** ADR-008 §2.4 documenta el patrón `post_excerpt` vacío + entradilla como primer `<p>` de `post_content` para evitar la duplicación que el theme renderiza si ambos campos comparten contenido. Hoy es convención implícita en ADR-008; mañana debe ser instrucción explícita en el stage de upload del pipeline (paso 7 de `cmd_new.md`). Cuando se reintroduzca `post_excerpt` para SEO de listing pages, agregar lógica condicional: si `meta_description ≠ entradilla` → setear `post_excerpt = meta_description`, else dejar vacío.
+- **Owner:** JPW
+- **Why:** ADR-008 §2.4 documents the canonical pattern (`post_excerpt = entradilla`, `post_content` starts at first `<h2>`) to avoid the theme rendering duplication. Today it is an implicit convention from the ADR; it should become an explicit instruction in the pipeline doc. Post-launch hygiene.
 
 ### `EDIT-14` Implement ADR-007 hero image gate-by-text policy
 - **Category:** Pipeline / Editorial
-- **Owner:** Pablo
-- **Why:** ADR-007 (aprobado 21/5) define el flujo de aprobación humana en Asana para hero images: paso 1 propone prompt textual + review Asana, paso 2 valida imagen generada + review Asana, antes de attach al post. Hoy el pipeline genera + sube hero sin gate (Pablo aprobó la del smoke v1.1.2 en directo, sin issues). El gate se vuelve crítico cuando el batch sea recurrente sin Pablo en el loop. Implementación: extender `cmd_new.md` paso 6 (image) con 2 sub-pasos gateados por Asana antes de invocar `wp_upload.py --set-as-thumbnail-for`.
-- **Pre-reqs:** Asana MCP setup completo (no solo CLI), o helper Python que cree subtask + polling de estado.
-
-## P2 — Post-launch (no commit date, scheduled after FIFA WC)
+- **Owner:** JPW
+- **Why:** ADR-007 defines a 2-step human approval flow in Asana for hero images. Today the pipeline generates and uploads without the gate (JPW approved each smoke hero in-line). The gate becomes critical when the batch runs unattended at scale, which is post-launch. Implementation: extend `cmd_new.md` Stage 6 with 2 Asana-gated sub-steps before `wp_upload.py --set-as-thumbnail-for`.
+- **Pre-reqs:** Asana MCP fully wired (or a Python helper that creates a subtask + polls for state).
 
 ### `V2-01` Search volume integration (Ahrefs / SEMrush)
 - **Category:** Pipeline
@@ -149,25 +140,19 @@ This document is a living artefact. As items close they move to the bottom under
 
 ### `V2-03` Sports data API feed for Origins ideation
 - **Category:** Pipeline
-- **Why:** Origins topics currently use WebSearch to surface relevant athletes, which risks stale data. A real sports API (SportRadar, API-Football) would give fresh per-sport context — top scorers, transfers, breakout rookies — and eventually auto-suggest candidates.
-- **Blocker:** cost + integration time. WebSearch + editorial curation is enough for the first production batches.
+- **Why:** Origins topics currently use WebSearch to surface relevant athletes, which risks stale data. A real sports API (SportRadar, API-Football) would give fresh per-sport context. Cost + integration time make it post-launch only.
 
 ### `V2-04` Cron daily reports
 - **Category:** Pipeline / Editorial
-- **Why:** Pablo parked this on May 15 ("ya fue, después vemos"). The idea was a daily summary of queue state, generation throughput, scores, and outliers sent to a Slack / email digest.
+- **Why:** Parked on May 15. Idea: daily summary of queue state, generation throughput, scores, and outliers sent to a Slack / email digest.
 
 ### `V2-05` Asana MCP — wire into Claude Code settings.json
 - **Category:** Integrations
-- **Why:** The `asana_notify.py` helper covers the production need today, but a native Asana MCP would let the assistant query and create tasks inline. The setup requires a Claude Code restart (blast radius), so it is deferred until there is a concrete benefit.
+- **Why:** The `asana_notify.py` helper covers the production need today. A native Asana MCP would let the assistant query and create tasks inline, but the setup requires a Claude Code restart (blast radius), so it is deferred.
 
 ---
 
 ## P3 — Tech debt and cleanup
-
-### `EDIT-15` CSS gap audit if `post_excerpt` is reintroduced
-- **Category:** Theme / CSS
-- **Owner:** Pablo
-- **Why:** ADR-008 §2.4 dejó `post_excerpt` vacío como default del pipeline. Si en alguna iteración futura se reintroduce (para SEO de listing pages, o porque un caso de uso lo requiera), hay un white-space gap visible entre el bloque excerpt y el banner autor/fecha/share que detectó Pablo en el smoke v1.1.2. La causa raíz del gap está en el theme (margen del excerpt-block y/o del banner) — el `content-block.css` que se actualizó el 21/5 vía v1.1.2 CSS fix no lo cubre porque opera fuera del scope de `.content-block`. Acción: medir con devtools la pareja de elementos involucrados, agregar override en theme global CSS si el gap es estructural, o documentar en `cmd_new.md` que `post_excerpt` queda vacío by design.
 
 ### `INFRA-05` Cleanup old Cloudflare tunnel and nginx on the AWS VM
 - **Category:** Infrastructure
@@ -185,11 +170,9 @@ This document is a living artefact. As items close they move to the bottom under
 - **Category:** Infrastructure
 - **Why:** A line in `/etc/hosts` maps `relevo-com.sub.plus → 192.168.20.187`. The provider's managed IP is unlikely to change, but if it does (or if the VM is rebuilt), regenerate via `dig relevo-com.sub.plus +short` from a host on the corporate VPN and edit `/etc/hosts`. No action needed unless it breaks.
 
----
-
 ### `SEO-04` (nice-to-have, downgraded from SEO-02) Change `@type: NewsArticle` to `Article` / `HowTo` for Rules/Tactics
 - **Category:** SEO / Schema
-- **Owner:** Pablo + BI team (theme change)
+- **Owner:** JPW + BI team (theme change)
 - **Why:** The theme hard-codes `@type: NewsArticle` for every post. Rules and Tactics articles are evergreen reference content, not news — they would be better classified as `Article` (Rules) or `HowTo` (Tactics). Requires a filter in the theme; not a skill change. Google accepts `NewsArticle` for evergreen content too, so this is purely a precision improvement.
 
 ---
@@ -198,25 +181,26 @@ This document is a living artefact. As items close they move to the bottom under
 
 For completeness — these were open at some point during May and have since closed.
 
-- ✅ **EDIT-08 — Topic + Batch QA #2 with Joel** (May 21) — cerró absorbida en **ADR-006** (style guide v1.1.2) + **ADR-008** (style guide v1.1.3). Ronda 1 del feedback (mañana 21/5): 7 patrones cross-batch identificados sobre los 11 artículos de `runs/regen-batch-v2-1779298867/`, todos incorporados como patches al style guide v1.1.2 + 5 patrones obligatorios de fact-check en patch 7 (atribución de gesto, datos geográficos, datos numéricos vivos, posiciones/roles tácticos, atribuciones técnicas discutibles). Ronda 2 del feedback (tarde 21/5): micro-feedback de Pablo sobre el smoke v1.1.2 publicado como draft en post `21187` — duplicación de entradilla (causa: `post_excerpt` + primer `<p>` mismo texto) y cobertura de bolds (24% vs target esperado), corregidos en style guide v1.1.3 + cambio de upload pattern (excerpt vacío). El smoke v1.1.3 en post 21187 cubre el cierre técnico de los 7 patrones de ronda 1 + el patrón de cobertura de ronda 2. La validación end-to-end con Joel (review editorial sobre los 9 artículos del batch 3 regenerado) pasa a `EDIT-12` para no confundir las rondas.
-- ✅ **EDIT-07 — Apply Joel's topic ideation feedback to the inventory** (May 20) — tactical pass through the 148-row Excel completed. F1 (3 elementary topics reformulated to angle-driven versions): row 4 penalti → "Evolución de la norma del penalti para los porteros", row 5 duración → "Cuánto duran los partidos de fútbol de media desde el VAR", row 11 tie-break → "Por qué Wimbledon introdujo el tie-break en el quinto set". F2 (4 factual fixes in bios): row 32 Topuria → "De Halle a Madrid" (Halep correction), row 69 Lin → renamed to "Lin (Adolfo Fernández Olivera)" with sport flipped from Fútbol to Fútbol Sala and topic + meta rewritten to ala segoviano (the original "portero chino-español campeón del mundo" person did not exist), row 121 Marc Márquez → meta + notes corrected to "125cc primero, después Moto2", row 91 Hugo González → renamed to "Hugo González de Oliveira" to disambiguate from the basketball Hugo González (row 21). F4 (4 angle topics seeded): rows 148–151 — tercer hombre fútbol (tactics), España/Argentina pádel (tactics), revés a una mano (tactics), VAR saques de esquina WC 2026 (rules). F5 (22 new bios seeded): rows 152–173 across Tenis (Jódar/Badosa/Bouzas/Quevedo), Pádel (Lebrón/Navarro/Triay/Bea González), Atletismo (Peleteiro), Baloncesto (Almansa/Garuba/Aldama), MMA (J. Álvarez), Motociclismo (J. Martín/Quiles/Manu González/Rueda/Alonso), Ciclismo (Mas/Beloki), NFL (Brady/Kaepernick). Inventory now 175 rows total; 174 fresh plus the legacy "Test row from MSAL script" placeholder at row 0. F3 dedup is the only piece deferred — the 3 rugby duplicates Joel explicitly cited (rows 53/55/56) were marked inline during this pass; a full automated sweep over the remaining ~170 rows is blocked at the tooling level (see `EDIT-09`) and falls to Joel's manual `EDIT-08` QA #2 in the meantime. Lineamientos durables live in [`topic_ideation_lineamientos.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/topic_ideation_lineamientos.md) and [ADR-003](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/003-topic-ideation-lineamientos.md); the full source breakdown of fixes is in [`joel-topic-feedback-v1.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/joel-topic-feedback-v1.md).
-- ✅ **EDIT-04 — Regenerate the 11 articles batch under v1.1 + templates v2** (May 20) — eleven parallel sub-agents regenerated each article from the May 15 QA batch applying the per-article factual fixes Joel flagged (Alcaraz palmarés through May 2026, ruptura Ferrero Dec 2025, Topuria lightweight after Oliveira KO June 2025 + Casa Blanca fight + Halle correction, Wenger law CPL pilot 2026, F1 budget cap Red Bull 2022 breach, Pirelli 2026 C1-C5, 10-point must / 4 onzas → 110g, FIBA vs NBA explicit differences, eurostep ≠ doble paso, penalti out of "tipos de tiro" list, etc.). Total 24,142 words / 11 articles / zero paragraphs over 60 words / zero raw `<b>` or `<i>` tags / all entradillas in the 30-35 word range. Artifacts in `runs/regen-batch-v2-1779298867/`. Each article has a sibling `critique_v1_1.json` documenting the automated self-check. Awaits Joel QA #2 (`EDIT-06`) for editorial validation. Companion style guide bump to v1.1.1 clarifies that bold-as-label in lists/schemas/tables is exempt from the 5-7-consecutive-words rule (which targets in-prose decoration).
-- ✅ **EDIT-05 — Templates v2 rework (Rules/Tactics/Origins)** (May 20) — defect #11 of Joel's batch QA #1 feedback ("bio, regla y guía táctica se escriben con la misma lógica estructural") closed by reworking the three category templates to diverge editorially on four axes (voice, central question, structure, mandatory third layer). Rules v2 separates pillar from sub-rule, adds scene anchor + "Polémicas y debates"; Tactics v2 introduces a fixed per-item schema (what / when / who / what changed) + obligatory "Cómo ha evolucionado"; Origins v2 replaces the rigid chronological skeleton (Birthplace / Childhood / Career / Palmarés) with flexible narrative blocks anchored in scenes, mandatory verified direct quotes, and curiosity-driven FAQs (banning the v1.0 obvious questions about age and nationality). Full rationale in [ADR-005](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/005-templates-v2-rework.md). Validated by smoke test on `tie-break-quinto-set` under v1.1 + v2 — passed the automated style-guide self-check in one shot (artifact at `runs/smoke-v1-1-tiebreak-1779298120/`).
-- ✅ **Smoke test v1.1 — tie-break quinto set** (May 20) — first article generated under style guide v1.1 + rules_template v2 (sub-rule of rule-evolution kind). 1424 words, 35-word intro between H1 and first H2, six bold spans all in the 5-7 consecutive words range, zero paragraphs above 60 words, six FAQs of real curiosity (no "what is" / "how old"). Demonstrates that the v1.1 + v2 combination produces structurally different output from the v1.0 batch on the same kind of topic. Artifacts in `runs/smoke-v1-1-tiebreak-1779298120/`. Awaits Joel QA #2 (EDIT-06) for editorial validation.
-- ✅ **EDIT-10 — Sport-list coverage for Álex Palou** (May 20) — resolved by expanding the sport list from 24 → 26 with two umbrella hubs (`Más motor` covering IndyCar/NASCAR/Formula E/endurance and `Más deporte` for future minoritarian sports), aligning the skill with the homonymous live sections on relevo.com. Palou re-classified under `Más motor` / sub_hub `indycar` and unblocked (`status=pending_review`). Full rationale + alternatives considered in [ADR-004](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/004-umbrella-hubs-mas-motor-mas-deporte.md). Two follow-up backlog items spawned: `INTEG-05` (dynamic regulation fetch for umbrella hubs, needed only when first Rules/Tactics topic lands there), `INTEG-06` (verify WP category mapping for `mas-motor` / `mas-deporte` slugs before first publish).
-- ✅ **EDIT-02 — Style guide v1.1** (May 20) — reviewer feedback on the May 15 batch (Asana task `1214815492685881`, 12 subtasks, 23 attachments) landed and was incorporated into [`prompts/style_guide.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/style_guide.md) v1.1. The 12 systematic editorial defects identified across the 11 articles drove 11 new rules; the twelfth (template divergence) is deferred to ADR-003 / `EDIT-05`. The biggest single change is the reinterpretation of bold formatting: 5-7 consecutive words forming a complete idea, one per paragraph — not scattered single words. Full details in the public [editorial guide](editorial-guide.html) and [ADR-002](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/002-style-guide-v1-1.md). Source feedback consolidated at [`prompts/joel-feedback-v1.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/joel-feedback-v1.md).
-- ✅ **First fully autonomous E2E production run** (May 19, late PM) — inventory row 5 (Fútbol / rules / penalti) processed end-to-end through every pipeline stage without human intervention. Final quality score 91, WP post 16100 in `pending`, inventory advanced to `status=review`. Validated that all stages wired together work in sequence on a real topic. Two minor invocation-side issues caught and resolved (`update_table_row` argument shape, schema column indexing for hand-written calls). Full details in [test journal](test-journal.html).
-- ✅ **SEO-03 — FAQPage JSON-LD generator** (May 19) — implemented `scripts/seo_jsonld.py` with deterministic FAQ detection and idempotent injection. Integrated into the skill as Stage 7 of the pipeline (`cmd_new.md` step 7.b). Smoke-tested against the penalti article: detected the 6 FAQ questions, emitted a clean `FAQPage` JSON-LD block, and skipped re-injection on a second run.
-- ✅ **INFRA-03 — Pillow format quirk fix** (May 19) — updated `scripts/imagen/strip-ai-metadata.py` to honour the file extension as the format contract (`.jpg` in → JPEG out, `.png` in → PNG out). Added a `normalise` path that fixes extension/content mismatches even when the file has no AI metadata markers. Smoke-tested: a PNG-bytes-inside-.jpg file was correctly rewritten to JPEG bytes.
-- ✅ **INFRA-01 — `post_author` workaround** (May 19) — confirmed that `posts_create` ignores `post_author` silently (writes admin default), but `posts_update` immediately after create accepts and persists the field correctly. Skill step 7.d now does the two-call sequence. Post 16096 verified: create returned `post_author=1`, update with `post_author=77` returned `post_author=77`. Re-verified under real conditions during the autonomous E2E run (post 16100).
-- ✅ **SEO-01 — meta description plumbing** (May 19) — verified against a live published post (5608) that the Relevo theme renders `og:description` directly from `post_excerpt` and does not emit `<meta name="description">` at all. No SEO plugin is in use (Yoast / Rank Math / AIO SEO all absent in `plugins_list`). Conclusion: setting `post_excerpt = meta_description` in `posts_create` is sufficient — no custom meta keys required.
-- ✅ **SEO-02 — schema.org JSON-LD baseline** (May 19) — verified that the Relevo theme automatically emits `BreadcrumbList` + `NewsArticle` JSON-LD on every post (with headline, description from excerpt, datePublished, dateModified, mainEntityOfPage, author, publisher, image, articleSection). Baseline structured data covered out of the box. Two refinements remain as nice-to-have: see `SEO-03` (FAQPage for articles with FAQ section) and `SEO-04` (`@type` precision for Rules/Tactics).
-- ✅ **WP MCP setup** (May 19) — `ig-mcp-proxy` wired to `relevo-com.sub.plus`, identity + connection persisted in `~/.ig-mcp/config.json`.
-- ✅ **Image upload helper** (May 19) — `scripts/wp_upload.py` validates against full-size 1024×1024 originals, no recompression needed. Eliminates the base64-inline ceiling.
-- ✅ **Image generation E2E** (May 18) — `gpt-image-2` via LiteLLM iGaming, C2PA / JUMBF / OpenAI markers stripped, integrated into `scripts/imagen/`.
-- ✅ **148-topic bulk seed** (May 18) — all 24 sports × 6 categories seeded into the Excel inventory, status `pending_review`.
-- ✅ **Helpers consolidated** (May 18) — `sharepoint_msal.py` refactor (`update_table_row`, retry), `relevo_approve.py` LIVE, `get_reglamento.py` LIVE.
-- ✅ **24/24 rulebooks in SharePoint** (May 18) — Cycling UCI, Paralympics IPC, FIM GP added; `_pdf_name` validated against Graph for all 24 sports.
-- ✅ **Schema reconciliation** (May 18) — `cmd_content_plan.md` rewritten against the 22-column live Excel schema (option A executed).
-- ✅ **GitHub Pages live** (May 15) — public roadmap at `jpwaimann.github.io/relevo-content/`.
-- ✅ **Asana reviewer subtasks** (May 15) — `asana_notify.py` functional with round-robin pool.
+- ✅ **EDIT-11 — Regenerate batch 3 (9 articles) under style guide v1.1.3** (May 21–22 overnight) — 9 articles regenerated in parallel under v1.1.3 (arts 1/3/4/6/7/8/9/10/11 from batch 2). Score range 91–95/100, bolds coverage 0.947–1.00 (all clear of ≥0.80 gate), word range 1939–2636 prose. Heroes generated via gpt-image-2 and attached as featured. All 9 published as WP drafts (posts 21195–21219). Fact-check pass caught 3 baseline errata Joel had not flagged manually (Topuria birthplace city, Iniesta historical role under Rijkaard, Ronaldo Nazário 2002 punterazo). Asana review task `1215038718722890` (=`EDIT-12`) handed off to Joel for QA #3.
+- ✅ **INTEG-01 — First real publish E2E** (May 19, late PM) — inventory row 5 (Fútbol / rules / penalti) processed end-to-end through every pipeline stage. Final quality score 91, WP post 16100 in `pending`, inventory advanced to `status=review`. Validated all stages wired together work in sequence on a real topic.
+- ✅ **EDIT-06 / EDIT-08 — Topic + Batch QA #2 with Joel** (May 21) — closed, absorbed into **ADR-006** (style guide v1.1.2) + **ADR-008** (style guide v1.1.3). Two reviewer rounds in one day. 7 cross-batch patterns + bolds coverage rule both incorporated. End-to-end editorial validation now passes to `EDIT-12` (batch 3 review).
+- ✅ **EDIT-07 — Apply Joel's topic ideation feedback to the inventory** (May 20) — Inventory 148 → 175 rows. 3 elementary topics reformulated, 4 factual bio fixes, 4 angle topics + 22 obligatory bios seeded. Full source breakdown in [`joel-topic-feedback-v1.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/joel-topic-feedback-v1.md). Lineamientos durables live in [`topic_ideation_lineamientos.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/topic_ideation_lineamientos.md) and [ADR-003](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/003-topic-ideation-lineamientos.md).
+- ✅ **EDIT-04 — Regenerate the 11 articles batch under v1.1 + templates v2** (May 20) — Eleven parallel sub-agents regenerated each article applying per-article factual fixes. Total 24,142 words / 11 articles / zero paragraphs over 60 words. Artifacts in `runs/regen-batch-v2-1779298867/`. Awaited Joel QA #2.
+- ✅ **EDIT-05 — Templates v2 rework (Rules/Tactics/Origins)** (May 20) — three category templates reworked to diverge editorially on four axes. Full rationale in [ADR-005](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/005-templates-v2-rework.md). Validated via smoke test on `tie-break-quinto-set`.
+- ✅ **EDIT-10 — Sport-list coverage for Álex Palou** (May 20) — Sport list expanded 24 → 26 with two umbrella hubs (`Más motor` and `Más deporte`). Palou re-classified under `Más motor`. Full rationale in [ADR-004](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/004-umbrella-hubs-mas-motor-mas-deporte.md).
+- ✅ **EDIT-02 — Style guide v1.1** (May 20) — Reviewer feedback on the May 15 batch incorporated into [`prompts/style_guide.md`](https://github.com/jpwaimann/relevo-content/blob/main/prompts/style_guide.md) v1.1. Full details in [ADR-002](https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/002-style-guide-v1-1.md).
+- ✅ **First fully autonomous E2E production run** (May 19, late PM) — Validated end-to-end pipeline against a real topic. Quality 91, WP post 16100.
+- ✅ **SEO-03 — FAQPage JSON-LD generator** (May 19) — `scripts/seo_jsonld.py` integrated as Stage 7 of the pipeline (`cmd_new.md` step 7.b).
+- ✅ **INFRA-03 — Pillow format quirk fix** (May 19) — `scripts/imagen/strip-ai-metadata.py` honours extension as format contract.
+- ✅ **INFRA-01 — `post_author` workaround** (May 19) — `posts_create` followed by `posts_update` two-call sequence.
+- ✅ **SEO-01 — meta description plumbing** (May 19) — `post_excerpt = meta_description` is sufficient.
+- ✅ **SEO-02 — schema.org JSON-LD baseline** (May 19) — Theme emits `BreadcrumbList` + `NewsArticle` out of the box.
+- ✅ **WP MCP setup** (May 19) — `ig-mcp-proxy` wired to `relevo-com.sub.plus`.
+- ✅ **Image upload helper** (May 19) — `scripts/wp_upload.py` LIVE.
+- ✅ **Image generation E2E** (May 18) — `gpt-image-2` via LiteLLM iGaming.
+- ✅ **148-topic bulk seed** (May 18) — All 24 sports × 6 categories seeded.
+- ✅ **Helpers consolidated** (May 18) — `sharepoint_msal.py`, `relevo_approve.py`, `get_reglamento.py` LIVE.
+- ✅ **24/24 rulebooks in SharePoint** (May 18).
+- ✅ **Schema reconciliation** (May 18) — `cmd_content_plan.md` aligned with 22-column live schema.
+- ✅ **GitHub Pages live** (May 15).
+- ✅ **Asana reviewer subtasks** (May 15) — `asana_notify.py` functional.
