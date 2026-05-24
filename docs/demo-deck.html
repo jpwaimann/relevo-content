@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relevo · Pipeline E2E + Métricas · Briefing para el equipo editorial</title>
+<style>
+  :root {
+    --color-primary: #7464DE;
+    --color-primary-soft: #cbc1f4;
+    --color-primary-ghost: #e8e3fa;
+    --color-text: #1a1a1a;
+    --color-muted: #595959;
+    --color-light: #999;
+    --color-bg: #ffffff;
+    --color-bg-soft: #fafafa;
+    --color-border: #e8e8e8;
+    --color-accent: #E91E90;
+    --color-accent-soft: #fde0f0;
+    --color-good: #2e8540;
+    --color-warn: #b6822d;
+    --color-warn-soft: #fbf6ed;
+    --color-block: #f3f1ff;
+    --color-tldr: #1a1a1a;
+    --color-done: #c8c2dd;
+    --color-human: #ffd97a;
+    --color-human-soft: #fff5d6;
+    --color-ai: #b9b0f0;
+    --color-ai-soft: #ece8fb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--color-text);
+    background: var(--color-bg);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .wrapper { max-width: 920px; margin: 0 auto; padding: 28px 24px 60px; }
+
+  header {
+    border-bottom: 3px solid var(--color-primary);
+    padding-bottom: 16px;
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .sub { color: var(--color-muted); font-size: 13px; margin: 0; }
+  .meta-line {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--color-muted);
+  }
+  .meta-line strong { color: var(--color-text); }
+  .meta-line a { color: var(--color-primary); text-decoration: none; }
+  .meta-line a:hover { text-decoration: underline; }
+
+  h2 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-primary);
+    margin: 36px 0 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  h2 .section-num {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 18px 0 8px;
+  }
+  p { margin: 0 0 12px; font-size: 14px; }
+  ul, ol { margin: 0 0 12px 20px; padding: 0; font-size: 14px; }
+  li { margin-bottom: 6px; padding-left: 4px; line-height: 1.5; }
+  li strong { color: var(--color-text); }
+
+  .lead {
+    background: var(--color-tldr);
+    color: #fff;
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+  }
+  .lead-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #c8c2ff;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .lead p { margin: 0; font-size: 15px; line-height: 1.55; color: #fff; }
+  .lead strong { color: #fff; }
+
+  /* ============ SECTION 1: WORKFLOW ============ */
+  .workflow {
+    margin-bottom: 24px;
+  }
+  .legend {
+    display: flex;
+    gap: 18px;
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+  .legend-swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+  }
+  .legend-swatch.human { background: var(--color-human); border: 1px solid #d4b35c; }
+  .legend-swatch.ai { background: var(--color-ai); border: 1px solid #8d83cf; }
+  .legend-swatch.pending {
+    background: repeating-linear-gradient(
+      45deg,
+      var(--color-human),
+      var(--color-human) 4px,
+      #e8c365 4px,
+      #e8c365 8px
+    );
+    border: 1px solid #d4b35c;
+  }
+
+  .pipeline {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 22px 20px;
+    position: relative;
+  }
+  .pipeline-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .stage {
+    border-radius: 8px;
+    padding: 12px 14px;
+    position: relative;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-soft);
+  }
+  .stage.human {
+    background: var(--color-human-soft);
+    border-color: #e8c876;
+    border-left: 4px solid var(--color-human);
+  }
+  .stage.ai {
+    background: var(--color-ai-soft);
+    border-color: #b9b0f0;
+    border-left: 4px solid var(--color-ai);
+  }
+  .stage.pending {
+    background: repeating-linear-gradient(
+      135deg,
+      var(--color-human-soft),
+      var(--color-human-soft) 8px,
+      #fbe9b0 8px,
+      #fbe9b0 16px
+    );
+    border-color: #e8c876;
+    border-left: 4px solid var(--color-human);
+    opacity: 0.92;
+  }
+  .stage-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .stage-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--color-text);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stage-time {
+    font-size: 11px;
+    color: var(--color-muted);
+    font-weight: 600;
+  }
+  .stage-body {
+    font-size: 12.5px;
+    color: var(--color-muted);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .stage-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .stage-tag.human {
+    background: var(--color-human);
+    color: #5a3e00;
+  }
+  .stage-tag.ai {
+    background: var(--color-ai);
+    color: #2d2470;
+  }
+  .stage-tag.pending {
+    background: #e8c876;
+    color: #5a3e00;
+    font-style: italic;
+  }
+  .stage-arrow {
+    text-align: center;
+    color: var(--color-light);
+    font-size: 14px;
+    line-height: 1;
+    margin: -2px 0;
+    user-select: none;
+  }
+
+  .pipeline-recap {
+    background: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .pipeline-recap-block .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .pipeline-recap-block .value {
+    font-size: 14px;
+    color: var(--color-text);
+    line-height: 1.4;
+  }
+  .pipeline-recap-block .value strong { color: var(--color-primary); }
+
+  /* ============ SECTION 2: DASHBOARD ============ */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .kpi {
+    background: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .kpi-label {
+    font-size: 10px;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .kpi-detail {
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .kpi.accent { background: var(--color-block); border-color: var(--color-primary-soft); }
+  .kpi.accent .kpi-value { color: var(--color-primary); }
+
+  .dashboard-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .card-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .bar-stack {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .bar-stack li {
+    display: grid;
+    grid-template-columns: 78px 1fr 52px;
+    gap: 8px;
+    align-items: center;
+    padding: 0;
+    margin: 0 0 6px 0;
+    font-size: 12px;
+  }
+  .bar-stack .b-label { color: var(--color-muted); font-weight: 600; }
+  .bar-stack .b-track {
+    height: 14px;
+    background: var(--color-bg-soft);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-stack .b-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
+  .bar-stack .b-fill.alt { background: var(--color-primary-soft); }
+  .bar-stack .b-fill.accent { background: var(--color-accent); }
+  .bar-stack .b-value {
+    text-align: right;
+    font-size: 11px;
+    color: var(--color-text);
+    font-weight: 700;
+  }
+  .footnote-card {
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-top: 10px;
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .sport-chip {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 9px;
+    border-radius: 5px;
+    font-size: 11px;
+    background: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+  }
+  .sport-chip.covered {
+    background: var(--color-primary-ghost);
+    border-color: var(--color-primary-soft);
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+  .sport-chip .count {
+    color: var(--color-muted);
+    font-weight: 700;
+  }
+  .sport-chip.covered .count { color: var(--color-primary); }
+
+  .projection {
+    background: var(--color-block);
+    border: 1px solid var(--color-primary-soft);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 16px;
+  }
+  .projection-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .projection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .projection-grid .item .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+    font-weight: 700;
+  }
+  .projection-grid .item .value {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-top: 2px;
+  }
+  .projection-grid .item .note {
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-top: 2px;
+  }
+
+  /* ============ SECTION 3: GANTT + STATUS ============ */
+  .timeline {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    background: #fff;
+  }
+  .timeline-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 14px;
+    background: var(--color-bg-soft);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    font-weight: 700;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .timeline-caption .gantt-legend {
+    display: flex;
+    gap: 12px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 10px;
+  }
+  .gantt-legend .swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .swatch.done { background: var(--color-done); }
+  .swatch.active { background: var(--color-primary); }
+  .swatch.upcoming { background: var(--color-primary-soft); }
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    border-top: 1px solid var(--color-border);
+  }
+  .timeline-row:first-child { border-top: 0; }
+  .timeline-label {
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--color-border);
+  }
+  .timeline-track {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 8px 0;
+    position: relative;
+    min-height: 36px;
+  }
+  .timeline-track::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: calc(100% / 7 * 2);
+    width: calc(100% / 7);
+    background: var(--color-primary-ghost);
+    z-index: 0;
+  }
+  .timeline-track::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: calc(100% / 7 * 3);
+    width: 2px;
+    background: var(--color-accent);
+    z-index: 2;
+  }
+  .timeline-row.axis .timeline-track {
+    padding: 8px 0 4px;
+    min-height: 0;
+  }
+  .timeline-row.axis .timeline-label {
+    background: var(--color-bg-soft);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    font-weight: 700;
+  }
+  .week-header {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-muted);
+    padding: 4px 2px;
+    position: relative;
+    z-index: 1;
+  }
+  .week-header span {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--color-light);
+    margin-top: 1px;
+  }
+  .week-header.today { color: var(--color-accent); }
+  .week-header.today span { color: var(--color-accent); font-weight: 600; }
+  .week-header .milestone {
+    display: block;
+    margin-top: 2px;
+    font-size: 10px;
+    color: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .bar {
+    height: 20px;
+    border-radius: 999px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 4px;
+    position: relative;
+    z-index: 1;
+  }
+  .bar.done { background: var(--color-done); color: #555; }
+  .bar.active { background: var(--color-primary); color: #fff; }
+  .bar.upcoming { background: var(--color-primary-soft); color: #3a3273; }
+  .timeline-footer {
+    padding: 8px 14px;
+    background: var(--color-bg-soft);
+    border-top: 1px solid var(--color-border);
+    font-size: 11px;
+    color: var(--color-muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .timeline-footer strong { color: var(--color-text); }
+  .timeline-footer .milestone-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--color-block);
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 10px;
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .status-card {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    background: #fff;
+  }
+  .status-card.done {
+    border-left: 4px solid var(--color-good);
+    background: #f3faf4;
+  }
+  .status-card.next {
+    border-left: 4px solid var(--color-accent);
+    background: var(--color-accent-soft);
+  }
+  .status-card .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .status-card.done .label { color: var(--color-good); }
+  .status-card.next .label { color: var(--color-accent); }
+  .status-card ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+  }
+  .status-card li { margin-bottom: 4px; }
+
+  .commentary {
+    font-size: 13px;
+    color: var(--color-muted);
+    font-style: italic;
+    margin-top: 8px;
+    padding-left: 12px;
+    border-left: 2px solid var(--color-border);
+  }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-light);
+    font-size: 11px;
+  }
+  footer a { color: var(--color-primary); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 760px) {
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .dashboard-row { grid-template-columns: 1fr; }
+    .pipeline-recap { grid-template-columns: 1fr; }
+    .projection-grid { grid-template-columns: 1fr; }
+    .coverage-grid { grid-template-columns: 1fr 1fr; }
+    .status-grid { grid-template-columns: 1fr; }
+    .timeline-row { grid-template-columns: 110px 1fr; }
+    .timeline-label { font-size: 11px; padding: 8px 8px; }
+    .bar { font-size: 9px; padding: 0 4px; margin: 0 2px; }
+    h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+  <h1>Relevo · Pipeline E2E + Métricas</h1>
+  <p class="sub">Briefing para el equipo editorial · soporte visual de la demo del lunes 26/5</p>
+  <div class="meta-line">
+    <strong>Audiencia:</strong> equipo Relevo (writers · editorial leader · SEO · off-page) ·
+    <strong>Reviewer:</strong> Joel Sierra ·
+    <strong>Última actualización:</strong> 24 mayo 2026 ·
+    <a href="one-pager.html">One-pager ejecutivo</a> ·
+    <a href="backlog.html">Backlog</a>
+  </div>
+</header>
+
+<div class="lead">
+  <div class="lead-label">El mensaje en 5 segundos</div>
+  <p>De <strong>~5 artículos/semana por writer</strong> a una línea de producción que puede entregar <strong>50/día</strong> con calidad editorial validada (<strong>91-95/100</strong>). El pipeline <strong>no reemplaza al equipo</strong> — multiplica la cobertura. La curaduría editorial, la elección de qué temas cubrir y el filtro final de calidad <strong>siguen siendo humanos</strong>.</p>
+</div>
+
+<!-- ============ SECTION 1: WORKFLOW TIMELINE ============ -->
+<h2><span class="section-num">1</span>Del topic a la publicación · el proceso end-to-end</h2>
+
+<p>Cada artículo recorre <strong>9 etapas</strong>: <strong>4 son humanas</strong> (curaduría editorial · solicitud · revisión de foto · revisión final + publish) y <strong>5 son automáticas</strong> del pipeline. Tiempo total típico: <strong>~10 minutos de cómputo</strong> + <strong>~30 minutos de QA editorial</strong>.</p>
+
+<div class="legend">
+  <span class="legend-item"><span class="legend-swatch human"></span>Humano (gate del pipeline)</span>
+  <span class="legend-item"><span class="legend-swatch ai"></span>Automático (pipeline)</span>
+  <span class="legend-item"><span class="legend-swatch pending"></span>Phase 4 — pendiente de implementación</span>
+</div>
+
+<div class="pipeline workflow">
+  <div class="pipeline-row">
+
+    <div class="stage human">
+      <div class="stage-head">
+        <span class="stage-title"><span class="stage-tag human">HITL · 1</span>Curaduría del inventario editorial</span>
+        <span class="stage-time">async · permanente</span>
+      </div>
+      <div class="stage-body"><strong>Joel</strong> valida y prioriza los topics del Excel inventory (hoy: 175 títulos en cola). Define qué se publica, con qué ángulo y en qué orden. Sin esta capa humana, el pipeline no sabe qué cubrir.</div>
+    </div>
+
+    <div class="stage-arrow">▼</div>
+
+    <div class="stage human">
+      <div class="stage-head">
+        <span class="stage-title"><span class="stage-tag human">HITL · 2</span>Solicitud del artículo</span>
+        <span class="stage-time">~30 seg</span>
+      </div>
+      <div class="stage-body">El <strong>editor</strong> escribe <code>/relevo new</code> en su sesión y elige: deporte · categoría (Rules · Tactics · Origins) · topic específico. Opcionalmente agrega notas (ángulo, ejemplo, énfasis).</div>
+    </div>
+
+    <div class="stage-arrow">▼</div>
+
+    <div class="stage ai">
+      <div class="stage-head">
+        <span class="stage-title"><span class="stage-tag ai">AUTO</span>Investigación + redacción multi-pass</span>
+        <span class="stage-time">~5–7 min</span>
+      </div>
+      <div class="stage-body">El pipeline lee el reglamento oficial del deporte (PDF), investiga con búsqueda web, redacta bajo la guía de estilo v1.1.3, se autoevalúa contra un checklist editorial de 15 puntos, corrige si el score es bajo, y hace fact-check final contra extractos del reglamento.</div>
+    </div>
+
+    <div class="stage-arrow">▼</div>
+
+    <div class="stage ai">
+      <div class="stage-head">
+        <span class="stage-title"><span class="stage-tag ai">AUTO</span>Generación de imagen hero</span>
+        <span class="stage-time">~25 seg</span>
+      </div>
+      <div class="stage-body">Imagen original generada por IA (gpt-image-2) acorde al título y deporte. Stripping automático de metadatos C2PA antes de subir.</div>
+    </div>
+
+    <div class="stage-arrow">▼</div>
+
+    <div class="stage pending">
+      <div class="stage-head">
+        <span class="stage-title"><span class="stage-tag pending">HITL · 3 — Phase 4</span>Revisión de la foto antes de subir</span>
+        <span class="stage-time">~1 min</span>
+      </div>
+      <div class="stage-body">Gate editorial 2 pasos vía Asana: el pipeline pausa, te muestra la imagen, vos aprobás o pedís regenerar. <strong>Pendiente de implementación</strong> (ADR-007 aprobado, ejecución en Phase 4).</div>
+    </div>
+
+    <div class="stage-arrow">▼</div>
+
+    <div class="stage ai">
+      <div class="stage-head">
+        <span class="stage-title"><span class="stage-tag ai">AUTO</span>Subida a WordPress como draft</span>
+        <span class="stage-time">~10 seg</span>
+      </div>
+      <div class="stage-body">Crea el post en WP (estado: <code>pending</code>, nunca <code>publish</code>) con featured image, schema JSON-LD (NewsArticle + BreadcrumbList + FAQPage automático si hay sección FAQ), y categoría del deporte.</div>
+    </div>
+
+    <div class="stage-arrow">▼</div>
+
+    <div class="stage ai">
+      <div class="stage-head">
+        <span class="stage-title"><span class="stage-tag ai">AUTO</span>Notificación al reviewer en Asana</span>
+        <span class="stage-time">~5 seg</span>
+      </div>
+      <div class="stage-body">Subtask Asana automática asignada a Joel con el <em>quality journey</em> del artículo (research → draft → critique 76 → revise → 91), link al WP draft, score final y word count. Inventory Excel se actualiza a <code>review</code>.</div>
+    </div>
+
+    <div class="stage-arrow">▼</div>
+
+    <div class="stage human">
+      <div class="stage-head">
+        <span class="stage-title"><span class="stage-tag human">HITL · 4</span>Revisión editorial</span>
+        <span class="stage-time">~30 min · target</span>
+      </div>
+      <div class="stage-body"><strong>Joel</strong> abre el draft en WP, lee, decide: <em>aprobar</em> · <em>pedir cambios</em> · <em>regenerar</em>. Si pide cambios, escribe el feedback en la subtask Asana — vuelve al pipeline con notas. Este es el filtro de calidad editorial.</div>
+    </div>
+
+    <div class="stage-arrow">▼</div>
+
+    <div class="stage human">
+      <div class="stage-head">
+        <span class="stage-title"><span class="stage-tag human">HITL · 5</span>Publish</span>
+        <span class="stage-time">1 clic</span>
+      </div>
+      <div class="stage-body">Joel cambia el estado del post de <code>pending</code> a <code>publish</code> en WP. El artículo sale en vivo en Relevo.com.</div>
+    </div>
+
+  </div>
+
+  <div class="pipeline-recap">
+    <div class="pipeline-recap-block">
+      <div class="label">Humano vs automático</div>
+      <div class="value"><strong>5 etapas humanas</strong> (las decisiones editoriales) · <strong>4 etapas automáticas</strong> (el trabajo mecánico de redactar/subir).</div>
+    </div>
+    <div class="pipeline-recap-block">
+      <div class="label">Tiempo del editor en el loop</div>
+      <div class="value">Solicitud: <strong>~30 seg</strong> · Revisión foto: <strong>~1 min</strong> · QA editorial + publish: <strong>~30 min</strong>.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 2: DASHBOARD ============ -->
+<h2><span class="section-num">2</span>Dashboard · lo que estamos midiendo</h2>
+
+<p>Números reales de las últimas dos semanas. Batch v2 (regen 20/5) y Batch 3 v1.1.3 (publicado 21/5).</p>
+
+<div class="kpi-grid">
+  <div class="kpi accent">
+    <div class="kpi-label">Artículos producidos</div>
+    <div class="kpi-value">21</div>
+    <div class="kpi-detail">11 batch v2 · 9 batch 3 · 1 smoke v1.1.3</div>
+  </div>
+  <div class="kpi accent">
+    <div class="kpi-label">Calidad promedio</div>
+    <div class="kpi-value">92 / 100</div>
+    <div class="kpi-detail">Rango batch 3: 91–95</div>
+  </div>
+  <div class="kpi accent">
+    <div class="kpi-label">Tiempo por artículo</div>
+    <div class="kpi-value">~10 min</div>
+    <div class="kpi-detail">Cómputo end-to-end (sin QA humana)</div>
+  </div>
+  <div class="kpi accent">
+    <div class="kpi-label">Costo por artículo*</div>
+    <div class="kpi-value">$0.10 – $0.30*</div>
+    <div class="kpi-detail">LLM + imagen incluidos</div>
+  </div>
+</div>
+
+<div class="dashboard-row">
+  <div class="card">
+    <div class="card-title">Tiempo promedio por etapa · segundos</div>
+    <ul class="bar-stack">
+      <li><span class="b-label">Investigación</span><span class="b-track"><span class="b-fill" style="width: 22%"></span></span><span class="b-value">32 s</span></li>
+      <li><span class="b-label">Redacción</span><span class="b-track"><span class="b-fill" style="width: 86%"></span></span><span class="b-value">124 s</span></li>
+      <li><span class="b-label">Auto-crítica</span><span class="b-track"><span class="b-fill alt" style="width: 19%"></span></span><span class="b-value">28 s</span></li>
+      <li><span class="b-label">Revisión</span><span class="b-track"><span class="b-fill alt" style="width: 26%"></span></span><span class="b-value">38 s</span></li>
+      <li><span class="b-label">Fact-check</span><span class="b-track"><span class="b-fill" style="width: 39%"></span></span><span class="b-value">56 s</span></li>
+      <li><span class="b-label">Imagen</span><span class="b-track"><span class="b-fill accent" style="width: 19%"></span></span><span class="b-value">27 s</span></li>
+      <li><span class="b-label">Subida WP</span><span class="b-track"><span class="b-fill alt" style="width: 7%"></span></span><span class="b-value">10 s</span></li>
+    </ul>
+    <p class="footnote-card">La etapa más larga es la redacción — el pipeline escribe ~2 000 palabras de HTML semántico. La revisión solo se dispara si la auto-crítica devuelve score &lt; 80 (~38 % de las corridas).</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Calidad · distribución de scores</div>
+    <ul class="bar-stack">
+      <li><span class="b-label">90 – 100</span><span class="b-track"><span class="b-fill" style="width: 95%"></span></span><span class="b-value">20 (95 %)</span></li>
+      <li><span class="b-label">80 – 89</span><span class="b-track"><span class="b-fill alt" style="width: 5%"></span></span><span class="b-value">1 (5 %)</span></li>
+      <li><span class="b-label">70 – 79</span><span class="b-track"><span class="b-fill alt" style="width: 0%"></span></span><span class="b-value">0</span></li>
+      <li><span class="b-label">&lt; 70</span><span class="b-track"><span class="b-fill alt" style="width: 0%"></span></span><span class="b-value">0</span></li>
+    </ul>
+    <p class="footnote-card">El score lo calcula el pipeline contra el self-check de 15 puntos del style guide v1.1.3. Cero artículos por debajo del piso editorial. Bolds coverage del último batch: <strong>0.95–1.00</strong>.</p>
+  </div>
+</div>
+
+<div class="dashboard-row">
+  <div class="card">
+    <div class="card-title">Cobertura por deporte · batch 3</div>
+    <div class="coverage-grid">
+      <div class="sport-chip covered"><span>Fútbol</span><span class="count">3</span></div>
+      <div class="sport-chip covered"><span>Baloncesto</span><span class="count">2</span></div>
+      <div class="sport-chip covered"><span>F1</span><span class="count">2</span></div>
+      <div class="sport-chip covered"><span>Tenis</span><span class="count">1</span></div>
+      <div class="sport-chip covered"><span>MMA</span><span class="count">1</span></div>
+      <div class="sport-chip"><span>Boxeo</span><span class="count">0</span></div>
+      <div class="sport-chip"><span>Pádel</span><span class="count">0</span></div>
+      <div class="sport-chip"><span>Ciclismo</span><span class="count">0</span></div>
+      <div class="sport-chip"><span>Otros 16</span><span class="count">0</span></div>
+    </div>
+    <p class="footnote-card">5 / 24 deportes cubiertos en esta primera tanda. <strong>175 topics</strong> esperando en el inventory para los 24 deportes restantes. Olímpicos y rugby siguen sin cubrir.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Cobertura por categoría</div>
+    <ul class="bar-stack">
+      <li><span class="b-label">Rules</span><span class="b-track"><span class="b-fill" style="width: 78%"></span></span><span class="b-value">11</span></li>
+      <li><span class="b-label">Tactics</span><span class="b-track"><span class="b-fill alt" style="width: 50%"></span></span><span class="b-value">7</span></li>
+      <li><span class="b-label">Origins</span><span class="b-track"><span class="b-fill accent" style="width: 22%"></span></span><span class="b-value">3</span></li>
+    </ul>
+    <p class="footnote-card">El skew hacia Rules es esperado — son los artículos más demandados antes de un mundial. Origins (bios) se ramp-up post-launch.</p>
+  </div>
+</div>
+
+<div class="dashboard-row">
+  <div class="card">
+    <div class="card-title">Salud del pipeline · últimas 21 corridas</div>
+    <ul class="bar-stack">
+      <li><span class="b-label">Éxito 1<sup>er</sup> intento</span><span class="b-track"><span class="b-fill" style="width: 62%"></span></span><span class="b-value">13 / 21</span></li>
+      <li><span class="b-label">Necesitó revise</span><span class="b-track"><span class="b-fill alt" style="width: 38%"></span></span><span class="b-value">8 / 21</span></li>
+      <li><span class="b-label">Dead-letter</span><span class="b-track"><span class="b-fill alt" style="width: 0%"></span></span><span class="b-value">0</span></li>
+      <li><span class="b-label">Stage retries</span><span class="b-track"><span class="b-fill alt" style="width: 14%"></span></span><span class="b-value">3 / 21</span></li>
+    </ul>
+    <p class="footnote-card">Cero artículos perdidos en el pipeline. La auto-crítica + revise capturan el 100 % de los casos sub-80 sin intervención manual.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Costo · estimado por artículo</div>
+    <ul class="bar-stack">
+      <li><span class="b-label">LLM (texto)</span><span class="b-track"><span class="b-fill" style="width: 70%"></span></span><span class="b-value">$0.06 – $0.22*</span></li>
+      <li><span class="b-label">Imagen</span><span class="b-track"><span class="b-fill accent" style="width: 25%"></span></span><span class="b-value">$0.04*</span></li>
+      <li><span class="b-label">Infra (WP / Asana)</span><span class="b-track"><span class="b-fill alt" style="width: 2%"></span></span><span class="b-value">~$0.00</span></li>
+    </ul>
+    <p class="footnote-card">Proyección a 50 art/día durante FIFA WC: <strong>$150–$450/mes*</strong>. Plan financiero formal en preparación.</p>
+  </div>
+</div>
+
+<div class="projection">
+  <div class="projection-title">🎯 Proyección · target FIFA WC 2026 (desde 11/6)</div>
+  <div class="projection-grid">
+    <div class="item">
+      <div class="label">Velocidad actual</div>
+      <div class="value">~1.5 art / día</div>
+      <div class="note">Limitado por capacidad de QA editorial, no por pipeline.</div>
+    </div>
+    <div class="item">
+      <div class="label">Target FIFA WC</div>
+      <div class="value">50 art / día</div>
+      <div class="note">Scale-up de 33×. Pipeline ya soportado técnicamente.</div>
+    </div>
+    <div class="item">
+      <div class="label">Gap a cerrar</div>
+      <div class="value">Pool reviewers</div>
+      <div class="note">Phase 4 abre el round-robin del review para escalar QA.</div>
+    </div>
+  </div>
+</div>
+
+<p class="commentary" style="margin-top: 14px;">El cuello de botella ya no es técnico — el pipeline produce. El cuello de botella es <strong>capacidad de QA editorial</strong>. Por eso Phase 4 abre el pool de reviewers y automatiza HITL #3 (gate de foto), liberando bandwidth de Joel para concentrarse en la calidad de texto.</p>
+
+<!-- ============ SECTION 3: GANTT + STATUS + NEXT STEPS ============ -->
+<h2><span class="section-num">3</span>Dónde estamos · qué sigue</h2>
+
+<section class="timeline" aria-label="Roadmap semanal del proyecto">
+  <div class="timeline-caption">
+    <span>Roadmap · sprints semanales</span>
+    <span class="gantt-legend">
+      <span><span class="swatch done"></span>Done</span>
+      <span><span class="swatch active"></span>Active</span>
+      <span><span class="swatch upcoming"></span>Upcoming</span>
+    </span>
+  </div>
+  <div class="timeline-row axis">
+    <div class="timeline-label">Sprint</div>
+    <div class="timeline-track">
+      <div class="week-header">S1<span>4 may</span></div>
+      <div class="week-header">S2<span>11 may</span></div>
+      <div class="week-header today">S3<span>18 may</span><span class="milestone">▼ HOY</span></div>
+      <div class="week-header">S4<span>25 may</span><span class="milestone">🎬 DEMO 26/5</span></div>
+      <div class="week-header">S5<span>1 jun</span><span class="milestone">🚀 LAUNCH</span></div>
+      <div class="week-header">S6<span>8 jun</span><span class="milestone">⚽ FIFA WC</span></div>
+      <div class="week-header">S7<span>15 jun</span></div>
+    </div>
+  </div>
+  <div class="timeline-row">
+    <div class="timeline-label">Phase 1 · Setup</div>
+    <div class="timeline-track">
+      <div class="bar done" style="grid-column: 1 / span 1;">Initiation</div>
+    </div>
+  </div>
+  <div class="timeline-row">
+    <div class="timeline-label">Phase 2 · n8n MVP</div>
+    <div class="timeline-track">
+      <div class="bar done" style="grid-column: 1 / span 2;">First smoke + handoff</div>
+    </div>
+  </div>
+  <div class="timeline-row">
+    <div class="timeline-label">Phase 3 · CC migration</div>
+    <div class="timeline-track">
+      <div class="bar active" style="grid-column: 2 / span 2;">Pipeline + style guide · cierre demo lunes</div>
+    </div>
+  </div>
+  <div class="timeline-row">
+    <div class="timeline-label">Phase 4 · Producción</div>
+    <div class="timeline-track">
+      <div class="bar upcoming" style="grid-column: 4 / span 2;">Primer batch productivo → launch</div>
+    </div>
+  </div>
+  <div class="timeline-row">
+    <div class="timeline-label">Phase 5 · FIFA WC</div>
+    <div class="timeline-track">
+      <div class="bar upcoming" style="grid-column: 5 / span 3;">Steady-state + tráfico FIFA</div>
+    </div>
+  </div>
+  <div class="timeline-row">
+    <div class="timeline-label">SharePoint → GitLab</div>
+    <div class="timeline-track">
+      <div class="bar upcoming" style="grid-column: 4 / span 2;">Migración contenidos</div>
+    </div>
+  </div>
+  <div class="timeline-footer">
+    <span><strong>Hoy:</strong> domingo 24/5 — fin de S3 · demo lunes 26/5</span>
+    <span>
+      <span class="milestone-pill">🚀 Public launch · 1 jun</span>
+      &nbsp;<span class="milestone-pill">⚽ FIFA WC · 11 jun</span>
+    </span>
+  </div>
+</section>
+
+<div class="status-grid">
+  <div class="status-card done">
+    <div class="label">Lo que ya está listo</div>
+    <ul>
+      <li><strong>Inventory bulk-seeded:</strong> 175 topics curados · 24 deportes × 3 categorías</li>
+      <li><strong>Pipeline E2E validado</strong> en producción real (~10 min, score 91/100)</li>
+      <li><strong>Style guide v1.1.3</strong> + templates v2 (Rules · Tactics · Origins)</li>
+      <li><strong>Integración WordPress</strong> via MCP (subida draft + image + schema)</li>
+      <li><strong>Notificación Asana</strong> automática al reviewer</li>
+      <li><strong>21 artículos producidos</strong>, 2 aprobados por Joel, 19 en review</li>
+    </ul>
+  </div>
+  <div class="status-card next">
+    <div class="label">Próximos hitos</div>
+    <ul>
+      <li><strong>Lun 26/5</strong> — Demo en vivo con el equipo · arranca Phase 4</li>
+      <li><strong>Mar 27/5</strong> — Fix visual del header WP (header redesign · ADR-009)</li>
+      <li><strong>Mié 28/5</strong> — Primer batch productivo bajo v1.1.3</li>
+      <li><strong>Vie 30/5</strong> — Tracking de costo + dashboard live</li>
+      <li><strong>Dom 1/6</strong> — 🚀 Public launch</li>
+      <li><strong>Mié 11/6</strong> — ⚽ FIFA WC kickoff · target 50 art/día</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Lo que vamos a mostrar el lunes (orden de la demo)</h3>
+<ol>
+  <li><strong>0–3 min · Premisa.</strong> De 5 art/semana a 50/día sin perder calidad editorial.</li>
+  <li><strong>3–8 min · Inventory.</strong> Tour del Excel con 175 topics. Cómo Joel cura títulos.</li>
+  <li><strong>8–22 min · 3 artículos en vivo</strong> con <code>/relevo new demo</code>:
+    <ul>
+      <li>1 Rules — <em>Posiciones en el fútbol</em></li>
+      <li>1 Tactics — <em>Estrategia de boxes en F1</em></li>
+      <li>1 Origins — <em>Orígenes de Carlos Alcaraz</em></li>
+    </ul>
+    Cada uno corre el pipeline simulado (~30 seg) y termina en el draft real en WordPress con foto.
+  </li>
+  <li><strong>22–27 min · Dashboard.</strong> Este mismo documento — tiempos, scores, costos, salud del pipeline, proyección FIFA WC.</li>
+  <li><strong>27–30 min · Q&amp;A.</strong> Cómo cambia el día a día del equipo a partir del lunes.</li>
+</ol>
+
+<p class="commentary"><strong>Mensaje clave:</strong> el pipeline es una herramienta del equipo, no un reemplazo. Joel sigue siendo el filtro de calidad. Los writers pasan de redactar desde cero a curar y guiar. SEO sigue definiendo lineamientos. El volumen escala — la responsabilidad editorial no.</p>
+
+<p class="commentary"><strong>*</strong> Todas las cifras de costo son estimadas a partir de las tarifas actuales de LiteLLM iGaming y de la API de Anthropic. Un plan financiero formal está en preparación.</p>
+
+<footer>
+  Actualizado al cierre de cada día hábil ·
+  <a href="https://jpwaimann.github.io/relevo-content/">roadmap público</a> ·
+  <a href="one-pager.html">one-pager ejecutivo</a> ·
+  <a href="backlog.html">backlog</a> ·
+  <a href="test-journal.html">test journal</a>
+</footer>
+
+</div>
+</body>
+</html>

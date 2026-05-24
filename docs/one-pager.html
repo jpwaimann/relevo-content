@@ -361,9 +361,10 @@
   <div class="meta-line">
     <strong>Project lead:</strong> Juan Pablo Waimann ·
     <strong>Editorial reviewer:</strong> Joel Sierra ·
-    <strong>Last updated:</strong> 22 May 2026 ·
+    <strong>Last updated:</strong> 24 May 2026 ·
     <a href="https://git.igaming.com/relevo/content">Official repo</a> ·
-    <a href="https://jpwaimann.github.io/relevo-content/">Public roadmap</a>
+    <a href="https://jpwaimann.github.io/relevo-content/">Public roadmap</a> ·
+    <a href="demo-deck.html">Demo deck</a>
   </div>
 </header>
 
@@ -382,7 +383,7 @@
       <div class="week-header">W1<span>May 4</span></div>
       <div class="week-header">W2<span>May 11</span></div>
       <div class="week-header today">W3<span>May 18</span><span class="milestone">▼ TODAY</span></div>
-      <div class="week-header">W4<span>May 25</span></div>
+      <div class="week-header">W4<span>May 25</span><span class="milestone">🎬 TEAM DEMO 26/5</span></div>
       <div class="week-header">W5<span>Jun 1</span><span class="milestone">🚀 LAUNCH</span></div>
       <div class="week-header">W6<span>Jun 8</span><span class="milestone">⚽ FIFA WC</span></div>
       <div class="week-header">W7<span>Jun 15</span></div>
@@ -403,7 +404,7 @@
   <div class="timeline-row">
     <div class="timeline-label">Phase 3 · CC migration</div>
     <div class="timeline-track">
-      <div class="bar active" style="grid-column: 2 / span 2;">Pipeline + style guide · closes Fri 22/5</div>
+      <div class="bar active" style="grid-column: 2 / span 2;">Pipeline + style guide · closes Mon 26/5</div>
     </div>
   </div>
   <div class="timeline-row">
@@ -425,7 +426,7 @@
     </div>
   </div>
   <div class="timeline-footer">
-    <span><strong>Today:</strong> Fri 22 May 2026 · end of W3 · Phase 3 closing day</span>
+    <span><strong>Today:</strong> Sun 24 May 2026 · end of W3 · weekend prep for Mon 26/5 team demo</span>
     <span>
       <span class="milestone-pill">🚀 Public launch · Jun 1</span>
       &nbsp;<span class="milestone-pill">⚽ FIFA WC · Jun 11</span>
@@ -435,50 +436,52 @@
 
 <div class="tldr">
   <div class="tldr-label">TL;DR · 5-second read</div>
-  <p>Launch tracking <strong>June 1</strong>. Pipeline end-to-end automated and validated at 91/100 quality. Unit economics on track: <strong>$0.10–0.30 per article*, ~50/day</strong>. Two gates remain — one WordPress layout fix and today's editorial verdict on 9 regenerated drafts. Friday's Phase 3 demo is the public commitment.</p>
+  <p>Launch tracking <strong>June 1</strong>. Pipeline E2E automated and validated at <strong>92/100 quality</strong> across <strong>21 articles produced</strong>. Unit economics on track: <strong>$0.10–0.30 per article*, ~50/day</strong>. Phase 3 closes with Monday's <a href="demo-deck.html" style="color:#fff;text-decoration:underline;">team demo</a> — Phase 4 kicks off in parallel. Two soft gates remain: Joel's batch 3 sign-off and the WP header redesign (deferred to Phase 4 via ADR-009).</p>
 </div>
 
 <h2>Open blockers — priority order</h2>
 <ol class="blocker-list">
-  <li><span class="num">1</span><strong>WordPress visual header gap.</strong> Affects every published article on the beta theme. Three diagnosis paths queued; resolution targeted before Friday's demo. Unblocks production scale.</li>
-  <li><span class="num">2</span><strong>Editorial QA verdict on batch 3.</strong> 9 drafts overnight. ≥7/9 sign-off keeps the v1.1.3 pipeline as the production line; below that triggers a v1.2 iteration before launch.</li>
-  <li><span class="num">3</span><strong>SharePoint → GitLab content migration.</strong> All editorial assets (inventory Excel, rulebook PDFs, ancillary folders) move from SharePoint to the new official repository. Audit and scope this Friday; execution next week.</li>
+  <li><span class="num">1</span><strong>Editorial QA verdict on batch 3.</strong> 9 drafts under v1.1.3. Joel reviews Monday morning before the team demo. ≥7/9 sign-off keeps the v1.1.3 pipeline as the production line; below that triggers a v1.2 iteration before launch.</li>
+  <li><span class="num">2</span><strong>WP header redesign — Phase 4 work.</strong> Root cause locked (3:2 hero vs 2.76:1 text-column slot mismatch). Five CSS hypotheses tested, no CSS-only fix possible without trade-offs. Deferred via ADR-009 with concrete 3-step plan (CSS min-height + image gen 16:9 + batch 3 hero regen, ~45 min execution). Drafts remain stable in current state.</li>
+  <li><span class="num">3</span><strong>SharePoint → GitLab content migration.</strong> All editorial assets (inventory Excel, rulebook PDFs, ancillary folders) move from SharePoint to the new official repository. Audit + scope + execution all roll into Week 5 (starts Mon 26/5).</li>
 </ol>
 <p class="commentary">The binding constraint is editorial, not technical. The pipeline is built; the question is whether the content output passes the reviewer bar at scale.</p>
 
-<h2>Key decisions (this week)</h2>
+<h2>Key decisions (last 10 days)</h2>
 <ul>
   <li><strong>Mon 18/5</strong> — Content inventory bulk-seeded: 148 topics across 24 sports × 6 categories. Image generation wired end-to-end.</li>
   <li><strong>Tue 19/5</strong> — First fully autonomous production run validated: quality 91/100, ~14 min wall-clock, $0.10–0.30 cost*. Pipeline is production-grade.</li>
   <li><strong>Wed 20/5</strong> — Style guide v1.1 + Templates v2 shipped. Sport list expanded 24 → 26 to match relevo.com taxonomy (ADR-004).</li>
   <li><strong>Thu 21/5</strong> — Two style-guide bumps in one day (v1.1.2 + v1.1.3). Methodology committed: <em>regenerate-en-bloque</em> over per-article patches. Hero-image gate-by-text policy approved.</li>
-  <li><strong>Fri 22/5</strong> — Phase 3 closing demo + Batch 3 verdict + visual fix. SharePoint → GitLab migration kicks off in parallel.</li>
+  <li><strong>Fri 22/5</strong> — Phase 3 closing day. WP visual gap deferred to Phase 4 via ADR-009 (root cause: aspect-ratio mismatch, no CSS-only fix). Demo planning shipped + <a href="demo-deck.html">demo deck</a> built + <code>/relevo new demo</code> skill command shipped.</li>
 </ul>
 
 <h2>Next 7 days</h2>
 <ul>
-  <li><strong>Fri 22/5</strong> — Phase 3 closing demo; QA verdict; WordPress fix; GitLab MR merge.</li>
-  <li><strong>Mon 26/5</strong> — First production batch live under the v1.1.3 pipeline.</li>
-  <li><strong>Wed 28/5</strong> — Image-generation cost tracking online; first weekly cost report.</li>
-  <li><strong>Sun 1/6</strong> — Public launch.</li>
+  <li><strong>Mon 26/5</strong> — 🎬 Team demo with Relevo editorial · Phase 4 kickoff.</li>
+  <li><strong>Tue 27/5</strong> — Joel batch 3 verdict locked. WP header redesign (Phase 4 step 1: CSS min-height; step 2: image gen 16:9 swap).</li>
+  <li><strong>Wed 28/5</strong> — First production batch under v1.1.3 + cost tracking online (first weekly cost report).</li>
+  <li><strong>Fri 30/5</strong> — Reviewer pool expansion to scale QA bandwidth.</li>
+  <li><strong>Sun 1/6</strong> — 🚀 Public launch.</li>
+  <li><strong>Wed 11/6</strong> — ⚽ FIFA WC kickoff · target 50 articles/day.</li>
 </ul>
 
 <h2>KPIs</h2>
 <div class="kpi-grid">
   <div class="kpi">
-    <div class="kpi-label">Sign-off rate (first pass)</div>
-    <div class="kpi-value">2 / 11 → ≥7 / 9 target</div>
-    <div class="kpi-detail">Reviewer approval after v1.1.3 release.</div>
+    <div class="kpi-label">Articles produced (last 2 weeks)</div>
+    <div class="kpi-value">21</div>
+    <div class="kpi-detail">11 batch v2 · 9 batch 3 · 1 smoke v1.1.3.</div>
   </div>
   <div class="kpi">
     <div class="kpi-label">Throughput target</div>
     <div class="kpi-value">50 articles / day</div>
-    <div class="kpi-detail">Publication-ready, end-to-end.</div>
+    <div class="kpi-detail">Publication-ready, end-to-end (FIFA WC).</div>
   </div>
   <div class="kpi">
     <div class="kpi-label">Quality (self-critique)</div>
-    <div class="kpi-value">91 / 100</div>
-    <div class="kpi-detail">Median across this week's batch.</div>
+    <div class="kpi-value">92 / 100</div>
+    <div class="kpi-detail">95% of batch 3 above 90; range 91–95.</div>
   </div>
   <div class="kpi">
     <div class="kpi-label">Cost per article*</div>
@@ -490,7 +493,7 @@
 <p class="commentary" style="margin-top:16px;"><strong>*</strong> All cost figures are estimates based on current LiteLLM iGaming + Anthropic API pricing. A formal financial plan is in preparation and will replace these ranges with closed numbers.</p>
 
 <footer>
-  Refreshed at the close of each business day. For drill-down: <a href="https://jpwaimann.github.io/relevo-content/">public roadmap</a> · <a href="backlog.html">backlog</a> · <a href="test-journal.html">test journal</a>.
+  Refreshed at the close of each business day. For drill-down: <a href="https://jpwaimann.github.io/relevo-content/">public roadmap</a> · <a href="demo-deck.html">demo deck</a> · <a href="backlog.html">backlog</a> · <a href="test-journal.html">test journal</a>.
 </footer>
 
 </div>
