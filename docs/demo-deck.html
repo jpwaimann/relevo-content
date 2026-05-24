@@ -43,6 +43,19 @@
     padding-bottom: 16px;
     margin-bottom: 22px;
   }
+  .header-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 3px solid var(--color-primary);
+    object-fit: cover;
+  }
   h1 {
     font-size: 24px;
     font-weight: 800;
@@ -669,11 +682,17 @@
 <div class="wrapper">
 
 <header>
-  <h1>Relevo · Pipeline E2E + Métricas</h1>
-  <p class="sub">Briefing para el equipo editorial · soporte visual de la demo del lunes 26/5</p>
+  <div class="header-row">
+    <img class="avatar" src="assets/jpw-avatar.png" alt="Juan Pablo Waimann">
+    <div>
+      <h1>Relevo · Pipeline E2E + Métricas</h1>
+      <p class="sub">Briefing para el equipo editorial · soporte visual de la demo del lunes 25/5</p>
+    </div>
+  </div>
   <div class="meta-line">
+    <strong>Lidera:</strong> Juan Pablo Waimann ·
     <strong>Audiencia:</strong> equipo Relevo (writers · editorial leader · SEO · off-page) ·
-    <strong>Reviewer:</strong> Joel Sierra ·
+    <strong>Reviewer editorial:</strong> Joel Sierra ·
     <strong>Última actualización:</strong> 24 mayo 2026 ·
     <a href="one-pager.html">One-pager ejecutivo</a> ·
     <a href="backlog.html">Backlog</a>
@@ -948,7 +967,7 @@
       <div class="week-header">S1<span>4 may</span></div>
       <div class="week-header">S2<span>11 may</span></div>
       <div class="week-header today">S3<span>18 may</span><span class="milestone">▼ HOY</span></div>
-      <div class="week-header">S4<span>25 may</span><span class="milestone">🎬 DEMO 26/5</span></div>
+      <div class="week-header">S4<span>25 may</span><span class="milestone">🎬 DEMO 25/5</span></div>
       <div class="week-header">S5<span>1 jun</span><span class="milestone">🚀 LAUNCH</span></div>
       <div class="week-header">S6<span>8 jun</span><span class="milestone">⚽ FIFA WC</span></div>
       <div class="week-header">S7<span>15 jun</span></div>
@@ -991,7 +1010,7 @@
     </div>
   </div>
   <div class="timeline-footer">
-    <span><strong>Hoy:</strong> domingo 24/5 — fin de S3 · demo lunes 26/5</span>
+    <span><strong>Hoy:</strong> domingo 24/5 — fin de S3 · demo lunes 25/5</span>
     <span>
       <span class="milestone-pill">🚀 Public launch · 1 jun</span>
       &nbsp;<span class="milestone-pill">⚽ FIFA WC · 11 jun</span>
@@ -1014,12 +1033,12 @@
   <div class="status-card next">
     <div class="label">Próximos hitos</div>
     <ul>
-      <li><strong>Lun 26/5</strong> — Demo en vivo con el equipo · arranca Phase 4</li>
-      <li><strong>Mar 27/5</strong> — Fix visual del header WP (header redesign · ADR-009)</li>
-      <li><strong>Mié 28/5</strong> — Primer batch productivo bajo v1.1.3</li>
-      <li><strong>Vie 30/5</strong> — Tracking de costo + dashboard live</li>
-      <li><strong>Dom 1/6</strong> — 🚀 Public launch</li>
-      <li><strong>Mié 11/6</strong> — ⚽ FIFA WC kickoff · target 50 art/día</li>
+      <li><strong>Lun 25/5</strong> — Demo en vivo con el equipo · arranca Phase 4</li>
+      <li><strong>Mar 26/5</strong> — Fix visual del header WP (header redesign · ADR-009)</li>
+      <li><strong>Mié 27/5</strong> — Primer batch productivo bajo v1.1.3</li>
+      <li><strong>Vie 29/5</strong> — Tracking de costo + dashboard live</li>
+      <li><strong>Lun 1/6</strong> — 🚀 Public launch</li>
+      <li><strong>Jue 11/6</strong> — ⚽ FIFA WC kickoff · target 50 art/día</li>
     </ul>
   </div>
 </div>
