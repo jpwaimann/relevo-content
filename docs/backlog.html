@@ -102,13 +102,22 @@
 </p>
 <p>The Friday May 22 review is the hard close of Phase 3. Demonstrate <code>/relevo content-plan</code> and <code>/relevo new</code> end-to-end with a real topic, real WP draft, real Asana subtask. Depends on the WP visual gap being fixed.</p>
 
-<h3><span class="item-code">EDIT-12</span> Batch QA #3 with Joel — validate style guide v1.1.3 end-to-end</h3>
+<h3><span class="item-code">EDIT-16</span> Regenerate batch 4 — 7 articles from batch 3 under style guide v1.2</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Editorial / Pipeline
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>JPW (orchestration) + skill subagents (generation) + Joel (review under EDIT-17)
+</p>
+<p>Joel batch 3 verdict (25/5 11:15 UTC, Asana <code>1215038718722890</code>): 2/9 ✅ (art-4, art-8) + 7/9 ⚠️ (arts 1, 3, 6, 7, 9, 10, 11). Same cross-batch patterns as batch 2 reappeared — v1.1.3 quantitative metric was met (95%+ bolds coverage) but the qualitative ones (decorative bolds, grandiloquent phrases, factual errors, etc.) were not. <a href="adr/010-style-guide-v1-2-binary-tests.md">ADR-010</a> + style guide v1.2 refactor the 8 rules as binary pass/fail tests. Regen-batch methodology applies: regenerate the 7 ⚠️ under v1.2, NOT per-article fixes.</p>
+<p><strong>Pre-reqs:</strong> Smoke v1.2 (1 article from the 7, suggested: art-6 Alcaraz because it concentrates 4 of the 8 patches — factual errors + grandiloquence + decorative bolds + closing). JPW signs off on smoke before launching the 7. art-4 + art-8 stay as published drafts with manual fine edits — no regen needed.</p>
+
+<h3><span class="item-code">EDIT-17</span> Batch QA #4 with Joel — validate style guide v1.2 end-to-end</h3>
 <p class="item-meta">
   <span class="label">Category:</span>Editorial
   <span class="sep">·</span>
   <span class="label">Owner:</span>Joel (review) + JPW (coordination)
 </p>
-<p>9 articles regenerated under v1.1.3 published as WP drafts overnight (posts 21195/21198/21201/21204/21207/21210/21213/21216/21219). Asana task <code>1215038718722890</code> consolidates the review. Metric target: pass from 2/11 sign-off (batch 2) to ≥ 7/9 sign-off, with the 7 cross-batch patterns reduced to per-article defects only. Expected output: sign-off to scale production OR a v1.2 cycle if a new systemic pattern emerges.</p>
+<p>After EDIT-16, Joel reviews the 7 regenerated drafts in WP beta. Same Asana-subtask-per-article pattern as EDIT-12. Target: <strong>≥ 6/7 sign-off</strong> (vs 2/9 in batch 3). If achieved → v1.2 is the production line that sustains until launch 01/06. If &lt; 6/7 → v1.3 cycle before launch, with risk to the June 1 hard deadline.</p>
 
 <h3><span class="item-code">SHAREPOINT-01</span> SharePoint → GitLab content migration</h3>
 <p class="item-meta">
@@ -284,6 +293,7 @@
 <p>For completeness — these were open at some point during May and have since closed.</p>
 
 <ul class="resolved-list">
+  <li><strong>EDIT-12 — Batch QA #3 with Joel under style guide v1.1.3</strong> (May 25, 11:15 UTC) — Joel delivered the verdict on 9 drafts (Asana <code>1215038718722890</code>): 2/9 ✅ (art-4, art-8) + 7/9 ⚠️ (arts 1, 3, 6, 7, 9, 10, 11). Same cross-batch patterns as batch 2 reappeared despite v1.1.3 — confirming that the rules were not yet actionable as binary checks. Two factual errors flagged (art-6 Cincinnati 2023 + Pekín 2024 incorrectly attributed to Alcaraz; art-9 Halle geographically misplaced). Verdict drove <a href="adr/010-style-guide-v1-2-binary-tests.md">ADR-010</a> (style guide v1.2 — 8 patches refactoring rules as binary tests) and spawned <code>EDIT-16</code> (regen batch 4 under v1.2) + <code>EDIT-17</code> (QA #4 with Joel).</li>
   <li><strong>EDIT-11 — Regenerate batch 3 (9 articles) under style guide v1.1.3</strong> (May 21–22 overnight) — 9 articles regenerated in parallel under v1.1.3 (arts 1/3/4/6/7/8/9/10/11 from batch 2). Score range 91–95/100, bolds coverage 0.947–1.00 (all clear of ≥0.80 gate), word range 1939–2636 prose. Heroes generated via gpt-image-2 and attached as featured. All 9 published as WP drafts (posts 21195–21219). Fact-check pass caught 3 baseline errata Joel had not flagged manually. Asana review task <code>1215038718722890</code> (= <code>EDIT-12</code>) handed off to Joel for QA #3.</li>
   <li><strong>INTEG-01 — First real publish E2E</strong> (May 19, late PM) — inventory row 5 (Fútbol / rules / penalti) processed end-to-end through every pipeline stage. Final quality score 91, WP post 16100 in <code>pending</code>, inventory advanced to <code>status=review</code>. Validated all stages wired together work in sequence on a real topic.</li>
   <li><strong>EDIT-06 / EDIT-08 — Topic + Batch QA #2 with Joel</strong> (May 21) — closed, absorbed into <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/006-style-guide-v1-1-2-round-2-feedback.md">ADR-006</a> (style guide v1.1.2) + <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/adr/008-style-guide-v1-1-3-smoke-feedback-bolds-coverage.md">ADR-008</a> (style guide v1.1.3). Two reviewer rounds in one day. 7 cross-batch patterns + bolds coverage rule both incorporated. End-to-end editorial validation now passes to <code>EDIT-12</code> (batch 3 review).</li>
