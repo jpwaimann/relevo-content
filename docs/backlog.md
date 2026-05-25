@@ -68,16 +68,16 @@ This document is a living artefact. Pruned periodically — items that no longer
 ### `TEMPLATE-04` Coach Era & Trophies — 4th category template
 - **Category:** Editorial / Pipeline
 - **Owner:** JPW (define) + Claude (implement under JPW spec)
-- **Why:** Joel + JPW are introducing a 4th content category: coach-trophy enumeration pages (`titulos-ganados-{equipo}-{entrenador}`). Base template lives in SharePoint at `seoberlin/ES MARKET/Relevo.com/Content/Relevo - Coach Era & Trophies [Base Template].docx` (35 KB). Editorial angle: `"Los títulos que ha ganado {equipo} con {entrenador} al frente"` — enumerative-narrative, 800–1.200 words, narrative scaffolding around a chronological trophy list, era identity carries the piece (cholismo, tiki-taka, mourinhismo). Applies primarily to Fútbol (club + selección), then Baloncesto (NBA / ACB), F1 (team principal), Rugby. NOT for individual sports (tenis, atletismo, MMA, golf).
-- **Mechanics to design:**
-  1. New `prompts/coaches_template.md` (v1.0) mirroring the structure of `origins_template.md`. Variables: `{entrenador}`, `{equipo}`, `{identidad_era}`, `{total_titulos}`, `{total_club_historico}`, `{predecesor}`, `{rol_doble}` (player-coach), `{rival_clasico}`.
-  2. Category value `Coaches` added to the Inventory `category` column (covered by `INVENTORY-02`).
-  3. Sourcing strategy: WebSearch for live trophy counts, club official archives for historical data, fact-check obligatorio against the verifiable lists in style guide v1.2 §2.
-  4. URL pattern: `/{hub_slug}/{sub_hub}/titulos-ganados-{equipo_slug}-{entrenador_slug}`.
-  5. Schema: Article + Person (coach) + SportsTeam + FAQPage.
-  6. Internal linking: club hub, coach Origins page, club palmarés page, per-competition trophy-count pages, rival storyline.
-  7. Integration in `lib/cmd_new.md`: extend the category switch to handle `Coaches` like Rules/Tactics/Origins.
-- **Pre-reqs:** `INVENTORY-02` (schema extension).
+- **Status (2026-05-25 PM):** Template **shipped** (commit `40689b5`). Pending integration items remain — see "Open items" below.
+- **Why:** Joel + JPW introduced a 4th content category for coach-trophy enumeration pages (`titulos-ganados-{equipo}-{entrenador}`). Base template lived in SharePoint at `seoberlin/ES MARKET/Relevo.com/Content/Relevo - Coach Era & Trophies [Base Template].docx` (35 KB) and was adapted to Relevo's prompt style by mirroring `origins_template.md` v2.0. Editorial angle: `"Los títulos que ha ganado {equipo} con {entrenador} al frente"` — enumerative-narrative, 800–1.200 words, narrative scaffolding around a chronological trophy list, era identity carries the piece (cholismo, tiki-taka, mourinhismo). Applies primarily to Fútbol (club + selección), then Baloncesto (NBA / ACB), F1 (team principal), Rugby. NOT for individual sports (tenis, atletismo, MMA, golf).
+- **Shipped (2026-05-25):**
+  1. ✅ `prompts/coaches_template.md` v1.0 (355 lines) — mirrors `origins_template.md` v2.0 structure: changelog, qué cubre, foco editorial vs other categories, URL pattern, SEO title formulas, meta description formulas, variable inventory (18 vars: `{entrenador}`, `{equipo}`, `{identidad_era}`, `{total_titulos}`, `{total_club_historico}`, `{predecesor}`, `{rol_doble}`, `{rival_clasico}`, slugs), editorial structure (3-para intro era-setting → H3 chronological trophy walk → H3 palmarés bullet → optional player-coach section → H2 5 standard FAQs), hard rules, internal-linking rules, sport-specific adaptations, Simeone/Atlético sample resumido. Inherits style guide v1.2 (25-point self-check).
+  2. ✅ `docs/adr/011-coaches-template-v1-0.md` — documents the decision, editorial differentiation vs Rules/Tactics/Origins (table comparing voice, central question, structure, tone, word count), alternatives considered + reversibility, sport-specific adaptations.
+- **Open items (not yet shipped):**
+  - `lib/cmd_new.md` integration — extend the category switch to handle the `Coaches` branch like Rules/Tactics/Origins. Depends on `INVENTORY-02` (schema extension).
+  - Hero image prompt variant for coach portraits (less action-oriented than athlete prompts — on the touchline, in the dugout, lifting the trophy).
+  - First seed pieces: Simeone/Atlético (canonical), Ancelotti/Real Madrid, Guardiola/Barça as smoke runs once the `cmd_new.md` branch lands.
+- **Pre-reqs for full deployment:** `INVENTORY-02` (schema extension).
 
 ### `INVENTORY-02` Extend Inventory schema for Coaches + Newsworthy + Betting
 - **Category:** Pipeline / Data model
