@@ -1,7 +1,7 @@
 # ADR-008: Style guide v1.1.3 — Reformulación de la regla de negritas (target de cobertura) + lecciones de integración WordPress
 
-**Status**: Approved
-**Fecha**: 2026-05-21 (mismo día que ADR-006 y ADR-007)
+**Status**: Approved · §2.4 amended 2026-05-25 (inverted upload pattern)
+**Fecha**: 2026-05-21 (mismo día que ADR-006 y ADR-007) · §2.4 corregida 2026-05-25
 **Supersedes**: `prompts/style_guide.md` v1.1.2 (sección "Frecuencia" de negritas + self-check punto 17)
 **Drivers**: Pablo Waimann (revisión del smoke v1.1.2 publicado en beta de WordPress)
 **Relacionado**: ADR-006 (style guide v1.1.2), ADR-007 (hero image policy)
@@ -83,11 +83,31 @@ Refuerzo cuantitativo:
 
 ### 2.4 Lecciones de integración WordPress (no van al style guide)
 
-Estas no son reglas de redacción sino patrones de pipeline. Se documentan acá pero la implementación queda en código:
+Estas no son reglas de redacción sino patrones de pipeline. Se documentan acá pero la implementación queda en código.
 
-- **`post_excerpt` Y entradilla en `post_content` duplican el bloque introductorio en el theme Relevo.** Decisión: el pipeline de upload deja `post_excerpt` vacío y mantiene la entradilla como **primer `<p>` de `post_content`**. WordPress puede regenerar excerpt automáticamente desde content si lo necesita para meta-description en listing pages, o se setea explícitamente sólo cuando difiera de la entradilla.
-- **El white space entre excerpt-block y banner autor desaparece al eliminar el `post_excerpt`** — no requirió fix CSS adicional. Si en algún artículo futuro se quiere reintroducir `post_excerpt` para SEO de listing pages, hay que evaluar si el theme también renderiza el excerpt arriba o sólo lo usa como meta. Para el smoke v1.1.3 y el batch 3 entero: excerpt vacío.
-- **wp_upload.py requería `expected_domain`** (wrong-site guard agregado al proxy 0.2.1 después del 19/5). Fix aplicado: nuevo flag `--domain` con default `relevo-com.sub.plus` + propagación a la llamada `media.upload`. Helper ahora levanta `isError: true` del MCP en vez de crashear con `Expecting value` en json parse.
+> **Corrección 2026-05-25 — patrón invertido.** La versión original de §2.4 (commit `68ba6c3`, 21/5 PM) documentaba `post_excerpt` vacío + entradilla como primer `<p>` de `post_content`. Validación nocturna sobre el smoke v1.1.3 del post `21187` (21/5 ~22:00 UTC) reveló que el theme Relevo renderiza un layout 2-col en `.layout-article-header`: columna izquierda con H1 + subtitle (rendereado desde `post_excerpt`), columna derecha con hero. Con `post_excerpt` vacío la columna izquierda queda corta y reaparece un gap visible — el mismo síntoma con causa raíz distinta. El batch 3 y la producción desde post 21187 en adelante usan el patrón corregido descrito abajo. ADR-009 (gap visual deferral) trata el gap residual del header, que es un problema de aspect-ratio aparte y NO de excerpt.
+
+**Patrón canónico (corregido):**
+
+- **`post_excerpt = entradilla`** (30-35 palabras). El theme lo renderiza como subtitle estilizado en la columna izquierda del header, llenando esa columna y eliminando el desbalance vertical con la columna del hero.
+- **`post_content` arranca directamente en el primer `<h2>`** — NO incluir la entradilla como primer `<p>` del contenido. El subtitle ya cumple esa función en la cabecera.
+- **Resultado**: sección 1 simétrica + cero duplicación + sin gap por excerpt vacío. (El gap residual del header por aspect-ratio queda cubierto por ADR-009, no por esta decisión.)
+
+**Implicaciones para `lib/cmd_new.md` Stage 7 (upload):**
+
+- El generador emite el artículo con la entradilla como bloque separado en el JSON intermedio.
+- El stage de upload pasa esa entradilla a `post_excerpt` y ARRANCA `post_content` con el primer `<h2>`.
+- Si una pieza necesita meta-description distinta de la entradilla (caso edge para SEO), se setea explícitamente — pero por default, `meta_description = post_excerpt = entradilla`.
+
+**Patch a `wp_upload.py` (independiente del patrón anterior):**
+
+- `wp_upload.py` requería `expected_domain` (wrong-site guard agregado al proxy 0.2.1 después del 19/5). Fix aplicado: nuevo flag `--domain` con default `relevo-com.sub.plus` + propagación a la llamada `media.upload`. Helper ahora levanta `isError: true` del MCP en vez de crashear con `Expecting value` en json parse.
+
+**Historial de validación del patrón corregido:**
+
+- Post `21187` actualizado in-place el 21/5 21:57 UTC con `post_excerpt = entradilla` + content desde `<h2>`. Header simétrico confirmado visualmente.
+- Batch 3 (posts 21195/21198/21201/21204/21207/21210/21213/21216/21219) publicado bajo el patrón corregido la misma noche.
+- Joel revisó los 9 drafts el 25/5 sin reportar issues estructurales de header — el feedback de la ronda 3 se concentra en redacción (negritas, tablas, frases grandilocuentes) y 2 errores factuales puntuales (art-6 Cincinnati 2023 / Pekín 2024, art-9 Halle/Renania).
 
 ---
 
