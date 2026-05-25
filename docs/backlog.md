@@ -1,6 +1,6 @@
 # Relevo Content Workflow — Backlog
 
-Consolidated open items pulled from session memories, README follow-ups, and integration tests through 2026-05-22 EOD. Each item has a **priority** (P0 / P1 / P2 / P3), a **category**, an **owner**, and a brief **why**. The HTML version of this file lives at [`backlog.html`](backlog.html) and is rendered on the public site.
+Consolidated open items pulled from session memories, README follow-ups, and integration tests through 2026-05-25 PM. Each item has a **priority** (P0 / P1 / P2 / P3), a **category**, an **owner**, and a brief **why**. The HTML version of this file lives at [`backlog.html`](backlog.html) and is rendered on the public site.
 
 This document is a living artefact. Pruned periodically — items that no longer block the next milestone get downgraded or moved to **Recently resolved**. JPW periodically does a sweep against the 80/20 principle: the top of P0 must be the items that actually move the needle for the next milestone, not a long tail of nice-to-haves.
 
@@ -65,6 +65,32 @@ This document is a living artefact. Pruned periodically — items that no longer
 
 ## P1 — Quality and robustness gates
 
+### `TEMPLATE-04` Coach Era & Trophies — 4th category template
+- **Category:** Editorial / Pipeline
+- **Owner:** JPW (define) + Claude (implement under JPW spec)
+- **Why:** Joel + JPW are introducing a 4th content category: coach-trophy enumeration pages (`titulos-ganados-{equipo}-{entrenador}`). Base template lives in SharePoint at `seoberlin/ES MARKET/Relevo.com/Content/Relevo - Coach Era & Trophies [Base Template].docx` (35 KB). Editorial angle: `"Los títulos que ha ganado {equipo} con {entrenador} al frente"` — enumerative-narrative, 800–1.200 words, narrative scaffolding around a chronological trophy list, era identity carries the piece (cholismo, tiki-taka, mourinhismo). Applies primarily to Fútbol (club + selección), then Baloncesto (NBA / ACB), F1 (team principal), Rugby. NOT for individual sports (tenis, atletismo, MMA, golf).
+- **Mechanics to design:**
+  1. New `prompts/coaches_template.md` (v1.0) mirroring the structure of `origins_template.md`. Variables: `{entrenador}`, `{equipo}`, `{identidad_era}`, `{total_titulos}`, `{total_club_historico}`, `{predecesor}`, `{rol_doble}` (player-coach), `{rival_clasico}`.
+  2. Category value `Coaches` added to the Inventory `category` column (covered by `INVENTORY-02`).
+  3. Sourcing strategy: WebSearch for live trophy counts, club official archives for historical data, fact-check obligatorio against the verifiable lists in style guide v1.2 §2.
+  4. URL pattern: `/{hub_slug}/{sub_hub}/titulos-ganados-{equipo_slug}-{entrenador_slug}`.
+  5. Schema: Article + Person (coach) + SportsTeam + FAQPage.
+  6. Internal linking: club hub, coach Origins page, club palmarés page, per-competition trophy-count pages, rival storyline.
+  7. Integration in `lib/cmd_new.md`: extend the category switch to handle `Coaches` like Rules/Tactics/Origins.
+- **Pre-reqs:** `INVENTORY-02` (schema extension).
+
+### `INVENTORY-02` Extend Inventory schema for Coaches + Newsworthy + Betting
+- **Category:** Pipeline / Data model
+- **Owner:** JPW
+- **Why:** Constraint from JPW: one and only one Excel inventory holds all content the project produces. The current schema (22 columns, ADR-001) was designed for Rules / Tactics / Origins. New content types coming in (Coaches via `TEMPLATE-04`, Newsworthy via `NEWS-02`, Betting / Casino pages via `BETTING-01`) need either new categorical values in `category` and/or new columns specific to their content type. Open design questions: (a) do `equipo` / `entrenador` go in `nombre` / `sub_hub`, or do they need their own columns? (b) does the newsworthy category need a `publish_window` field for time-sensitive pieces? (c) do betting / casino pages need a `comparison_set` column (which operators to compare)? Decision drives the rest of the workstreams.
+- **Pre-reqs:** None — JPW can decide unilaterally and document via an ADR.
+
+### `NEWS-01` Share the GSC enriched URLs spreadsheet
+- **Category:** Editorial / Data
+- **Owner:** JPW + Joel
+- **Why:** The file `urls_to_keep_gsc_enriched.xlsx` (SharePoint: `seoberlin/ES MARKET/...`) holds the URLs where Relevo already ranks well. It is a high-signal input for ideation: any topic that Relevo already covers and ranks for should not be duplicated, and any near-miss is a candidate for a refresh / expansion piece. Joel and JPW need to look through it together and pick what feeds into the inventory next.
+- **Status:** Share happens this week. After review, ideation candidates derived from it become new `pending_review` rows in the Inventory under the appropriate category (Origins refresh, Tactics expansion, or new Newsworthy entries).
+
 ### `INTEG-02` Round-robin reviewer pool and SLA
 - **Category:** Editorial
 - **Owner:** JPW + Joel
@@ -101,6 +127,20 @@ This document is a living artefact. Pruned periodically — items that no longer
 ---
 
 ## P2 — Post-launch (no commit date, scheduled after FIFA WC)
+
+### `NEWS-02` Newsworthy / YouTube / Mundial ideation flow into the Inventory
+- **Category:** Editorial / Pipeline
+- **Owner:** Joel + JPW (ideation) · Gustavo (SEO templates) · Claude (drafting)
+- **Why:** Beyond the evergreen Rules / Tactics / Origins / Coaches content, the project will produce more newsworthy / atado-a-la-actualidad pieces driven by the sport calendar (Mundial WC focus, transfer windows, big finals). Initial concepts JPW + Joel raised on 2026-05-25: `Predicciones Plus` (betting predictions with editorial analysis), `Por qué el {Mundial X} fue el peor / mejor`. Source seeds: YouTube watch lists, editorial intuition, GSC near-misses from `NEWS-01`. Constraint: rows live in the SAME Inventory Excel under a new category value (`Newsworthy` or per-format more granular).
+- **Mechanics to design:** (a) seeds enter as `pending_review` rows like every other content type; (b) Gustavo turns each approved seed into an SEO template per format (`Predicciones Plus`, `Mundial retrospectiva`, etc.) that lives in `prompts/`; (c) Claude reads the seed + the per-format template and generates the article like any other category; (d) Asana review goes to Joel like every other piece.
+- **Pre-reqs:** `INVENTORY-02` (schema extension), 1+ SEO template per newsworthy format authored by Gustavo.
+
+### `BETTING-01` Betting + casino pages (payment methods, fast withdrawals, best casinos)
+- **Category:** Editorial / Pipeline
+- **Owner:** JPW + Joel (editorial line) · Gustavo (SEO templates inspired by live iGaming sites)
+- **Why:** The site needs the classic betting / casino reference pages (payment methods, withdrawal speed comparisons, best casino lists, etc.). Reference: other live iGaming.com sites already cover this format and can be used as the template inspiration. Constraint: rows live in the SAME Inventory Excel under a new category value (`Betting` or per-page-type more granular). NOT a sport page — distinct content type with different sourcing (operator data, regulator references) and different SEO objective.
+- **Mechanics to design:** (a) SEO template per page type (mirror what's working on sister sites); (b) data source for operator data — manual or via partner feed; (c) compliance / legal review gate before publish (regulatory implications); (d) maintenance cadence — these pages need periodic refresh as operators change terms.
+- **Pre-reqs:** `INVENTORY-02` (schema extension), legal / compliance sign-off on the content type, decision on data sourcing.
 
 ### `EDIT-09` Automated dedup pass against relevo.com
 - **Category:** Pipeline / Editorial
@@ -192,6 +232,9 @@ This document is a living artefact. Pruned periodically — items that no longer
 
 For completeness — these were open at some point during May and have since closed.
 
+- ✅ **SOP-01 — Content Production Pipeline SOP v1.0** (May 25, late PM) — Documented the existing pipeline in [`docs/sop/01-content-production.md`](sop/01-content-production.md). Covers the 6 stages (ideation → topic approval → article generation → editorial review → publish decision → post-publish), the 3 roles (Claude / Joel / JPW), the HITL gates (Stages 1, 3, 4), the Asana conventions, the single-Inventory constraint, and a per-role daily reference. The pipeline itself does not change — this SOP formalizes the roles so production can scale without ambiguity at the handoffs.
+- ✅ **Smoke v1.2 — art-6 Alcaraz Origins** (May 25, 20:21 UTC) — Score 92/100, verdict GO. 25-point self-check passes 25/25. Hard gates 11/11 green (bolds coverage 95.7%, zero paragraphs > 60 words, M1000 list verified — Cincinnati 2023 + Pekín 2024 corrected, table HTML structure, list internal consistency, closing without prefab connectors). WP draft `21204` updated in-place. Asana subtask [`1215104026151305`](https://app.asana.com/1/9544544431392/project/1211672636050481/task/1215104026151305) re-assigned to Joel after JPW initial approval. Sits as the gate for batch 4 launch tomorrow (`EDIT-16`).
+- ✅ **Style guide v1.2 + ADR-010 — binary tests refactor** (May 25, 12:55 UTC) — 8 patches on `prompts/style_guide.md` reframing the rules as pass/fail checks (valor scan for bolds, valor cero for grandiloquence, binary paragraph word count, list consistency, table HTML structure, verifiable lists for facts, cursivas inventory scan, actionable closing rules). Self-check 22 → 25 points. Commit `126a6e1`. Trigger: Joel batch 3 verdict (7/9 ⚠️) showing the qualitative rules were not actionable.
 - ✅ **EDIT-12 — Batch QA #3 with Joel under style guide v1.1.3** (May 25, 11:15 UTC) — Joel delivered the verdict on 9 drafts (Asana `1215038718722890`): 2/9 ✅ (art-4, art-8) + 7/9 ⚠️ (arts 1, 3, 6, 7, 9, 10, 11). Same cross-batch patterns as batch 2 reappeared despite v1.1.3 — confirming that the rules were not yet actionable as binary checks. Two factual errors flagged (art-6 Cincinnati 2023 + Pekín 2024 incorrectly attributed to Alcaraz; art-9 Halle geographically misplaced). Verdict drove [ADR-010](adr/010-style-guide-v1-2-binary-tests.md) (style guide v1.2 — 8 patches refactoring rules as binary tests) and spawned `EDIT-16` (regen batch 4 under v1.2) + `EDIT-17` (QA #4 with Joel).
 - ✅ **EDIT-11 — Regenerate batch 3 (9 articles) under style guide v1.1.3** (May 21–22 overnight) — 9 articles regenerated in parallel under v1.1.3 (arts 1/3/4/6/7/8/9/10/11 from batch 2). Score range 91–95/100, bolds coverage 0.947–1.00 (all clear of ≥0.80 gate), word range 1939–2636 prose. Heroes generated via gpt-image-2 and attached as featured. All 9 published as WP drafts (posts 21195–21219). Fact-check pass caught 3 baseline errata Joel had not flagged manually (Topuria birthplace city, Iniesta historical role under Rijkaard, Ronaldo Nazário 2002 punterazo). Asana review task `1215038718722890` (=`EDIT-12`) handed off to Joel for QA #3.
 - ✅ **INTEG-01 — First real publish E2E** (May 19, late PM) — inventory row 5 (Fútbol / rules / penalti) processed end-to-end through every pipeline stage. Final quality score 91, WP post 16100 in `pending`, inventory advanced to `status=review`. Validated all stages wired together work in sequence on a real topic.
