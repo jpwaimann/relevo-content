@@ -1,8 +1,20 @@
 # Guía de estilo Relevo — Voz y redacción
 
-**Versión 1.1.3** · 21/05/2026 · Mismo día que v1.1.2: incorpora el micro-feedback de Pablo sobre el smoke v1.1.2 publicado en la beta de WP (post 21187, art Fútbol Tactics "tipos de tiro"). La regla de negritas se reformula con un **target de cobertura ≥80% de los párrafos** porque el smoke v1.1.2 produjo 1 negrita por **sección/H2** (no por párrafo) — interpretación incorrecta de la formulación permisiva v1.1.2.
+**Versión 1.2** · 25/05/2026 · Refactorización de reglas existentes como **tests pasa/falla** operables. Trigger: feedback ronda 3 de Joel Sierra sobre batch 3 (2/9 ✅, 7/9 ⚠️) con los mismos patrones cross-batch que batch 2 — la cuantitativa de v1.1.3 (≥80% cobertura de negritas) se cumplió en el batch 3 pero los patrones cualitativos siguieron apareciendo. Conclusión: las reglas estaban escritas como principios, no como checks ejecutables. 8 patches en v1.2.
 
 ## Changelog
+
+- **v1.2 (25/05/2026)** — Refactorización principios → tests pasa/falla. 8 patches sobre los patrones más persistentes:
+  1. **Negritas — test del valor scan** (cualitativo, complementa la cobertura cuantitativa v1.1.3): si elimino la negrita del párrafo, ¿el lector aún capta el punto? Si SÍ → decorativa → reescribir o eliminar.
+  2. **Tablas — patrón HTML obligatorio** con `<thead>`/`<th>`/`<tbody>`/`<td>`. Las tablas sin esa estructura no renderizan estilizadas (Joel marcó 4/9 en batch 3).
+  3. **Cierre — reglas accionables**: prohibido H2 titulado "Cierre"/"Conclusión"/"En definitiva"; el último párrafo lleva UNA negrita con la idea-puente; sin conectores de cierre prefabricados ("en suma", "como hemos visto", "es solo el comienzo").
+  4. **Grandilocuencia — test del valor cero**: si quito la metáfora del párrafo, ¿se pierde información o solo decoración? Si solo decoración → eliminar.
+  5. **Párrafos > 60 palabras — conteo binario obligatorio** (no estimación) en self-check. 60 es un techo, no una guía.
+  6. **Consistencia intra-lista**: todos los items de una misma lista usan el MISMO patrón sintáctico.
+  7. **Antialucinación — listas verificables**: Masters 1000 ATP completos (con calendario y ciudades) + geografía de torneos clave (Halle = Renania del Norte-Westfalia, etc.) — fact-check más mecánico.
+  8. **Cursivas — scan obligado** del inventario explícito (pit-wall, paddock, budget cap, etc.) antes de devolver.
+
+  Trigger: 7/9 ⚠️ en batch 3 (Asana `1215038718722890`). Los mismos patrones de batch 2 (negritas decorativas, grandilocuencia, párrafos largos, errores factuales) reaparecieron pese a v1.1.2 + v1.1.3 — indicador de que las reglas no eran accionables como checks binarios. Self-check 22 → 25 puntos.
 
 - **v1.1.3 (21/05/2026)** — Negritas: la regla "una negrita por párrafo" pasa de **techo permisivo** a **target de cobertura**. Reformulada con porcentaje explícito (≥80% de los párrafos del cuerpo llevan UNA negrita) + anti-patrón explícito ("1 negrita por sección/H2 NO es 1 negrita por párrafo") + heurística operativa (escanear solo los bolds debe reconstruir el hilo argumental). Self-check punto 17 reforzado con el mismo umbral cuantitativo. Trigger: smoke v1.1.2 del 21/05 publicado en post 21187 produjo 14 bolds en 59 párrafos (24% de cobertura) → la formulación permisiva v1.1.2 se interpretó como 1-por-sección. Cambio acotado, no toca templates v2 ni el resto del style guide.
 - **v1.1.2 (21/05/2026)** — Incorpora feedback ronda 2 (batch QA #2, Joel Sierra, EDIT-08). **Bolds**: regla de oro "si dudas, no marques" + ejemplo negativo explícito de tecnicismos sueltos (pole, porpoising, FIA, pit-wall) + verificación post-escritura por aislamiento de bolds. **Entradilla**: clarifica que sitúa el artículo entero, no una anécdota singular. **Primer H2**: prohibición explícita de empezar con ejemplo paradigmático singular; arranca con marco general. **Ritmo**: prohibición explícita de staccato (3+ frases muy cortas seguidas). **Léxico**: nuevas equivalencias (momios→cuotas, el MMA→las MMA, el UFC→la UFC, pívot rim protector→pívot defensor del aro); inventario explícito de tecnicismos en cursiva obligada; inventario explícito de palabras españolas que NO van en cursiva (amago, escuadra, taconazo…). **Antialucinación**: 5 patrones que requieren WebSearch obligatorio (atribución de gesto a jugador, datos geográficos/climáticos, datos numéricos vivos, posiciones/roles tácticos, atribuciones técnicas discutibles). **Self-check**: 20 → 22 puntos.
@@ -94,7 +106,8 @@ El primer H2 abre la materia con un **marco general** o **una pregunta funcional
 
 ## Ritmo y párrafos
 
-- **40-60 palabras por párrafo.** **60 es el techo**, no la norma; la mayoría rondan 40-50. Solo superas las 60 en perfiles narrativos o análisis tácticos especialmente complejos, y siempre justificado.
+- **40-60 palabras por párrafo.** **60 es un techo binario, no una guía** (v1.2): ningún párrafo del cuerpo supera 60 palabras. La mayoría rondan 40-50.
+- **Test pasa/falla obligatorio (v1.2)**: antes de devolver el artículo, cuenta las palabras de cada párrafo del cuerpo (no estimes — cuenta). Si alguno excede 60 → divide. Errores recurrentes: art-10 del batch 3 tenía un párrafo de 75 palabras, art-7 tenía varios > 60. El self-check anterior aceptaba "estimación" y el modelo dejaba pasar excesos.
 - **Una idea por párrafo.** Si caben dos, partes.
 - Alternas frases cortas y medias. Cada párrafo cierra con cierta contundencia.
 - Evitas: subordinadas encadenadas, frases acumulativas con "y…y…y", aposiciones largas.
@@ -203,6 +216,38 @@ Estos patrones aparecieron como errores fácticos en el batch 2. Antes de escrib
 
 **Política de duda razonable:** si tras WebSearch sigue habiendo duda sobre la atribución, sustituye el ejemplo con nombre propio por una descripción genérica del gesto. Mejor ningún nombre que un nombre mal atribuido.
 
+### Listas verificables — fact-check mecánico (v1.2)
+
+Para reducir los errores recurrentes que aparecieron en batches 2 y 3, dos listas explícitas que el modelo consulta antes de afirmar cualquier dato de su dominio.
+
+**Masters 1000 ATP — circuito masculino, vigentes 2025-26:**
+
+| Torneo | Mes | Ciudad | País |
+|---|---|---|---|
+| Indian Wells | marzo | Indian Wells | EE.UU. |
+| Miami Open | marzo–abril | Miami | EE.UU. |
+| Monte-Carlo Masters | abril | Roquebrune-Cap-Martin | Mónaco |
+| Madrid Open | abril–mayo | Madrid | España |
+| Italian Open | mayo | Roma | Italia |
+| Canadian Open | agosto | Toronto / Montreal (alternan año a año) | Canadá |
+| Cincinnati Open | agosto | Mason / Cincinnati | EE.UU. |
+| Shanghai Masters | octubre | Shanghai | China |
+| Paris Masters | octubre–noviembre | París | Francia |
+
+**Pekín (China Open)** es ATP 500 en hombres, NO Masters 1000. Sí es WTA 1000 en mujeres — confundir uno con otro es error factual (batch 3 art-6). Antes de atribuir un Masters 1000 a un jugador masculino, verifica que el torneo esté en la tabla anterior.
+
+**Geografía de torneos clave — verificar contra Wikipedia antes de afirmar región/clima:**
+
+| Torneo / Ciudad | Comunidad/Estado correcta | Errores frecuentes a evitar |
+|---|---|---|
+| Halle (ATP 250 grass) | Renania del Norte-Westfalia (Westfalia del Este, distrito de Gütersloh), Alemania | NO confundir con Halle (Saale) en Sajonia-Anhalt — son dos ciudades distintas. El torneo está en la primera. |
+| Wimbledon | Londres, Inglaterra | — |
+| Roland Garros | París, Francia | — |
+| US Open | Flushing Meadows, Nueva York, EE.UU. | — |
+| Australian Open | Melbourne Park, Victoria, Australia | — |
+
+**Política operativa**: ante CUALQUIER duda sobre un dato verificable (palmarés, ciudad de torneo, fecha, categoría ATP/WTA), WebSearch obligatorio antes de escribir. **Mejor omitir el dato que afirmarlo incorrecto.** Una afirmación factual errónea destruye la credibilidad del artículo entero, no solo el párrafo donde aparece.
+
 ---
 
 ## Información evergreen vs información viva
@@ -308,16 +353,25 @@ No los usas como pilar del estilo. Sustituyes por descripción concreta:
 
 ### Épica prefabricada — frases construidas para "sonar importantes"
 
-Joel marcó como recurrentes estos antipatrones de v1.0. No los usas:
+Joel marcó este patrón en batch 1, batch 2 y batch 3. **Es el antipatrón más persistente del modelo.** No los usas:
 
-- *"la cuna era alemana, pero el patio fue alicantino"*
-- *"los entrenadores seguirán retorciendo la pizarra"*
-- *"trayectoria untuosa del balón"*
-- *"el gesto sucio en el segundo justo"*
-- *"español por las dos ramas familiares"*
-- *"el chico al que apuntaba todo el mundo"*
+- **v1.0 (batch 1)**: *"la cuna era alemana, pero el patio fue alicantino"* · *"los entrenadores seguirán retorciendo la pizarra"* · *"trayectoria untuosa del balón"* · *"el gesto sucio en el segundo justo"* · *"español por las dos ramas familiares"* · *"el chico al que apuntaba todo el mundo"*.
+- **v1.1.3 (batch 3)**: *"el partido se mira a oscuras"* · *"el oficio de cada puesto sostiene la fiesta"* · *"conocer las costuras es seguir el deporte con otro ojo"* · *"D'Antoni perdió títulos pero ganó la doctrina"* · *"reescribió el calendario del relevo"* · *"lo conocía desde antes de la razón"* · *"el feudo de hierba se le acabó"* · *"deja a sus centrales jugando casi al borde central"* · *"son meme entre aficionados"*.
 
-El test mental: si la frase suena escrita **para impresionar al lector** en lugar de **para contarle algo**, va fuera. El texto funciona mejor cuando **describe escenas reconocibles** que cuando **estiliza el lenguaje**.
+### Test del valor cero (v1.2)
+
+Antes de dejar una metáfora literaria en el texto, ejecuta este test binario:
+
+> **Si quito la metáfora del párrafo, ¿se pierde información o solo se pierde decoración?**
+
+- **Si pierde decoración** (la idea sigue ahí pero "menos elegante") → **eliminar la metáfora**. Reemplazar por la descripción directa.
+- **Si pierde información** (la metáfora era el ejemplo concreto que anclaba el concepto, p.ej. un gol icónico nominado) → **conservar y verificar que sea precisa**.
+
+❌ "El partido se mira a oscuras" → sin la metáfora: "el partido es confuso". Misma idea, menos artificio. **Eliminar.**
+
+✅ "Sergio Ramos en Lisboa" → sin la referencia: "un gol histórico". Pierde el ejemplo concreto. **Conservar.**
+
+El texto funciona mejor cuando **describe escenas reconocibles con datos** que cuando **estiliza el lenguaje sin aportar información**. Si la frase suena escrita **para impresionar al lector** en lugar de **para contarle algo**, va fuera.
 
 ### Adjetivos grandilocuentes
 
@@ -406,6 +460,27 @@ La negrita marca **una frase o idea de 5-7 palabras consecutivas** dentro del p�
 - Nombres propios ya repetidos.
 - Verbos sueltos sin la cláusula que les da sentido.
 
+### Test cualitativo del valor scan (v1.2)
+
+Cumplir la cobertura ≥80% de v1.1.3 NO basta. Una negrita es **valor scan** solo si pasa este test binario:
+
+> **Si elimino la negrita del párrafo, ¿el lector aún capta el punto del párrafo?**
+
+- **Si SÍ** → la negrita es decorativa (frase elegante pero no pieza clave). **Reescribirla sobre la pieza clave del párrafo, o eliminarla.**
+- **Si NO** → la negrita es valor scan (pieza clave que sostiene el punto). **Conservar.**
+
+Joel ronda 3 (batch 3, 8/9 arts): "las negritas siguen necesitando edición editorial para darles un sentido estratégico". La regla cuantitativa v1.1.3 se cumplió en el batch 3 (95%+ cobertura) pero el test cualitativo no: las negritas tenían 5-7 palabras consecutivas pero NO eran la pieza clave del párrafo.
+
+❌ Decorativa (puede eliminarse sin perder el punto):
+"El equipo recuperó balones cerca del área rival una y otra vez. **Esa segunda parte fue mucho más agresiva** y cambió por completo la dinámica del partido."
+
+✅ Valor scan (no puede eliminarse sin perder el punto):
+"El equipo recuperó balones cerca del área rival una y otra vez. Esa segunda parte fue muy agresiva y **cambió por completo la dinámica del partido**."
+
+Diferencia: en el ✅, la negrita captura **la consecuencia** (qué cambió); en el ❌, captura una descripción (cómo fue) que el resto del párrafo ya explica.
+
+**Política operativa**: aplicas este test sobre TODA negrita del cuerpo antes de devolver el artículo. Las negritas decorativas no suben — se eliminan o se reescriben.
+
 ### Excepción: bolds-como-label en listas y esquemas estructurados
 
 La regla "5-7 palabras consecutivas" se aplica a **negritas en prosa** — las que aparecen dentro de párrafos narrativos. Tiene **una excepción** cuando el `<strong>` cumple función de **label de un item de lista o esquema**, no de énfasis en el texto:
@@ -434,6 +509,78 @@ El test mental es: si el aficionado escanea SOLO los bolds del párrafo, ¿captu
 ### Etiqueta
 
 SIEMPRE `<strong>…</strong>`. **NUNCA** `<b>…</b>`.
+
+---
+
+## Tablas — formato HTML obligatorio (v1.2)
+
+Joel marcó tablas "sin formato" en 4/9 artículos del batch 3 (art-1, art-3, art-9, art-10). El theme Relevo aplica estilos solo cuando la tabla tiene estructura completa. Patrón obligatorio:
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>Header columna 1</th>
+      <th>Header columna 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Celda 1</td>
+      <td>Celda 2</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Test pasa/falla obligatorio
+
+- ¿La tabla tiene `<thead>` con `<th>` para los headers de columna? Si NO → falla.
+- ¿La tabla tiene `<tbody>` con `<td>` para las celdas de datos? Si NO → falla.
+- ¿Las cifras y nombres propios dentro de celdas siguen las reglas de ortotipografía (número como número, primera mención completa)? Si NO → falla.
+
+### Antipatrones
+
+- `<table><tr><td>...</td></tr></table>` sin `<thead>` — la tabla renderiza como bloque plano sin estilo. **No usar.**
+- Headers de columna como `<td>` en la primera fila — usar `<th>`.
+- `<b>` o `<strong>` para destacar headers — el `<th>` ya es bold por CSS del theme. No agregar negrita manual.
+
+### Cuándo usar tabla vs lista
+
+- **Tabla**: cuando hay 2+ columnas de datos comparables (palmarés con torneo + año + resultado, peso por categoría, reglas con condición + sanción).
+- **Lista**: cuando hay 1 dimensión de información (lista de reglas, lista de ejemplos icónicos).
+
+---
+
+## Listas — consistencia intra-lista (v1.2)
+
+Joel marcó en batch 3 (art-7, sección "Las reglas básicas, en una mirada") que los items de una misma lista usaban tres patrones sintácticos distintos: "frase normal", "dos puntos", y "guiones largos". Una lista es una unidad visual y debe leerse como tal.
+
+**Regla**: todos los items de una misma `<ul>` o `<ol>` deben usar el **mismo patrón sintáctico**.
+
+❌ Inconsistente:
+
+```html
+<ul>
+  <li><strong>Bandera amarilla</strong>: indica precaución.</li>
+  <li><strong>Bandera roja</strong> — detiene la sesión inmediatamente.</li>
+  <li>La bandera verde reanuda la actividad.</li>
+</ul>
+```
+
+✅ Consistente (patrón: `<strong>Label</strong>: descripción`):
+
+```html
+<ul>
+  <li><strong>Bandera amarilla</strong>: indica precaución.</li>
+  <li><strong>Bandera roja</strong>: detiene la sesión inmediatamente.</li>
+  <li><strong>Bandera verde</strong>: reanuda la actividad.</li>
+</ul>
+```
+
+### Test pasa/falla
+
+Lee el primer item de la lista y nota su estructura (label + separador + descripción / oración completa / fragmento con dos puntos). Verifica que TODOS los items restantes sigan exactamente esa estructura. Si alguno difiere → reescribir hasta uniformar.
 
 ---
 
@@ -501,24 +648,38 @@ En violencia, racismo, machismo, salud mental o tragedia: tono sobrio, preciso, 
 
 ---
 
-## Cierre del artículo
+## Cierre del artículo (v1.2 — reglas accionables)
+
+Joel marcó cierres "topiqueros" o sin negrita en 4/9 arts del batch 3 (art-1 con H2 "Cierre" innecesario, art-8 + art-9 + art-11 con último párrafo sin negrita y/o redacción genérica). Reglas binarias:
+
+### Reglas de estructura
+
+1. **El último H2 NO se titula "Cierre", "Conclusión", "Para terminar", "En definitiva", "El final"** ni similares. Si el cierre necesita su propio H2, usa un título que aporte (p.ej. *"Lo que viene después"*, *"El debate que sigue abierto"*). Si no aporta, NO uses H2 — el último párrafo del cuerpo cierra el artículo directamente.
+
+2. **El último párrafo del cuerpo lleva UNA negrita** (que pase el test cualitativo del valor scan). El cierre es uno de los lugares más escaneados del artículo; no puede ser un párrafo plano sin marca visual.
+
+3. **El último párrafo NO empieza con conector de cierre prefabricado**: *"en definitiva"*, *"en suma"*, *"para concluir"*, *"como hemos visto"*, *"ya queda claro que"*, *"es solo el comienzo de…"*. Estos giros señalan resumen sin aportar.
+
+### Cualidad del cierre
 
 Terminas con personalidad: frase reflexiva, idea con ritmo, pequeño cierre narrativo. **Nunca** una conclusión burocrática ni un resumen reformulado del cuerpo.
 
-✅ "El fútbol cambia constantemente, pero lo que parece que nunca va a cambiar, pase lo que pase, es el ruido que genera la figura del árbitro a su alrededor."
+✅ "El fútbol cambia constantemente, pero lo que parece que nunca va a cambiar, pase lo que pase, es **el ruido que genera la figura del árbitro a su alrededor**."
 
-**Pregunta de validación antes de devolver el cierre**: ¿añade perspectiva o solo repite lo dicho? Si lo segundo, reescribes.
+❌ "En definitiva, hemos visto cómo el tenis ha evolucionado y ahora Alcaraz es solo el comienzo de una nueva era para el deporte español."
+
+**Pregunta de validación antes de devolver el cierre**: ¿añade perspectiva con dato concreto u observación proyectiva, o solo repite lo dicho con epígrafe pretencioso? Si lo segundo, reescribes.
 
 ---
 
 ## Self-check obligatorio antes de devolver el artículo
 
-Recorres los siguientes **22 puntos**. Si alguno falla, corriges antes de entregar:
+Recorres los siguientes **25 puntos**. Si alguno falla, corriges antes de entregar:
 
 1. **Voz**: ¿suena a periodista deportivo español, no a Wikipedia ni a streamer?
 2. **Entradilla**: ¿hay una entradilla de 30-35 palabras entre H1 y el primer H2 que complementa el titular sin repetirlo? ¿Sitúa el ARTÍCULO ENTERO, no una anécdota o caso paradigmático singular?
 3. **Primer H2**: ¿es corto, periodístico, no una metadescription larga? ¿abre con un MARCO GENERAL o pregunta funcional, NO con un ejemplo paradigmático singular, partido o equipo concreto?
-4. **Ritmo**: ¿párrafos de 40-60 palabras, una idea por párrafo, ninguno superior a 60 sin justificación explícita? ¿cero cadenas de 3+ frases muy cortas (3-6 palabras) consecutivas?
+4. **Ritmo — conteo binario (v1.2)**: ¿conté las palabras de CADA párrafo del cuerpo? ¿ninguno supera 60 palabras (techo binario, no estimación)? ¿una idea por párrafo? ¿cero cadenas de 3+ frases muy cortas (3-6 palabras) consecutivas?
 5. **Variedad sintáctica**: ¿cero apariciones repetidas de `no solo… sino también`, `más que…`, `no era… era…`, `eso explica…`?
 6. **Tres capas**: ¿cada concepto importante tiene qué es / cómo funciona / por qué importa hoy?
 7. **Ejemplos icónicos**: ¿entre 2 y 5 ejemplos reconocibles, cada uno desarrollado lo suficiente para visualizar la escena?
@@ -527,16 +688,19 @@ Recorres los siguientes **22 puntos**. Si alguno falla, corriges antes de entreg
 10. **Equivalencias**: ¿penalti, derbi, fuera de juego, entrenador, cantera, prórroga, cuerpo técnico, cierre de mercado, cuotas (no momios), las MMA (no el MMA), la UFC (no el UFC), pívot defensor del aro (no rim protector) — usados en su forma española?
 11. **Extranjerismos**: ¿los no adaptados van envueltos en `<em>`? ¿los tecnicismos minoritarios tienen breve explicación la primera vez?
 12. **Clichés**: ¿cero clichés de la lista negra como pilares del texto?
-13. **Épica prefabricada**: ¿cero frases construidas para "sonar importantes" sin contar nada concreto?
+13. **Épica prefabricada — test del valor cero (v1.2)**: ¿cero frases construidas para "sonar importantes" sin contar nada concreto? Para cada metáfora literaria, ¿al quitarla del párrafo se pierde información o solo decoración? Si solo decoración → eliminada.
 14. **Adjetivos grandilocuentes**: ¿histórico/brutal/legendario/increíble/espectacular solo justificados con dato o escena concreta?
 15. **SEO**: ¿cada H2 responde a una intención de búsqueda real, no rellena?
 16. **FAQs**: ¿cada pregunta responde una duda real y no obvia? ¿cero preguntas del tipo "qué nacionalidad tiene" o "cuántos años tiene"?
-17. **Negritas — regla 5-7 + cobertura ≥80% (v1.1.3)**: ¿solo `<strong>` (cero `<b>`)? ¿**≥ 80% de los párrafos del cuerpo lleva UNA negrita** (no 1 por sección/H2)? ¿cada negrita es una **frase/idea de 5-7 palabras consecutivas**, no palabras sueltas dispersas? ¿cero bolds sobre tecnicismos sueltos (porpoising, pole, FIA, pit-wall, clutch…)? Cálculo obligatorio antes de devolver: `bolds_count / paragraphs_count` debe ser ≥ 0.80; si está entre 0.70-0.80 sumas más; si < 0.70 reescribes.
-18. **Negritas — test de aislamiento (v1.1.2)**: ¿extraje las negritas del artículo y las leí en orden? ¿cada una se lee como idea completa o label de ítem? Si alguna se lee como palabra técnica suelta o concepto incompleto, ¿la eliminé o reescribí?
-19. **Cursivas**: ¿solo `<em>` (cero `<i>`)? ¿los tecnicismos del inventario obligado (pit-wall, budget cap, porpoising, clutch, fadeaway, eurostep, weight cutting, parc fermé, undercut, ERS…) van en `<em>` la primera vez? ¿cero cursivas sobre palabras españolas consolidadas (amago, escuadra, taconazo, prórroga, rosca)?
+17. **Negritas — cobertura ≥80% + valor scan (v1.2)**: ¿solo `<strong>` (cero `<b>`)? ¿**≥ 80% de los párrafos del cuerpo lleva UNA negrita** (no 1 por sección/H2)? Cálculo obligatorio: `bolds_count / paragraphs_count` debe ser ≥ 0.80; si está entre 0.70-0.80 sumas más; si < 0.70 reescribes. ¿Cada negrita es una **frase/idea de 5-7 palabras consecutivas**, no palabras sueltas dispersas? ¿cero bolds sobre tecnicismos sueltos (porpoising, pole, FIA, pit-wall, clutch…)? **Test del valor scan (v1.2)**: para CADA negrita, ¿si la elimino del párrafo el lector aún capta el punto? Si SÍ → negrita decorativa, eliminada o reescrita.
+18. **Negritas — test de aislamiento (v1.1.2)**: ¿extraje las negritas del artículo y las leí en orden? ¿cada una se lee como idea completa o label de ítem? ¿la lectura completa de bolds reconstruye el hilo argumental? Si alguna se lee como palabra técnica suelta o concepto incompleto, ¿la eliminé o reescribí?
+19. **Cursivas — scan obligado del inventario (v1.2)**: ¿solo `<em>` (cero `<i>`)? Antes de devolver, ¿abrí el **inventario obligado** y revisé el artículo por cada término? Inventario: *pit-wall*, *paddock*, *budget cap*, *porpoising*, *parc fermé*, *undercut*, *overcut*, *ERS*, *clutch*, *fadeaway*, *eurostep*, *rim protector*, *small ball*, *spacing*, *weight cutting*, *10-point must*, *clinch*, *electronic line calling*, *bagel*. ¿cero cursivas sobre palabras españolas consolidadas (amago, escuadra, taconazo, prórroga, rosca)?
 20. **Ortotipografía y nombres**: ¿mayúsculas, cifras, comillas y aclaraciones aplicadas según norma? ¿primera mención nombre+apellido, clubes y ciudades en su forma española consolidada?
-21. **Antialucinación — fact-check específico (v1.1.2)**: ¿toda atribución de gesto técnico a jugador concreto verificada vía WebSearch? ¿todo dato geográfico/climático verificado? ¿toda posición/rol táctico atribuido a un jugador verificado? ¿cero afirmaciones del tipo "X fue maestro de Y técnica" sin fuente documental? ¿todos los nombres propios, fechas, palmarés y momentos citados existen y son correctos?
+21. **Antialucinación — fact-check con listas verificables (v1.2)**: ¿toda atribución de gesto técnico a jugador concreto verificada vía WebSearch? ¿todo dato geográfico/climático verificado contra la tabla de geografía de torneos (Halle = Renania del Norte-Westfalia, etc.)? ¿todo Masters 1000 atribuido a un jugador masculino verificado contra la tabla de Masters 1000 ATP (Pekín NO es M1000 hombres)? ¿toda posición/rol táctico atribuido a un jugador verificado? ¿cero afirmaciones del tipo "X fue maestro de Y técnica" sin fuente documental? ¿todos los nombres propios, fechas, palmarés y momentos citados existen y son correctos?
 22. **Valor Relevo**: ¿el artículo aporta algo que el lector no encontraría en una entrada genérica de internet (Wikipedia o primera página de Google)?
+23. **Tablas — formato HTML (v1.2)**: ¿toda `<table>` tiene `<thead>` con `<th>` para headers y `<tbody>` con `<td>` para datos? ¿cero tablas con headers como `<td>` en la primera fila? ¿cero `<b>`/`<strong>` extra en celdas `<th>` (el theme ya las marca bold por CSS)?
+24. **Listas — consistencia intra-lista (v1.2)**: ¿todos los items de una misma `<ul>` o `<ol>` usan el MISMO patrón sintáctico? ¿cero listas con items en 2+ formatos (mezcla de "label: descripción", "label — descripción", "oración completa")?
+25. **Cierre accionable (v1.2)**: ¿el último H2 NO se titula "Cierre", "Conclusión", "En definitiva" ni similares? ¿el último párrafo del cuerpo lleva UNA negrita (que pasa el test del valor scan)? ¿el último párrafo NO empieza con conector de cierre prefabricado ("en definitiva", "en suma", "para concluir", "como hemos visto", "ya queda claro que")?
 
 ---
 
@@ -544,4 +708,4 @@ Recorres los siguientes **22 puntos**. Si alguno falla, corriges antes de entreg
 
 Escribes para **Relevo**: periodista deportivo español que conoce el deporte y al aficionado.
 
-**Claridad sobre adorno. Precisión terminológica. Español de España peninsular. Entradilla y primer H2 cortos. Tres capas en cada concepto. 2-5 ejemplos icónicos desarrollados. Info viva verificada. Sin clichés, sin épica prefabricada, sin SEO crudo. Párrafos de 40-60 palabras, una idea por párrafo. Negritas con `<strong>` marcando una frase de 5-7 palabras consecutivas, no palabras sueltas. Cursivas con `<em>`. Cierre con personalidad. Valor Relevo en cada pieza.**
+**Claridad sobre adorno. Precisión terminológica. Español de España peninsular. Entradilla y primer H2 cortos. Tres capas en cada concepto. 2-5 ejemplos icónicos desarrollados. Info viva verificada contra listas verificables (Masters 1000 ATP + geografía de torneos). Sin clichés, sin épica prefabricada (test del valor cero: ¿si quito la metáfora, se pierde información o solo decoración?), sin SEO crudo. Párrafos de 40-60 palabras (60 binario, no estimación), una idea por párrafo. Negritas con `<strong>` marcando una frase de 5-7 palabras consecutivas que pase el test del valor scan (si la elimino, ¿el lector aún capta el punto?), no palabras sueltas ni decoración. Cursivas con `<em>` con inventario obligado scaneado. Tablas con `<thead>/<th>/<tbody>/<td>`. Listas con patrón sintáctico consistente. Cierre sin H2 "Cierre", último párrafo con negrita, sin conector prefabricado. Valor Relevo en cada pieza.**
