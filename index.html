@@ -51,6 +51,34 @@
     letter-spacing: -0.01em;
   }
   .lede { font-size: 1.08em; color: var(--texto-suave); margin: 0; }
+  .header-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 0.4em;
+  }
+  .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 3px solid var(--azul);
+    object-fit: cover;
+  }
+  .meta-line {
+    font-size: 0.9em;
+    color: var(--texto-suave);
+    margin: 0.6em 0 0;
+    padding: 0.5em 0;
+    border-top: 1px solid var(--gris-2);
+  }
+  .meta-line strong { color: var(--azul); }
+  .meta-line a { color: var(--azul); text-decoration: none; }
+  .meta-line a:hover { text-decoration: underline; }
+  @media (max-width: 560px) {
+    .avatar { width: 52px; height: 52px; }
+    h1 { font-size: 1.5em; }
+  }
   .status-line {
     margin-top: 1em;
     padding: 0.7em 1em;
@@ -196,9 +224,22 @@
 <div class="wrap">
 
 <header class="hero">
-  <div class="eyebrow">Internal — Relevo Content · Updated 2026-05-20</div>
-  <h1>Relevo Content Workflow</h1>
-  <p class="lede">Automated SEO content generation for relevo.com. 24 sports, 3 content categories, multi-pass quality gate. Built as a Claude Code skill replacing the legacy n8n workflow.</p>
+  <div class="eyebrow">Internal — Relevo Content · Updated 2026-05-26</div>
+  <div class="header-row">
+    <img class="avatar" src="docs/assets/jpw-avatar.png" alt="Juan Pablo Waimann">
+    <div>
+      <h1>Relevo Content Workflow</h1>
+      <p class="lede">Automated SEO content generation for relevo.com. 24 sports, 3 content categories, multi-pass quality gate. Built as a Claude Code skill replacing the legacy n8n workflow.</p>
+    </div>
+  </div>
+  <div class="meta-line">
+    <strong>Project lead:</strong> Juan Pablo Waimann ·
+    <strong>Editorial reviewer:</strong> Joel Sierra ·
+    <strong>Last updated:</strong> 26 May 2026 ·
+    <a href="https://github.com/jpwaimann/relevo-content">Source repo</a> ·
+    <a href="docs/one-pager.html">Executive one-pager</a> ·
+    <a href="docs/sop/01-content-production.md">SOP</a>
+  </div>
   <div class="status-line">
     <strong>Current phase:</strong> Phase 4 of 5 — Validation &amp; integrations. Reviewer feedback on the May 15 batch landed May 20 and is incorporated as <a href="docs/editorial-guide.html">style guide v1.1</a>; SharePoint inventory API, WordPress + Asana MCPs, and LiteLLM image models all wired. Next gates: regenerate the May 15 batch under v1.1 prompts and the <strong>Friday May 22</strong> end-to-end workflow review. <strong>Hard launch date: June 1</strong>, ahead of the FIFA World Cup 2026 kickoff on <strong>June 11</strong>.
   </div>
