@@ -1,8 +1,10 @@
 # Guía de estilo Relevo — Voz y redacción
 
-**Versión 1.2** · 25/05/2026 · Refactorización de reglas existentes como **tests pasa/falla** operables. Trigger: feedback ronda 3 de Joel Sierra sobre batch 3 (2/9 ✅, 7/9 ⚠️) con los mismos patrones cross-batch que batch 2 — la cuantitativa de v1.1.3 (≥80% cobertura de negritas) se cumplió en el batch 3 pero los patrones cualitativos siguieron apareciendo. Conclusión: las reglas estaban escritas como principios, no como checks ejecutables. 8 patches en v1.2.
+**Versión 1.2.1** · 26/05/2026 · Patch sobre v1.2: política de imagen destacada (hero image) anti-AI con figuras reales. Sin cambios sobre la prosa.
 
 ## Changelog
+
+- **v1.2.1 (26/05/2026)** — Nueva sección "Imagen destacada (hero image)" + punto 26 del self-check. Política 4-tier para evitar generación AI de figuras públicas reales (riesgo Ley Orgánica 1/1982 España + EU AI Act). Default: Wikimedia Commons con atribución. Fallback: stock contextual genérico. Excepción consciente: ilustración estilizada NO fotorrealista. Trigger: pregunta de JPW del 26/5 al planear TEMPLATE-04 (Coaches) — ¿stock photos? ¿legal AI imagery con figuras reales? Resuelto antes del primer batch productivo de coaches.
 
 - **v1.2 (25/05/2026)** — Refactorización principios → tests pasa/falla. 8 patches sobre los patrones más persistentes:
   1. **Negritas — test del valor scan** (cualitativo, complementa la cobertura cuantitativa v1.1.3): si elimino la negrita del párrafo, ¿el lector aún capta el punto? Si SÍ → decorativa → reescribir o eliminar.
@@ -672,9 +674,45 @@ Terminas con personalidad: frase reflexiva, idea con ritmo, pequeño cierre narr
 
 ---
 
+## Imagen destacada (hero image) — política (v1.2.1)
+
+La imagen destacada del artículo NO se genera con AI si involucra a una **figura pública real** (jugador, entrenador, árbitro, ingeniero, comentarista identificable). Cuatro razones operativas:
+
+1. **Marco legal España**: Ley Orgánica 1/1982 protege el derecho a la propia imagen, incluso de figuras públicas. La excepción periodística aplica solo a imagen **captada** en acto público — AI-generated no califica.
+2. **Right of publicity**: usar la apariencia de una figura conocida para promocionar contenido editorial puede leerse como publicidad indirecta y gatillar reclamo del agente/representante.
+3. **Riesgo reputacional Relevo**: un coach o deportista demandando por uso indebido de imagen es titular fácil. El downside (cease & desist, mala prensa) supera ampliamente el upside de la imagen.
+4. **EU AI Act**: exige disclaimer visible "AI-generated" en imágenes de personas reales. El disclaimer es feo y mata el look editorial.
+
+### Política 4-tier (orden de preferencia)
+
+1. **Wikimedia Commons** (default). Buscar la figura por nombre, verificar license (CC BY-SA, CC0). Atribución obligatoria en pie de foto: *"Foto: [autor] / Wikimedia Commons, [license]"*. Cobertura decente para figuras con presencia mediática consolidada.
+2. **Stock contextual genérico** (fallback si Wikimedia no tiene). Pexels, Unsplash, similares. NO retratos: usar plano de touchline vacío, dugout, balón en juego, trofeo, estadio. La imagen sitúa el contexto deportivo sin identificar al sujeto.
+3. **Editorial licensed** (EFE, Europa Press, Getty Editorial — solo si Relevo tiene suscripción activa). Calidad pro, cobertura España alta. License `editorial` no comercial.
+4. **Ilustración estilizada NO fotorrealista** (excepción consciente). Caricatura editorial, ilustración vectorial, abstracción visual. Defendible legal y editorialmente: clearly artistic, no engaña al lector. Esta sí puede generarse con AI siempre que el output sea evidentemente estilizado (NO photoreal portrait).
+
+### Antipatrones (prohibido)
+
+- ❌ AI-generated photorealistic portrait de figura real (jugador, coach, comentarista).
+- ❌ Composición AI tipo "Messi levantando un trofeo que no levantó" — falsificación factual además de uso indebido.
+- ❌ Imagen sin atribución cuando la license lo requiere (CC BY-SA, CC BY).
+- ❌ Stock con figura claramente reconocible sin license editorial específica.
+
+### Test pasa/falla antes de publicar
+
+Antes de subir la hero a WordPress, verifica las cuatro casillas:
+
+- [ ] **Fuente identificable**: ¿queda registrado de dónde salió la imagen (URL Wikimedia / stock site / licensing receipt)?
+- [ ] **License compatible con uso editorial Relevo**: ¿la license permite uso editorial sin requerir compra adicional?
+- [ ] **Atribución correcta**: si la license lo requiere (CC BY*), ¿está el crédito en pie de foto o caption?
+- [ ] **No AI con figura real**: ¿la imagen NO es generación AI photoreal de una persona identificable?
+
+Si alguna casilla falla → reemplazar antes de publicar.
+
+---
+
 ## Self-check obligatorio antes de devolver el artículo
 
-Recorres los siguientes **25 puntos**. Si alguno falla, corriges antes de entregar:
+Recorres los siguientes **26 puntos**. Si alguno falla, corriges antes de entregar:
 
 1. **Voz**: ¿suena a periodista deportivo español, no a Wikipedia ni a streamer?
 2. **Entradilla**: ¿hay una entradilla de 30-35 palabras entre H1 y el primer H2 que complementa el titular sin repetirlo? ¿Sitúa el ARTÍCULO ENTERO, no una anécdota o caso paradigmático singular?
@@ -701,6 +739,7 @@ Recorres los siguientes **25 puntos**. Si alguno falla, corriges antes de entreg
 23. **Tablas — formato HTML (v1.2)**: ¿toda `<table>` tiene `<thead>` con `<th>` para headers y `<tbody>` con `<td>` para datos? ¿cero tablas con headers como `<td>` en la primera fila? ¿cero `<b>`/`<strong>` extra en celdas `<th>` (el theme ya las marca bold por CSS)?
 24. **Listas — consistencia intra-lista (v1.2)**: ¿todos los items de una misma `<ul>` o `<ol>` usan el MISMO patrón sintáctico? ¿cero listas con items en 2+ formatos (mezcla de "label: descripción", "label — descripción", "oración completa")?
 25. **Cierre accionable (v1.2)**: ¿el último H2 NO se titula "Cierre", "Conclusión", "En definitiva" ni similares? ¿el último párrafo del cuerpo lleva UNA negrita (que pasa el test del valor scan)? ¿el último párrafo NO empieza con conector de cierre prefabricado ("en definitiva", "en suma", "para concluir", "como hemos visto", "ya queda claro que")?
+26. **Imagen destacada (v1.2.1)**: ¿la hero NO es generación AI photoreal de una figura pública real? ¿la fuente está identificada (Wikimedia / stock / editorial)? ¿la license permite uso editorial Relevo? Si requiere atribución (CC BY*), ¿está el crédito en pie de foto?
 
 ---
 
