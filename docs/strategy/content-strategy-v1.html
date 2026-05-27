@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Relevo — Content strategy v1</title><style>
+  :root { --c-primary:#7464DE; --c-primary-soft:#cbc1f4; --c-primary-ghost:#e8e3fa; --c-text:#1a1a1a; --c-muted:#595959; --c-light:#999; --c-bg:#fff; --c-bg-soft:#fafafa; --c-border:#e8e8e8; --c-accent:#E91E90; }
+  *{box-sizing:border-box} body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--c-text);background:#fff;margin:0;line-height:1.55;font-size:14px}
+  .wrapper{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  header{border-bottom:3px solid var(--c-primary);padding-bottom:16px;margin-bottom:22px}
+  .header-row{display:flex;align-items:center;gap:16px}
+  .avatar{width:64px;height:64px;border-radius:50%;flex-shrink:0;border:3px solid var(--c-primary);object-fit:cover}
+  h1{font-size:24px;font-weight:800;margin:0 0 4px;letter-spacing:-0.01em;line-height:1.2}
+  .sub{color:var(--c-muted);font-size:13px;margin:0}
+  .meta-line{margin-top:14px;font-size:12px;color:var(--c-muted)}
+  .meta-line strong{color:var(--c-text)}
+  .meta-line a, .breadcrumb a{color:var(--c-primary);text-decoration:none}
+  .meta-line a:hover{text-decoration:underline}
+  .breadcrumb{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--c-muted);margin-bottom:8px}
+  h2{font-size:18px;font-weight:700;margin:26px 0 10px;color:var(--c-primary);padding-bottom:4px;border-bottom:1px solid var(--c-border);letter-spacing:-0.01em}
+  h3{font-size:15px;font-weight:700;margin:20px 0 8px;color:var(--c-text)}
+  p{margin:0 0 12px}
+  ul,ol{margin:8px 0 14px;padding-left:22px} li{margin-bottom:4px}
+  strong{color:var(--c-text)}
+  code{font-family:"SF Mono",Consolas,Monaco,monospace;font-size:12.5px;background:var(--c-bg-soft);padding:1px 5px;border-radius:3px;border:1px solid var(--c-border)}
+  pre{background:var(--c-bg-soft);border:1px solid var(--c-border);border-radius:6px;padding:10px 12px;overflow-x:auto;margin:8px 0 16px}
+  pre code{background:none;border:0;padding:0;display:block}
+  hr{border:0;border-top:1px dashed var(--c-border);margin:24px 0}
+  table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:13px}
+  th{background:var(--c-primary-ghost);color:var(--c-text);font-weight:700;text-align:left;padding:9px 11px;border:1px solid var(--c-border);font-size:12.5px}
+  td{padding:8px 11px;border:1px solid var(--c-border);vertical-align:top}
+  tr:nth-child(even) td{background:var(--c-bg-soft)}
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--c-border);color:var(--c-muted);font-size:12px}
+  footer a{color:var(--c-primary);text-decoration:none}
+</style></head><body><div class="wrapper">
+<header>
+  <div class="breadcrumb"><a href="../../">← back to docs index</a></div>
+  <div class="header-row">
+    <img src="../../assets/jpw-avatar.png" alt="JPW" class="avatar">
+    <div><h1>Relevo — Content strategy v1</h1><p class="sub">5 verticals · Tier-1 marking · Roadmap</p></div>
+  </div>
+  <div class="meta-line"><strong>Owner</strong> JPW · <strong>Updated</strong> 2026-05-27 ·
+    <strong>Source</strong> <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/strategy/content-strategy-v1.md">github.com/jpwaimann/relevo-content</a>
+  </div>
+</header>
+<h1>Relevo content strategy v1</h1>
+<p><strong>Status</strong>: Living document · v1 — 2026-05-27
+<strong>Owner</strong>: JPW
+<strong>Audience</strong>: JPW, Joel, future Claude Code sessions, iGaming stakeholders
+<strong>Asana anchor</strong>: [Strategy] Relevo content strategy — 5 verticals (LIVING DOC) — <code>1215171204862093</code></p>
+<hr>
+<h2>Why Relevo exists today</h2>
+<p>Relevo.com was a Spanish sports journalism outlet between 2022 and 2025. In 2025 iGaming.com acquired the property to convert it into an advertising channel for sports bettors and casino players in Spain, while preserving its sports-media identity as the audience hook.</p>
+<p><strong>The commercial thesis</strong>: a sports-media front with high-trust editorial voice + a strong commercial back-end (betting / casino sections) attracts a higher-LTV reader than a pure affiliate site. The editorial verticals (evergreen + calendar + WC2026 + reactive) build the audience and the trust; the casino/sportsbetting verticals monetize it.</p>
+<h2>Audience target</h2>
+<p><strong>Primary</strong>: Spanish sports bettors. Demographics: peninsular Spain, 25–55, mostly male, smartphone-first, multi-sport consumers (La Liga + Champions + tennis + F1 + MMA + NBA + pádel).</p>
+<p><strong>Secondary</strong>: general Spanish sports fans pulled in by editorial content; converted to the betting/casino verticals via the on-site navigation.</p>
+<h2>Strategy to reach this audience</h2>
+<p>A five-vertical content portfolio. Four are permanent, one is temporal (World Cup 2026). The setup balances:</p>
+<ul>
+<li><strong>SEO long-tail durability</strong> → evergreen.</li>
+<li><strong>Event-driven traffic surges</strong> → proactive calendar + WC2026.</li>
+<li><strong>Editorial authority</strong> → reactive/contingency (when staffed).</li>
+<li><strong>Direct commercial conversion</strong> → casino/sportsbetting.</li>
+</ul>
+<p>Editorial standards (style guide v1.2.2, ADR-012) and the production SOP apply across verticals where Claude Code is the drafter. Verticals diverge in lifecycle, reviewer routing, compliance requirements, and source-of-data.</p>
+<hr>
+<h2>The five verticals</h2>
+<h3>Vertical 1 — Evergreen (rules, tactics, origins, coaches)</h3>
+<p><strong>Foundation of the portfolio.</strong> Four categories. Automated 95% by Claude Code (<code>/relevo new</code> skill), HITL gates from Joel (editorial review) and JPW (publish decision). Full SOP at <code>docs/sop/01-content-production.md</code>.</p>
+<ul>
+<li><strong>Rules</strong>: how a sport works, category-by-category explainers. Examples: “Reglas del fútbol IFAB 2025/26”, “Categorías de peso UFC”, “Tipos de pases en baloncesto”.</li>
+<li><strong>Tactics</strong>: tactical concepts, formations, technical breakdowns. Examples: “Qué es el falso 9”, “La presión alta en fútbol moderno”.</li>
+<li><strong>Origins</strong>: biographical pieces, focused on identity/family/origin. Examples: “Los orígenes de Lamine Yamal”, “Carlos Alcaraz: la formación de un campeón”.</li>
+<li><strong>Coaches</strong>: era + palmarés explainers. Examples: “Los títulos de Simeone en el Atlético”.</li>
+</ul>
+<p><strong>Why this works for Relevo</strong>: confirmed by Joel’s GSC review of historic Relevo (<code>urls_to_keep_gsc_enriched.xlsx</code>):</p>
+<ul>
+<li>Origins of star figures dominate Tier-1 historic (Topuria 100k impressions long-range, Sinner, Bellingham, Mbappé, De Miñaur, Brahim, Leclerc, Peleteiro).</li>
+<li>Specific rules pieces also rank Tier 1 (voleibol completo 74k clicks; categorías peso UFC; posiciones baloncesto; tipos pases; golpes bádminton).</li>
+<li>Tactics has 0 URLs in Tier 1 GSC history — included by editorial decision, lower expected traffic impact.</li>
+<li>Coaches has documented Tier-1 examples in the “cuántos / palmarés” format.</li>
+</ul>
+<h3>Vertical 2 — Proactive sports-calendar</h3>
+<p><strong>Anticipatory pieces tied to upcoming sport events.</strong> NOT post-event news. Lead time: 3–7 days before the event (per Joel ronda 4 feedback, 27/05/2026 — better than 7–14 because the reader is mentally engaged with the upcoming event).</p>
+<p>Examples:</p>
+<ul>
+<li>“Las 5 mejores finales de Wimbledon” (pre-Wimbledon).</li>
+<li>“Las selecciones que juegan por primera vez un Mundial” (pre-WC).</li>
+<li>“Los 10 mejores ciclistas históricos del Tour de France” (pre-Tour).</li>
+<li>“Cuántas veces ha ganado España el Eurobasket” (pre-Eurobasket).</li>
+</ul>
+<p><strong>Anchor doc</strong>: <code>docs/sports_calendar_2026_h2.md</code> (Joel-reviewed v1 → v2 incorporating round-1 feedback).</p>
+<p><strong>Template</strong>: TEMPLATE-05 (news) NOT yet designed. Blocked on calendar v2 sign-off.</p>
+<h3>Vertical 3 — WC2026 (temporal)</h3>
+<p><strong>Exists only for the FIFA World Cup 2026</strong> (kickoff 11/06/2026, final 19/07/2026). After the tournament, retired.</p>
+<p>Decision (Joel, 27/05): focus 100% on Mundial 2026; no histórico de otros Mundiales. Joel is curating a list of ~100 World Cup-related topics in his own Asana task (<code>1215152974998057</code>).</p>
+<p>Production model after topic approval: bulk-seed into Inventory with <code>article_type=news</code> + <code>vertical=wc2026</code> tag → Claude Code drafts → Joel reviews → publish under tighter timing (WC kickoff is 11/06 hard).</p>
+<h3>Vertical 4 — Reactive / contingency</h3>
+<p><strong>Editorial reactions to events 24–72h after they happen, with the Relevo angle.</strong> Currently on the strategic roadmap, NOT in active development — needs a journalist or KOL not currently on the team.</p>
+<p>Possible interim if a tier-1 event happens (España wins WC final, major coach exit, etc.): JPW + Joel co-write one piece manually. Not scalable, kept as override option.</p>
+<h3>Vertical 5 — Casinos / sportsbetting (commercial)</h3>
+<p><strong>Operator rankings + reviews. The direct commercial conversion vertical.</strong> Reference / inspiration: <a href="https://es.motorsport.com/apuestas/">es.motorsport.com/apuestas</a> — existing iGaming.com property using the same model.</p>
+<p>Content types:</p>
+<ul>
+<li>Master ranking (“Mejores casas de apuestas en España 2026”).</li>
+<li>Payment-method filters (“Mejores casas con Bizum”).</li>
+<li>Feature-specific (“Casas con cash out instantáneo”, “Depósito 5€”).</li>
+<li>Per-operator reviews.</li>
+</ul>
+<p>Format observed in motorsport apuestas: long-form (5,000–8,000 words), ranking table with <code>operador / bono / depósito mínimo / tiempo retiro / payout % / mini-review / CTA &quot;Visitar&quot;</code>. Tone profesional pero conversacional. Affiliate links transparent. Mandatory: “Publicidad | 18+ | Aplican términos y condiciones”.</p>
+<p><strong>Operational approach</strong> (per JPW, 27/05): recycle existing iGaming.com content as seed → automate growth with Claude Code afterwards.</p>
+<p><strong>Compliance</strong>: NOT covered by Joel — needs legal/compliance review (DGOJ, Real Decreto 958/2020, Ley 13/2011). Disclaimers + 18+ + responsible-gambling block per page. Geo-gating per Spanish territories.</p>
+<p><strong>Reviewer routing for V5</strong>: TBD — Joel is editorial-only. Commercial + compliance approver pending.</p>
+<p><strong>Template</strong>: TEMPLATE-06 (casino) NOT yet designed. Style guide v1.2.2 does NOT apply directly — V5 needs its own due to compliance + commercial framing.</p>
+<hr>
+<h2>Tier-1 figure handling (cross-vertical)</h2>
+<p>A subject is <strong>Tier-1</strong> if it satisfies either:</p>
+<ol>
+<li>Appears in <code>urls_to_keep_gsc_enriched.xlsx</code> with tier ≤ 2 (proven historical GSC pull on Relevo).</li>
+<li>Is mainstream-recognized by the Spanish sports audience even without GSC history (curated list of ~110 names below).</li>
+</ol>
+<p>Tier-1 implications:</p>
+<ul>
+<li>Reinforced WebSearch on every factual claim (palmarés, dates, ages, families, ATP/M1000 attributions, geographic facts).</li>
+<li>Flag in the Asana review subtask: <code>TIER-1 — extra scrutiny on facts</code>.</li>
+<li>Mandatory factual audit pass before publish, even with Joel ✅.</li>
+<li>Inventory <code>notes</code> column prefix: <code>[TIER-1: &lt;figure&gt;]</code>.</li>
+</ul>
+<p><strong>Rationale</strong>: the Spanish sports audience recognizes these figures very well. A factual error on a Tier-1 piece destroys trust at the article level and at the brand level. The remaining ~64% of pieces (non-Tier-1) also follow the standard self-check, but the audit budget concentrates on Tier-1.</p>
+<h3>Curated Tier-1 list (27/05/2026 baseline, growing)</h3>
+<p>Football: Lamine Yamal, Nico Williams, Pedri, Gavi, Vinícius, Bellingham, Mbappé, Cristiano Ronaldo, Messi, Simeone, Guardiola, Ancelotti, Xavi, Xabi Alonso, Flick, Julián Álvarez, Griezmann, Haaland, Benzema, Sergio Ramos, Casillas, Iniesta, Florentino Pérez, Laporta, Brahim Díaz, Rodri, Dani Olmo, Mourinho.
+Tennis: Alcaraz, Nadal, Djokovic, Sinner, Federer, Swiatek, Sabalenka.
+MMA/Boxing: Topuria, McGregor, Khabib, Jon Jones, Adesanya.
+F1/Moto: Fernando Alonso, Carlos Sainz, Verstappen, Hamilton, Leclerc, Norris, Russell, Piastri, Marc Márquez, Jorge Martín, Bagnaia, Alex Palou, Jon Rahm.
+Basketball: Pau Gasol, Marc Gasol, Ricky Rubio, Sergio Llull, Doncic, Santi Aldama.
+Cycling: Pogačar, Vingegaard.
+Other: Ana Peleteiro, María Pérez, Adriana Cerezo, Iris Tió, Miguel Molina, Juan Lebrón, Paquito Navarro, Arturo Coello, Alejandro Galán, Gemma Triay.</p>
+<p>(Extracted via regex from <code>urls_to_keep_gsc_enriched.xlsx</code> Tier 1-2 titles + curated mainstream list. Update as needed via PRs to this doc.)</p>
+<hr>
+<h2>Hero image policy (revised 27/05/2026)</h2>
+<p><strong>Decision (JPW)</strong>: production-time human gate on hero images does not scale with batches of 170. Drop the gate-by-text Asana 2-step (ADR-007) for the bulk pipeline.</p>
+<p><strong>New policy</strong>:</p>
+<ul>
+<li>Pipeline auto-selects the best available hero (4-tier policy from style guide v1.2.1 §Imagen destacada still applies: Wikimedia Commons → stock contextual genérico → editorial licensed → ilustración estilizada NO fotorrealista).</li>
+<li>Hero ships with the WP draft, no pre-publish human gate.</li>
+<li>Joel and JPW review the hero alongside the article body during their normal review pass. Feedback on heroes lives in the Asana subtask comments.</li>
+<li>AI-generated photoreal portraits of real figures still NOT allowed (Ley Orgánica 1/1982 + EU AI Act risk). Anti-AI rules from style guide v1.2.1 §Imagen-destacada still binding.</li>
+</ul>
+<p><strong>ADR-007 status</strong>: superseded for bulk production. Re-evaluated quarterly.</p>
+<hr>
+<h2>Pipeline state (27/05/2026)</h2>
+<ul>
+<li>Drafter: Claude Code via <code>/relevo new</code>. Live.</li>
+<li>Style guide: v1.2.2 (29-point self-check, binary tests). Committed: <code>b94ebc9</code> for HTML SOP; <code>f9db877</code> for style guide v1.2.2 + coaches v1.1 + ADR-012.</li>
+<li>Templates: rules v2 / tactics v2 / origins v2 / coaches v1.1.</li>
+<li>Inventory: 195 rows in Excel Table1, accessible via <code>scripts/sharepoint_msal.py</code> (MSAL device-code).</li>
+<li>HITL: Joel (Stage 3) + JPW (Stage 4) via Asana subtasks.</li>
+<li>Image gen: gpt-image-2 via LiteLLM iGaming, integrated into the skill.</li>
+<li>WP MCP: live. Posts/media/terms.</li>
+<li>Asana notify: auto-creates review subtask per draft (<code>scripts/asana_notify.py</code>).</li>
+</ul>
+<h2>Current week target (27/05 → 02/06/2026)</h2>
+<p>170 evergreen drafts published as WP drafts, ready for HITL review:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Target</th>
+<th>Ready in inventory</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rules</td>
+<td>50</td>
+<td>50</td>
+<td>Sharp cap to top-50 by tier-1 + sport diversity</td>
+</tr>
+<tr>
+<td>Tactics</td>
+<td>50</td>
+<td>50 (49 pre-seed + 1 seeded 27/05)</td>
+<td>Seed: “Tipos de tiros libres en el fútbol”</td>
+</tr>
+<tr>
+<td>Origins</td>
+<td>50</td>
+<td>50 (curated from 71 ready; 21 deferred to next batch)</td>
+<td>Curation by tier-1 score + sport diversity</td>
+</tr>
+<tr>
+<td>Coaches</td>
+<td>20</td>
+<td>20 (19 pre-seed + 1 seeded 27/05)</td>
+<td>Seed: “Mourinho en el Real Madrid”</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>170</strong></td>
+<td><strong>170</strong></td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>Tier-1 marked in inventory: 61 rows (≈ 36% of the batch).</p>
+<hr>
+<h2>Roadmap (post-current-week)</h2>
+<table>
+<thead>
+<tr>
+<th>Vertical</th>
+<th>Next milestone</th>
+<th>Dependency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V1 Evergreen</td>
+<td>170 drafts → Joel review → publish wave 1</td>
+<td>This week</td>
+</tr>
+<tr>
+<td>V2 Calendar</td>
+<td>Calendar v2 → TEMPLATE-05 design → news seeding</td>
+<td>Joel calendar v2 sign-off</td>
+</tr>
+<tr>
+<td>V3 WC2026</td>
+<td>100 topics → bulk seed → drafts</td>
+<td>Joel WC topics list</td>
+</tr>
+<tr>
+<td>V4 Reactive</td>
+<td>Roadmap only</td>
+<td>Needs journalist/KOL hire</td>
+</tr>
+<tr>
+<td>V5 Casino</td>
+<td>Recycle iGaming source content → TEMPLATE-06 design → compliance routing</td>
+<td>Post-WC kickoff priority</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>Open strategic questions</h2>
+<ol>
+<li>Casino reviewer: who approves V5 commercially + legally?</li>
+<li>WC2026 lifecycle: dedicated TEMPLATE-X or reuse TEMPLATE-05 (news)?</li>
+<li>Cross-vertical hub structure: how are the 5 verticals navigationally exposed on relevo.com home?</li>
+<li>Reactive vertical: hire roadmap or strategic pause?</li>
+</ol>
+
+<footer>Auto-rendered from <code>docs/strategy/content-strategy-v1.md</code>. Companion: <a href="../one-pager.html">One-pager</a> · <a href="../backlog.html">Backlog</a> · <a href="../sop/01-content-production.html">SOP full</a> · <a href="../strategy/content-strategy-v1.html">Strategy v1</a></footer>
+</div></body></html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Relevo — SOP quick reference (JPW + Joel)</title><style>
+  :root { --c-primary:#7464DE; --c-primary-soft:#cbc1f4; --c-primary-ghost:#e8e3fa; --c-text:#1a1a1a; --c-muted:#595959; --c-light:#999; --c-bg:#fff; --c-bg-soft:#fafafa; --c-border:#e8e8e8; --c-accent:#E91E90; }
+  *{box-sizing:border-box} body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--c-text);background:#fff;margin:0;line-height:1.55;font-size:14px}
+  .wrapper{max-width:920px;margin:0 auto;padding:28px 24px 60px}
+  header{border-bottom:3px solid var(--c-primary);padding-bottom:16px;margin-bottom:22px}
+  .header-row{display:flex;align-items:center;gap:16px}
+  .avatar{width:64px;height:64px;border-radius:50%;flex-shrink:0;border:3px solid var(--c-primary);object-fit:cover}
+  h1{font-size:24px;font-weight:800;margin:0 0 4px;letter-spacing:-0.01em;line-height:1.2}
+  .sub{color:var(--c-muted);font-size:13px;margin:0}
+  .meta-line{margin-top:14px;font-size:12px;color:var(--c-muted)}
+  .meta-line strong{color:var(--c-text)}
+  .meta-line a, .breadcrumb a{color:var(--c-primary);text-decoration:none}
+  .meta-line a:hover{text-decoration:underline}
+  .breadcrumb{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--c-muted);margin-bottom:8px}
+  h2{font-size:18px;font-weight:700;margin:26px 0 10px;color:var(--c-primary);padding-bottom:4px;border-bottom:1px solid var(--c-border);letter-spacing:-0.01em}
+  h3{font-size:15px;font-weight:700;margin:20px 0 8px;color:var(--c-text)}
+  p{margin:0 0 12px}
+  ul,ol{margin:8px 0 14px;padding-left:22px} li{margin-bottom:4px}
+  strong{color:var(--c-text)}
+  code{font-family:"SF Mono",Consolas,Monaco,monospace;font-size:12.5px;background:var(--c-bg-soft);padding:1px 5px;border-radius:3px;border:1px solid var(--c-border)}
+  pre{background:var(--c-bg-soft);border:1px solid var(--c-border);border-radius:6px;padding:10px 12px;overflow-x:auto;margin:8px 0 16px}
+  pre code{background:none;border:0;padding:0;display:block}
+  hr{border:0;border-top:1px dashed var(--c-border);margin:24px 0}
+  table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:13px}
+  th{background:var(--c-primary-ghost);color:var(--c-text);font-weight:700;text-align:left;padding:9px 11px;border:1px solid var(--c-border);font-size:12.5px}
+  td{padding:8px 11px;border:1px solid var(--c-border);vertical-align:top}
+  tr:nth-child(even) td{background:var(--c-bg-soft)}
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--c-border);color:var(--c-muted);font-size:12px}
+  footer a{color:var(--c-primary);text-decoration:none}
+</style></head><body><div class="wrapper">
+<header>
+  <div class="breadcrumb"><a href="../../">← back to docs index</a></div>
+  <div class="header-row">
+    <img src="../../assets/jpw-avatar.png" alt="JPW" class="avatar">
+    <div><h1>Relevo — SOP quick reference (JPW + Joel)</h1><p class="sub">1-pager · Daily operations · Tier-1 list</p></div>
+  </div>
+  <div class="meta-line"><strong>Owner</strong> JPW · <strong>Updated</strong> 2026-05-27 ·
+    <strong>Source</strong> <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/sop/quick-reference-jpw-joel.md">github.com/jpwaimann/relevo-content</a>
+  </div>
+</header>
+<h1>SOP quick reference — JPW + Joel</h1>
+<p><strong>1-pager for daily operations.</strong> For the full SOP, see <a href="01-content-production.html">01-content-production.html</a>.</p>
+<hr>
+<h2>What’s running this week</h2>
+<p>170 evergreen drafts to WP (50 rules + 50 tactics + 50 origins + 20 coaches) under style guide v1.2.2 + coaches v1.1. Tier-1 figures flagged in the Inventory <code>notes</code> column with <code>[TIER-1: &lt;figure&gt;]</code> prefix.</p>
+<hr>
+<h2>Pipeline at a glance</h2>
+<pre><code>0. Topic ideation     JPW + Joel       → Inventory row, status=pending_review
+1. Topic approval     Joel             → Inventory row, status=pending
+2. Article generation Claude Code      → WP draft + Asana review subtask + status=review
+3. Editorial review   Joel             → Asana verdict: ✅ / ⚠️ / ❌
+4. Publish decision   JPW              → WP publish + Inventory status=published
+</code></pre>
+<p><strong>Gates that block downstream</strong>: 1 (Joel), 3 (Joel), 4 (JPW). Everything else automated.</p>
+<hr>
+<h2>Joel’s daily checklist</h2>
+<ol>
+<li>Open the Asana subtasks under <a href="https://app.asana.com/0/1213819517890615/1214844989980281">Phase 4</a> assigned to you. Each draft = one subtask.</li>
+<li>For each subtask:
+<ul>
+<li>Open the WP preview link in the subtask description.</li>
+<li>Review across 3 axes:
+<ul>
+<li><strong>Sport knowledge</strong> (palmarés, dates, ranks, geography, technical attributions). This is your moat.</li>
+<li><strong>Editorial taste</strong> (Relevo voice, bolds carry scanning value, metaphors earned, closing lands).</li>
+<li><strong>Internal coherence</strong> (article answers the title’s promise, FAQs are real questions).</li>
+</ul>
+</li>
+<li>Post verdict on the subtask:
+<ul>
+<li><strong>✅ Approve</strong> → JPW (Stage 4).</li>
+<li><strong>⚠️ Approve with notes</strong> → flag specific issues. JPW decides per-article fix vs full regen.</li>
+<li><strong>❌ Reject</strong> → explain why. Article returns to Inventory <code>pending</code> for regen.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>TIER-1 subtasks</strong> (prefix <code>TIER-1</code> in subtask title): extra scrutiny on facts. The Spanish audience knows these figures. A wrong date or palmarés destroys trust.</li>
+<li>If a defect repeats across 3+ subtasks of the same batch → mention it on the parent Phase 4 task so JPW patches the style guide.</li>
+</ol>
+<p><strong>What Joel does NOT do</strong>: CSS / template fixes, edit the WP draft body, modify the style guide directly. All editorial input goes as text feedback on the subtask.</p>
+<hr>
+<h2>JPW’s daily checklist</h2>
+<ol>
+<li><strong>Sweep Joel’s ✅ subtasks</strong> → Stage 4 publish gate:
+<ul>
+<li>Header renders correctly (CSS gap pending, <a href="https://app.asana.com/0/1213819517890615/1215166573030805">tracked</a> — don’t block on it).</li>
+<li>Hero image fits the angle.</li>
+<li>Internal links resolve.</li>
+<li>SEO title + meta description on-brand and within length.</li>
+<li>Schema markup present.</li>
+<li><strong>TIER-1 check</strong>: independent factual audit on palmarés, dates, geography.</li>
+<li>→ Publish in WP. Update Inventory <code>status=published</code> with <code>wp_url</code> and <code>published_at</code>.</li>
+</ul>
+</li>
+<li><strong>Sweep Joel’s ⚠️ subtasks</strong>: per-article decision.
+<ul>
+<li>Inline fix in WP if minor (typo, missing internal link).</li>
+<li>Full regen via <code>/relevo new &lt;row_id&gt;</code> if structural.</li>
+<li>Patch style guide v1.2.x if it’s a cross-article pattern (regenerate-batch methodology).</li>
+</ul>
+</li>
+<li><strong>Sweep Joel’s ❌ subtasks</strong>: Inventory row back to <code>pending</code> with the rejection note. Claude can re-attempt with the note as context.</li>
+<li><strong>Update the JPW weekly Asana task</strong> with the day’s bullets (≤ 5 lines, English, Asana URLs prefixed).</li>
+<li><strong>Refresh the executive one-pager</strong> (<code>docs/one-pager.html</code>) at EOD if material changes.</li>
+</ol>
+<hr>
+<h2>Claude Code — invoked on demand</h2>
+<pre><code>/relevo new                  → pick next pending row, run full E2E
+/relevo new &lt;row_id&gt;         → re-generate a specific row (regen scenario)
+/relevo content-plan         → ideation for a sport / category
+/relevo status               → snapshot of the queue
+</code></pre>
+<p>Claude does NOT publish. Claude does NOT override hard gates. Claude does NOT modify the style guide or schema autonomously.</p>
+<hr>
+<h2>Where things live</h2>
+<ul>
+<li><strong>Inventory Excel</strong>: SharePoint, single source of truth. Editable via <code>scripts/sharepoint_msal.py</code> (MSAL device-code). Read live in the pipeline.</li>
+<li><strong>Style guide</strong>: <code>prompts/style_guide.md</code> (current: v1.2.2). The pipeline injects this into every system prompt.</li>
+<li><strong>Templates</strong>: <code>prompts/{rules,tactics,origins,coaches}_template.md</code>.</li>
+<li><strong>SOP</strong>: <code>docs/sop/01-content-production.md</code> (canonical) / <code>01-content-production.html</code> (rendered).</li>
+<li><strong>Strategy doc</strong>: <code>docs/strategy/content-strategy-v1.md</code> (5 verticals + tier-1 list + roadmap).</li>
+<li><strong>ADRs</strong>: <code>docs/adr/</code>. Latest: ADR-013 (content strategy v1).</li>
+<li><strong>Asana parent for production reviews</strong>: <a href="https://app.asana.com/0/1213819517890615/1214844989980281">Phase 4 — Production launch &amp; FIFA WC readiness</a>.</li>
+<li><strong>Asana strategy task</strong>: <a href="https://app.asana.com/0/1213819517890615/1215171204862093">Relevo content strategy — 5 verticals</a>.</li>
+</ul>
+<hr>
+<h2>Tier-1 figures — current baseline (27/05/2026)</h2>
+<p>Football: Yamal, Nico Williams, Pedri, Gavi, Vinícius, Bellingham, Mbappé, Cristiano, Messi, Simeone, Guardiola, Ancelotti, Xavi, Xabi Alonso, Flick, Julián Álvarez, Griezmann, Haaland, Benzema, Sergio Ramos, Casillas, Iniesta, Florentino, Laporta, Brahim Díaz, Rodri, Dani Olmo, Mourinho.
+Tennis: Alcaraz, Nadal, Djokovic, Sinner, Federer, Swiatek, Sabalenka.
+MMA/Boxing: Topuria, McGregor, Khabib, Jon Jones, Adesanya.
+F1/Moto: Fernando Alonso, Carlos Sainz, Verstappen, Hamilton, Leclerc, Norris, Russell, Piastri, Marc Márquez, Jorge Martín, Bagnaia, Palou, Rahm.
+Basketball: Pau Gasol, Marc Gasol, Ricky Rubio, Llull, Doncic, Aldama.
+Cycling: Pogačar, Vingegaard.
+Pádel: Lebrón, Navarro, Coello, Galán, Triay.
+Atletismo: Peleteiro, María Pérez, Cerezo, Tió.</p>
+<p>(Extracted from <code>urls_to_keep_gsc_enriched.xlsx</code> Tier 1-2 + curated mainstream. Update via PR.)</p>
+<hr>
+<h2>Out-of-scope failure modes</h2>
+<ul>
+<li>Claude can’t source a fact → article doesn’t generate, failure log in run dir, row stays <code>pending</code>.</li>
+<li>Style guide hard gate fails → no delivery to Joel, blocker reported on subtask.</li>
+<li>Pattern affects 3+ articles in a batch → JPW patches style guide v1.2.x → smoke → bulk regen.</li>
+<li>WP / SharePoint outage → integration error reported, no Inventory update, re-run when back.</li>
+</ul>
+<hr>
+<p><strong>Owner</strong>: JPW · <strong>Status</strong>: v1.0 (2026-05-27) · <strong>Source</strong>: <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/sop/quick-reference-jpw-joel.md">github.com/jpwaimann/relevo-content</a></p>
+
+<footer>Auto-rendered from <code>docs/sop/quick-reference-jpw-joel.md</code>. Companion: <a href="../one-pager.html">One-pager</a> · <a href="../backlog.html">Backlog</a> · <a href="../sop/01-content-production.html">SOP full</a> · <a href="../strategy/content-strategy-v1.html">Strategy v1</a></footer>
+</div></body></html>
