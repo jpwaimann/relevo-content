@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relevo — SOP 01: Content Production Pipeline</title>
+<style>
+  :root {
+    --c-primary: #7464DE;
+    --c-primary-soft: #cbc1f4;
+    --c-primary-ghost: #e8e3fa;
+    --c-text: #1a1a1a;
+    --c-muted: #595959;
+    --c-light: #999;
+    --c-bg: #ffffff;
+    --c-bg-soft: #fafafa;
+    --c-border: #e8e8e8;
+    --c-accent: #E91E90;
+    --c-good: #2e8540;
+    --c-warn: #b6822d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--c-text);
+    background: var(--c-bg);
+    margin: 0;
+    line-height: 1.55;
+    font-size: 14px;
+  }
+  .wrapper { max-width: 920px; margin: 0 auto; padding: 28px 24px 60px; }
+  header {
+    border-bottom: 3px solid var(--c-primary);
+    padding-bottom: 16px;
+    margin-bottom: 22px;
+  }
+  .header-row { display: flex; align-items: center; gap: 16px; }
+  .avatar {
+    width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+    border: 3px solid var(--c-primary); object-fit: cover;
+  }
+  .header-text h1 {
+    font-size: 24px; font-weight: 800; margin: 0 0 4px;
+    letter-spacing: -0.01em; line-height: 1.2;
+  }
+  .sub { color: var(--c-muted); font-size: 13px; margin: 0; }
+  .meta-line { margin-top: 14px; font-size: 12px; color: var(--c-muted); }
+  .meta-line strong { color: var(--c-text); }
+  .meta-line a { color: var(--c-primary); text-decoration: none; }
+  .meta-line a:hover { text-decoration: underline; }
+
+  .breadcrumb {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--c-muted); margin-bottom: 8px;
+  }
+  .breadcrumb a { color: var(--c-primary); text-decoration: none; }
+
+  h1 { font-size: 24px; font-weight: 800; margin: 28px 0 12px; letter-spacing: -0.01em; }
+  h2 {
+    font-size: 18px; font-weight: 700; margin: 28px 0 10px;
+    color: var(--c-primary); padding-bottom: 4px;
+    border-bottom: 1px solid var(--c-border); letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 15px; font-weight: 700; margin: 22px 0 8px;
+    color: var(--c-text);
+  }
+  p { margin: 0 0 12px; }
+  ul, ol { margin: 8px 0 14px; padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  strong { color: var(--c-text); }
+  em { color: var(--c-muted); }
+  code {
+    font-family: "SF Mono", Consolas, Monaco, monospace;
+    font-size: 12.5px; background: var(--c-bg-soft);
+    padding: 1px 5px; border-radius: 3px;
+    border: 1px solid var(--c-border);
+  }
+  pre code { display: block; padding: 10px 12px; overflow-x: auto; }
+  hr { border: 0; border-top: 1px dashed var(--c-border); margin: 26px 0; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 12px 0 18px;
+    font-size: 13px;
+  }
+  th {
+    background: var(--c-primary-ghost); color: var(--c-text);
+    font-weight: 700; text-align: left; padding: 9px 11px;
+    border: 1px solid var(--c-border); font-size: 12.5px;
+  }
+  td {
+    padding: 8px 11px; border: 1px solid var(--c-border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: var(--c-bg-soft); }
+
+  .callout {
+    background: var(--c-primary-ghost);
+    border-left: 4px solid var(--c-primary);
+    padding: 12px 16px; margin: 16px 0; border-radius: 0 6px 6px 0;
+  }
+  footer {
+    margin-top: 40px; padding-top: 16px;
+    border-top: 1px solid var(--c-border);
+    color: var(--c-muted); font-size: 12px;
+  }
+  footer a { color: var(--c-primary); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+  <div class="breadcrumb"><a href="../">← back to docs index</a> · SOP</div>
+  <div class="header-row">
+    <img src="../../assets/jpw-avatar.png" alt="JPW" class="avatar">
+    <div class="header-text">
+      <h1>SOP 01 — Content Production Pipeline</h1>
+      <p class="sub">Roles · Stages · Asana conventions · Inventory schema · Day-in-the-life</p>
+    </div>
+  </div>
+  <div class="meta-line">
+    <strong>Owner</strong> JPW · <strong>Reviewer</strong> Joel Sierra · <strong>Drafter</strong> Claude Code ·
+    <strong>Version</strong> v1.0 (2026-05-25) · <strong>Source</strong>
+    <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/sop/01-content-production.md">github.com/jpwaimann/relevo-content</a>
+  </div>
+</header>
+
+<h1>SOP 01 — Content Production Pipeline</h1>
+<p><strong>Audience</strong>: Juan Pablo Waimann (JPW) · Joel Sierra · Claude Code
+<strong>Status</strong>: v1.0 — 2026-05-25
+<strong>Owner</strong>: JPW
+<strong>Purpose</strong>: Document the existing content production pipeline so every participant knows exactly what they do, at which step a human gate is required, and what handoffs look like. The pipeline itself does NOT change — this SOP only formalizes the roles and checkpoints so we can scale production with confidence.</p>
+<hr>
+<h2>TL;DR — Who does what</h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Owner</th>
+<th>Tool / artefact</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0. Topic ideation</td>
+<td>JPW + Joel</td>
+<td>Inventory Excel (SharePoint)</td>
+<td>Row with <code>status=pending_review</code></td>
+</tr>
+<tr>
+<td>1. Topic approval</td>
+<td>Joel</td>
+<td><code>relevo_approve.py</code> or Asana batch task</td>
+<td><code>status=pending</code></td>
+</tr>
+<tr>
+<td>2. Article generation</td>
+<td>Claude Code</td>
+<td><code>/relevo new</code></td>
+<td>WP draft + run dir + Asana review subtask</td>
+</tr>
+<tr>
+<td>3. Editorial review</td>
+<td>Joel</td>
+<td>Asana subtask + WP preview URL</td>
+<td>✅ / ⚠️ / ❌ verdict on the subtask</td>
+</tr>
+<tr>
+<td>4. Final publish decision</td>
+<td>JPW</td>
+<td>WP admin + Inventory Excel</td>
+<td>Post moves to <code>pending</code> then <code>publish</code>; Inventory <code>status=published</code></td>
+</tr>
+<tr>
+<td>5. Post-publish hygiene</td>
+<td>—</td>
+<td>Inventory + analytics</td>
+<td>None — automatic</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gates that block downstream work:</strong> 1, 3, and 4. Everything else is automated.</p>
+<hr>
+<h2>1. Roles</h2>
+<h3>Claude Code — the drafter</h3>
+<p><strong>What it does autonomously, no human needed:</strong></p>
+<ul>
+<li>Reads the Inventory Excel via Microsoft Graph (live source of truth).</li>
+<li>Picks the next row with <code>status=pending</code> (Joel-approved).</li>
+<li>Pulls the right rulebook PDF (Rules / Tactics) or runs WebSearch ideation (Origins / Coaches / newsworthy).</li>
+<li>Generates the article in multiple passes (research → draft → critique ≥ 80 → revise → fact-check).</li>
+<li>Runs the style guide self-check (currently v1.2, 25 binary tests).</li>
+<li>Generates the hero image via the iGaming LiteLLM proxy.</li>
+<li>Uploads the post to WordPress as a draft and attaches the hero.</li>
+<li>Creates the Asana review subtask under Phase 4 (current production parent task), assigned to the next reviewer.</li>
+<li>Updates the Inventory row to <code>status=review</code> with the WP post ID, the run directory, and the score.</li>
+</ul>
+<p><strong>What it does NOT do:</strong></p>
+<ul>
+<li>It does <strong>not</strong> publish. Status moves to <code>publish</code> only after JPW’s Stage 4 approval.</li>
+<li>It does <strong>not</strong> override a hard gate. If the self-check fails (e.g. bolds coverage &lt; 0.80, a paragraph &gt; 60 words, a Masters 1000 misattribution), the run halts and is reported as a blocker, not as a draft for review.</li>
+<li>It does <strong>not</strong> modify the Inventory schema or the style guide on its own. Schema changes need an ADR; style guide changes need JPW sign-off after a smoke test.</li>
+</ul>
+<h3>Joel Sierra — the editorial reviewer</h3>
+<p><strong>Stage 1 — topic approval (asynchronous, in lots):</strong></p>
+<ul>
+<li>Sweeps Inventory rows with <code>status=pending_review</code>.</li>
+<li>For each row, decides ✅ (move to <code>pending</code>), ⚠️ (rewrite the angle, suggest edits in the <code>notes</code> column), or ❌ (drop).</li>
+<li>Typical batching: sport-by-sport, ~30 topics per session, via <code>relevo_approve.py approve --sport &lt;X&gt; --category &lt;Y&gt;</code> or via an Asana batch task.</li>
+</ul>
+<p><strong>Stage 3 — editorial review on each draft:</strong></p>
+<ul>
+<li>Receives an Asana subtask per draft, with the WP preview URL and the score breakdown.</li>
+<li>Reviews the draft on the WP preview page. The review focuses on:
+<ul>
+<li><strong>Sport knowledge</strong> — fact accuracy (palmarés, dates, ranks, geography, technical attributions). Joel’s domain expertise is the moat.</li>
+<li><strong>Editorial taste</strong> — does the Relevo voice come through? Are bolds carrying scanning value? Are metaphors earned? Does the closing land?</li>
+<li><strong>Internal coherence</strong> — does the article actually answer the title’s promise? Are the FAQs the questions a Relevo reader would actually ask?</li>
+</ul>
+</li>
+<li>Posts a verdict on the Asana subtask:
+<ul>
+<li><strong>✅ Approve</strong> — passes to Stage 4 (JPW).</li>
+<li><strong>⚠️ Approve with notes</strong> — flag specific issues. JPW decides per-article (inline fix vs full regen) or, if it’s a cross-batch pattern, JPW patches the style guide and re-smokes.</li>
+<li><strong>❌ Reject</strong> — explain why. The article goes back to the Inventory as <code>status=pending</code> with a note for Claude to re-attempt.</li>
+</ul>
+</li>
+<li><strong>What Joel does NOT do:</strong> apply CSS / template fixes, modify the style guide directly, edit the WP draft body. Editorial input is text feedback on the subtask, not direct article edits.</li>
+</ul>
+<h3>Juan Pablo Waimann (JPW) — the publisher / orchestrator</h3>
+<p><strong>Stage 4 — final publish decision:</strong></p>
+<ul>
+<li>Sweeps Asana subtasks that Joel marked ✅.</li>
+<li>Does a final pass on the WP draft: header rendering, hero image fit, internal linking, SEO title and meta description, schema markup.</li>
+<li>Decides:
+<ul>
+<li><strong>Publish</strong> — moves post to <code>pending</code> (then human-published in WP). Updates Inventory to <code>status=published</code> with <code>wp_url</code> and <code>published_at</code>.</li>
+<li><strong>Hold</strong> — leaves as draft with an Asana note. Reasons: timing (calendar alignment), bundling with another piece, missing internal link target.</li>
+<li><strong>Send back to Claude</strong> — for regen with specific instructions.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Cross-stage role:</strong></p>
+<ul>
+<li>Owns the Inventory schema and the style guide.</li>
+<li>Owns the Asana project structure (Phase 4 = current parent task for production reviews).</li>
+<li>Owns the public roadmap, the backlog, and the executive one-pager.</li>
+</ul>
+<hr>
+<h2>2. Pipeline stages — detailed</h2>
+<h3>Stage 0 · Ideation</h3>
+<ul>
+<li><strong>Inputs:</strong> sport calendar, FIFA WC window, search demand signals (urls_to_keep_gsc_enriched.xlsx, YouTube watch lists), editorial intuition.</li>
+<li><strong>Output:</strong> one or more new Inventory rows with <code>status=pending_review</code>. Columns required: <code>id</code>, <code>sport</code>, <code>category</code> (Rules / Tactics / Origins / Coaches / Newsworthy / Betting), <code>title</code>, <code>slug</code>, <code>hub_slug</code>, <code>sub_hub</code>, <code>nombre</code>, <code>gancho</code>, <code>created_by</code>.</li>
+<li><strong>Trigger:</strong> weekly editorial planning, on-demand for newsworthy content (FIFA WC kick-off, transfer window, etc.).</li>
+</ul>
+<h3>Stage 1 · Topic approval</h3>
+<ul>
+<li><strong>Owner:</strong> Joel.</li>
+<li><strong>Cadence:</strong> in lots — typically a weekly sweep of pending_review rows, sport by sport.</li>
+<li><strong>Tools:</strong> <code>relevo_approve.py approve --sport &lt;X&gt; --category &lt;Y&gt;</code> (CLI on the AWS VM), or an Asana batch task with the row IDs to approve.</li>
+<li><strong>Output:</strong> Inventory rows flipped to <code>status=pending</code>. Claude only picks from <code>pending</code>.</li>
+</ul>
+<h3>Stage 2 · Article generation (Claude Code)</h3>
+<ul>
+<li><strong>Entry:</strong> JPW (or future scheduler) types <code>/relevo new</code> in Claude Code.</li>
+<li><strong>Claude reads:</strong> Inventory live → first <code>pending</code> row → fetches rulebook PDF (Rules/Tactics) or runs WebSearch (Origins/Coaches/Newsworthy).</li>
+<li><strong>Multi-pass generation:</strong>
+<ol>
+<li>Research and source the facts (with WebSearch for live data).</li>
+<li>Draft the article under the relevant template (Rules v2 / Tactics v2 / Origins v2 / Coaches v1).</li>
+<li>Self-critique against the 25-point checklist of style guide v1.2.</li>
+<li>Revise until score ≥ 80 AND all hard gates pass (bolds coverage, no paragraph &gt; 60 words, no Masters 1000 misattribution, etc.).</li>
+<li>Fact-check pass — every live data point cross-checked against WebSearch (the verifiable lists in style guide §2 are the floor).</li>
+<li>Hero image via gpt-image-2 through the iGaming LiteLLM proxy. AI metadata stripped (C2PA / JUMBF / OpenAI markers).</li>
+</ol>
+</li>
+<li><strong>Upload:</strong> <code>scripts/wp_upload.py</code> uploads the image; <code>posts.create</code> writes the draft with <code>post_excerpt=entradilla</code> and <code>post_content</code> starting at the first <code>&lt;h2&gt;</code> (per ADR-008 §2.4 amended).</li>
+<li><strong>Asana subtask:</strong> auto-created under Phase 4 parent, assigned to the next reviewer in the round-robin (currently always Joel).</li>
+<li><strong>Inventory write:</strong> <code>status=review</code>, <code>wp_post_id</code>, <code>wp_url</code>, <code>run_dir</code>, <code>score</code>, <code>critique_path</code>.</li>
+</ul>
+<h3>Stage 3 · Editorial review (Joel)</h3>
+<ul>
+<li><strong>Cadence:</strong> Joel reviews subtasks daily during production weeks.</li>
+<li><strong>Inputs:</strong> Asana subtask description (WP preview URL + score breakdown + factual fixes applied), and the WP draft preview itself.</li>
+<li><strong>Decision tree:</strong>
+<ul>
+<li>✅ → JPW (Stage 4).</li>
+<li>⚠️ with notes → JPW decides (inline fix, full regen, or systemic style guide patch).</li>
+<li>❌ → Inventory row back to <code>pending</code> with rejection notes; Claude can attempt again.</li>
+</ul>
+</li>
+<li><strong>Patterns vs per-article</strong>: if the same defect shows up in 3+ subtasks of the same batch, that’s a systemic pattern and goes to a style guide patch (v1.2.x), not a per-article fix. The regenerate-batch methodology (memory: <code>feedback_regenerate_batch_methodology</code>) applies.</li>
+</ul>
+<h3>Stage 4 · Final publish decision (JPW)</h3>
+<ul>
+<li><strong>Inputs:</strong> Joel ✅ verdict + WP draft.</li>
+<li><strong>Checklist:</strong>
+<ul>
+<li>Header renders correctly (until the WP CSS fix lands — currently tracked as deferred work).</li>
+<li>Hero image fits the angle.</li>
+<li>Internal links resolve.</li>
+<li>SEO title and meta description on-brand and within length.</li>
+<li>Schema markup present (FAQPage + NewsArticle baseline).</li>
+</ul>
+</li>
+<li><strong>Output:</strong> post moved to <code>pending</code> then <code>publish</code> in WP. Inventory row to <code>status=published</code> with <code>wp_url</code> and <code>published_at</code>.</li>
+</ul>
+<h3>Stage 5 · Post-publish</h3>
+<ul>
+<li>No human action required by default.</li>
+<li>If a published article needs edits (live data update, ranking change), open an Asana task referencing the post ID. Claude can re-fetch live data and propose a patch.</li>
+</ul>
+<hr>
+<h2>3. Asana conventions</h2>
+<ul>
+<li><strong>Parent task for current production reviews:</strong> Phase 4 — Production launch &amp; FIFA WC readiness (<code>1214844989980281</code>).</li>
+<li><strong>Subtask name format:</strong> <code>[Editorial QA] &lt;article slug or topic&gt; (Joel review)</code> or <code>[Editorial QA] Smoke v1.x — &lt;topic&gt; (JPW pre-Joel review)</code> for smoke runs.</li>
+<li><strong>Language:</strong> English only on Asana (project convention).</li>
+<li><strong>Daily entries in the JPW weekly task:</strong> ≤ 5 lines per day, each line prefixed with the relevant Asana URL.</li>
+<li><strong>Assignee:</strong> only assign when the reviewer is the next actor. Topic ideation rows in the Inventory are NOT Asana tasks — they live in the Excel.</li>
+</ul>
+<hr>
+<h2>4. Inventory Excel — single source of truth</h2>
+<p><strong>Constraint set by JPW:</strong> one and only one Excel inventory holds <strong>all</strong> content the project produces — Rules, Tactics, Origins, Coaches (incoming), Newsworthy (incoming), Betting / Casino pages (incoming).</p>
+<p>Adding new content types means <strong>extending the schema</strong> (new categorical values in the <code>category</code> column, plus any category-specific columns), <strong>not</strong> spinning up a parallel spreadsheet. Open follow-up: <code>INVENTORY-02</code> in the backlog tracks the schema extension for Coaches + Newsworthy + Betting.</p>
+<hr>
+<h2>5. Quick reference — what each person does in a given day</h2>
+<h3>Joel — production day</h3>
+<ol>
+<li>Open the weekly Asana task under his name → see today’s pending subtasks.</li>
+<li>For each subtask: open the WP preview, review against the 3 axes (sport knowledge, editorial taste, internal coherence), post verdict.</li>
+<li>If a pattern emerges across subtasks, mention it on the parent task so JPW can decide on a style guide patch.</li>
+</ol>
+<h3>JPW — production day</h3>
+<ol>
+<li>Sweep Joel’s ✅ subtasks → run Stage 4 checks → publish / hold / send back.</li>
+<li>Sweep Joel’s ⚠️ subtasks → decide per-article action.</li>
+<li>Sweep Joel’s ❌ subtasks → mark Inventory row back to <code>pending</code> with the rejection note.</li>
+<li>Update the JPW weekly Asana task with the day’s bullets (≤ 5 lines, English, Asana URLs prefixed).</li>
+<li>Refresh the executive one-pager (<code>docs/one-pager.html</code>) at EOD.</li>
+</ol>
+<h3>Claude Code — invoked on demand</h3>
+<ol>
+<li><code>/relevo new</code> → pick a <code>pending</code> row, run Stage 2 end-to-end, hand off the draft to Joel via Asana.</li>
+<li><code>/relevo content-plan</code> → ideation for a sport / category; writes new <code>pending_review</code> rows.</li>
+<li><code>/relevo status</code> → snapshot of the queue (<code>pending_review</code>, <code>pending</code>, <code>review</code>, <code>published</code>).</li>
+<li><code>/relevo demo</code> → simulated run for stakeholder demos, no production write.</li>
+</ol>
+<hr>
+<h2>6. Out-of-scope failure modes</h2>
+<ul>
+<li><strong>Claude can’t source a fact</strong> → article does not generate. Run dir keeps the failure log. JPW or Joel can override by providing the source manually in a follow-up <code>/relevo new</code> call.</li>
+<li><strong>Style guide hard gate fails</strong> → no delivery to Joel. The block is reported on the subtask, and the row remains in <code>status=pending</code> for a re-attempt or a manual edit.</li>
+<li><strong>Joel returns ⚠️ for a pattern that affects 3+ articles in a batch</strong> → JPW patches the style guide to v1.2.x with the pattern as a binary check, runs a smoke on one representative article, signs off, and only then re-generates the batch.</li>
+<li><strong>WP outage / SharePoint outage</strong> → Claude reports the integration error on the subtask. The draft remains in the run dir; no Inventory row is updated. Re-run when the integration is back.</li>
+</ul>
+<hr>
+<h2>7. Version log</h2>
+<ul>
+<li><strong>v1.0 (2026-05-25)</strong> — Initial SOP. Captures the pipeline as it stands after the Phase 3 closing demo: style guide v1.2 (ADR-010), templates Rules v2 / Tactics v2 / Origins v2, Coaches template incoming, single Inventory Excel constraint.</li>
+</ul>
+
+
+<footer>
+  Auto-rendered from <code>docs/sop/01-content-production.md</code>. Edit the markdown source on GitHub to update this page.
+  · Companion docs:
+  <a href="../one-pager.html">One-pager</a> ·
+  <a href="../backlog.html">Backlog</a> ·
+  <a href="../sports_calendar_2026_h2.html">Sports calendar H2 2026</a>
+</footer>
+
+</div>
+</body>
+</html>
