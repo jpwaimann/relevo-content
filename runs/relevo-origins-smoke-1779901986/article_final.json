@@ -1,0 +1,35 @@
+{
+  "run_id": "origins-smoke-1779901986",
+  "row_id": 9,
+  "sport": "Fútbol",
+  "category": "origins",
+  "tier": "TIER-1",
+  "subject": "Lamine Yamal",
+  "seo_title": "Lamine Yamal: dónde nació, su familia y orígenes",
+  "url_slug": "lamine-yamal-donde-nacio-familia",
+  "meta_description": "Lamine Yamal: su infancia en Mataró, los orígenes marroquíes y guineanos de su familia y primeros pasos en La Masia que lo llevaron al Barça.",
+  "hub_slug": "futbol",
+  "wp_post_id": 30256,
+  "wp_url_preview": "https://relevo-com.sub.plus/?p=30256&preview=true",
+  "hero_image": {
+    "attachment_id": 30255,
+    "url": "https://relevo-com.sub.plus/wp-content/uploads/2026/05/lamine-yamal-donde-nacio-familia-hero.jpg",
+    "source": "AI-generated contextual stock (NO photoreal of Lamine Yamal — symbolic Rocafonda / football scene)",
+    "policy_compliance": "v1.2.1 4-tier policy — tier 2 (stock contextual) variant: no person, no face, no jersey, no likeness"
+  },
+  "quality_score": 92,
+  "self_check_passed": 29,
+  "word_count_body": 1723,
+  "bolds_coverage": 0.97,
+  "paragraphs_over_60_words": 0,
+  "factual_sources_cross_checked": 8,
+  "fact_sheet_path": "/tmp/relevo-origins-smoke-1779901986/fact_sheet.md",
+  "stages_completed": ["lock", "fact_sheet", "draft", "self_critique", "revise", "fact_check", "image", "wp_upload"],
+  "post_author_wp_user": 77,
+  "files": {
+    "article_html": "/tmp/relevo-origins-smoke-1779901986/article.html",
+    "article_body_html": "/tmp/relevo-origins-smoke-1779901986/article_body.html",
+    "hero_local": "/tmp/relevo-origins-smoke-1779901986/hero.jpg",
+    "fact_sheet": "/tmp/relevo-origins-smoke-1779901986/fact_sheet.md"
+  }
+}

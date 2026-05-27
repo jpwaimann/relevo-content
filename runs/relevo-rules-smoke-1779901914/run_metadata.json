@@ -1,0 +1,47 @@
+{
+  "run_id": "rules-smoke-1779901914",
+  "started_at_epoch": 1779901914,
+  "completed_at": "2026-05-27T17:23:10Z",
+  "row_id": 2,
+  "sport": "Fútbol",
+  "category": "rules",
+  "tier1": false,
+  "style_guide_version": "1.2.2",
+  "template_version": "rules v2.0",
+  "stages": {
+    "research": "ok (IFAB Laws of the Game 2025/26 PDF extracted via pdftotext)",
+    "draft": "ok (full HTML body, 37 paragraphs, 1656 prose words)",
+    "self_critique_round_1": "73% bold coverage, 7 paragraphs >60 words — needs revise",
+    "revise_round_1": "tightened 7 long paragraphs to ≤60 words, added bolds to 9 uncovered paragraphs",
+    "self_critique_round_2": "97.3% bold coverage, 0 paragraphs >60 words — PASS",
+    "fact_check": "2 WebSearch calls confirming 25/26 changes (8s goalkeeper + offside last-point-of-contact)",
+    "image_gen": "gpt-image-2 via LiteLLM iGaming, 1536x1024, 64s, stripped to clean JPEG 148KB",
+    "wp_upload": "media id=30245, post id=30252, post_author=77 (Pablo)",
+    "asana_notify": "subtask gid=1215173258122308 under Phase 4 parent 1214844989980281",
+    "inventory_update": "row 2 status=review, all fields populated"
+  },
+  "metrics": {
+    "final_score": 92,
+    "self_check_passed": 29,
+    "self_check_total": 29,
+    "prose_words": 1656,
+    "full_words": 1972,
+    "bolds_count": 44,
+    "paragraphs_count": 37,
+    "bolds_coverage_pct": 97.3,
+    "long_paragraphs_count": 0
+  },
+  "wp": {
+    "post_id": 30252,
+    "post_status": "draft",
+    "post_author": 77,
+    "preview_url": "https://relevo-com.sub.plus/?p=30252&preview=true",
+    "featured_image_id": 30245,
+    "featured_image_url": "https://relevo-com.sub.plus/wp-content/uploads/2026/05/reglas-futbol-hero.jpg"
+  },
+  "asana": {
+    "subtask_gid": "1215173258122308",
+    "url": "https://app.asana.com/0/0/1215173258122308/f/",
+    "parent_gid_phase4": "1214844989980281"
+  }
+}

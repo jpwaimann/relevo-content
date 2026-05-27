@@ -1,0 +1,15 @@
+{
+  "vars": {
+    "style": "Premium editorial sports photography. High-contrast cinematic color grade with directional rim light. Tight composition on athletic action. Deep shadows, warm highlights. Subtle film grain. No text overlays, no logos, no scores, no graphic elements, no jersey numbers. Photographic realism, magazine-cover quality."
+  },
+  "jobs": [
+    {
+      "name": "hero.jpg",
+      "size": "1536x1024",
+      "quality": "high",
+      "output_format": "jpeg",
+      "output_compression": 85,
+      "prompt": "Wide editorial action shot of a generic basketball pick and roll moment on an indoor professional arena court. A ball handler dribbling near the top of the key as a teammate sets a screen on a defender; the screener is starting to roll toward the rim. Players are deliberately back-lit and shown in silhouette/profile — no identifiable faces, no team logos visible, no jersey numbers readable, no team names. Hardwood floor with bright spotlights, blurred crowd background. Dynamic angle, low camera. {style}"
+    }
+  ]
+}

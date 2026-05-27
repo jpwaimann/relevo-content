@@ -1,0 +1,15 @@
+{
+  "vars": {
+    "style": "Premium editorial sports photography. Cinematic golden hour lighting. Deep shadows, warm highlights. Subtle film grain. No text overlays, no logos, no scores. Magazine-cover quality composition."
+  },
+  "jobs": [
+    {
+      "name": "hero.jpg",
+      "size": "1536x1024",
+      "quality": "high",
+      "output_format": "jpeg",
+      "output_compression": 85,
+      "prompt": "Wide-angle editorial photograph of a single football boot stepping on a worn football against the textured concrete floor of a working-class neighborhood courtyard at dusk. Graffiti on a concrete wall in the background reads 'ROCAFONDA'. Mediterranean coastal town atmosphere. No people visible, no faces, no jerseys, no identifiable likeness of any real person. Symbolic and atmospheric, urban barrio aesthetic. {style}"
+    }
+  ]
+}

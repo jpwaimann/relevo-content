@@ -1,0 +1,15 @@
+{
+  "vars": {
+    "style": "Editorial sports photography aesthetic. Cinematic lighting, shallow depth of field, premium magazine cover feel. No text, no logos, no watermarks, no recognizable faces or jerseys of real clubs."
+  },
+  "jobs": [
+    {
+      "name": "hero.jpg",
+      "size": "1536x1024",
+      "quality": "medium",
+      "output_format": "jpeg",
+      "output_compression": 85,
+      "prompt": "A referee's hand raised mid-air over a football pitch in soft daylight, fingers extended in a countdown gesture. In the background, a goalkeeper in a generic neutral jersey holds a football near the penalty area. Grass texture sharp in foreground, stadium blurred behind. Symbolic of the new 2025/26 eight-second goalkeeper rule. {style}"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "run_id": "coaches-smoke-1779902030",
+  "inventory_row": 151,
+  "topic": "José Mourinho en el Real Madrid: era completa y palmarés",
+  "seo_title": "Mourinho en el Real Madrid: títulos, era y palmarés completo",
+  "slug": "titulos-mourinho-real-madrid",
+  "category": "coaches",
+  "sport": "Fútbol",
+  "hub": "futbol",
+  "sub_hub": "liga-primera",
+  "tier": "TIER-1",
+  "wp_post_id": 30250,
+  "wp_preview_url": "https://relevo-com.sub.plus/?p=30250&preview=true",
+  "wp_admin_url": "https://relevo-com.sub.plus/wp-admin/post.php?post=30250&action=edit",
+  "hero_image": {
+    "source": "Wikimedia Commons",
+    "file": "GlobeSoccer_Awards_2012_-_Jose_Mourinho.jpg",
+    "license": "CC BY-SA 3.0",
+    "author": "Bendoni communication",
+    "wp_attachment_id": 30246
+  },
+  "self_check": {
+    "score": 92,
+    "passed": "27/29",
+    "coaches_components": "8/10 + 9 skipped (era cerrada)",
+    "word_count": 1344,
+    "bolds_coverage": "96.4%",
+    "hitos_3_capas": "3/3 (Copa 2011, Liga 11/12, Supercopa 12)",
+    "factual_sources": 7
+  },
+  "lexicon_check": {
+    "Special One": true,
+    "merengues": true,
+    "madridistas": true,
+    "madridismo": true,
+    "Florentino": true,
+    "Bernabéu": true,
+    "Hala Madrid": true,
+    "mourinhismo": true
+  },
+  "debate_publico_integrated": true,
+  "note": "Smoke #4 coaches v1.1 + style guide v1.2.2. Era cerrada (2010-2013) → componente 9 conexión con presente SKIPPED por diseño. Debate público integrado con framing presentativo no editorializante."
+}

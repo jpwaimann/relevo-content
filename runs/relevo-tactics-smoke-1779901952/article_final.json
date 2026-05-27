@@ -1,0 +1,40 @@
+{
+  "run_id": "tactics-smoke-1779901952",
+  "row_id": 19,
+  "sport": "Baloncesto",
+  "category": "tactics",
+  "topic": "Pick and roll: la jugada más usada",
+  "seo_title": "Pick and roll en baloncesto: qué es y cómo se ejecuta",
+  "url_slug": "pick-and-roll-baloncesto",
+  "meta_description": "El pick and roll explicado. Bloqueo directo, separación del defensor, opciones de roll vs pop y por qué es la jugada base del baloncesto moderno.",
+  "hub_slug": "baloncesto",
+  "article_type": "evergreen",
+  "wp_post_id": 30247,
+  "wp_url": "https://relevo-com.sub.plus/?p=30247&preview=true",
+  "wp_attachment_id": 30244,
+  "hero_image_path": "/tmp/relevo-tactics-smoke-1779901952/hero.jpg",
+  "quality_score": 88,
+  "self_check": {
+    "points_total": 29,
+    "points_passed": 27,
+    "notes": "P28 (categorías históricas) y P27 (hitos clave) no aplican: el artículo es Tactics evergreen, no biográfico. Riesgo menor en P17: bold 'Si el interior tiene tiro exterior' es conditional fragment más que idea completa; resto pasa. Body-proper bolds coverage 85% (23/27)."
+  },
+  "metrics": {
+    "word_count_body": 1432,
+    "body_paragraphs": 27,
+    "bolds_count": 23,
+    "bolds_coverage_pct": 85,
+    "paras_over_60_words": 0,
+    "h2_count": 7,
+    "h3_count": 9
+  },
+  "factual_sources_cross_checked": [
+    "Stockton/Malone 1985-2003 Utah Jazz — Wikipedia + NBA.com",
+    "Stockton máximo asistente histórico NBA — Wikipedia",
+    "Steve Nash MVP 2005-2006 + Suns Seven Seconds — Wikipedia + theScore",
+    "Doncic trade to Lakers Feb 2025 — ESPN + Wikipedia",
+    "Synergy Sports 20% NBA possessions 2023 — basketball coaching resources",
+    "Pick and roll origins predate Stockton/Malone — Cousy quote SI 1995"
+  ],
+  "stages_completed": ["research", "draft", "self_critique", "revise_1", "fact_check", "image_gen", "wp_upload"]
+}
