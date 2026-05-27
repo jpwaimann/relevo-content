@@ -1,8 +1,15 @@
 # Guía de estilo Relevo — Voz y redacción
 
-**Versión 1.2.1** · 26/05/2026 · Patch sobre v1.2: política de imagen destacada (hero image) anti-AI con figuras reales. Sin cambios sobre la prosa.
+**Versión 1.2.2** · 27/05/2026 · Patch sobre v1.2.1 con feedback Joel/Simeone (smoke Coaches). Tres reglas nuevas para piezas con sujeto biográfico (Coaches + Origins): profundidad obligatoria en hitos clave, nombres de época para categorías históricas, redacción de pasajes técnicos sin data dump. Self-check: 26 → 29 puntos.
 
 ## Changelog
+
+- **v1.2.2 (27/05/2026)** — Patch sobre v1.2.1 con feedback Joel ronda 4 (smoke Coaches Simeone, Asana `1215146649288358`, verdict ⚠️ Needs change). Tres patches universales:
+  1. **Hitos clave — 3 elementos obligatorios (qué + por qué + impacto)**: en piezas biográficas/palmarés, cada hito histórico se desarrolla con tres elementos. Joel marcó: *"Lisboa 2014 no puede resolverse casi únicamente desde el gol de Ramos y el marcador final. Falta el contexto de 'el Atleti estuvo a segundos de ganar su primera Champions', el impacto del trauma."* El gol + score = capa Wikipedia; el impacto cultural = capa Relevo.
+  2. **Categorías históricas — nombre de época, no nombre moderno**: cuando se menciona una categoría/competición/torneo de un periodo histórico, usar el nombre vigente EN ESE PERIODO. Joel marcó: *"decir que el Albacete era de Tercera División es confuso en España, es cierto que era el tercer nivel del fútbol español, pero la categoría se denominaba entonces Segunda B."* Lista verificable agregada a antialucinación.
+  3. **Pasajes técnicos — sin data dump suelto**: frases técnicas y de transición ("El cholismo es el sello de su era", "En el San Siro", "El Atleti ganó 3-0 con doblete de Radamel Falcao y tanto de Diego Ribas") no pueden quedar como fragmentos pegados sin contexto sintáctico. Joel marcó: *"la redacción periodística deja que desear en varios pasajes."* Test: si la frase aislada sirve como pie de foto en lugar de oración periodística, reescribir.
+
+  Trigger: smoke Coaches Simeone bajo TEMPLATE-04 v1.0 + v1.2.1, score self-asignado 92/100, pero Joel ⚠️ por patrones cross-batch que el self-check actual no capturaba. Patches v1.2.2 cierran 3 huecos universales; los patches específicos de Coaches (lexicón cultural del club, conexión con presente, debate público integrado) viven en `coaches_template.md` v1.1. Documentado en ADR-012.
 
 - **v1.2.1 (26/05/2026)** — Nueva sección "Imagen destacada (hero image)" + punto 26 del self-check. Política 4-tier para evitar generación AI de figuras públicas reales (riesgo Ley Orgánica 1/1982 España + EU AI Act). Default: Wikimedia Commons con atribución. Fallback: stock contextual genérico. Excepción consciente: ilustración estilizada NO fotorrealista. Trigger: pregunta de JPW del 26/5 al planear TEMPLATE-04 (Coaches) — ¿stock photos? ¿legal AI imagery con figuras reales? Resuelto antes del primer batch productivo de coaches.
 
@@ -175,6 +182,35 @@ La capa 3 es la que diferencia una pieza correcta de una pieza editorialmente va
 
 ---
 
+## Hitos clave en piezas biográficas/palmarés — 3 elementos obligatorios (v1.2.2)
+
+En piezas de Coaches y Origins, cada hito histórico relevante (final ganada, final perdida que define la era, título canónico, derrota traumática, decisión que cambió un ciclo) **NO puede resolverse solo con el marcador y el goleador**. Debe incluir tres elementos:
+
+1. **Qué pasó** — resultado, score, rival, goleador. La capa básica de datos.
+2. **Por qué fue importante en el contexto** — qué cambió en la trayectoria del sujeto/club/era, qué dato concreto lo distingue (años de espera, rival histórico, cómo se llegó). La capa periodística.
+3. **Impacto cultural/emocional reconocible** — cómo se vivió en el universo del club/aficionado, qué dejó (trauma, alivio, fractura, símbolo). La capa Relevo.
+
+Sin (2) y (3), el hito es Wikipedia. La diferencia entre una pieza correcta y una pieza editorialmente valiosa es la capa 3 sobre cada hito clave, no la lista de hitos en sí.
+
+✅ Lisboa 2014 (Champions perdida ante Real Madrid):
+1. *Qué pasó*: el Atleti ganaba 1-0 en el minuto 93 con gol de Godín; Sergio Ramos empató de cabeza, prórroga, 1-4 final con goles de Bale, Marcelo y Cristiano.
+2. *Por qué fue importante*: a 90 segundos del título, el Atleti se quedaba a las puertas de su primera Champions, ante el rival histórico de la ciudad, después de haber jugado el partido casi entero a una sola línea defensiva por la lesión temprana de Diego Costa.
+3. *Impacto cultural*: el gol de Ramos quedó como trauma fundacional de la era Simeone. Lisboa 2014 condicionó el discurso del cholismo durante temporadas — el "casi" como cicatriz colectiva del rojiblanquismo moderno.
+
+❌ Solo capa 1 (lo que Joel marcó en smoke Simeone v1.2.1):
+"El Atleti perdió la final de Champions 2014 contra el Real Madrid 1-4 tras el gol del empate de Sergio Ramos."
+
+### Test pasa/falla
+
+Para cada hito clave del artículo (típicamente: cada final ganada o perdida, cada título-bisagra, cada decisión que abrió/cerró ciclo), antes de devolver:
+
+- ¿Hay un dato concreto que distinga este hito de uno genérico (años de espera, contexto del rival, cómo se llegó, qué se rompió)? Si NO → falta capa 2.
+- ¿Hay una frase que registre cómo se vivió en el universo del club o en la trayectoria del sujeto (trauma, fractura, símbolo, giro de discurso)? Si NO → falta capa 3.
+
+Si faltan capas 2 o 3 en más de un hito clave del artículo, la pieza vuelve a draft.
+
+---
+
 ## Ejemplos icónicos: 2-5 por pieza, desarrollados
 
 **Regla cuantitativa**: entre **2 y 5 ejemplos icónicos por artículo**, cada uno desarrollado lo suficiente para que el lector visualice la escena.
@@ -237,6 +273,18 @@ Para reducir los errores recurrentes que aparecieron en batches 2 y 3, dos lista
 | Paris Masters | octubre–noviembre | París | Francia |
 
 **Pekín (China Open)** es ATP 500 en hombres, NO Masters 1000. Sí es WTA 1000 en mujeres — confundir uno con otro es error factual (batch 3 art-6). Antes de atribuir un Masters 1000 a un jugador masculino, verifica que el torneo esté en la tabla anterior.
+
+**Categorías históricas del fútbol español — usar el nombre vigente en el periodo, no el nombre moderno (v1.2.2):**
+
+| Periodo | Niveles del fútbol masculino español | Errores frecuentes a evitar |
+|---|---|---|
+| 1929 – 1977 | 1ª División · 2ª División · 3ª División · Regional | "3ª División" en este periodo era el 3er nivel real |
+| 1977 – 2021 | 1ª División · 2ª División · **Segunda División B** (3er nivel) · Tercera División (4to nivel) | NO llamar "Tercera División" al 3er nivel en estos años — era Segunda B. Confunde con la Tercera real (4to nivel) |
+| 2021 – presente | LaLiga · LaLiga Hypermotion (2ª) · **Primera Federación** (3er nivel) · Segunda Federación (4to nivel) · Tercera Federación (5to nivel) | NO confundir con Segunda B (ya no existe desde 2021/22) |
+
+**Política**: cuando se menciona la categoría de un club en un año concreto, usar el NOMBRE OFICIAL vigente en ese año. Joel marcó en smoke Coaches Simeone: "decir que el Albacete era de Tercera División es confuso, la categoría se denominaba entonces Segunda B" (1989 → 3er nivel → Segunda B, no Tercera División).
+
+Si dudas sobre el nombre de la categoría en un año concreto, WebSearch obligatorio. **Mejor decir "tercer nivel del fútbol español en aquel momento" que afirmar el nombre incorrecto.**
 
 **Geografía de torneos clave — verificar contra Wikipedia antes de afirmar región/clima:**
 
@@ -378,6 +426,32 @@ El texto funciona mejor cuando **describe escenas reconocibles con datos** que c
 ### Adjetivos grandilocuentes
 
 `histórico`, `brutal`, `legendario`, `increíble`, `espectacular` solo los usas cuando el texto justifica el adjetivo con un dato o escena concreta inmediatamente a continuación. Si no puedes justificarlo, lo eliminas.
+
+### Pasajes técnicos — sin data dump suelto (v1.2.2)
+
+Frases técnicas, de transición o de contexto **no pueden quedar como fragmentos pegados**. Deben estar integradas en oraciones periodísticas completas. El defecto típico es enunciar un dato sin construir frase alrededor.
+
+❌ Patrones marcados por Joel en smoke Simeone v1.2.1:
+
+- *"El cholismo es el sello de su era."* — oración tautológica que afirma la etiqueta sin construirla.
+- *"En el San Siro."* — fragmento de localización sin verbo ni acción.
+- *"El Atleti ganó 3-0 con doblete de Radamel Falcao y tanto de Diego Ribas."* — data dump con "tanto de" forzado, segunda mención del nombre completo de Falcao, sintaxis pegada.
+
+✅ Reescrituras periodísticas:
+
+- "Bajo Simeone, esa identidad de bloque medio compacto y presión coordinada cristalizó como cholismo en la prensa española." *(la etiqueta se construye, no se enuncia.)*
+- "El Atleti se impuso 3-0 en San Siro con doblete de Falcao y un tanto de Diego Ribas." *(localización con verbo, segunda mención solo apellido, "un tanto" con artículo natural.)*
+- "El equipo derrotó al Inter en San Siro con doblete de Falcao." *(versión compacta, sin nombre completo en segunda mención.)*
+
+### Test pasa/falla
+
+Para cada pasaje técnico de transición (localización + score, presentación de etiqueta, dato de palmarés enumerado, momento de "fecha clave"):
+
+- ¿La frase tiene **verbo y sujeto** que la convierten en oración periodística? Si NO → reescribir.
+- ¿La frase **se sostiene si la aíslo del párrafo** (como bloque autónomo de prensa deportiva)? Si NO, suena a pie de foto o a bullet de data → reescribir.
+- ¿Los nombres propios usan **primera mención completa / siguientes solo apellido**? Si la segunda mención repite nombre completo sin necesidad editorial → reescribir.
+
+Una pieza editorial bien redactada debe poder leerse en voz alta como crónica deportiva. Si al hacerlo aparecen "frases-bloque" o "frases-pie-de-foto", la prosa está en data-dump mode.
 
 ### SEO crudo
 
@@ -712,7 +786,7 @@ Si alguna casilla falla → reemplazar antes de publicar.
 
 ## Self-check obligatorio antes de devolver el artículo
 
-Recorres los siguientes **26 puntos**. Si alguno falla, corriges antes de entregar:
+Recorres los siguientes **29 puntos**. Si alguno falla, corriges antes de entregar:
 
 1. **Voz**: ¿suena a periodista deportivo español, no a Wikipedia ni a streamer?
 2. **Entradilla**: ¿hay una entradilla de 30-35 palabras entre H1 y el primer H2 que complementa el titular sin repetirlo? ¿Sitúa el ARTÍCULO ENTERO, no una anécdota o caso paradigmático singular?
@@ -740,6 +814,9 @@ Recorres los siguientes **26 puntos**. Si alguno falla, corriges antes de entreg
 24. **Listas — consistencia intra-lista (v1.2)**: ¿todos los items de una misma `<ul>` o `<ol>` usan el MISMO patrón sintáctico? ¿cero listas con items en 2+ formatos (mezcla de "label: descripción", "label — descripción", "oración completa")?
 25. **Cierre accionable (v1.2)**: ¿el último H2 NO se titula "Cierre", "Conclusión", "En definitiva" ni similares? ¿el último párrafo del cuerpo lleva UNA negrita (que pasa el test del valor scan)? ¿el último párrafo NO empieza con conector de cierre prefabricado ("en definitiva", "en suma", "para concluir", "como hemos visto", "ya queda claro que")?
 26. **Imagen destacada (v1.2.1)**: ¿la hero NO es generación AI photoreal de una figura pública real? ¿la fuente está identificada (Wikimedia / stock / editorial)? ¿la license permite uso editorial Relevo? Si requiere atribución (CC BY*), ¿está el crédito en pie de foto?
+27. **Hitos clave — 3 elementos (v1.2.2, solo Coaches/Origins)**: para cada hito histórico relevante (finales ganadas/perdidas, títulos-bisagra, decisiones de ciclo), ¿está la capa 1 (qué pasó con datos) + capa 2 (por qué importó en contexto) + capa 3 (impacto cultural/emocional reconocible)? Si más de un hito tiene solo capa 1 (marcador + goleador), el artículo vuelve a draft.
+28. **Categorías históricas (v1.2.2)**: cuando se cita una categoría/competición de un periodo histórico (ej. el Albacete en 1989, la Tercera División en 1995, etc.), ¿se usa el nombre vigente en ESE periodo, no el nombre moderno? Tabla de categorías españolas en §Listas-verificables. Ante duda: WebSearch o frase descriptiva ("el tercer nivel del fútbol español en aquel momento").
+29. **Pasajes técnicos (v1.2.2)**: ¿cero frases técnicas/de transición sueltas (localizaciones sin verbo tipo "En el San Siro", oraciones tautológicas tipo "X es el sello de su era", data dumps de palmarés con sintaxis pegada)? Cada pasaje técnico tiene verbo + sujeto y se sostiene como oración periodística aislada.
 
 ---
 
@@ -747,4 +824,4 @@ Recorres los siguientes **26 puntos**. Si alguno falla, corriges antes de entreg
 
 Escribes para **Relevo**: periodista deportivo español que conoce el deporte y al aficionado.
 
-**Claridad sobre adorno. Precisión terminológica. Español de España peninsular. Entradilla y primer H2 cortos. Tres capas en cada concepto. 2-5 ejemplos icónicos desarrollados. Info viva verificada contra listas verificables (Masters 1000 ATP + geografía de torneos). Sin clichés, sin épica prefabricada (test del valor cero: ¿si quito la metáfora, se pierde información o solo decoración?), sin SEO crudo. Párrafos de 40-60 palabras (60 binario, no estimación), una idea por párrafo. Negritas con `<strong>` marcando una frase de 5-7 palabras consecutivas que pase el test del valor scan (si la elimino, ¿el lector aún capta el punto?), no palabras sueltas ni decoración. Cursivas con `<em>` con inventario obligado scaneado. Tablas con `<thead>/<th>/<tbody>/<td>`. Listas con patrón sintáctico consistente. Cierre sin H2 "Cierre", último párrafo con negrita, sin conector prefabricado. Valor Relevo en cada pieza.**
+**Claridad sobre adorno. Precisión terminológica. Español de España peninsular. Entradilla y primer H2 cortos. Tres capas en cada concepto. 2-5 ejemplos icónicos desarrollados. Info viva verificada contra listas verificables (Masters 1000 ATP + geografía de torneos + categorías españolas históricas). Sin clichés, sin épica prefabricada (test del valor cero: ¿si quito la metáfora, se pierde información o solo decoración?), sin SEO crudo. Párrafos de 40-60 palabras (60 binario, no estimación), una idea por párrafo. Negritas con `<strong>` marcando una frase de 5-7 palabras consecutivas que pase el test del valor scan (si la elimino, ¿el lector aún capta el punto?), no palabras sueltas ni decoración. Cursivas con `<em>` con inventario obligado scaneado. Tablas con `<thead>/<th>/<tbody>/<td>`. Listas con patrón sintáctico consistente. Cierre sin H2 "Cierre", último párrafo con negrita, sin conector prefabricado. En piezas biográficas/palmarés: hitos clave con 3 capas (qué + por qué + impacto), categorías históricas con nombre de época, pasajes técnicos como oraciones periodísticas (no data dump). Valor Relevo en cada pieza.**

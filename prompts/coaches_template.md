@@ -1,8 +1,15 @@
-# Template: Coaches — v1.0
+# Template: Coaches — v1.1
 
-**Versión 1.0** · 25/05/2026 · Versión inicial. Adapta la base "Coach Era & Trophies" provista por el equipo editorial de Relevo (SharePoint: `seoberlin/ES MARKET/Relevo.com/Content/Relevo - Coach Era & Trophies [Base Template].docx`) al patrón Relevo definido por `origins_template.md` v2.0. Documentado en ADR-011.
+**Versión 1.1** · 27/05/2026 · Patch v1.0 con feedback Joel ronda 4 sobre smoke Simeone (Asana `1215146649288358`, verdict ⚠️ Needs change). Tres patches específicos a coaches: lexicón cultural del club obligatorio (motes, apodos, dirigentes históricos), conexión con el presente para entrenadores en activo, debate público integrado para figuras polémicas. Hereda style guide v1.2.2 (3 patches universales: hitos con 3 capas, categorías históricas, pasajes técnicos). Documentado en ADR-012.
 
 ## Changelog
+
+- **v1.1 (27/05/2026)** — Patch con feedback Joel ronda 4. Tres componentes nuevos obligatorios:
+  1. **Lexicón cultural del club obligatorio**: motes del entrenador ("Cholo"), apodos del club ("colchoneros", "rojiblancos"), nombres de dirigentes históricos cuando aplica ("Cerezo", "Gil Marín"), símbolos identitarios. Joel: *"no se mencionan en ningún momento palabras como 'Cholo', 'colchoneros', 'rojiblancos', 'Cerezo', 'Gil Marín'."*
+  2. **Conexión con el presente** (entrenadores en activo): al menos un párrafo del cuerpo conecta con la situación de los últimos 12 meses. Joel: *"el texto prácticamente no conecta en ningún momento con el presente de Simeone en el Atlético de Madrid y las circunstancias actuales (semifinales de Champions vs Arsenal, jugadores como Julián Álvarez, no competir realmente por La Liga desde hace varias temporadas)."*
+  3. **Debate público integrado**: si la figura tiene debate público vivo (estilo polémico, sueldo, ciclo, controversias documentadas), al menos un párrafo lo integra. Joel: *"el texto desaprovecha el conflicto Simeone vs relato anti-Simeone, que forma parte inseparable de su figura pública: debates sobre juego defensivo, gasto salarial, límites competitivos del proyecto o desgaste de ciclo."*
+
+  Sample resumido (sección §Sample resumido) reescrito para reflejar los tres componentes en acción. Documentado en ADR-012 junto con style guide v1.2.2.
 
 - **v1.0 (25/05/2026)** — Versión inicial. 4ta categoría de contenido tras Rules, Tactics y Origins. Hereda style guide v1.2 (25 puntos de self-check, tests pasa/falla, listas verificables) y la disciplina antialucinación. Estructura: 3 párrafos de intro (era setting) → H3 narrativa cronológica de trofeos → H3 palmarés como bullet list → H3 opcional jugador-entrenador → H2 FAQs.
 
@@ -181,6 +188,33 @@ Origins **NO** sigue orden cronológico rígido y arma con anclajes-escena. **Co
 
 7. **Schema markup**: Article + Person (el entrenador) + SportsTeam (el equipo) + FAQPage. El plugin del theme lo emite por default si la estructura del artículo es correcta — verificar con el helper de FAQ JSON-LD para el bloque H2/H3 de preguntas.
 
+8. **Lexicón cultural del club obligatorio (v1.1)**. Antes de redactar, el modelo inventaría el vocabulario afín al sujeto y lo distribuye naturalmente en el texto. Mínimos verificables:
+   - **Mote del entrenador** (si tiene uno consolidado): Cholo, Pep, Mou, Mister, Carletto. Primera mención por nombre + apellido; en el resto del cuerpo, el mote aparece al menos una vez como forma natural ("el Cholo renovó por tres temporadas").
+   - **Apodos del club / aficionados**: colchoneros, rojiblancos, culés, blaugranas, merengues, vikingos, sky blues, *gunners*. La pieza incluye al menos 1-2 apariciones del apodo del aficionado donde encaja sin forzar.
+   - **Dirigentes históricos clave** cuando aplica al periodo (presidente que contrató, CEO que renovó, propietario): Cerezo y Gil Marín en el Atleti, Florentino en el Real Madrid, Laporta en el Barça, Sheikh Mansour en el City. Mínimo 1 mención si el director protagonizó decisiones del ciclo.
+   - **Símbolos de la institución**: estadio (Metropolitano, Bernabéu, Camp Nou), grada (Frente Atlético, Bukaneros), lemas del club ("Ganar y ganar y volver a ganar", "Més que un club"). 1-2 apariciones naturalmente integradas.
+
+   **Test pasa/falla**: antes de devolver, listar las menciones del lexicón. Si la pieza no incluye mínimo (mote del entrenador + apodo del aficionado + 1 dirigente cuando aplica + 1 símbolo), el artículo vuelve a draft.
+
+9. **Conexión con el presente — obligatorio si el entrenador está en activo (v1.1)**. Al menos UN párrafo del cuerpo conecta el legado con la situación de los últimos 12 meses. Cubre 2 o 3 de estos puntos:
+   - Última temporada deportiva: posición en liga, eliminación europea, racha de resultados.
+   - Plantilla actual relevante (fichajes/ventas significativas, capitanes nuevos, lesionados clave).
+   - Renovación o rumor de salida (contrato actual, ofertas recientes).
+   - Crítica/debate público reciente sobre el proyecto (no de hace 5 temporadas).
+
+   **No es info viva "palmarés"**: es contexto presente. Sin este párrafo, la pieza se lee como obituario en vida — pasaje de tiempo congelado en el último título.
+
+   **Test pasa/falla**: ¿hay al menos un párrafo con datos del último año? Si NO → vuelve a draft.
+
+10. **Debate público integrado — obligatorio si la figura es polémica (v1.1)**. Si el sujeto tiene debate público vivo y documentado (estilo polémico, sueldo discutido, ciclo cuestionado, controversias con árbitros/medios), al menos UN párrafo del cuerpo lo integra con dato concreto. Ejemplos:
+    - **Simeone**: cholismo defensivo + sueldo top mundial + "lleva sin pelear por la Liga X temporadas" + "el discurso del partido a partido como manto del estancamiento competitivo".
+    - **Mourinho**: choque con árbitros + "anti-fútbol" en posesión + ciclos de 3 años con salida turbulenta.
+    - **Guardiola (City)**: "compró el título con petrodólares" + el debate sobre legitimidad de las ligas dominadas + 115 charges.
+
+    Ojo: **integrar, no editorializar**. La pieza presenta el debate como existente en la conversación pública, no como juicio propio. Patrón: *"X parte del debate público sobre Y es Z"* o *"críticos del proyecto apuntan que…"*, no *"Simeone es defensivo y eso está mal"*.
+
+    **Test pasa/falla**: ¿la pieza menciona al menos uno de los debates públicos consolidados de la figura, con framing periodístico (presentar, no juzgar)? Si la figura es polémica y la pieza no lo integra → vuelve a draft.
+
 ---
 
 ## Reglas para FAQs en Coaches
@@ -300,9 +334,14 @@ H2: Preguntas frecuentes sobre Simeone en el Atlético de Madrid
 - **NO** mezclar palmarés y narrativa en el bullet list. La lista es seca, la narrativa va en la sección H3 "Estos son los títulos…".
 - **NO** invento de citas de la institución del club ni del entrenador. WebSearch + verificación textual.
 - **NO** H2 final titulado "Cierre" / "Conclusión" / "En definitiva" / "Para terminar" (style guide v1.2 §6). Último párrafo lleva 1 negrita valor-scan y sin conectores prefabricados.
+- **NO** publicar sin lexicón cultural mínimo (v1.1): apodo del aficionado + mote del entrenador + 1 dirigente histórico (cuando aplica) + 1 símbolo. Sin esto, la pieza no carga la identidad del universo del club.
+- **NO** publicar sin párrafo de conexión con el presente cuando el entrenador sigue en activo (v1.1). Sin esto, la pieza se lee como obituario.
+- **NO** publicar sin integrar el debate público vivo de la figura cuando es polémica (v1.1). Integrar como existente en la conversación pública, no editorializar.
+- **NO** resolver hitos clave (Lisboa 2014, Manchester 2024, etc.) solo con marcador y goleador (v1.2.2 §27). Cada hito clave necesita las 3 capas (qué + por qué + impacto cultural).
 - **SÍ** verificar via WebSearch info viva (total de títulos a fecha, última temporada, rival + score de cada final).
 - **SÍ** desarrollar finales perdidas que definen la era con el mismo cuidado que las ganadas.
 - **SÍ** nombrar la era — sin nombre, el artículo pierde el ancla narrativo.
+- **SÍ** inventariar el lexicón cultural antes de redactar (motes, apodos, dirigentes, símbolos) y distribuirlo naturalmente (v1.1).
 
 ---
 
@@ -320,14 +359,17 @@ H2: Preguntas frecuentes sobre Simeone en el Atlético de Madrid
 
 ---
 
-## Integración con el style guide v1.2
+## Integración con el style guide v1.2.2
 
-Este template hereda los 25 puntos del self-check de `style_guide.md` v1.2. Específicamente, en Coaches se aplican con dureza:
+Este template hereda los **29 puntos** del self-check de `style_guide.md` v1.2.2. Específicamente, en Coaches se aplican con dureza:
 
 - **Negritas + test del valor scan** (§17): cobertura ≥80% del párrafos del cuerpo, cada negrita pasa el test "si la elimino, ¿el lector aún capta el punto?". Las negritas naturales: nombre de competición, año, score, rival, dato pivote.
 - **Listas — consistencia intra-lista** (§24): el bullet del palmarés usa formato uniforme `N {Competicion} ({temporada1} y {temporada2})`. Sin mezcla.
 - **Cierre accionable** (§25): sin H2 "Cierre", último párrafo con negrita valor-scan, sin prefabs.
 - **Antialucinación con listas verificables** (§21): toda atribución de título a un entrenador verificada contra fuente oficial (web del club, ATP/ACB/NBA según deporte). Cero "X ganó Y" sin confirmación.
+- **Hitos clave — 3 elementos (§27, v1.2.2)**: cada final ganada/perdida del walk cronológico desarrolla las 3 capas (qué pasó + por qué importó + impacto cultural). Las finales perdidas (Lisboa 2014, San Siro 2016 para Simeone; Manchester 2024 para Guardiola) reciben tratamiento simétrico a las ganadas.
+- **Categorías históricas (§28, v1.2.2)**: cuando se cita la categoría del club/predecesor en un periodo (Albacete 1989, etc.), nombre vigente de ese periodo (Segunda B, no Tercera).
+- **Pasajes técnicos (§29, v1.2.2)**: cada localización + score se redacta como oración periodística completa, no fragmento ("El Atleti se impuso 3-0 en San Siro" en lugar de "En el San Siro. El Atleti ganó 3-0").
 
 ## Reference
 
