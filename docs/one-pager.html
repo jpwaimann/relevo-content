@@ -361,7 +361,7 @@
   <div class="meta-line">
     <strong>Project lead:</strong> Juan Pablo Waimann ·
     <strong>Editorial reviewer:</strong> Joel Sierra ·
-    <strong>Last updated:</strong> 26 May 2026 — PM ·
+    <strong>Last updated:</strong> 27 May 2026 — PM ·
     <a href="https://git.igaming.com/relevo/content">Official repo</a> ·
     <a href="https://jpwaimann.github.io/relevo-content/">Public roadmap</a> ·
     <a href="demo-deck.html">Demo deck</a> ·
@@ -384,7 +384,7 @@
       <div class="week-header">W1<span>May 4</span></div>
       <div class="week-header">W2<span>May 11</span></div>
       <div class="week-header">W3<span>May 18</span></div>
-      <div class="week-header today">W4<span>May 25</span><span class="milestone">▼ TODAY · Coaches batch in flight</span></div>
+      <div class="week-header today">W4<span>May 25</span><span class="milestone">▼ TODAY · Pilot batch 50 under v1.2.3</span></div>
       <div class="week-header">W5<span>Jun 1</span><span class="milestone">🚀 LAUNCH</span></div>
       <div class="week-header">W6<span>Jun 8</span><span class="milestone">⚽ FIFA WC</span></div>
       <div class="week-header">W7<span>Jun 15</span></div>
@@ -427,7 +427,7 @@
     </div>
   </div>
   <div class="timeline-footer">
-    <span><strong>Today:</strong> Tue 26 May 2026 PM · W4 day 2 · INVENTORY-02 shipped (article_type axis), style guide v1.2.1 (hero image policy), 20 coaches seeded, Simeone smoke in flight, sports calendar H2 2026 compiled for news vertical</span>
+    <span><strong>Today:</strong> Wed 27 May 2026 PM · W4 day 3 · Content strategy v1 + ADR-013 shipped, 170-row sprint inventory locked (50/50/50/20 with 61 tier-1 marked), 4 pre-bulk smokes PASS (avg 91/100, JPW format review), style guide v1.2.3 + ADR-014 (bolds 100% + basketball-tactic italics), pilot batch 50 launching</span>
     <span>
       <span class="milestone-pill">🚀 Public launch · Jun 1</span>
       &nbsp;<span class="milestone-pill">⚽ FIFA WC · Jun 11</span>
@@ -437,7 +437,7 @@
 
 <div class="tldr">
   <div class="tldr-label">TL;DR · 5-second read</div>
-  <p>Launch tracking <strong>June 1</strong>. Phase 3 <strong>closed today</strong>: team demo delivered, style guide v1.2 live (8 binary-test patches, ADR-010), smoke v1.2 PASS (score 92/100). Pipeline E2E automated and validated at <strong>92/100 quality</strong> across <strong>22 articles produced</strong>. Unit economics on track: <strong>$0.10–0.30 per article*, ~50/day</strong>. Production SOP shipped — roles + HITL gates documented. <strong>4th template (Coach Era &amp; Trophies)</strong> shipped same day (template v1.0 + ADR-011); newsworthy profile (Predicciones Plus, retrospectivas Mundial) + Betting/Casino pages registered to extend the single Inventory.</p>
+  <p>Launch tracking <strong>June 1</strong>. <strong>Sprint 170 evergreen in flight</strong>: content strategy v1 finalized (ADR-013, 5 verticals), 170-row inventory locked (50 rules + 50 tactics + 50 origins + 20 coaches, 61 tier-1 marked), <strong>4 pre-bulk smokes PASS</strong> under format review (rules IFAB + tactics pick-and-roll + origins Yamal + coaches Mourinho, avg <strong>91/100</strong>). <strong>Style guide v1.2.3</strong> shipped same day (ADR-014: bolds 100% cuerpo + basketball-tactic italics inventory; pressing preserved per Joel batch 2). <strong>Pilot batch of 50 launching</strong> (tier-1 first, 6 parallel agents, snapshot every 5 runs). Quality floor non-negotiable: score &ge;85 per article, batch avg &ge;89. Unit economics on track: <strong>$0.10–0.30 per article*, target ~50/day</strong>.</p>
 </div>
 
 <h2>Content strategy — four verticals</h2>
@@ -453,11 +453,12 @@
 
 <h2>Open blockers — priority order</h2>
 <ol class="blocker-list">
-  <li><span class="num">1</span><strong>Joel verdict on the v1.2 smoke (art-6 Alcaraz Origins).</strong> WP draft <code>21204</code> updated in-place under the new style guide; Asana subtask <a href="https://app.asana.com/1/9544544431392/project/1211672636050481/task/1215104026151305">1215104026151305</a> reassigned to Joel after JPW initial approval. Joel ✅ unblocks batch 4 launch tomorrow (6 more articles regenerated under v1.2 + Joel reviews each). Joel ⚠️ with notes triggers a v1.2.x patch before scaling.</li>
-  <li><span class="num">2</span><strong>WP header redesign — Phase 4 work.</strong> Root cause locked (3:2 hero vs 2.76:1 text-column slot mismatch). Five CSS hypotheses tested, no CSS-only fix possible without trade-offs. Deferred via ADR-009 with concrete 3-step plan (CSS min-height + image gen 16:9 + batch 3 hero regen, ~45 min execution). Drafts remain stable in current state.</li>
-  <li><span class="num">3</span><strong>SharePoint → GitLab content migration.</strong> All editorial assets (inventory Excel, rulebook PDFs, ancillary folders) move from SharePoint to the new official repository. Audit + scope + execution all roll into Week 4 (starts Tue 26/5).</li>
+  <li><span class="num">1</span><strong>JPW SOP review (long-form + 1-pager).</strong> Top priority for Thu 28/5. Long-form: <a href="sop/01-content-production.md">01-content-production.md</a>. Quick reference: <a href="sop/quick-reference-jpw-joel.md">quick-reference-jpw-joel.md</a>. JPW feedback returns trigger v1.0.x patch if needed before the remaining 120 articles of the sprint launch.</li>
+  <li><span class="num">2</span><strong>Tech CSS question — WP header gap.</strong> Asana task <a href="https://app.asana.com/0/0/1215166573030805/f/">1215166573030805</a>. Needs JPW to forward to Debanjan / IT for tech-level fix decision. Root cause locked (3:2 hero vs 2.76:1 text-column slot mismatch, ADR-009). Blocker for WP header redesign rollout to the batch-50 drafts.</li>
+  <li><span class="num">3</span><strong>Pilot batch 50 verdict + Joel ronda 5 review.</strong> Smokes approved under format review (JPW); Joel hasn't reviewed at editorial depth yet. Joel ronda 5 lands on the pilot batch outputs Thursday-Friday. Verdict gates the remaining 120 articles of the sprint and the v1.2.3 → v1.3 path.</li>
+  <li><span class="num">4</span><strong>SharePoint → GitLab content migration.</strong> All editorial assets (inventory Excel, rulebook PDFs, ancillary folders) move from SharePoint to the new official repository. Audit + scope + execution carry over into W4-W5. JPW still pending Owner role from Gustavo Santiago.</li>
 </ol>
-<p class="commentary">The binding constraint is editorial, not technical. The pipeline is built; the SOP is documented; the question is whether v1.2 + the human review gates produce a steady stream of publishable articles at scale.</p>
+<p class="commentary">The binding constraint is editorial, not technical. The pipeline is built; the SOP is documented; the smokes validate v1.2.3 under JPW format review. The next gate is Joel ronda 5 at editorial depth on the pilot batch.</p>
 
 <h2>Key decisions (last 10 days)</h2>
 <ul>
@@ -467,13 +468,13 @@
   <li><strong>Fri 22/5</strong> — Phase 3 closing prep. WP visual gap deferred to Phase 4 via ADR-009 (root cause: aspect-ratio mismatch, no CSS-only fix). Demo planning shipped + <a href="demo-deck.html">demo deck</a> built + <code>/relevo new demo</code> skill command shipped.</li>
   <li><strong>Mon 25/5</strong> — Phase 3 closed: team demo done · style guide v1.2 + ADR-010 (8 binary-test patches) · smoke v1.2 PASS (score 92, all 11 hard gates) · WP draft 21204 (art-6 Alcaraz) reassigned to Joel · <a href="sop/01-content-production.md">SOP v1.0 shipped</a> · <strong>TEMPLATE-04 shipped</strong> (coaches_template.md v1.0 + <a href="adr/011-coaches-template-v1-0.md">ADR-011</a>, commit 40689b5) · newsworthy + betting/casino + inventory-schema initiatives registered as Asana tasks under Phase 4.</li>
   <li><strong>Tue 26/5</strong> — Content strategy axis formalized: <code>article_type</code> = <em>evergreen / news / casino / sportsbetting</em>. <strong>INVENTORY-02 shipped</strong> (col 22 of Table1, 175 rows backfilled to evergreen). <strong>Style guide v1.2.1</strong> (hero image policy anti-AI with real public figures — Spain LO 1/1982 + EU AI Act compliance). <strong>20 coaches seeded</strong> into Inventory (12 football / 3 tennis / 2 basketball / 1 MotoGP / 1 F1 / 1 handball). <strong>Sports calendar H2 2026</strong> compiled and shared with Joel (<a href="sports_calendar_2026_h2.html">HTML view</a>, ~50 events, <a href="https://app.asana.com/0/1213819517890615/1215146475511453">Asana review task</a>). <strong>Simeone smoke shipped to Joel</strong> as TEMPLATE-04 + v1.2.1 validation (WP draft <a href="https://relevo-com.sub.plus/?p=30240&preview=true">30240</a>, score 92, 1197 words, <a href="https://app.asana.com/0/1213819517890615/1215146649288358">Asana review task</a>). GitLab migration paused: JPW is Developer in the project, needs Owner role from Gustavo Santiago before protected_branches changes can land.</li>
+  <li><strong>Wed 27/5</strong> — <strong>Content strategy v1 finalized</strong> (<a href="adr/013-content-strategy-v1-and-bulk-170-week.md">ADR-013</a> + <a href="strategy/content-strategy-v1.html">strategy doc</a> + <a href="sop/quick-reference-jpw-joel.html">1-pager</a>): 5 verticals scoped, 170-row sprint inventory locked (50 rules + 50 tactics + 50 origins + 20 coaches, 61 tier-1 marked). <strong>Style guide v1.2.2</strong> AM (<a href="adr/012-style-guide-v1-2-2-coaches-feedback.md">ADR-012</a>, Joel feedback ronda 4 on Simeone) + <strong>coaches template v1.1</strong>. <strong>4 pre-bulk smokes shipped</strong> (rules IFAB row 2 / tactics pick-and-roll row 19 / origins Yamal row 9 / coaches Mourinho row 151), all PASS pipeline, avg 91/100. <strong>JPW format review</strong>: 3 approved + 1 needs change (tactics: bolds missing + pick-and-roll italics). <strong>Style guide v1.2.3 + <a href="adr/014-style-guide-v1-2-3-bolds-100-italics-basketball.md">ADR-014</a></strong> shipped same day (bolds 100% cuerpo + basketball-tactic italics; pressing preserved per Joel batch 2). <strong>Pilot batch of 50</strong> launching under v1.2.3 (tier-1 first, 6 parallel agents, memory snapshot every 5 runs).</li>
 </ul>
 
 <h2>Next 7 days</h2>
 <ul>
-  <li><strong>Wed 27/5</strong> — Joel v1.2 smoke verdict (Alcaraz + Simeone, both gating). SOP + process review by JPW (top priority of the week). If gates green → coaches batch 19 launch (the remaining coaches after Simeone smoke).</li>
-  <li><strong>Thu 28/5</strong> — Coaches batch reviews land with Joel. WP header redesign starts (Phase 4 step 1: CSS min-height; step 2: image gen 16:9 swap). GitLab Ownership upgrade landed (action with Gustavo Santiago / Debanjan).</li>
-  <li><strong>Fri 29/5</strong> — First production batch under v1.2.1 + cost tracking online (first weekly cost report). Sports calendar reviewed by Joel — news vertical TEMPLATE-05 design starts based on his notes.</li>
+  <li><strong>Thu 28/5</strong> — JPW SOP review (long-form + 1-pager) returns — top priority. JPW forwards CSS header question to Tech (Debanjan). Pilot batch of 50 lands fully; metrics rollup published; verdict on the remaining 120 articles for Fri. Sports calendar 2026 H2 Joel editorial review return.</li>
+  <li><strong>Fri 29/5</strong> — Joel ronda 5 review on the pilot batch (editorial depth). If green → remaining 120 articles launch. First weekly cost report. NEWS-01 GSC URLs review with Joel.</li>
   <li><strong>Mon 1/6</strong> — 🚀 Public launch.</li>
   <li><strong>Thu 11/6</strong> — ⚽ FIFA WC kickoff · target 50 articles/day.</li>
 </ul>
@@ -482,18 +483,18 @@
 <div class="kpi-grid">
   <div class="kpi">
     <div class="kpi-label">Articles produced (last 2 weeks)</div>
-    <div class="kpi-value">22</div>
-    <div class="kpi-detail">11 batch v2 · 9 batch 3 · 1 smoke v1.1.3 · 1 smoke v1.2.</div>
+    <div class="kpi-value">27</div>
+    <div class="kpi-detail">11 batch v2 · 9 batch 3 · 1 smoke v1.1.3 · 1 smoke v1.2 · 1 smoke Simeone v1.2.1 · 4 pre-bulk smokes v1.2.2.</div>
   </div>
   <div class="kpi">
     <div class="kpi-label">Throughput target</div>
     <div class="kpi-value">50 articles / day</div>
-    <div class="kpi-detail">Publication-ready, end-to-end (FIFA WC).</div>
+    <div class="kpi-detail">Publication-ready, end-to-end (FIFA WC). Pilot batch of 50 in flight today.</div>
   </div>
   <div class="kpi">
     <div class="kpi-label">Quality (self-critique)</div>
-    <div class="kpi-value">92 / 100</div>
-    <div class="kpi-detail">95% of batch 3 above 90; range 91–95.</div>
+    <div class="kpi-value">91 / 100</div>
+    <div class="kpi-detail">Pre-bulk smokes avg under v1.2.2; range 88–92. Floor &ge;85 per article, batch avg target &ge;89.</div>
   </div>
   <div class="kpi">
     <div class="kpi-label">Cost per article*</div>
