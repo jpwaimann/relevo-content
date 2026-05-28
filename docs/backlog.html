@@ -207,7 +207,7 @@
 <p><strong>Mechanics:</strong> <code>scripts/llm_call.py</code> is the LiteLLM wrapper. Reads prompt from a file (avoids inlining 30k+ token style guides into Bash args). Calls <code>litellm.bidwhig.com</code> Chat Completions endpoint with <code>cache_control</code> on the cacheable style-guide prefix where the upstream supports it. Returns generated text + a <code>usage</code> block (input_tokens, output_tokens, cached_input_tokens) that the sub-agent merges into the article's running <code>token_usage</code> artifact.</p>
 <p><strong>Models exposed by the active virtual key (<code>sk-7avXxrt...</code>, validated 2026-05-28):</strong> GPT-5 family + Claude Opus 4.5/4.6 + Gemini 2.5 Pro/Flash + Gemini image gen. NO Claude Sonnet on any current key.</p>
 <p><strong>Pre-req:</strong> None. INFRA-08 is independent and ships in parallel.</p>
-<p><strong>Status:</strong> In progress — shipping today.</p>
+<p><strong>Status:</strong> SHIPPED 2026-05-28 PM. <code>scripts/llm_call.py</code> validated end-to-end on the smoke (row 16) + Wave 2 + Wave 3 (8 articles total). Gemini 2.5 Pro and GPT-5 both callable; usage block (input / output / cached tokens) captured per article.</p>
 
 <h3><span class="item-code">FINANCE-01</span> LiteLLM multi-model spend reporting</h3>
 <p class="item-meta">

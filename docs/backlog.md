@@ -124,7 +124,10 @@ This document is a living artefact. Pruned periodically — items that no longer
 - **Mechanics:** `scripts/llm_call.py` is the LiteLLM wrapper. Reads prompt from a file (avoids inlining 30k+ token style guides into Bash args). Calls `litellm.bidwhig.com` Chat Completions endpoint with `cache_control` on the cacheable style-guide prefix where the upstream supports it. Returns generated text + a `usage` block (input_tokens, output_tokens, cached_input_tokens) that the sub-agent merges into the article's running `token_usage` artifact.
 - **Models exposed by the active virtual key (`sk-7avXxrt...`, validated 2026-05-28):** GPT-5 family + Claude Opus 4.5/4.6 + Gemini 2.5 Pro/Flash + Gemini image gen. NO Claude Sonnet on any current key (memory `reference_litellm_proxy.md` notes the path is to request a new virtual key with Sonnet access from Debanjan if needed).
 - **Pre-req:** None. INFRA-08 is independent and ships in parallel.
-- **Status:** In progress — shipping today.
+- **Status:** SHIPPED 2026-05-28 PM. `scripts/llm_call.py` validated end-to-end on smoke (row 16) + Wave 2 + Wave 3 (8 articles total). Gemini 2.5 Pro and GPT-5 both callable; usage block captured per article (input/output/cached tokens).
+
+### `PIPE-02` superseded by INFRA-09 path
+- **Status:** Superseded 2026-05-28. The Sonnet smoke is no longer the gating experiment — the architecture chose Gemini for research and GPT-5 for fact-check (INFRA-09), bypassing the Sonnet question. The Asana task `1215199406629492` reflects the original PIPE-02 plan and can be closed at next review.
 
 ### `FINANCE-01` LiteLLM multi-model spend reporting
 - **Category:** Finance / Operations
