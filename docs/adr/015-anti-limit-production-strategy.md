@@ -73,7 +73,7 @@ Article-level quality floor (per [ADR-013](013-content-strategy-v1-and-bulk-170-
 
 ### 6. Future optimization (NOT in scope for the current sprint)
 
-Investigate moving the WP + Asana + inventory finalize step into a CLI script (`scripts/finalize_article.py`) that sub-agents can call directly. The proxy-based `ig-mcp-proxy` is reachable via stdio, so a wrapper script is possible. If shipped, this saves ~25k × N tokens per batch on the main session, raising effective per-window throughput from 12 to ~15 articles. Tracked in backlog as `INFRA-04`.
+Investigate moving the WP + Asana + inventory finalize step into a CLI script (`scripts/finalize_article.py`) that sub-agents can call directly. The proxy-based `ig-mcp-proxy` is reachable via stdio, so a wrapper script is possible. If shipped, this saves ~25k × N tokens per batch on the main session, raising effective per-window throughput from 12 to ~15 articles. Tracked in backlog as `INFRA-08`. Related: `PIPE-02` (Sonnet smoke test for Option B/C model split, which decides the final pipeline shape before `INFRA-08` ships).
 
 ## Consequences
 

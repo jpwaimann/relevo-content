@@ -177,6 +177,27 @@
 <p><strong>Options:</strong> (a) mandatory WebSearch in the Origins flow; (b) editorial curation (the editor pre-fills the candidate list and the skill only generates hooks); (c) sports data API; (d) hybrid.</p>
 <p><strong>Status:</strong> Deferred during the May 18 bulk seed; the 48 Origins topics there were generated blind. Quality of those should be re-checked.</p>
 
+<h3><span class="item-code">PIPE-02</span> Sonnet smoke test — validate Option B/C model split</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Pipeline
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Claude (run) · JPW (verdict)
+</p>
+<p><a href="adr/015-anti-limit-production-strategy.md">ADR-015</a> is shipping under <strong>Option A</strong> (Opus draft+critique+fact-check, Sonnet only for research+revise — ~40-45 articles/day capacity). Options B (tiered Opus-draft on tier-1 only) and C (Sonnet draft everywhere except critique) could lift capacity to ~60-120/day but introduce voice/quality risk. Decide whether to migrate after the current Opus-A batch closes.</p>
+<p><strong>Mechanics:</strong> 1 smoke run on 1 Tenis row with Sonnet 4.6 substituted in the draft stage. Same critique gates (score ≥85, all binary tests pass). Compare against an Opus-drafted control on a similar row from today's batch. If Sonnet draft passes critique on the first round + scores within 3 points of the Opus control → propose Option B (Sonnet draft for non-tier-1 only). If Sonnet draft requires 2+ revise rounds OR drops below 85 → keep Option A and shelve B/C.</p>
+<p><strong>Status:</strong> Scheduled — runs <strong>after</strong> today's Option A batch finishes, before any decision on subsequent batches.</p>
+
+<h3><span class="item-code">INFRA-08</span> Finalize-as-CLI — push WP+Asana+inventory into sub-agent scope</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Pipeline / Infrastructure
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Claude (engineering)
+</p>
+<p>Today the sub-agent stops at <code>article_final.json</code>; the main session does the final 4 steps (WP hero upload, WP post create, WP post update for author fix, Asana subtask, inventory advance). This costs ~25k Opus per article on the main session — the binding-constraint bucket per <a href="adr/015-anti-limit-production-strategy.md">ADR-015</a>. If those steps move into CLI scripts that sub-agents can run via Bash, the main-session cost drops to near zero and per-window capacity rises ~25-30% on top of the model-split win.</p>
+<p><strong>Mechanics:</strong> The <code>ig-mcp-proxy</code> is a stdio process; any Python script can subprocess it. <code>scripts/wp_upload.py</code> and <code>scripts/asana_notify.py</code> already do this. Missing wrappers: <code>scripts/wp_post_create.py</code> and <code>scripts/wp_post_update.py</code> (mirror <code>mcp__igaming-wp__posts_create</code> / <code>posts_update</code> over stdio). Combined orchestrator <code>scripts/finalize_article.py</code> runs the 4 steps with error handling. Engineering ~1-2 h.</p>
+<p><strong>Pre-req:</strong> Decision on Option A vs B vs C from <code>PIPE-02</code> (no point building this until the final pipeline shape is settled).</p>
+<p><strong>Status:</strong> Queued — ship after <code>PIPE-02</code> lands.</p>
+
 <h3><span class="item-code">INTEG-03</span> Azure app — application permissions (path B)</h3>
 <p class="item-meta">
   <span class="label">Category:</span>Integrations / Infrastructure

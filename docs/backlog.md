@@ -103,6 +103,21 @@ This document is a living artefact. Pruned periodically — items that no longer
 - **Options:** (a) mandatory WebSearch in the Origins flow; (b) editorial curation (the editor pre-fills the candidate list and the skill only generates hooks); (c) sports data API; (d) hybrid.
 - **Status:** Deferred during the May 18 bulk seed; the 48 Origins topics there were generated blind. Quality of those should be re-checked.
 
+### `PIPE-02` Sonnet smoke test — validate Option B/C model split
+- **Category:** Pipeline
+- **Owner:** Claude (run) · JPW (verdict)
+- **Why:** [ADR-015](adr/015-anti-limit-production-strategy.md) is shipping under **Option A** (Opus draft+critique+fact-check, Sonnet only for research+revise — ~40-45 articles/day capacity). Options B (tiered Opus-draft on tier-1 only) and C (Sonnet draft everywhere except critique) could lift capacity to ~60-120/day but introduce voice/quality risk. Decide whether to migrate after the current Opus-A batch closes.
+- **Mechanics:** 1 smoke run on 1 Tenis row with Sonnet 4.6 substituted in the draft stage. Same critique gates (score ≥85, all binary tests pass). Compare against an Opus-drafted control on a similar row from today's batch. If Sonnet draft passes critique on the first round + scores within 3 points of the Opus control → propose Option B (Sonnet draft for non-tier-1 only). If Sonnet draft requires 2+ revise rounds OR drops below 85 → keep Option A and shelve B/C.
+- **Status:** Scheduled — runs **after** today's Option A batch finishes, before any decision on subsequent batches.
+
+### `INFRA-08` Finalize-as-CLI — push WP+Asana+inventory into sub-agent scope
+- **Category:** Pipeline / Infrastructure
+- **Owner:** Claude (engineering)
+- **Why:** Today the sub-agent stops at `article_final.json`; the main session does the final 4 steps (WP hero upload, WP post create, WP post update for author fix, Asana subtask, inventory advance). This costs ~25k Opus per article on the main session — the binding-constraint bucket per [ADR-015](adr/015-anti-limit-production-strategy.md). If those steps move into CLI scripts that sub-agents can run via Bash, the main-session cost drops to near zero and per-window capacity rises ~25-30% on top of the model-split win.
+- **Mechanics:** The `ig-mcp-proxy` is a stdio process; any Python script can subprocess it. `scripts/wp_upload.py` and `scripts/asana_notify.py` already do this. Missing wrappers: `scripts/wp_post_create.py` and `scripts/wp_post_update.py` (mirror `mcp__igaming-wp__posts_create` / `posts_update` over stdio). Combined orchestrator `scripts/finalize_article.py` runs the 4 steps with error handling. Engineering ~1-2 h.
+- **Pre-req:** Decision on Option A vs B vs C from `PIPE-02` (no point building this until the final pipeline shape is settled).
+- **Status:** Queued — ship after `PIPE-02` lands.
+
 ### `INTEG-03` Azure app — application permissions (path B)
 - **Category:** Integrations / Infrastructure
 - **Owner:** Debanjan (BI team)
