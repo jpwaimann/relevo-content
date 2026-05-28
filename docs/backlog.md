@@ -114,9 +114,23 @@ This document is a living artefact. Pruned periodically — items that no longer
 - **Category:** Pipeline / Infrastructure
 - **Owner:** Claude (engineering)
 - **Why:** Today the sub-agent stops at `article_final.json`; the main session does the final 4 steps (WP hero upload, WP post create, WP post update for author fix, Asana subtask, inventory advance). This costs ~25k Opus per article on the main session — the binding-constraint bucket per [ADR-015](adr/015-anti-limit-production-strategy.md). If those steps move into CLI scripts that sub-agents can run via Bash, the main-session cost drops to near zero and per-window capacity rises ~25-30% on top of the model-split win.
-- **Mechanics:** The `ig-mcp-proxy` is a stdio process; any Python script can subprocess it. `scripts/wp_upload.py` and `scripts/asana_notify.py` already do this. Missing wrappers: `scripts/wp_post_create.py` and `scripts/wp_post_update.py` (mirror `mcp__igaming-wp__posts_create` / `posts_update` over stdio). Combined orchestrator `scripts/finalize_article.py` runs the 4 steps with error handling. Engineering ~1-2 h.
-- **Pre-req:** Decision on Option A vs B vs C from `PIPE-02` (no point building this until the final pipeline shape is settled).
-- **Status:** Queued — ship after `PIPE-02` lands.
+- **Mechanics:** The `ig-mcp-proxy` is a stdio process; any Python script can subprocess it. `scripts/wp_upload.py` and `scripts/asana_notify.py` already do this. Wrappers shipped on 2026-05-28: `scripts/wp_post.py` (mirrors `posts.create` / `posts.update` over stdio) and `scripts/finalize_article.py` (orchestrator running upload + create + author fix + Asana subtask + inventory advance with per-step `finalize_result.json` checkpoint).
+- **Status:** SHIPPED 2026-05-28 PM (commit pending). Smoke test before first production use.
+
+### `INFRA-09` LiteLLM helper — Gemini 2.5 Pro (research) + GPT-5 (fact-check)
+- **Category:** Pipeline / Infrastructure
+- **Owner:** Claude (engineering)
+- **Why:** Real token-reduction levers selected by JPW on 2026-05-28 PM (see [ADR-015 update](adr/015-anti-limit-production-strategy.md#update-2026-05-28-pm-option-a-original-architecture-failed-revised-plan)). Original Option A (nested Sonnet sub-agents) failed in this harness because the Agent tool is not available inside sub-agents. Bucket-shifting to LiteLLM Opus 4.6 was rejected on the grounds that it disguises consumption rather than reducing it. The selected real-reduction combination is: Gemini 2.5 Pro for the research stage (~10x cheaper per token), GPT-5 for the fact-check stage (lower per-token cost than Opus), plus prompt caching on `style_guide.md` + templates (~90% input discount on repeated reads).
+- **Mechanics:** `scripts/llm_call.py` is the LiteLLM wrapper. Reads prompt from a file (avoids inlining 30k+ token style guides into Bash args). Calls `litellm.bidwhig.com` Chat Completions endpoint with `cache_control` on the cacheable style-guide prefix where the upstream supports it. Returns generated text + a `usage` block (input_tokens, output_tokens, cached_input_tokens) that the sub-agent merges into the article's running `token_usage` artifact.
+- **Models exposed by the active virtual key (`sk-7avXxrt...`, validated 2026-05-28):** GPT-5 family + Claude Opus 4.5/4.6 + Gemini 2.5 Pro/Flash + Gemini image gen. NO Claude Sonnet on any current key (memory `reference_litellm_proxy.md` notes the path is to request a new virtual key with Sonnet access from Debanjan if needed).
+- **Pre-req:** None. INFRA-08 is independent and ships in parallel.
+- **Status:** In progress — shipping today.
+
+### `FINANCE-01` LiteLLM multi-model spend reporting
+- **Category:** Finance / Operations
+- **Owner:** JPW (drive) · Nexern team (visibility)
+- **Why:** The multi-model pipeline routes some stages to LiteLLM (Gemini + GPT-5 calls billed to Nexern's accounts, not JPW's Claude Code Team seat). The team needs visibility on monthly spend attributable to the Relevo project and confirmation that the routing is acceptable from a budget perspective. Asana task `1215215371482362` tracks the open question with the internal team.
+- **Status:** Open. Does not block production.
 
 ### `INTEG-03` Azure app — application permissions (path B)
 - **Category:** Integrations / Infrastructure

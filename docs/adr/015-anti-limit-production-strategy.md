@@ -103,3 +103,71 @@ Investigate moving the WP + Asana + inventory finalize step into a CLI script (`
 ## Reviewer
 
 JPW (sign-off pending). Joel does not gate this ADR — it is operational, not editorial.
+
+---
+
+## Update 2026-05-28 PM — Option A original architecture failed; revised plan
+
+The original Option A required Opus orchestrator sub-agents to spawn nested Sonnet sub-sub-agents via the Agent tool for the research and revise stages. Confirmed in 3/3 Wave-1 runs (rows 11, 12, 13) that **nested Agent invocation is not available in this Claude Code harness** — the Agent tool is absent from the sub-agent's deferred-tool list. All Wave-1 articles ran full Opus despite the prompt instructing delegation.
+
+JPW then rejected a fallback to LiteLLM Opus 4.6 on the grounds that bucket-shifting Nexern's account budget is not real consumption reduction. The decision is to pursue **real token-reduction levers** instead:
+
+### Revised pipeline (effective 2026-05-28 PM)
+
+| Stage | Model | Why |
+|---|---|---|
+| Research | **Gemini 2.5 Pro** via LiteLLM | ~10x cheaper per token than Opus; fact-gathering quality is high; output feeds Opus draft so voice risk is contained. |
+| Draft | Opus 4.7 (Claude Code session) | Editorial voice quality stays on the strongest model. |
+| Self-critique | Opus 4.7 | Quality gate decisions stay on Opus. |
+| Revise (when needed) | Opus 4.7 | Surgical fixes on the draft Opus produced — same model for consistency. |
+| Fact-check | **GPT-5** via LiteLLM | JPW: "ChatGPT anda bastante bien para búsqueda." Cheaper per token than Opus for the WebSearch-heavy stage. |
+| SEO + image + save | Opus 4.7 (deterministic + image gen call) | No change. |
+| Finalize (WP+Asana+inventory) | None — pure Python via `scripts/finalize_article.py` | INFRA-08 lands today: zero LLM cost. |
+
+Plus **prompt caching** on the `style_guide.md` + per-category templates (~30k tokens), which are loaded once per sub-agent run. Anthropic's prompt-cache discount (~90% on cached input tokens) applies to all repeated reads across waves.
+
+### New per-article token reporting
+
+Each `article_final.json` now includes a `token_usage` block:
+
+```json
+{
+  "opus_session":          145000,
+  "gemini_research":         32000,
+  "gpt5_factcheck":          18000,
+  "cached_input_tokens":     27000,
+  "uncached_input_tokens":   85000
+}
+```
+
+Aggregated batch CSV at end of run for finance reporting.
+
+### Token-budget update (Plan A revised)
+
+Per article, post-revision:
+
+| Component | Tokens | Bucket |
+|---|---|---|
+| Opus session (draft + critique + revise + SEO + image) | ~60-65k | Claude Code Team window |
+| Gemini 2.5 Pro (research) | ~30-40k Gemini | LiteLLM (Nexern, separate cost) |
+| GPT-5 (fact-check) | ~15-25k GPT-5 | LiteLLM (Nexern, separate cost) |
+| Cache hits on style_guide+templates | ~25-30k input @ 10% effective | Claude Code Team window |
+| Main session (post-INFRA-08) | ~5k | Claude Code Team window |
+| **Total Opus on the constrained window** | **~65-70k per article** | — |
+
+Effective per-window throughput: **1.8M / 70k ≈ 25-26 articles per window** under the revised plan. Combined with the eliminated main-session finalize cost (INFRA-08), the binding constraint shifts from the per-window Opus budget to wall-clock and reviewer bandwidth.
+
+The 32 remaining articles of the Tier-1 batch fit in ~1.3 windows — well within a single day under the revised architecture.
+
+### Sub-agent ↔ LiteLLM interface
+
+The Opus sub-agent invokes `scripts/llm_call.py` via Bash for the Gemini and GPT-5 stages. The helper:
+- Reads the prompt from a file (avoids inlining 30k+ token style_guide into the Bash arg).
+- Calls LiteLLM with the appropriate model name and the `cache_control` parameter for the cacheable style-guide prefix.
+- Returns the generated text plus a `usage` block (input_tokens, output_tokens, cached_input_tokens) which the sub-agent merges into its running `token_usage` block.
+
+The sub-agent owns the orchestration; main session is a thin dispatcher post-INFRA-08.
+
+### LiteLLM internal alignment
+
+Tracked in Asana task `1215215371482362` (JPW pings the Nexern team periodically on the financial impact of LiteLLM usage). Production runs under the revised plan regardless of when that alignment lands.

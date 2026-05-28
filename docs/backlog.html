@@ -194,9 +194,29 @@
   <span class="label">Owner:</span>Claude (engineering)
 </p>
 <p>Today the sub-agent stops at <code>article_final.json</code>; the main session does the final 4 steps (WP hero upload, WP post create, WP post update for author fix, Asana subtask, inventory advance). This costs ~25k Opus per article on the main session — the binding-constraint bucket per <a href="adr/015-anti-limit-production-strategy.md">ADR-015</a>. If those steps move into CLI scripts that sub-agents can run via Bash, the main-session cost drops to near zero and per-window capacity rises ~25-30% on top of the model-split win.</p>
-<p><strong>Mechanics:</strong> The <code>ig-mcp-proxy</code> is a stdio process; any Python script can subprocess it. <code>scripts/wp_upload.py</code> and <code>scripts/asana_notify.py</code> already do this. Missing wrappers: <code>scripts/wp_post_create.py</code> and <code>scripts/wp_post_update.py</code> (mirror <code>mcp__igaming-wp__posts_create</code> / <code>posts_update</code> over stdio). Combined orchestrator <code>scripts/finalize_article.py</code> runs the 4 steps with error handling. Engineering ~1-2 h.</p>
-<p><strong>Pre-req:</strong> Decision on Option A vs B vs C from <code>PIPE-02</code> (no point building this until the final pipeline shape is settled).</p>
-<p><strong>Status:</strong> Queued — ship after <code>PIPE-02</code> lands.</p>
+<p><strong>Mechanics:</strong> The <code>ig-mcp-proxy</code> is a stdio process; any Python script can subprocess it. <code>scripts/wp_upload.py</code> and <code>scripts/asana_notify.py</code> already do this. Wrappers shipped on 2026-05-28: <code>scripts/wp_post.py</code> (mirrors <code>posts.create</code> / <code>posts.update</code> over stdio) and <code>scripts/finalize_article.py</code> (orchestrator running upload + create + author fix + Asana subtask + inventory advance with per-step <code>finalize_result.json</code> checkpoint).</p>
+<p><strong>Status:</strong> SHIPPED 2026-05-28 PM. Smoke test before first production use.</p>
+
+<h3><span class="item-code">INFRA-09</span> LiteLLM helper — Gemini 2.5 Pro (research) + GPT-5 (fact-check)</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Pipeline / Infrastructure
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>Claude (engineering)
+</p>
+<p>Real token-reduction levers selected by JPW on 2026-05-28 PM (see <a href="adr/015-anti-limit-production-strategy.md">ADR-015 update</a>). Original Option A (nested Sonnet sub-agents) failed in this harness because the Agent tool is not available inside sub-agents. Bucket-shifting to LiteLLM Opus 4.6 was rejected on the grounds that it disguises consumption rather than reducing it. The selected real-reduction combination is: Gemini 2.5 Pro for the research stage (~10x cheaper per token), GPT-5 for the fact-check stage (lower per-token cost than Opus), plus prompt caching on <code>style_guide.md</code> + templates (~90% input discount on repeated reads).</p>
+<p><strong>Mechanics:</strong> <code>scripts/llm_call.py</code> is the LiteLLM wrapper. Reads prompt from a file (avoids inlining 30k+ token style guides into Bash args). Calls <code>litellm.bidwhig.com</code> Chat Completions endpoint with <code>cache_control</code> on the cacheable style-guide prefix where the upstream supports it. Returns generated text + a <code>usage</code> block (input_tokens, output_tokens, cached_input_tokens) that the sub-agent merges into the article's running <code>token_usage</code> artifact.</p>
+<p><strong>Models exposed by the active virtual key (<code>sk-7avXxrt...</code>, validated 2026-05-28):</strong> GPT-5 family + Claude Opus 4.5/4.6 + Gemini 2.5 Pro/Flash + Gemini image gen. NO Claude Sonnet on any current key.</p>
+<p><strong>Pre-req:</strong> None. INFRA-08 is independent and ships in parallel.</p>
+<p><strong>Status:</strong> In progress — shipping today.</p>
+
+<h3><span class="item-code">FINANCE-01</span> LiteLLM multi-model spend reporting</h3>
+<p class="item-meta">
+  <span class="label">Category:</span>Finance / Operations
+  <span class="sep">·</span>
+  <span class="label">Owner:</span>JPW (drive) · Nexern team (visibility)
+</p>
+<p>The multi-model pipeline routes some stages to LiteLLM (Gemini + GPT-5 calls billed to Nexern's accounts, not JPW's Claude Code Team seat). The team needs visibility on monthly spend attributable to the Relevo project and confirmation that the routing is acceptable from a budget perspective. Asana task <code>1215215371482362</code> tracks the open question with the internal team.</p>
+<p><strong>Status:</strong> Open. Does not block production.</p>
 
 <h3><span class="item-code">INTEG-03</span> Azure app — application permissions (path B)</h3>
 <p class="item-meta">

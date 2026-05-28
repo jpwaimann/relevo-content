@@ -121,3 +121,46 @@ The 5 Tenis rows are recoverable (forensics above). Two options:
 - **Retry** — release the locks, wipe `/tmp` dirs, re-launch as part of the next wave under the ADR-015 cadence. Operationally clean.
 
 Recommendation: **retry** under the new cadence. The total token saving from recovery (~300k) is small versus the engineering cost of a one-off recovery script that will not be reused. Operational simplicity wins.
+
+---
+
+## Addendum 2026-05-28 PM — failed nested-Agent architecture + revised model split
+
+JPW approved Option A (Opus orchestrator + Sonnet delegated research+revise) earlier in the day. Wave 1 of the retry batch (rows 11, 12, 13) dispatched 4 sub-agents using the Agent tool with nested delegation to `model: sonnet`.
+
+**The architecture failed**: 3/3 sub-agents reported that the `Agent` tool was **not present in their deferred-tool list** and ran the full pipeline as plain Opus. No Sonnet delegation happened. Operationally the runs produced strong articles (scores 90, 95, 95) — just at the cost profile of yesterday, not the projected Option A profile.
+
+The root cause is a runtime constraint of this Claude Code harness: sub-agents spawned via the Agent tool cannot themselves spawn nested sub-agents with a different model. Nested delegation is not available in this environment.
+
+### Pivot: real token-reduction levers (Plan A revised)
+
+JPW also rejected a proposed bucket-shift to LiteLLM Opus 4.6 (claude-opus-4-6 via Nexern's LiteLLM proxy) on the grounds that total consumption stays the same — only the billing account changes. The decision instead is to pursue **levers that actually reduce token consumption**:
+
+| # | Lever | Mechanism | Picked |
+|---|---|---|---|
+| 1 | **Gemini 2.5 Pro for research** | Gemini ~10x cheaper per token than Opus. Research is fact-gathering — Gemini handles it well. Output feeds the Opus draft (voice stays Opus). | ✓ |
+| 2 | **Prompt caching for `style_guide.md` + templates** | ~90% input-token discount on repeated reads across waves. | ✓ |
+| 3 | Shorter word-count target (1500-2200 → 1200-1500) | Editorial decision pending Joel's input. | Deferred |
+| 4 | Cap revise to 0 iterations | Lower risk of multi-pass loops. | Not picked |
+| 5 | **GPT-5 for fact-check** | JPW: "ChatGPT anda bastante bien para búsqueda." Lower per-token cost than Opus. | ✓ |
+| 6 | GPT-5 for draft | Quality risk on Spanish journalism voice. | Rejected |
+
+The selected combination (1+2+5) plus **INFRA-08** (finalize-as-CLI; see backlog) is the path executing today.
+
+### Per-article token reporting (JPW explicit requirement)
+
+Every `article_final.json` now carries a `token_usage` block with the breakdown:
+```
+{
+  "opus_session":         <tokens consumed on the Claude Team window>,
+  "gemini_research":      <tokens consumed via LiteLLM Gemini>,
+  "gpt5_factcheck":       <tokens consumed via LiteLLM GPT-5>,
+  "cached_input_tokens":  <input tokens read from prompt cache>,
+  "uncached_input_tokens":<input tokens not in cache>
+}
+```
+Aggregated to a batch CSV at the end of the run.
+
+### Internal finance alignment
+
+A standalone Asana task (`1215215371482362`) tracks JPW's periodic check-in with the Nexern team on LiteLLM usage from a financial perspective. Production is not blocked on the alignment — it runs today under the revised plan regardless.
