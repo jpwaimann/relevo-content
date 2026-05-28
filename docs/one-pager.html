@@ -361,7 +361,7 @@
   <div class="meta-line">
     <strong>Project lead:</strong> Juan Pablo Waimann ·
     <strong>Editorial reviewer:</strong> Joel Sierra ·
-    <strong>Last updated:</strong> 27 May 2026 — PM ·
+    <strong>Last updated:</strong> 28 May 2026 — AM ·
     <a href="https://git.igaming.com/relevo/content">Official repo</a> ·
     <a href="https://jpwaimann.github.io/relevo-content/">Public roadmap</a> ·
     <a href="demo-deck.html">Demo deck</a> ·
@@ -384,7 +384,7 @@
       <div class="week-header">W1<span>May 4</span></div>
       <div class="week-header">W2<span>May 11</span></div>
       <div class="week-header">W3<span>May 18</span></div>
-      <div class="week-header today">W4<span>May 25</span><span class="milestone">▼ TODAY · Pilot batch 50 under v1.2.3</span></div>
+      <div class="week-header today">W4<span>May 25</span><span class="milestone">▼ TODAY · Batch 50 under ADR-015 model split (15/50 delivered, 35 in flight)</span></div>
       <div class="week-header">W5<span>Jun 1</span><span class="milestone">🚀 LAUNCH</span></div>
       <div class="week-header">W6<span>Jun 8</span><span class="milestone">⚽ FIFA WC</span></div>
       <div class="week-header">W7<span>Jun 15</span></div>
@@ -427,7 +427,7 @@
     </div>
   </div>
   <div class="timeline-footer">
-    <span><strong>Today:</strong> Wed 27 May 2026 PM · W4 day 3 · Content strategy v1 + ADR-013 shipped, 170-row sprint inventory locked (50/50/50/20 with 61 tier-1 marked), 4 pre-bulk smokes PASS (avg 91/100, JPW format review), style guide v1.2.3 + ADR-014 (bolds 100% + basketball-tactic italics), pilot batch 50 launching</span>
+    <span><strong>Today:</strong> Thu 28 May 2026 AM · W4 day 4 · Session-limit incident 27/5 documented (<a href="incidents/2026-05-27-session-limit-batch50.md">postmortem</a>), ADR-015 anti-limit strategy shipped, multi-model token-savings (Option A: Opus orchestrator + Sonnet research+revise) LIVE, Wave 1 of 35 remaining batch articles in flight (rows 11/12/13/15 Tenis), INFRA-08 finalize-as-CLI queued post-Wave-1, Asana audit 21 tasks → EN</span>
     <span>
       <span class="milestone-pill">🚀 Public launch · Jun 1</span>
       &nbsp;<span class="milestone-pill">⚽ FIFA WC · Jun 11</span>
@@ -473,7 +473,7 @@
 
 <h2>Next 7 days</h2>
 <ul>
-  <li><strong>Thu 28/5</strong> — JPW SOP review (long-form + 1-pager) returns — top priority. JPW forwards CSS header question to Tech (Debanjan). Pilot batch of 50 lands fully; metrics rollup published; verdict on the remaining 120 articles for Fri. Sports calendar 2026 H2 Joel editorial review return.</li>
+  <li><strong>Thu 28/5</strong> — <strong>Session-limit incident report</strong> (<a href="incidents/2026-05-27-session-limit-batch50.md">2026-05-27</a>) shipped: 27/5 PM hit Claude Team rolling 5h window at ~2.5M Opus tokens; Wave 4 of pilot batch cut at 15/50 delivered. <strong>ADR-015 anti-limit production strategy</strong> (<a href="adr/015-anti-limit-production-strategy.md">link</a>) shipped: per-window budget 1.8M, wave size 4, sequential waves, 7-8 day realistic sprint. <strong>Multi-model token-savings plan</strong> (Option A) went live: each sub-agent runs as Opus orchestrator + delegates research+revise to nested Sonnet 4.6 sub-agents (separate quota window, ~3x cheaper). Doubles per-window capacity from ~12 to ~24 articles. Wave 1 of remaining 35 batch articles dispatched (rows 11, 12, 13, 15 — Tenis). <strong>INFRA-08 finalize-as-CLI</strong> queued post-Wave-1 (sub-agent runs the WP+Asana+inventory finalize steps itself; extra +38% capacity). PIPE-02 Sonnet smoke scheduled post-batch (decides B/C migration). Asana audit: 21 tasks translated to English per workspace language policy.</li>
   <li><strong>Fri 29/5</strong> — Joel ronda 5 review on the pilot batch (editorial depth). If green → remaining 120 articles launch. First weekly cost report. NEWS-01 GSC URLs review with Joel.</li>
   <li><strong>Mon 1/6</strong> — 🚀 Public launch.</li>
   <li><strong>Thu 11/6</strong> — ⚽ FIFA WC kickoff · target 50 articles/day.</li>
