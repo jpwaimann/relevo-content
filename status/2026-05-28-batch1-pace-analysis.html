@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batch 1 pace analysis · 2026-05-28</title>
+<style>
+  :root {
+    --color-primary: #7464DE;
+    --color-primary-soft: #cbc1f4;
+    --color-primary-ghost: #e8e3fa;
+    --color-text: #1a1a1a;
+    --color-muted: #595959;
+    --color-light: #999;
+    --color-bg: #ffffff;
+    --color-bg-soft: #fafafa;
+    --color-border: #e8e8e8;
+    --color-accent: #E91E90;
+    --color-good: #2e8540;
+    --color-warn: #b6822d;
+    --color-bad: #c43232;
+    --color-block: #f3f1ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--color-text);
+    background: var(--color-bg);
+    margin: 0;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrapper { max-width: 880px; margin: 0 auto; padding: 28px 24px 60px; }
+
+  .header {
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .meta-line {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--color-muted);
+  }
+  .meta-line strong { color: var(--color-text); }
+  .meta-line a { color: var(--color-primary); text-decoration: none; }
+  .meta-line a:hover { text-decoration: underline; }
+
+  .status-callout {
+    background: var(--color-block);
+    border-left: 4px solid var(--color-accent);
+    padding: 14px 18px;
+    border-radius: 4px;
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+  .status-callout strong.big {
+    font-size: 18px;
+    color: var(--color-accent);
+    font-weight: 800;
+  }
+
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 32px 0 12px;
+    color: var(--color-text);
+    letter-spacing: -0.01em;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 6px;
+  }
+  h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 18px 0 8px;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  p { margin: 0 0 12px; font-size: 14px; }
+  ul, ol { margin: 0 0 12px; padding-left: 22px; font-size: 14px; }
+  li { margin-bottom: 4px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0 20px;
+    background: #fff;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  th {
+    background: var(--color-bg-soft);
+    font-weight: 700;
+    color: var(--color-text);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 2px solid var(--color-border);
+  }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.center { text-align: center; }
+  tr:last-child td { border-bottom: 0; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .badge.fail { background: #fde6e6; color: var(--color-bad); }
+  .badge.work { background: #e7f5ea; color: var(--color-good); }
+  .badge.rej { background: #fdf3e1; color: var(--color-warn); }
+  .badge.live { background: var(--color-block); color: var(--color-primary); }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", monospace;
+    font-size: 12px;
+    background: var(--color-bg-soft);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--color-text);
+  }
+
+  .decisions {
+    background: #fff;
+    border: 1px solid var(--color-primary-soft);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-top: 12px;
+  }
+  .decisions ol { padding-left: 18px; margin: 6px 0 0; }
+  .decisions li { margin-bottom: 8px; }
+
+  footer {
+    margin-top: 36px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+    font-size: 11px;
+    color: var(--color-light);
+  }
+
+  @media (max-width: 640px) {
+    .wrapper { padding: 18px 14px 40px; }
+    .header h1 { font-size: 22px; }
+    table { font-size: 12px; }
+    th, td { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<div class="header">
+  <h1>Batch 1 pace analysis</h1>
+  <div class="meta-line">
+    <strong>Date:</strong> 2026-05-28 (EOD) ·
+    <strong>Prepared by:</strong> Claude Code session for JPW ·
+    <strong>For:</strong> Relevo content team — Friday decision
+  </div>
+</div>
+
+<div class="status-callout">
+  <strong class="big">27 / 170 articles delivered (16%) after 2 days.</strong><br>
+  Target Monday 2026-06-01: 170. <strong>Gap: 143 articles in 4 working days.</strong>
+</div>
+
+<h2>Where to find the delivered articles</h2>
+<ul>
+  <li><strong>WordPress</strong> — <a href="https://relevo-com.sub.plus/wp-admin/edit.php?post_status=pending&author=77">edit.php?post_status=pending&author=77</a> (all 27 as <code>pending</code>, author = JPW)</li>
+  <li><strong>Asana review inbox</strong> — <a href="https://app.asana.com/0/1214109786765359/1214527443265898">Main task — Solicitar artículo Relevo.com</a> (one subtask per article, assigned to Joel)</li>
+  <li><strong>Inventory Excel</strong> — <code>Relevo - Content - Article production DB.xlsx</code>, filter <code>status = review</code> (authoritative ledger)</li>
+</ul>
+
+<h2>Iterations and outcomes</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 30px;">#</th>
+      <th style="width: 90px;">When</th>
+      <th>What we tried</th>
+      <th style="width: 95px;">Outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>27/5 PM</td>
+      <td>Full-Opus pipeline, 6 sub-agents per wave.</td>
+      <td><span class="badge fail">FAILED</span><br><span style="font-size: 11px; color: var(--color-muted);">15 delivered, then session-limit at ~2.5M Opus tokens. Wave 4 killed mid-flight.</span></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>28/5 AM</td>
+      <td>Opus orchestrator + nested Sonnet sub-agents for research + revise.</td>
+      <td><span class="badge fail">FAILED</span><br><span style="font-size: 11px; color: var(--color-muted);">Architecturally impossible — sub-agents in this harness do not have the Agent tool. All sub-agents ran full-Opus.</span></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>28/5 PM</td>
+      <td>Proposed: route through LiteLLM Opus 4.6 (Nexern account) to bypass Claude Team window.</td>
+      <td><span class="badge rej">REJECTED</span><br><span style="font-size: 11px; color: var(--color-muted);">Same total tokens, only shifts billing. Not real reduction. JPW called it.</span></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>28/5 PM</td>
+      <td>Multi-model: Gemini 2.5 Pro (research) + Opus (draft / critique / revise) + GPT-5 (fact-check) + INFRA-08 autonomous finalize.</td>
+      <td><span class="badge work">WORKING</span><br><span style="font-size: 11px; color: var(--color-muted);">8 articles delivered today, avg score 92, all hard quality gates pass. 15 factual errors caught by GPT-5.</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="font-size: 13px; color: var(--color-muted);">Per-article Opus burn dropped from <strong>115k (iter 1)</strong> to <strong>70–80k (iter 4)</strong> — 35% reduction in the constrained bucket.</p>
+
+<h2>Token consumption today (28/5)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Bucket</th>
+      <th>Tokens</th>
+      <th>Cost basis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Opus 4.7 (Claude Code Team seat)</td>
+      <td class="num">~2.0–2.2M</td>
+      <td>per-seat allowance, 5h rolling window</td>
+    </tr>
+    <tr>
+      <td>Gemini 2.5 Pro (Nexern LiteLLM)</td>
+      <td class="num">~90k</td>
+      <td>Nexern's account, ~10× cheaper / token than Opus</td>
+    </tr>
+    <tr>
+      <td>GPT-5 (Nexern LiteLLM, prompt caching active)</td>
+      <td class="num">~85k</td>
+      <td>Nexern's account, ~3× cheaper / token than Opus</td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="font-size: 13px; color: var(--color-muted);">Stopped at 27 / 50 batch-1 today to avoid a second session-limit incident. Window soft cap empirically ~2.5M Opus / 5h.</p>
+
+<h2>Why we are behind pace</h2>
+<p>Two days = ~10 hours actual production time. The remainder went to:</p>
+<ul>
+  <li><strong>27/5</strong>: session-limit incident, ~5 articles' work lost mid-flight.</li>
+  <li><strong>28/5 AM</strong>: nested-agent iteration failed → no token savings, no working architecture until afternoon.</li>
+  <li><strong>28/5 mid</strong>: built helper scripts (<code>wp_post.py</code>, <code>finalize_article.py</code>, <code>llm_call.py</code>) — necessary one-time investment.</li>
+  <li><strong>28/5 PM</strong>: systemic format bug (duplicate H1 + bold coverage shortfall) discovered in JPW review. Retroactive fix on 18 prior articles required.</li>
+</ul>
+<p>Single Claude Code Team seat caps at <strong>~25 articles per 5h window</strong>. <strong>Two windows / workday = ~50 articles / day theoretical max from one seat.</strong></p>
+
+<h2>Math for Monday</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>Articles / day from Friday</th>
+      <th>Total by Monday EOD</th>
+      <th>vs 170 target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Optimistic</strong> (no friction)</td>
+      <td class="center">40</td>
+      <td class="center"><strong>187</strong></td>
+      <td class="center" style="color: var(--color-good);">+10%</td>
+    </tr>
+    <tr>
+      <td><strong>Realistic</strong> (Joel review cycle, weekend reduced bandwidth, edge cases)</td>
+      <td class="center">30</td>
+      <td class="center"><strong>147</strong></td>
+      <td class="center" style="color: var(--color-warn);">−14%</td>
+    </tr>
+    <tr>
+      <td><strong>Pessimistic</strong> (more architectural surprises)</td>
+      <td class="center">20</td>
+      <td class="center"><strong>107</strong></td>
+      <td class="center" style="color: var(--color-bad);">−37%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Options the team can weigh</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 30px;">#</th>
+      <th>Lever</th>
+      <th style="width: 110px;">Throughput gain</th>
+      <th>Cost / risk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>A</strong></td>
+      <td><strong>Status quo</strong> (current architecture)</td>
+      <td>~30 / day</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><strong>B</strong></td>
+      <td><strong>Second parallel stream</strong> via LiteLLM Opus 4.6 (Nexern account); both streams produce simultaneously</td>
+      <td>~2× → 50–60 / day</td>
+      <td>No token saving; uses Nexern's account budget; needs JPW or Debanjan to authorise</td>
+    </tr>
+    <tr>
+      <td><strong>C</strong></td>
+      <td><strong>Shorten article target</strong> from 1500–2200 to 1000–1500 words</td>
+      <td>+25–30% / day</td>
+      <td>Editorial decision; Joel input required</td>
+    </tr>
+    <tr>
+      <td><strong>D</strong></td>
+      <td><strong>Sonnet for non-tier-1 drafts</strong> (request virtual key from Debanjan with Sonnet access)</td>
+      <td>+40–60% / day</td>
+      <td>Voice quality risk on Spanish journalism; 1 smoke test needed first</td>
+    </tr>
+    <tr>
+      <td><strong>E</strong></td>
+      <td><strong>Cap revise at 0 loops</strong>, ship below-85 scores to Joel</td>
+      <td>+15% / day</td>
+      <td>More Joel rework; quality slips</td>
+    </tr>
+    <tr>
+      <td><strong>F</strong></td>
+      <td><strong>Move deadline</strong> from Monday to Tuesday / Wednesday</td>
+      <td>Releases pressure</td>
+      <td>External commitment</td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="font-size: 13px;">Combinable. <strong>A+B+C+D</strong> stacked could theoretically reach ~100 articles / day. <strong>A alone</strong> = 140–170 by Monday with normal friction.</p>
+
+<h2>What needs deciding</h2>
+<div class="decisions">
+  <ol>
+    <li>Accept realistic forecast of <strong>140–150 by Monday</strong> and finish remainder Tuesday / Wednesday — or push for 170 hard?</li>
+    <li>If pushing: authorise <strong>B</strong> (parallel stream, Nexern account) and / or <strong>D</strong> (request Sonnet virtual key from Debanjan).</li>
+    <li><strong>C</strong> (shorter articles) requires Joel sign-off before applying.</li>
+    <li><strong>E</strong> is the lowest-leverage and lowest-quality option; avoid unless deadline is immovable.</li>
+  </ol>
+</div>
+
+<p style="margin-top: 18px; font-size: 13px; color: var(--color-muted);"><strong>JPW picks; I execute Friday morning.</strong></p>
+
+<footer>
+  Doc location: <code>/docs/status/2026-05-28-batch1-pace-analysis.html</code> (this file) · <code>.md</code> source alongside.
+  Numbers verified against Asana inbox + Inventory Excel + WordPress as of 2026-05-28 18:30 UTC.
+</footer>
+
+</div>
+</body>
+</html>
