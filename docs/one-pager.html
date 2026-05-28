@@ -361,7 +361,7 @@
   <div class="meta-line">
     <strong>Project lead:</strong> Juan Pablo Waimann ·
     <strong>Editorial reviewer:</strong> Joel Sierra ·
-    <strong>Last updated:</strong> 28 May 2026 — AM ·
+    <strong>Last updated:</strong> 28 May 2026 — EOD ·
     <a href="https://git.igaming.com/relevo/content">Official repo</a> ·
     <a href="https://jpwaimann.github.io/relevo-content/">Public roadmap</a> ·
     <a href="demo-deck.html">Demo deck</a> ·
@@ -384,7 +384,7 @@
       <div class="week-header">W1<span>May 4</span></div>
       <div class="week-header">W2<span>May 11</span></div>
       <div class="week-header">W3<span>May 18</span></div>
-      <div class="week-header today">W4<span>May 25</span><span class="milestone">▼ TODAY · Batch 50 under ADR-015 model split (15/50 delivered, 35 in flight)</span></div>
+      <div class="week-header today">W4<span>May 25</span><span class="milestone">▼ TODAY · 27/170 sprint delivered (16%) · multi-model architecture working</span></div>
       <div class="week-header">W5<span>Jun 1</span><span class="milestone">🚀 LAUNCH</span></div>
       <div class="week-header">W6<span>Jun 8</span><span class="milestone">⚽ FIFA WC</span></div>
       <div class="week-header">W7<span>Jun 15</span></div>
@@ -427,7 +427,7 @@
     </div>
   </div>
   <div class="timeline-footer">
-    <span><strong>Today:</strong> Thu 28 May 2026 AM · W4 day 4 · Session-limit incident 27/5 documented (<a href="incidents/2026-05-27-session-limit-batch50.md">postmortem</a>), ADR-015 anti-limit strategy shipped, multi-model token-savings (Option A: Opus orchestrator + Sonnet research+revise) LIVE, Wave 1 of 35 remaining batch articles in flight (rows 11/12/13/15 Tenis), INFRA-08 finalize-as-CLI queued post-Wave-1, Asana audit 21 tasks → EN</span>
+    <span><strong>Today:</strong> Thu 28 May 2026 EOD · W4 day 4 · <strong>27/170 sprint articles delivered</strong> · Multi-model architecture (Gemini research + Opus draft/critique + GPT-5 fact-check + autonomous INFRA-08 finalize) WORKING after 2 failed iterations · 8 articles delivered today under final architecture (avg score 92, all hard gates pass) · CSS header gap fixed (Asana task closed) · <a href="status/2026-05-28-batch1-pace-analysis.html">Pace analysis doc</a> shipped for Friday team decision</span>
     <span>
       <span class="milestone-pill">🚀 Public launch · Jun 1</span>
       &nbsp;<span class="milestone-pill">⚽ FIFA WC · Jun 11</span>
@@ -437,7 +437,7 @@
 
 <div class="tldr">
   <div class="tldr-label">TL;DR · 5-second read</div>
-  <p>Launch tracking <strong>June 1</strong>. <strong>Sprint 170 evergreen in flight</strong>: content strategy v1 finalized (ADR-013, 5 verticals), 170-row inventory locked (50 rules + 50 tactics + 50 origins + 20 coaches, 61 tier-1 marked), <strong>4 pre-bulk smokes PASS</strong> under format review (rules IFAB + tactics pick-and-roll + origins Yamal + coaches Mourinho, avg <strong>91/100</strong>). <strong>Style guide v1.2.3</strong> shipped same day (ADR-014: bolds 100% cuerpo + basketball-tactic italics inventory; pressing preserved per Joel batch 2). <strong>Pilot batch of 50 launching</strong> (tier-1 first, 6 parallel agents, snapshot every 5 runs). Quality floor non-negotiable: score &ge;85 per article, batch avg &ge;89. Unit economics on track: <strong>$0.10–0.30 per article*, target ~50/day</strong>.</p>
+  <p>Launch tracking <strong>June 1</strong>. <strong>27/170 sprint articles delivered after 2 days</strong> (16%). Production survived 2 iteration failures (full-Opus session-limit incident 27/5; nested-Agent architecture failure 28/5 AM) and pivoted to a <strong>working multi-model pipeline</strong>: Gemini 2.5 Pro research → Opus 4.7 draft/critique/revise → GPT-5 fact-check → autonomous INFRA-08 finalize. Per-article Opus burn down ~35% versus baseline; <strong>15 factual errors caught by GPT-5</strong> in today's 8 articles alone. All articles in WP <code>pending</code> with avg score <strong>92/100</strong> and 4/4 hard gates passing (bolds coverage 100%, paras ≤60w, no forbidden tags, no leading H1). <strong>Pace analysis doc</strong> ready for Friday team decision — realistic 140–150 by Monday under status quo; 170 requires combination levers. See <a href="status/2026-05-28-batch1-pace-analysis.html">pace analysis</a>.</p>
 </div>
 
 <h2>Content strategy — four verticals</h2>
@@ -453,12 +453,12 @@
 
 <h2>Open blockers — priority order</h2>
 <ol class="blocker-list">
-  <li><span class="num">1</span><strong>JPW SOP review (long-form + 1-pager).</strong> Top priority for Thu 28/5. Long-form: <a href="sop/01-content-production.md">01-content-production.md</a>. Quick reference: <a href="sop/quick-reference-jpw-joel.md">quick-reference-jpw-joel.md</a>. JPW feedback returns trigger v1.0.x patch if needed before the remaining 120 articles of the sprint launch.</li>
-  <li><span class="num">2</span><strong>Tech CSS question — WP header gap.</strong> Asana task <a href="https://app.asana.com/0/0/1215166573030805/f/">1215166573030805</a>. Needs JPW to forward to Debanjan / IT for tech-level fix decision. Root cause locked (3:2 hero vs 2.76:1 text-column slot mismatch, ADR-009). Blocker for WP header redesign rollout to the batch-50 drafts.</li>
-  <li><span class="num">3</span><strong>Pilot batch 50 verdict + Joel ronda 5 review.</strong> Smokes approved under format review (JPW); Joel hasn't reviewed at editorial depth yet. Joel ronda 5 lands on the pilot batch outputs Thursday-Friday. Verdict gates the remaining 120 articles of the sprint and the v1.2.3 → v1.3 path.</li>
-  <li><span class="num">4</span><strong>SharePoint → GitLab content migration.</strong> All editorial assets (inventory Excel, rulebook PDFs, ancillary folders) move from SharePoint to the new official repository. Audit + scope + execution carry over into W4-W5. JPW still pending Owner role from Gustavo Santiago.</li>
+  <li><span class="num">1</span><strong>Team decision on the pace-analysis options.</strong> Friday morning. <a href="status/2026-05-28-batch1-pace-analysis.html">Pace analysis doc</a> presents 6 combinable levers (A status quo / B parallel stream / C shorter articles / D Sonnet via Debanjan / E cap revise / F move deadline). Pushing for 170 by Monday requires authorizing B and/or D; otherwise realistic 140–150 with carry-over to Tue/Wed.</li>
+  <li><span class="num">2</span><strong>Joel batch-1 verdicts on 27 articles in review queue.</strong> All 27 are in <code>pending</code> WP + Asana inbox. Verdict cadence gates: (a) batch 2 launch timing, (b) any style guide v1.2.4 patch needed if recurring issues surface, (c) which articles need a revise pass before publication.</li>
+  <li><span class="num">3</span><strong>JPW SOP review (long-form + 1-pager).</strong> Carry-over from 28/5. Long-form: <a href="sop/01-content-production.md">01-content-production.md</a>. Quick reference: <a href="sop/quick-reference-jpw-joel.md">quick-reference-jpw-joel.md</a>. Reviewer pool expansion debate hinges on this.</li>
+  <li><span class="num">4</span><strong>SharePoint → GitLab content migration.</strong> Carry-over W4-W5. JPW still pending Owner role from Gustavo Santiago.</li>
 </ol>
-<p class="commentary">The binding constraint is editorial, not technical. The pipeline is built; the SOP is documented; the smokes validate v1.2.3 under JPW format review. The next gate is Joel ronda 5 at editorial depth on the pilot batch.</p>
+<p class="commentary">Two binding constraints now: (1) editorial bandwidth — 27 articles wait on Joel; (2) capacity — single Claude Code Team seat caps at ~25 articles per 5h window. Lever B (second parallel stream via LiteLLM Opus 4.6 / Nexern account) is the highest-impact open decision: it doubles throughput without touching quality.</p>
 
 <h2>Key decisions (last 10 days)</h2>
 <ul>
@@ -473,8 +473,9 @@
 
 <h2>Next 7 days</h2>
 <ul>
-  <li><strong>Thu 28/5</strong> — <strong>Session-limit incident report</strong> (<a href="incidents/2026-05-27-session-limit-batch50.md">2026-05-27</a>) shipped: 27/5 PM hit Claude Team rolling 5h window at ~2.5M Opus tokens; Wave 4 of pilot batch cut at 15/50 delivered. <strong>ADR-015 anti-limit production strategy</strong> (<a href="adr/015-anti-limit-production-strategy.md">link</a>) shipped: per-window budget 1.8M, wave size 4, sequential waves, 7-8 day realistic sprint. <strong>Multi-model token-savings plan</strong> (Option A) went live: each sub-agent runs as Opus orchestrator + delegates research+revise to nested Sonnet 4.6 sub-agents (separate quota window, ~3x cheaper). Doubles per-window capacity from ~12 to ~24 articles. Wave 1 of remaining 35 batch articles dispatched (rows 11, 12, 13, 15 — Tenis). <strong>INFRA-08 finalize-as-CLI</strong> queued post-Wave-1 (sub-agent runs the WP+Asana+inventory finalize steps itself; extra +38% capacity). PIPE-02 Sonnet smoke scheduled post-batch (decides B/C migration). Asana audit: 21 tasks translated to English per workspace language policy.</li>
-  <li><strong>Fri 29/5</strong> — Joel ronda 5 review on the pilot batch (editorial depth). If green → remaining 120 articles launch. First weekly cost report. NEWS-01 GSC URLs review with Joel.</li>
+  <li><strong>Thu 28/5</strong> — Day of architecture pivots. <strong>Iter 2 failed</strong>: nested-Agent delegation impossible in this harness (sub-agents lack Agent tool); 3 Wave-1 articles ran full-Opus. <strong>Iter 3 rejected</strong>: bucket-shift to LiteLLM Opus 4.6 is billing theater, not real reduction. <strong>Iter 4 WORKING</strong>: multi-model pipeline (Gemini research + Opus draft/critique/revise + GPT-5 fact-check + autonomous INFRA-08 finalize). Wave 2 + Wave 3 delivered 8 articles end-to-end, avg score 92, all hard gates pass. Built helper scripts (<code>wp_post.py</code>, <code>finalize_article.py</code>, <code>llm_call.py</code>); shipped ADR-015 update + incident addendum + INFRA-08 / INFRA-09 / FINANCE-01 backlog. Format bug discovered + retroactively fixed on 18 prior articles (H1 strip + 87 paragraphs bolded). <strong>CSS header gap fix verified and Asana task closed</strong>. <strong>27/170 articles delivered total</strong>. <a href="status/2026-05-28-batch1-pace-analysis.html">Pace analysis</a> ready for Friday team decision.</li>
+  <li><strong>Fri 29/5</strong> — Team decision on pace-analysis options (15 min slot, AM). Then production resumes under chosen lever combination. Joel verdict sweep on the 27 articles in review queue. First daily token-consumption report (FINANCE-01). JPW SOP review carry-over.</li>
+  <li><strong>Sat 30/5 / Sun 31/5</strong> — Closing weekend on batch 1 + opening batch 2 if lever B authorized. Joel reduced-bandwidth window assumed.</li>
   <li><strong>Mon 1/6</strong> — 🚀 Public launch.</li>
   <li><strong>Thu 11/6</strong> — ⚽ FIFA WC kickoff · target 50 articles/day.</li>
 </ul>
