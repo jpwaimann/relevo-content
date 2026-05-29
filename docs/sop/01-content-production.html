@@ -113,23 +113,24 @@
 <header>
   <div class="breadcrumb"><a href="../">← back to docs index</a> · SOP</div>
   <div class="header-row">
-    <img src="../../assets/jpw-avatar.png" alt="JPW" class="avatar">
+    <img src="../../assets/jpw-avatar.png" alt="Juan Pablo Waimann" class="avatar" title="Juan Pablo Waimann">
+    <img src="../../assets/joel-avatar.png" alt="Joel Sierra" class="avatar" title="Joel Sierra">
     <div class="header-text">
       <h1>SOP 01 — Content Production Pipeline</h1>
       <p class="sub">Roles · Stages · Asana conventions · Inventory schema · Day-in-the-life</p>
     </div>
   </div>
   <div class="meta-line">
-    <strong>Owner</strong> JPW · <strong>Reviewer</strong> Joel Sierra · <strong>Drafter</strong> Claude Code ·
-    <strong>Version</strong> v1.0 (2026-05-25) · <strong>Source</strong>
+    <strong>Owner</strong> Juan Pablo Waimann · <strong>Editorial reviewer &amp; co-publisher</strong> Joel Sierra · <strong>Drafter</strong> Claude Code ·
+    <strong>Version</strong> v1.1 (2026-05-29) · <strong>Source</strong>
     <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/sop/01-content-production.md">github.com/jpwaimann/relevo-content</a>
   </div>
 </header>
 
 <h1>SOP 01 — Content Production Pipeline</h1>
 <p><strong>Audience</strong>: Juan Pablo Waimann (JPW) · Joel Sierra · Claude Code
-<strong>Status</strong>: v1.0 — 2026-05-25
-<strong>Owner</strong>: JPW
+<strong>Status</strong>: v1.1 — 2026-05-29
+<strong>Owner</strong>: Juan Pablo Waimann
 <strong>Purpose</strong>: Document the existing content production pipeline so every participant knows exactly what they do, at which step a human gate is required, and what handoffs look like. The pipeline itself does NOT change — this SOP only formalizes the roles and checkpoints so we can scale production with confidence.</p>
 <hr>
 <h2>TL;DR — Who does what</h2>
@@ -146,13 +147,13 @@
 <tr>
 <td>0. Topic ideation</td>
 <td>JPW + Joel</td>
-<td>Inventory Excel (SharePoint)</td>
+<td>Inventory Excel</td>
 <td>Row with <code>status=pending_review</code></td>
 </tr>
 <tr>
 <td>1. Topic approval</td>
 <td>Joel</td>
-<td><code>relevo_approve.py</code> or Asana batch task</td>
+<td>Asana approval task (Joel completes it, detailing ✅/⚠️/❌ per row)</td>
 <td><code>status=pending</code></td>
 </tr>
 <tr>
@@ -163,13 +164,13 @@
 </tr>
 <tr>
 <td>3. Editorial review</td>
-<td>Joel</td>
+<td>JPW (format) + Joel (sports domain knowledge)</td>
 <td>Asana subtask + WP preview URL</td>
 <td>✅ / ⚠️ / ❌ verdict on the subtask</td>
 </tr>
 <tr>
 <td>4. Final publish decision</td>
-<td>JPW</td>
+<td>Joel or JPW (Joel has publish autonomy)</td>
 <td>WP admin + Inventory Excel</td>
 <td>Post moves to <code>pending</code> then <code>publish</code>; Inventory <code>status=published</code></td>
 </tr>
@@ -187,7 +188,7 @@
 <h3>Claude Code — the drafter</h3>
 <p><strong>What it does autonomously, no human needed:</strong></p>
 <ul>
-<li>Reads the Inventory Excel via Microsoft Graph (live source of truth).</li>
+<li>Reads the Inventory Excel (live source of truth). <em>Planned migration: the inventory moves into a versioned CSV/JSON in the content repository to remove the live-API permission dependency — tracked in the backlog.</em></li>
 <li>Picks the next row with <code>status=pending</code> (Joel-approved).</li>
 <li>Pulls the right rulebook PDF (Rules / Tactics) or runs WebSearch ideation (Origins / Coaches / newsworthy).</li>
 <li>Generates the article in multiple passes (research → draft → critique ≥ 80 → revise → fact-check).</li>
@@ -199,16 +200,16 @@
 </ul>
 <p><strong>What it does NOT do:</strong></p>
 <ul>
-<li>It does <strong>not</strong> publish. Status moves to <code>publish</code> only after JPW’s Stage 4 approval.</li>
+<li>It does <strong>not</strong> publish. Status moves to <code>publish</code> only after a Stage 4 approval by <strong>Joel or JPW</strong> (both hold the publisher role).</li>
 <li>It does <strong>not</strong> override a hard gate. If the self-check fails (e.g. bolds coverage &lt; 0.80, a paragraph &gt; 60 words, a Masters 1000 misattribution), the run halts and is reported as a blocker, not as a draft for review.</li>
 <li>It does <strong>not</strong> modify the Inventory schema or the style guide on its own. Schema changes need an ADR; style guide changes need JPW sign-off after a smoke test.</li>
 </ul>
 <h3>Joel Sierra — the editorial reviewer</h3>
 <p><strong>Stage 1 — topic approval (asynchronous, in lots):</strong></p>
 <ul>
-<li>Sweeps Inventory rows with <code>status=pending_review</code>.</li>
-<li>For each row, decides ✅ (move to <code>pending</code>), ⚠️ (rewrite the angle, suggest edits in the <code>notes</code> column), or ❌ (drop).</li>
-<li>Typical batching: sport-by-sport, ~30 topics per session, via <code>relevo_approve.py approve --sport &lt;X&gt; --category &lt;Y&gt;</code> or via an Asana batch task.</li>
+<li>Works from an <strong>Asana approval task</strong> (one per batch of <code>pending_review</code> rows) rather than editing the Excel status by hand. Joel <strong>completes the Asana task</strong>, detailing per row which topics he approves (✅), which need the angle rewritten (⚠️, with the suggested edit), and which to drop (❌).</li>
+<li>Automation then flips the Inventory <code>status</code> to <code>pending</code> for the approved rows from Joel's task — so the human decision lives in Asana (the single HITL channel) and the Excel just reflects it.</li>
+<li>Typical batching: sport-by-sport, ~30 topics per task. <code>relevo_approve.py</code> remains available as a CLI shortcut for bulk flips once the Asana decisions are recorded.</li>
 </ul>
 <p><strong>Stage 3 — editorial review on each draft:</strong></p>
 <ul>
@@ -222,17 +223,18 @@
 </li>
 <li>Posts a verdict on the Asana subtask:
 <ul>
-<li><strong>✅ Approve</strong> — passes to Stage 4 (JPW).</li>
-<li><strong>⚠️ Approve with notes</strong> — flag specific issues. JPW decides per-article (inline fix vs full regen) or, if it’s a cross-batch pattern, JPW patches the style guide and re-smokes.</li>
+<li><strong>✅ Approve</strong> — Joel <strong>can publish directly</strong>; he has full publish autonomy and does not need JPW's sign-off. He may still route a piece to JPW for a final format pass when he wants a second pair of eyes.</li>
+<li><strong>⚠️ Approve with notes</strong> — Joel either fixes the issue himself (see below) or flags it. If it is a cross-batch pattern, it goes to JPW for a style-guide patch + re-smoke.</li>
 <li><strong>❌ Reject</strong> — explain why. The article goes back to the Inventory as <code>status=pending</code> with a note for Claude to re-attempt.</li>
 </ul>
 </li>
-<li><strong>What Joel does NOT do:</strong> apply CSS / template fixes, modify the style guide directly, edit the WP draft body. Editorial input is text feedback on the subtask, not direct article edits.</li>
+<li><strong>What Joel CAN do directly:</strong> edit the WP draft body — both <strong>formatting/presentation</strong> and <strong>sports-domain corrections</strong> (facts, dates, palmarés, technical attributions). His domain expertise is the moat, so direct edits are welcome, not just text feedback.</li>
+<li><strong>What stays a JPW decision:</strong> changes to the <strong>global style guide</strong> and the Inventory schema (they affect every article). Joel surfaces cross-batch patterns; JPW patches the style guide and re-smokes.</li>
 </ul>
-<h3>Juan Pablo Waimann (JPW) — the publisher / orchestrator</h3>
-<p><strong>Stage 4 — final publish decision:</strong></p>
+<h3>Juan Pablo Waimann (JPW) — co-publisher / orchestrator</h3>
+<p><strong>Stage 4 — final publish decision (shared with Joel, who publishes his own ✅ autonomously):</strong></p>
 <ul>
-<li>Sweeps Asana subtasks that Joel marked ✅.</li>
+<li>Reviews the pieces Joel routes to him for a format pass, plus any he chooses to spot-check. Joel does <strong>not</strong> need JPW's sign-off to publish.</li>
 <li>Does a final pass on the WP draft: header rendering, hero image fit, internal linking, SEO title and meta description, schema markup.</li>
 <li>Decides:
 <ul>
@@ -260,7 +262,7 @@
 <ul>
 <li><strong>Owner:</strong> Joel.</li>
 <li><strong>Cadence:</strong> in lots — typically a weekly sweep of pending_review rows, sport by sport.</li>
-<li><strong>Tools:</strong> <code>relevo_approve.py approve --sport &lt;X&gt; --category &lt;Y&gt;</code> (CLI on the AWS VM), or an Asana batch task with the row IDs to approve.</li>
+<li><strong>Tools:</strong> <code>relevo_approve.py approve --sport &lt;X&gt; --category &lt;Y&gt;</code> (CLI on the production host), or an Asana batch task with the row IDs to approve.</li>
 <li><strong>Output:</strong> Inventory rows flipped to <code>status=pending</code>. Claude only picks from <code>pending</code>.</li>
 </ul>
 <h3>Stage 2 · Article generation (Claude Code)</h3>
@@ -287,16 +289,17 @@
 <li><strong>Inputs:</strong> Asana subtask description (WP preview URL + score breakdown + factual fixes applied), and the WP draft preview itself.</li>
 <li><strong>Decision tree:</strong>
 <ul>
-<li>✅ → JPW (Stage 4).</li>
-<li>⚠️ with notes → JPW decides (inline fix, full regen, or systemic style guide patch).</li>
+<li>✅ → Joel publishes directly (autonomy), or routes to JPW for an optional format pass.</li>
+<li>⚠️ with notes → Joel fixes it himself (format or sports-domain) and publishes, OR — if it's a cross-batch pattern — escalates to JPW for a style-guide patch + re-smoke.</li>
 <li>❌ → Inventory row back to <code>pending</code> with rejection notes; Claude can attempt again.</li>
 </ul>
 </li>
 <li><strong>Patterns vs per-article</strong>: if the same defect shows up in 3+ subtasks of the same batch, that’s a systemic pattern and goes to a style guide patch (v1.2.x), not a per-article fix. The regenerate-batch methodology (memory: <code>feedback_regenerate_batch_methodology</code>) applies.</li>
 </ul>
-<h3>Stage 4 · Final publish decision (JPW)</h3>
+<h3>Stage 4 · Final publish decision (Joel or JPW)</h3>
 <ul>
-<li><strong>Inputs:</strong> Joel ✅ verdict + WP draft.</li>
+<li><strong>Publisher:</strong> Joel publishes his own ✅ autonomously; JPW publishes the pieces routed to him plus any he spot-checks.</li>
+<li><strong>Inputs:</strong> ✅ verdict + WP draft.</li>
 <li><strong>Checklist:</strong>
 <ul>
 <li>Header renders correctly (until the WP CSS fix lands — currently tracked as deferred work).</li>
@@ -319,7 +322,6 @@
 <li><strong>Parent task for current production reviews:</strong> Phase 4 — Production launch &amp; FIFA WC readiness (<code>1214844989980281</code>).</li>
 <li><strong>Subtask name format:</strong> <code>[Editorial QA] &lt;article slug or topic&gt; (Joel review)</code> or <code>[Editorial QA] Smoke v1.x — &lt;topic&gt; (JPW pre-Joel review)</code> for smoke runs.</li>
 <li><strong>Language:</strong> English only on Asana (project convention).</li>
-<li><strong>Daily entries in the JPW weekly task:</strong> ≤ 5 lines per day, each line prefixed with the relevant Asana URL.</li>
 <li><strong>Assignee:</strong> only assign when the reviewer is the next actor. Topic ideation rows in the Inventory are NOT Asana tasks — they live in the Excel.</li>
 </ul>
 <hr>
@@ -330,16 +332,14 @@
 <h2>5. Quick reference — what each person does in a given day</h2>
 <h3>Joel — production day</h3>
 <ol>
-<li>Open the weekly Asana task under his name → see today’s pending subtasks.</li>
-<li>For each subtask: open the WP preview, review against the 3 axes (sport knowledge, editorial taste, internal coherence), post verdict.</li>
-<li>If a pattern emerges across subtasks, mention it on the parent task so JPW can decide on a style guide patch.</li>
+<li>Open his Asana queue → see today’s pending subtasks.</li>
+<li>For each subtask: open the WP preview, review against the 3 axes (sport knowledge, editorial taste, internal coherence). Fix what he wants directly in the draft (format or facts), post the verdict, and <strong>publish the ✅ pieces himself</strong> (or route to JPW for a format pass).</li>
+<li>If a pattern emerges across subtasks (3+), escalate it on the parent task so JPW can decide on a style-guide patch.</li>
 </ol>
 <h3>JPW — production day</h3>
 <ol>
-<li>Sweep Joel’s ✅ subtasks → run Stage 4 checks → publish / hold / send back.</li>
-<li>Sweep Joel’s ⚠️ subtasks → decide per-article action.</li>
-<li>Sweep Joel’s ❌ subtasks → mark Inventory row back to <code>pending</code> with the rejection note.</li>
-<li>Update the JPW weekly Asana task with the day’s bullets (≤ 5 lines, English, Asana URLs prefixed).</li>
+<li>Review the pieces Joel routed for a format pass (plus any spot-checks) → publish / hold / send back. Joel publishes his own ✅ autonomously.</li>
+<li>Decide on cross-batch ⚠️ patterns Joel escalated → style-guide patch + re-smoke when warranted.</li>
 <li>Refresh the executive one-pager (<code>docs/one-pager.html</code>) at EOD.</li>
 </ol>
 <h3>Claude Code — invoked on demand</h3>
@@ -355,11 +355,12 @@
 <li><strong>Claude can’t source a fact</strong> → article does not generate. Run dir keeps the failure log. JPW or Joel can override by providing the source manually in a follow-up <code>/relevo new</code> call.</li>
 <li><strong>Style guide hard gate fails</strong> → no delivery to Joel. The block is reported on the subtask, and the row remains in <code>status=pending</code> for a re-attempt or a manual edit.</li>
 <li><strong>Joel returns ⚠️ for a pattern that affects 3+ articles in a batch</strong> → JPW patches the style guide to v1.2.x with the pattern as a binary check, runs a smoke on one representative article, signs off, and only then re-generates the batch.</li>
-<li><strong>WP outage / SharePoint outage</strong> → Claude reports the integration error on the subtask. The draft remains in the run dir; no Inventory row is updated. Re-run when the integration is back.</li>
+<li><strong>WP outage / inventory-store outage</strong> → Claude reports the integration error on the subtask. The draft remains in the run dir; no Inventory row is updated. Re-run when the integration is back.</li>
 </ul>
 <hr>
 <h2>7. Version log</h2>
 <ul>
+<li><strong>v1.1 (2026-05-29)</strong> — JPW review round 1. <strong>Joel's role expanded</strong>: he is now a <strong>co-publisher with full publish autonomy</strong> (no JPW sign-off needed) and may <strong>edit the WP draft directly</strong> — both formatting and sports-domain corrections. Editorial review is now <strong>JPW (format) + Joel (sports domain)</strong>. Topic approval moves to an <strong>Asana approval task</strong> Joel completes (the Excel status just reflects it), per the Asana-HITL-exclusive rule. Header carries both JPW + Joel avatars; Owner shown as full name. Removed the JPW personal-weekly-task convention from the SOP. Added the planned Inventory Excel → versioned-repo migration note (backlog). Style guide and Inventory schema remain JPW-owned (global config).</li>
 <li><strong>v1.0 (2026-05-25)</strong> — Initial SOP. Captures the pipeline as it stands after the Phase 3 closing demo: style guide v1.2 (ADR-010), templates Rules v2 / Tactics v2 / Origins v2, Coaches template incoming, single Inventory Excel constraint.</li>
 </ul>
 

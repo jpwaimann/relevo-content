@@ -16,11 +16,11 @@
 0. Topic ideation     JPW + Joel       → Inventory row, status=pending_review
 1. Topic approval     Joel             → Inventory row, status=pending
 2. Article generation Claude Code      → WP draft + Asana review subtask + status=review
-3. Editorial review   Joel             → Asana verdict: ✅ / ⚠️ / ❌
-4. Publish decision   JPW              → WP publish + Inventory status=published
+3. Editorial review   JPW (format) + Joel (sports domain) → Asana verdict: ✅ / ⚠️ / ❌
+4. Publish decision   Joel or JPW      → WP publish + Inventory status=published (Joel autonomous)
 ```
 
-**Gates that block downstream**: 1 (Joel), 3 (Joel), 4 (JPW). Everything else automated.
+**Gates that block downstream**: 1 (Joel), 3 (Joel + JPW), 4 (Joel/JPW). Everything else automated.
 
 ---
 
@@ -34,19 +34,19 @@
      - **Editorial taste** (Relevo voice, bolds carry scanning value, metaphors earned, closing lands).
      - **Internal coherence** (article answers the title's promise, FAQs are real questions).
    - Post verdict on the subtask:
-     - **✅ Approve** → JPW (Stage 4).
-     - **⚠️ Approve with notes** → flag specific issues. JPW decides per-article fix vs full regen.
+     - **✅ Approve** → **publish it yourself** (you have publish autonomy), or route to JPW for an optional format pass.
+     - **⚠️ Approve with notes** → fix it yourself (format or facts), or escalate a cross-batch pattern to JPW for a style-guide patch.
      - **❌ Reject** → explain why. Article returns to Inventory `pending` for regen.
 3. **TIER-1 subtasks** (prefix `TIER-1` in subtask title): extra scrutiny on facts. The Spanish audience knows these figures. A wrong date or palmarés destroys trust.
 4. If a defect repeats across 3+ subtasks of the same batch → mention it on the parent Phase 4 task so JPW patches the style guide.
 
-**What Joel does NOT do**: CSS / template fixes, edit the WP draft body, modify the style guide directly. All editorial input goes as text feedback on the subtask.
+**What Joel CAN do directly**: edit the WP draft body — formatting/presentation AND sports-domain corrections (facts, dates, palmarés, technical attributions). Direct edits welcome, not just text feedback. **Stays a JPW decision**: the global style guide and the Inventory schema (they affect every article).
 
 ---
 
 ## JPW's daily checklist
 
-1. **Sweep Joel's ✅ subtasks** → Stage 4 publish gate:
+1. **Review the pieces Joel routed to you** (plus any spot-checks; Joel publishes his own ✅ autonomously) → Stage 4 format gate:
    - Header renders correctly (CSS gap pending, [tracked](https://app.asana.com/0/1213819517890615/1215166573030805) — don't block on it).
    - Hero image fits the angle.
    - Internal links resolve.
@@ -59,7 +59,6 @@
    - Full regen via `/relevo new <row_id>` if structural.
    - Patch style guide v1.2.x if it's a cross-article pattern (regenerate-batch methodology).
 3. **Sweep Joel's ❌ subtasks**: Inventory row back to `pending` with the rejection note. Claude can re-attempt with the note as context.
-4. **Update the JPW weekly Asana task** with the day's bullets (≤ 5 lines, English, Asana URLs prefixed).
 5. **Refresh the executive one-pager** (`docs/one-pager.html`) at EOD if material changes.
 
 ---
@@ -79,7 +78,7 @@ Claude does NOT publish. Claude does NOT override hard gates. Claude does NOT mo
 
 ## Where things live
 
-- **Inventory Excel**: SharePoint, single source of truth. Editable via `scripts/sharepoint_msal.py` (MSAL device-code). Read live in the pipeline.
+- **Inventory Excel**: single source of truth, read live in the pipeline.
 - **Style guide**: `prompts/style_guide.md` (current: v1.2.2). The pipeline injects this into every system prompt.
 - **Templates**: `prompts/{rules,tactics,origins,coaches}_template.md`.
 - **SOP**: `docs/sop/01-content-production.md` (canonical) / `01-content-production.html` (rendered).
@@ -110,8 +109,8 @@ Atletismo: Peleteiro, María Pérez, Cerezo, Tió.
 - Claude can't source a fact → article doesn't generate, failure log in run dir, row stays `pending`.
 - Style guide hard gate fails → no delivery to Joel, blocker reported on subtask.
 - Pattern affects 3+ articles in a batch → JPW patches style guide v1.2.x → smoke → bulk regen.
-- WP / SharePoint outage → integration error reported, no Inventory update, re-run when back.
+- WP / inventory-store outage → integration error reported, no Inventory update, re-run when back.
 
 ---
 
-**Owner**: JPW · **Status**: v1.0 (2026-05-27) · **Source**: [github.com/jpwaimann/relevo-content](https://github.com/jpwaimann/relevo-content/blob/main/docs/sop/quick-reference-jpw-joel.md)
+**Owner**: Juan Pablo Waimann · **Status**: v1.1 (2026-05-29) — Joel = co-publisher with autonomy; can edit drafts directly · **Source**: [github.com/jpwaimann/relevo-content](https://github.com/jpwaimann/relevo-content/blob/main/docs/sop/quick-reference-jpw-joel.md)

@@ -34,7 +34,7 @@
     <img src="../../assets/jpw-avatar.png" alt="JPW" class="avatar">
     <div><h1>Relevo — SOP quick reference (JPW + Joel)</h1><p class="sub">1-pager · Daily operations · Tier-1 list</p></div>
   </div>
-  <div class="meta-line"><strong>Owner</strong> JPW · <strong>Updated</strong> 2026-05-27 ·
+  <div class="meta-line"><strong>Owner</strong> Juan Pablo Waimann · <strong>Updated</strong> 2026-05-29 ·
     <strong>Source</strong> <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/sop/quick-reference-jpw-joel.md">github.com/jpwaimann/relevo-content</a>
   </div>
 </header>
@@ -48,10 +48,10 @@
 <pre><code>0. Topic ideation     JPW + Joel       → Inventory row, status=pending_review
 1. Topic approval     Joel             → Inventory row, status=pending
 2. Article generation Claude Code      → WP draft + Asana review subtask + status=review
-3. Editorial review   Joel             → Asana verdict: ✅ / ⚠️ / ❌
-4. Publish decision   JPW              → WP publish + Inventory status=published
+3. Editorial review   JPW (format) + Joel (sports domain) → Asana verdict: ✅ / ⚠️ / ❌
+4. Publish decision   Joel or JPW      → WP publish + Inventory status=published (Joel autonomous)
 </code></pre>
-<p><strong>Gates that block downstream</strong>: 1 (Joel), 3 (Joel), 4 (JPW). Everything else automated.</p>
+<p><strong>Gates that block downstream</strong>: 1 (Joel), 3 (Joel + JPW), 4 (Joel/JPW). Everything else automated.</p>
 <hr>
 <h2>Joel’s daily checklist</h2>
 <ol>
@@ -68,8 +68,8 @@
 </li>
 <li>Post verdict on the subtask:
 <ul>
-<li><strong>✅ Approve</strong> → JPW (Stage 4).</li>
-<li><strong>⚠️ Approve with notes</strong> → flag specific issues. JPW decides per-article fix vs full regen.</li>
+<li><strong>✅ Approve</strong> → <strong>publish it yourself</strong> (you have publish autonomy), or route to JPW for an optional format pass.</li>
+<li><strong>⚠️ Approve with notes</strong> → fix it yourself (format or facts), or escalate a cross-batch pattern to JPW for a style-guide patch.</li>
 <li><strong>❌ Reject</strong> → explain why. Article returns to Inventory <code>pending</code> for regen.</li>
 </ul>
 </li>
@@ -78,11 +78,11 @@
 <li><strong>TIER-1 subtasks</strong> (prefix <code>TIER-1</code> in subtask title): extra scrutiny on facts. The Spanish audience knows these figures. A wrong date or palmarés destroys trust.</li>
 <li>If a defect repeats across 3+ subtasks of the same batch → mention it on the parent Phase 4 task so JPW patches the style guide.</li>
 </ol>
-<p><strong>What Joel does NOT do</strong>: CSS / template fixes, edit the WP draft body, modify the style guide directly. All editorial input goes as text feedback on the subtask.</p>
+<p><strong>What Joel CAN do directly</strong>: edit the WP draft body — formatting/presentation AND sports-domain corrections (facts, dates, palmarés, technical attributions). Direct edits welcome, not just text feedback. <strong>Stays a JPW decision</strong>: the global style guide and the Inventory schema (they affect every article).</p>
 <hr>
 <h2>JPW’s daily checklist</h2>
 <ol>
-<li><strong>Sweep Joel’s ✅ subtasks</strong> → Stage 4 publish gate:
+<li><strong>Review the pieces Joel routed to you</strong> (plus any spot-checks; Joel publishes his own ✅ autonomously) → Stage 4 format gate:
 <ul>
 <li>Header renders correctly (CSS gap pending, <a href="https://app.asana.com/0/1213819517890615/1215166573030805">tracked</a> — don’t block on it).</li>
 <li>Hero image fits the angle.</li>
@@ -101,7 +101,6 @@
 </ul>
 </li>
 <li><strong>Sweep Joel’s ❌ subtasks</strong>: Inventory row back to <code>pending</code> with the rejection note. Claude can re-attempt with the note as context.</li>
-<li><strong>Update the JPW weekly Asana task</strong> with the day’s bullets (≤ 5 lines, English, Asana URLs prefixed).</li>
 <li><strong>Refresh the executive one-pager</strong> (<code>docs/one-pager.html</code>) at EOD if material changes.</li>
 </ol>
 <hr>
@@ -115,7 +114,7 @@
 <hr>
 <h2>Where things live</h2>
 <ul>
-<li><strong>Inventory Excel</strong>: SharePoint, single source of truth. Editable via <code>scripts/sharepoint_msal.py</code> (MSAL device-code). Read live in the pipeline.</li>
+<li><strong>Inventory Excel</strong>: single source of truth, read live in the pipeline.</li>
 <li><strong>Style guide</strong>: <code>prompts/style_guide.md</code> (current: v1.2.2). The pipeline injects this into every system prompt.</li>
 <li><strong>Templates</strong>: <code>prompts/{rules,tactics,origins,coaches}_template.md</code>.</li>
 <li><strong>SOP</strong>: <code>docs/sop/01-content-production.md</code> (canonical) / <code>01-content-production.html</code> (rendered).</li>
@@ -141,10 +140,10 @@ Atletismo: Peleteiro, María Pérez, Cerezo, Tió.</p>
 <li>Claude can’t source a fact → article doesn’t generate, failure log in run dir, row stays <code>pending</code>.</li>
 <li>Style guide hard gate fails → no delivery to Joel, blocker reported on subtask.</li>
 <li>Pattern affects 3+ articles in a batch → JPW patches style guide v1.2.x → smoke → bulk regen.</li>
-<li>WP / SharePoint outage → integration error reported, no Inventory update, re-run when back.</li>
+<li>WP / inventory-store outage → integration error reported, no Inventory update, re-run when back.</li>
 </ul>
 <hr>
-<p><strong>Owner</strong>: JPW · <strong>Status</strong>: v1.0 (2026-05-27) · <strong>Source</strong>: <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/sop/quick-reference-jpw-joel.md">github.com/jpwaimann/relevo-content</a></p>
+<p><strong>Owner</strong>: Juan Pablo Waimann · <strong>Status</strong>: v1.1 (2026-05-29) — Joel = co-publisher with autonomy; can edit drafts directly · <strong>Source</strong>: <a href="https://github.com/jpwaimann/relevo-content/blob/main/docs/sop/quick-reference-jpw-joel.md">github.com/jpwaimann/relevo-content</a></p>
 
 <footer>Auto-rendered from <code>docs/sop/quick-reference-jpw-joel.md</code>. Companion: <a href="../one-pager.html">One-pager</a> · <a href="../backlog.html">Backlog</a> · <a href="../sop/01-content-production.html">SOP full</a> · <a href="../strategy/content-strategy-v1.html">Strategy v1</a></footer>
 </div></body></html>
